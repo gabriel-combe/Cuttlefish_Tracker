@@ -1,0 +1,114 @@
+% Une ligne commentaire débute par le caractère « % »
+
+\documentclass[a4paper]{article}
+
+% Options possibles : 10pt, 11pt, 12pt (taille de la fonte)
+%                     oneside, twoside (recto simple, recto-verso)
+%                     draft, final (stade de développement)
+
+\usepackage[utf8]{inputenc}   % LaTeX, comprends les accents !
+\usepackage[T1]{fontenc}      % Police contenant les caractères français
+\usepackage[french]{babel}  
+\usepackage{fullpage}
+
+
+
+\usepackage{graphicx}  % pour inclure des images
+
+%\pagestyle{headings}        % Pour mettre des entêtes avec les titres
+                              % des sections en haut de page
+
+ \title{  Titre du sujet\\         % Les paramètres du titre : titre, auteur, date
+  Projet de programmation 2}          
+\author{ Les membres du groupe\\
+  \emph{L3 informatique}\\
+  Faculté des Sciences\\
+Université de Montpellier.}
+\date{2021-2022}             
+
+
+
+\begin{document}
+
+\maketitle                    % Faire un titre utilisant les données
+                              % passées à \title, \author et \date
+
+%\begin{center}               % pour centrer 
+ % \includegraphics[scale=1]{}   % insertion d'une image
+%\end{center}
+
+\begin{abstract}     % Résumé du travail
+
+  \emph{Description très succinte du problème et des différentes étapes de réalisation}
+
+\end{abstract}
+\newpage
+%\dominitoc  % initializer les minitoc
+\tableofcontents
+\newpage
+\section*{Introduction} % Commencer une section, * permet de ne pas numéroté l'introduction
+\emph{1-2 pages}
+	%Présentation du Sujet (1-2 pages) 
+\begin{itemize}%pour faire une liste à puces
+\item Présenter le problème étudié et le contexte dans lequel le projet se positionne.
+\item Motiver l'intérêt du problème étudié par rapport à votre parcours d'études et au monde de l'informatique.
+\item	Présenter les différentes approches possibles pour la résolution du problème, et en particulier celle choisie.
+\item Donner le cahier des charges détaillé
+\end{itemize}
+
+
+\section{Développements Logiciel : Conception, Modélisation, Implémentation} 
+\emph{8 à 15 pages}
+
+Il se peut que la conception du logiciel (3) et l'analyse algorithmique (4) aient un poids différent dans votre projet. Les points décrits ci-dessous seront ainsi plus ou moins développés en fonction du travail réalisé en accord avec l'encadrant. 
+\begin{enumerate}%pour faire une liste numérotée
+\item Présenter les développements logiciel réalisés dans le cadre du projet.
+\item Présenter les principaux modules du logiciel développé dans le cadre du projet. Utiliser le langage UML pour la modélisation : donner le diagramme de cas d'utilisation et le diagramme des classes.
+\item Décrire les fonctionnalités de l'interface graphique implémentée (si votre logiciel dispose d'une interface graphique).
+\item Décrire le format des données en entrée ou encore les conventions utilisées pour les entrées de vos programmes. Décrire les procédures de lecture et validation des entrées.
+\item Statistiques : nombre de modules/composantes/classes/scripts développés. Nombre de lignes de code.
+\end{enumerate}
+
+\section{Algorithmes et Structures de Données}
+\emph{2 à 3 pages}
+\begin{enumerate}%pour faire une liste numérotée
+\item 	Présenter les principales structures de données définies dans le cadre du projet.
+\item 	Présenter les principaux algorithmes implémentés. En illustrer le fonctionnement avec des exemples. Attention : il s'agit ici de choisir 1 ou 2 algorithmes intéressants, et non pas de présenter tous les algorithmes implémentés.
+\item 	Évaluer la complexité théorique en temps des algorithmes présentés
+\end{enumerate}
+
+\section{Analyse des résultats }
+\emph{2 à 4 pages}
+L'analyse expérimentale sera faites dans cette section.   Elle sera plus ou moins importante dans votre projet comme pour les deux points précédent, cette section devra donc être développée en conséquence.
+
+\begin{enumerate}%pour faire une liste numérotée
+\item 	Illustrer les performances ainsi que l'efficacité du logiciel implémenté à l'aide de graphiques.
+\item Analyser (et comparer, si plusieurs) les performances des solutions implémentées.
+\item	Présenter les bancs d'essais (ou les procédures utilisées pour la génération des données) utilisés pour les tests du logiciel.
+\end{enumerate}
+
+\section{Gestion du Projet}
+\emph{ (1-2 pages)}
+\begin{enumerate}%pour faire une liste numérotée
+\item 	Présenter la gestion du projet et les documents de planification rédigés (par exemple, le diagramme de Gantt).
+\item	Discuter les changements majeurs effectués en cours de projet. 
+\end{enumerate}
+
+\section{Bilan et Conclusions}
+
+	Indiquer les fonctionnalités mises en œuvre par rapport au cahier des charges de départ, les points ouvertes.
+	Les perspectives du projet décrivent ce que l’on pourrait ajouter, modifier, réécrire afin d’améliorer le projet. 
+	
+\begin{thebibliography}{9}
+\bibitem{texbook}
+Donald E. Knuth (1986) \emph{The \TeX{} Book}, Addison-Wesley Professional.
+
+\bibitem{lamport94}
+Leslie Lamport (1994) \emph{\LaTeX: a document preparation system}, Addison
+Wesley, Massachusetts, 2nd ed.
+\end{thebibliography}
+
+
+
+\end{document}
+

@@ -16,7 +16,7 @@ L'objectif du projet est de suivre un objet dans une sequence d'image en utilisa
 Il se decoupera donc en plusieurs sous objectifs:
 
 - [x] Creer le repo initial.
-- [ ] Organiser la structure fichier du projet.
+- [x] Organiser la structure fichier du projet.
 - [ ] Creer une template de rapport en Latex.
 - [ ] Creer un dataset de seiches pour YOLOv7.
 - [ ] Fine-tuning de YOLOv7 sur notre dataset.
