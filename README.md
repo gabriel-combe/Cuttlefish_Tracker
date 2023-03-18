@@ -17,7 +17,7 @@ Il se decoupera donc en plusieurs sous objectifs:
 
 - [x] Creer le repo initial.
 - [x] Organiser la structure fichier du projet.
-- [ ] Creer une template de rapport en Latex.
+- [x] Creer une template de rapport en Latex.
 - [ ] Creer un dataset de seiches pour YOLOv7.
 - [ ] Fine-tuning de YOLOv7 sur notre dataset.
 - [ ] Creer un programme pour la detection initiale de seiches.
