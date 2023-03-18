@@ -1,0 +1,110 @@
+\documentclass[a4paper, draft]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, total={7in, 10in}]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}  
+%\usepackage{fullpage}
+
+
+\usepackage{amsmath}
+\usepackage{algorithm2e}
+\usepackage{babel,csquotes}
+\usepackage{listings}
+\usepackage{graphicx}  % pour inclure des images
+\usepackage{subfig}
+\usepackage[toc,page]{appendix}
+\usepackage[backend=biber,
+	    style=numeric,
+	    citestyle=numeric]{biblatex}
+
+\addbibresource{Bibliographie/references.bib}
+
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=Python,
+stepnumber=1, 
+tabsize=2, 
+breaklines=true,
+basicstyle=\scriptsize\ttfamily,
+otherkeywords={self},             % Add keywords here
+%keywordstyle=\scriptsize\ttfamily\color{deepblue},
+%emph={MyClass,__init__},          % Custom highlighting
+%emphstyle=\ttb\color{deepred},    % Custom highlighting style
+%stringstyle=\color{deepgreen},
+%frame=tb,                         % Any extra options here
+%showstringspaces=false            % 
+}}
+
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+	\pythonstyle
+\lstset{#1}
+}
+{}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+	\pythonstyle
+\lstinputlisting[#1]{#2}}}
+
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+
+%\pagestyle{headings}       
+
+
+ \title{  Suivi d'objet en utilisant les filtres à particule\\         % Les paramètres du titre : titre, auteur, date
+  Projet de programmation 2}          
+\author{ Vaisse Ariane\\
+	 Beldjilali Maxime\\
+	 Young Brun Luis-Miguel\\
+	 Combe-Ounkham Gabriel\\
+  \emph{L3 informatique}\\
+  Faculté des Sciences\\
+Université de Montpellier.}
+\date{2022-2023}             
+
+
+
+\begin{document}
+
+\maketitle
+
+\include{Chapters/Abstract/Abstract}
+
+\tableofcontents \clearpage
+
+\listoffigures \clearpage
+
+
+\include{Chapters/Introduction/Introduction}
+
+\include{Chapters/Technologies/Technologies}
+
+\include{Chapters/Developpements_Logiciel/Developpements_Logiciel}
+
+\include{Chapters/Algorithmes_Analyse/Algorithmes_Analyse}
+
+\include{Chapters/Analyse_resultats/Analyse_resultats}
+
+\include{Chapters/Gestion_Projet/Gestion_Projet}
+
+\include{Chapters/Bilan/Bilan}
+
+% Exemple de reference
+\cite{Helle2009}
+\cite{wifialliance}
+\cite{CiscoVNI2017}
+\cite{Knuth}
+\cite{lamport94}
+
+\printbibliography
+
+\include{Annexes/Annexes}
+
+\end{document}
+
