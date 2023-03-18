@@ -1,6 +1,6 @@
 # Projet de Programmation 2 Universite de Montpellier
 
-**Sujet: Suivi d'objet avec filtre a particule.**
+**Sujet: Suivi d'objet avec filtre à particule.**
 
 ## Introduction
 
