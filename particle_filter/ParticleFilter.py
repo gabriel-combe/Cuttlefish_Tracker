@@ -1,17 +1,15 @@
 import numpy as np
 from typing import Optional
 from .ResampleMethods import systematic_resample
-from .Particle import Particle, ConstAccelParticle2D
+from .Particle import Particle, ConstAccelParticle2DBbox
 
 # Class for the particle filter object
 class ParticleFilter(object):
     def __init__(self, 
                 N: int, 
-                particle_struct: Particle =ConstAccelParticle2D, 
+                particle_struct: Particle =ConstAccelParticle2DBbox, 
                 track_dim: int =1,
-                control_dim: int =0,
                 init_pos: np.ndarray =None,
-                ranges: np.ndarray =None,
                 Q_motion: Optional[np.ndarray] =None,
                 R: Optional[np.ndarray] =None,
                 descriptor_fn=None, # TODO need a default value
@@ -56,10 +54,10 @@ class ParticleFilter(object):
         self.resample_method = resample_method_fn
 
         # Set the descriptor function
-        self.descriptor = np.vectorize(descriptor_fn)
+        self.descriptor = descriptor_fn
 
         # Set the similarity measurement function
-        self.similarity = np.vectorize(similarity_fn)
+        self.similarity = similarity_fn
 
         # Array of all the trackers and particles
         self.particles: np.ndarray = np.zeros((self.N, self.track_dim, self.state_dim))
@@ -77,15 +75,22 @@ class ParticleFilter(object):
         # Standard deviation of all the particles for each targets
         self.sigma: np.ndarray = np.zeros(self.state_dim)
 
+        # Save previous frame to compute the descriptor of the best particle
+        self.prev_frame = None
+
+        # Save the descriptor of the best particle at the previous frame
+        self.prev_descriptor = None
+
     # Predict next state for each trackers (prior)
     def predict(self, dt: Optional[float] =1.) -> None:
         self.particles = self.particle_struct().motion_model(self.particles, self.Q_motion, dt)
 
     # Update each tracker belief with observations (z).
     def update(self, z: np.ndarray) -> None:
+
         self.prev_frame = z
 
-        coeff_sim = self.similarity(self.prev_result, self.descriptor(z, self.particles))
+        coeff_sim = self.similarity(self.prev_descriptor, self.descriptor(z, self.particles))
 
         self.weights *= self.particle_struct().measurement_model(coeff_sim, self.R)
         self.weights += 1.e-12
@@ -96,7 +101,7 @@ class ParticleFilter(object):
         self.mu = np.average(self.particles, weights=self.weights, axis=0)
         self.sigma = np.average((self.particles - self.mu)**2, weights=self.weights, axis=0)
 
-        self.prev_result = self.descriptor(self.prev_frame, self.mu)
+        self.prev_descriptor = self.descriptor(self.prev_frame, self.mu)
 
         return (self.mu, self.sigma)
 
@@ -113,7 +118,7 @@ class ParticleFilter(object):
             self.weights.fill(1/self.N)
 
     # Perform one pass of the particle filter
-    def forward(self, z: np.ndarray, dt: float =1., fraction: float =1./4., verbose: int =0) -> None:
+    def forward(self, z: np.ndarray, dt: float =1., fraction: float =1./4.) -> None:
         self.predict(dt)
         self.update(z)
         self.resample(fraction)
