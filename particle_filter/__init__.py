@@ -1,6 +1,6 @@
 from .ParticleFilter import ParticleFilter
 from .Particle import ConstAccelParticle2DFixBbox, ConstAccelParticle2DBbox
-from .ResampleMethods import systematic_resample
+from .ResampleMethods import systematic_resample, residual_resample, stratified_resample, multinomial_resample
 
 particle_dict = {
     'cap2Dfbb': ConstAccelParticle2DFixBbox,
@@ -8,5 +8,8 @@ particle_dict = {
     }
 
 resample_dict = {
-    'systematic': systematic_resample
+    'systematic': systematic_resample,
+    'residual': residual_resample,
+    'stratified': stratified_resample,
+    'multinomial': multinomial_resample
     }
