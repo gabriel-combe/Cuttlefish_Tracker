@@ -10,16 +10,16 @@ def initialize():
 # 
 def draw_output_frame(frame : np.array, 
                     descriptor : np.array, 
-                    estimate_particle : Particle,
+                    estimate_particle : np.array,
                     color=(255,0,0)):
 
     output_image = cv.rectangle(frame, 
-                        estimate_particle.x - estimate_particle.width/2,
-                        estimate_particle.y + estimate_particle.height/2,
+                        estimate_particle[0] - estimate_particle[6]/2,
+                        estimate_particle[3] + estimate_particle[7]/2,
                         color,
                         2)
     # Maybe draw descriptors as well
-    cv.imshow('Particle filter', output_image)
+    cv.imshow('Track Squid', output_image)
 
 
 def main():
@@ -43,16 +43,16 @@ def main():
 
     # Loop
     for i in trange(1,n_frames): # tqdm bar
-        draw_output_frame(current_frame, descriptor, particle_filter.get_estimated_particle())
+        draw_output_frame(current_frame, descriptor, particle_filter.mu)
         cv2.waitKey(0) # Frame by frame
         last_frame = current_frame # Switch frames
         ret, current_frame = cap.read() # Read next frame
         if not ret:
             print("Error : Couldn't read frame")
-            quit()           
+            quit()
         particle_filter.forward(current_frame) # New pass
         descriptor = particle_filter.descriptor
-        tqdm.write(f'Divergence = {i}') # Print stuff here
+        tqdm.write(f'Divergence = {particle_filter.sigma}') # Print stuff here
     # End Loop
 
 if __name__ == "__main__":
