@@ -1,5 +1,5 @@
 import numpy as np
-from ParticleFilter import *
+from ParticleFilter import particle_filtre, forward
 import cv2 as cv
 from tqdm import trange
 
