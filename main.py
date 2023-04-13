@@ -52,7 +52,7 @@ def main():
             quit()
         particle_filter.forward(current_frame) # New pass
         descriptor = particle_filter.descriptor
-        tqdm.write(f'Divergence = {particle_filter.sigma}') # Print stuff here
+        tqdm.write(f'Sigma = {particle_filter.sigma}') # Print stuff here
     # End Loop
 
 if __name__ == "__main__":
