@@ -1,7 +1,7 @@
 import numpy as np
 from typing import Optional
-from ResampleMethods import systematic_resample
-from Particle import Particle, ConstAccelParticle2D
+from .ResampleMethods import systematic_resample
+from .Particle import Particle, ConstAccelParticle2D
 
 # Class for the particle filter object
 class ParticleFilter(object):

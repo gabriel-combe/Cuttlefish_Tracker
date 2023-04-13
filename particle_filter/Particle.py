@@ -1,7 +1,7 @@
 import numpy as np
 import scipy.stats as ss
 from typing import Optional
-from ParticleTemplate import Particle
+from .ParticleTemplate import Particle
 
 
 ##################################
