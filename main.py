@@ -1,11 +1,33 @@
 import numpy as np
-from particle_filter.ParticleFilter import particle_filter, forward
+from particle_filter.Particle import ParticleFilter, particle_dict, resample_dict
 import cv2 as cv
 from tqdm import trange
+import argparse
 
-# TODO?
-def initialize():
-    print("Initialisation")
+def get_opts():
+    parser = argparse.ArgumentParser()
+    
+    # File args
+    parser.add_argument('--filepath', type=str, required=True,
+                        help='filepath of the video')
+    
+    # Model args
+    parser.add_argument('--N', type=int, default=500, required=True,
+                        help='number of particles')
+    
+    parser.add_argument('--descriptor', type=str, default='surf',
+                        choices=['surf', 'sift', 'hog'],# TODO add all descriptor names
+                        help='which descriptor to use')
+    parser.add_argument('--similarity', type=str, default='bhattacharyya',
+                        choices=['bhattacharyya'],
+                        help='which similartiy measure to use')
+    
+    parser.add_argument('--resampling', type=str, default='systemic-resample',
+                        choices=['systemic-resample'],
+                        help='which resample method to use')
+
+
+    return parser.parse_args()
 
 # 
 def draw_output_frame(frame : np.array, 
@@ -23,11 +45,13 @@ def draw_output_frame(frame : np.array,
 
 
 def main():
+    # get params
+    args = get_opts()
     # init params
-    filepath = 'squid.mp4'
-    N = 500
-    descriptor_fn = getattr(descriptor, 'get_descriptor_sift')
-    similarity_fn = getattr(similarity, 'get_similarity_bhattacharyya')
+    filepath = args[0]
+    N = args[1]
+    descriptor_fn = getattr(descriptor, 'get_descriptor_'+args[2])
+    similarity_fn = getattr(similarity, 'get_similarity_'+args[3])
     # Load video
     n_frames = 100
     cap = cv2.VideoCapture(filepath)
