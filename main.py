@@ -25,6 +25,8 @@ def get_opts():
     parser.add_argument('--resampling', type=str, default='systemic-resample',
                         choices=['systemic-resample'],
                         help='which resample method to use')
+    parser.add_argument('--slicing', type=bool, default=True,
+                        help='True : slice images before using the descriptor, False : slice descriptor afterwards)
 
 
     return parser.parse_args()
@@ -48,10 +50,10 @@ def main():
     # get params
     args = get_opts()
     # init params
-    filepath = args[0]
-    N = args[1]
-    descriptor_fn = getattr(descriptor, 'get_descriptor_'+args[2])
-    similarity_fn = getattr(similarity, 'get_similarity_'+args[3])
+    filepath = args.filepath
+    N = abs(args.N)
+    descriptor_fn = getattr(descriptor, 'get_descriptor_'+args.descriptor)
+    similarity_fn = getattr(similarity, 'get_similarity_'+arg.similarity)
     # Load video
     n_frames = 100
     cap = cv2.VideoCapture(filepath)
