@@ -33,11 +33,17 @@ Il se decoupera donc en plusieurs sous objectifs:
 
 
 ## Dataset
-TODO
+Le dataset est constitue de 2161 images de seiche annotees a la main, qui ont ete augmentees en 5175 images et split entre le train (70%), valid (20%) et test (10%) set.
+Les images sont de taille 640x640 en RGB. 
+L'augmentation du dataset a ete effectue par miroir, rotations des images, ainsi que par modification de la saturation, de la luminosite ou de l'exposition et enfin, par ajout de flou, de bruit, ou cutout.
 
 
 ## Fine-tuning
-TODO
+Le modele YOLOv7 est utilise comme base (avec poids pretrain) et a ete fine-tune pour 300 epochs supplementaire sur notre dataset, pendant plus de 20H.
+Les resultats obtenus apres les 300 epochs sont les suivants:
+| Precision | Recall | mAP@.5 | mAP@.5:.95 |
+|-----------|--------|--------|------------|
+| 0.953     | 0.959  | 0.971  | 0.607      |
 
 
 ## Descripteurs
