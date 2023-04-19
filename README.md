@@ -23,7 +23,7 @@ Il se decoupera donc en plusieurs sous objectifs:
 - [ ] Creer un programme pour la detection initiale de seiches.
 - [ ] Implementer plusieurs descripteurs d'image (environ 5).
 - [ ] Implementer plusieurs mesures de similarite (environ 5).
-- [ ] Definir un ou plusieurs vecteurs de representation de ce que l'on suit.
+- [x] Definir un ou plusieurs vecteurs de representation de ce que l'on suit.
 - [x] Implementer un filtre a particule modulable.
 - [ ] Creer un programme principal qui va gerer les transmissions de donnees entre modules.
 - [ ] Implementer des metriques d'evaluation pour le programme principal.
