@@ -5,7 +5,7 @@ import numpy as np
 # Entree : Un ndarray correspondant a une image au format BGR
 # Sortie : Un tuple 2-Dimension contenant un tuple de keypoint et un numpy array (n, 128) (n=nombre de keypoints) contenant les descripteurs
 
-def get_descriptor_sift(image):
+def get_descriptor_sift(images):
 
     image_gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
 
@@ -51,12 +51,19 @@ def get_descriptors_sift(image, particle_array, ix=0, iy=3, iw=6, ih=7):
         x, y, w, h = particle_array[particle, ix], particle_array[particle, iy], particle_array[particle, iw], particle_array[particle, ih]
         keypoints_descriptors[particle] = sift.detectAndCompute(image[x-int(w/2):x+int(w/2), y-int(h/2):y+int(h/2)], None)
 
-
     return keypoints_descriptors
 
 
-# en test attention
-def get_descriptor_hog(image):
-    
+# Entree : numpy array : liste d'image au format BGR, Sortie : numpy array : histogram
+def get_descriptor_hog(images):
+
+    histograms = []
+
     hog = cv.HOGDescriptor()
-    keypoints, descriptors = hog.compute(image)
+    for image in images:
+        gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
+        histogram += [hog.compute(gray)]
+
+    return histogram
+
+
