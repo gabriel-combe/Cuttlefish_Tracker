@@ -26,7 +26,7 @@ def get_opts():
                         choices=['systemic-resample'],
                         help='which resample method to use')
     parser.add_argument('--slicing', type=bool, default=True,
-                        help='True : slice images before using the descriptor, False : slice descriptor afterwards)
+                        help='True : slice images before using the descriptor, False : slice descriptor afterwards')
 
 
     return parser.parse_args()
