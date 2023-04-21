@@ -14,7 +14,9 @@ class HOG():
         self.cellSize = cellSize
         self.nbins = nbins
         self.hog = cv2.HOGDescriptor(winSize, blockSize, cellSize, cellSize, nbins)
+        self.histogram
 
+    
     def expectedF(self):
         return (( (self.winSize[0] - self.blockSize[0]) // self.blockStride[0] ) + 1) * (( (self.winSize[1] - self.blockSize[1]) // self.blockStride[1] ) + 1) * (self.blockSize[0] // self.cellSize[0]) * (self.blockSize[1] // self.cellSize[1]) * self.nbins
 
