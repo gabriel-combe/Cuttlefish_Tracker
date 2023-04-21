@@ -5,6 +5,11 @@ import numpy as np
 # Entree : Un ndarray correspondant a une image au format BGR
 # Sortie : Un tuple 2-Dimension contenant un tuple de keypoint et un numpy array (n, 128) (n=nombre de keypoints) contenant les descripteurs
 
+class SIFT():
+
+    def __init__(self):
+        self
+
 def get_descriptor_sift(images):
 
     image_gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
