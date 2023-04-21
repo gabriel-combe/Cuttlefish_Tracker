@@ -55,15 +55,32 @@ def get_descriptors_sift(image, particle_array, ix=0, iy=3, iw=6, ih=7):
 
 
 # Entree : numpy array : liste d'image au format BGR, Sortie : numpy array : histogram
+# def get_descriptor_hog(images, blockSize = (16, 16), blockStride = (8, 8),  cellSize = (8, 8), nbins = 9):
 def get_descriptor_hog(images):
 
     histograms = []
 
-    hog = cv.HOGDescriptor()
+    # Calcule la taille inférieur tel qu'elle soit multiple de 8, 8 = cellsize
+    wsize = (int(images[0].shape[0] / cellSize[0]) * cellSize[0], int(images[0].shape[1] / cellSize[1]) * cellSize[1])
+
+    
+    hog = cv.HOGDescriptor() # Initialisation par défaut de HOG
+    
+    # Initialisation avec wsize custom de hog, nécessite des tests et l'autre header pour la fonction
+    # hog = cv2.HOGDescriptor(wsize, blockSize, blockStride, cellSize, nbins)
+
+    # Parcours des images de la list numpy image
     for image in images:
-        gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
-        histogram += [hog.compute(gray)]
+        
+        gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)  # Conversion du format BGR à gris nécessaire à HOG
+
+        if (image.shape[:2]!=wsize):            # resize des images sur un multiple inférieur de 8
+            gray = cv2.resize(gray, wsize)
+
+        histogram += [hog.compute(gray)] # Calcule des histograms
 
     return histogram
+
+
 
 
