@@ -1,7 +1,8 @@
 import numpy as np
 from typing import Optional
-from .ResampleMethods import systematic_resample
 from .Particle import Particle, ConstAccelParticle2DBbox
+from .ResampleMethods import systematic_resample
+from utils.Slicer import slicer_dict
 
 # Class for the particle filter object
 class ParticleFilter(object):
@@ -12,6 +13,7 @@ class ParticleFilter(object):
                 init_pos: np.ndarray =None,
                 Q_motion: Optional[np.ndarray] =None,
                 R: Optional[np.ndarray] =None,
+                slicer=None,        # TODO need a default value
                 descriptor_fn=None, # TODO need a default value
                 similarity_fn=None, # TODO need a default value
                 resample_method_fn=systematic_resample):
@@ -49,6 +51,9 @@ class ParticleFilter(object):
             self.R = np.ones((self.track_dim, self.state_dim))
         elif np.isscalar(self.R):
             self.R = np.ones((self.track_dim, self.state_dim)) * self.R
+
+        # Set the slicer object
+        self.slicer = Slicer(slicer_type)
         
         # Set the resampling method function
         self.resample_method = resample_method_fn
@@ -90,7 +95,11 @@ class ParticleFilter(object):
 
         self.prev_frame = z
 
-        coeff_sim = self.similarity(self.prev_descriptor, self.descriptor(z, self.particles))
+        descriptor_result = self.descriptor(z)
+
+        descriptor_slice = self.slicer(descriptor_result)
+
+        coeff_sim = self.similarity(self.prev_descriptor, descriptor_slice)
 
         self.weights *= self.particle_struct().measurement_model(coeff_sim, self.R)
         self.weights += 1.e-12
