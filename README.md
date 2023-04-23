@@ -21,12 +21,12 @@ Il se decoupera donc en plusieurs sous objectifs:
 - [x] Creer un dataset de seiches pour YOLOv7.
 - [x] Fine-tuning de YOLOv7 sur notre dataset.
 - [x] Creer un programme pour la detection initiale de seiches.
-- [ ] Implementer plusieurs descripteurs d'image (environ 5).
+- [x] Implementer plusieurs descripteurs d'image (environ 5).
 - [ ] Implementer plusieurs mesures de similarite (environ 5).
 - [x] Implementer un slicer d'image et de descripteur
 - [x] Definir un ou plusieurs vecteurs de representation de ce que l'on suit.
 - [x] Implementer un filtre a particule modulable.
-- [ ] Creer un programme principal qui va gerer les transmissions de donnees entre modules.
+- [x] Creer un programme principal qui va gerer les transmissions de donnees entre modules.
 - [ ] Implementer des metriques d'evaluation pour le programme principal.
 - [ ] Test des differentes combinaisons entre les descripteurs et les mesures de similarite.
 - [ ] Evaluation de notre application sur le terrain (Aquarium). 
