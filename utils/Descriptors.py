@@ -1,5 +1,4 @@
 import cv2
-import matplotlib.pyplot as plt
 import numpy as np
 
 # Entree : Un ndarray correspondant a une image au format BGR
@@ -42,53 +41,47 @@ class HOG():
 
 class SIFT():
 
-    def __init__(self):
-        self
+    def __init__ (self):
+        self.sift = cv2.SIFT_create()
 
-def get_descriptor_sift(images):
+    def compute(self, images):
 
-    image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        keypoints_descriptors = []
 
-    sift = cv2.SIFT_create()
-    keypoints, descriptors = sift.detectAndCompute(image_gray, None)
+        for image in images:
+            gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+            keypoints_descriptors += [self.sift.detectAndCompute(gray, None)]
 
-    return keypoints, descriptors
-
-
-def get_descriptor_orb(image):
-
-    image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
-    orb = cv2.ORB_create()
-    keypoints, descriptors = orb.detectAndCompute(image_gray, None)
-
-    return keypoints, descriptors
+        return keypoints_descriptors
 
 
-def get_descriptor_brisk(image):
+class ORB():
 
-    image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    def __init__ (self):
+        self.orb = cv2.ORB_create()
 
-    brisk = cv2.BRISK_create()
-    keypoints, descriptors = brisk.detectAndCompute(image_gray, None)
+    def compute(self, images):
 
-    return keypoints, descriptors
+        keypoints_descriptors = []
 
-def get_descriptors_sift(image, particle_array, ix=0, iy=3, iw=6, ih=7):
+        for image in images:
+            gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+            keypoints_descriptors += [self.orb.detectAndCompute(gray, None)]
 
-    # Initialisation de sift 
-    sift = cv2.SIFT_create()
+        return keypoints_descriptors
 
-    # Conversion en gris, sift ne peut travaille que sur image en niveau de gris
-    cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-    # création d'un array numpy de la même taille quie particle_array initialisé à 0.
-    keypoints_descriptors = [0]*particle_array.shape[0]
+class BRISK():
 
-    # calcule des keypoints et descripteurs pour chaque box correspondant à une particule
-    for particle in range(particle_array.shape[0]):
+    def __init__ (self):
+        self.brisk = cv2.BRISK_create()
 
-        x, y, w, h = particle_array[particle, ix], particle_array[particle, iy], particle_array[particle, iw], particle_array[particle, ih]
-        keypoints_descriptors[particle] = sift.detectAndCompute(image[x-int(w/2):x+int(w/2), y-int(h/2):y+int(h/2)], None)
+    def compute(self, images):
 
-    return keypoints_descriptors
+        keypoints_descriptors = []
+
+        for image in images:
+            gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+            keypoints_descriptors += [self.brisk.detectAndCompute(gray, None)]
+
+        return keypoints_descriptors

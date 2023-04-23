@@ -1,6 +1,6 @@
 from .Slicer import descriptorHOG_slicing, descriptorKP_slicing, image_resize_slicing, image_crop_slicing
 from .Similarity import Bhattacharyya_distance
-from .Descriptors import HOG
+from .Descriptors import HOG, SIFT, ORB, BRISK
 
 slicer_dict = {
     'hog'   : descriptorHOG_slicing,
@@ -14,5 +14,8 @@ similarity_dict = {
 }
 
 descriptor_dict = {
-    'hog' : HOG
+    'hog' : HOG,
+    'sift' : SIFT,
+    'orb' : ORB,
+    'brisk' : BRISK
 }
