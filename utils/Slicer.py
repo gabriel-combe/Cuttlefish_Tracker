@@ -8,24 +8,30 @@ from typing import Tuple, List
 def descriptorHOG_slicing(
     particles: np.ndarray, descriptor: np.ndarray, 
     template_particle: np.ndarray, template_descriptor: np.ndarray,
-    winSize: Tuple[int, int], blockSize: Tuple[int, int] =(16, 16), blockStride: Tuple[int, int] =(8, 8),
-    cellSize: Tuple[int, int] =(8, 8), nbins: int =9) -> List[np.ndarray]:
+    descriptor_obj) -> List[np.ndarray]:
+
+    winSize = descriptor_obj.winSize
+    blockSize = descriptor_obj.blockSize
+    blockStride = descriptor_obj.blockStride
+    cellSize = descriptor_obj.cellSize
+    nbins = descriptor_obj.nbins
 
     sliced_descriptor = []
 
     # Compute padding width and height
-    pad_width = (1 + np.max(particles[:, :, 6])//(2 * blockSize[0])) * (blockSize[0]//cellSize[0]) * nbins
-    pad_height = (1 + np.max(particles[:, :, 7])//(2 * blockSize[1])) * (blockSize[1]//cellSize[1]) * nbins
-
-    print(pad_width, "  ", pad_height)
-
-    descriptor_width = winSize[0]//cellSize[0]
-    descriptor_height = winSize[1]//cellSize[1]
+    pad_width = int(1 + np.max(particles[:, :, 6])//(2 * blockSize[0]))
+    pad_height = int(1 + np.max(particles[:, :, 7])//(2 * blockSize[1]))
 
     width_block = ((winSize[0] - blockSize[0]) // blockStride[0]) + 1
     height_block = ((winSize[1] - blockSize[1]) // blockStride[1]) + 1
 
-    subDescriptorSize = (blockSize[0]//cellSize[0]) * (blockSize[1]//cellSize[1]) * nbins
+    nbCellPerBlock = (blockSize[0]//cellSize[0]) * (blockSize[1]//cellSize[1])
+
+    descriptor = np.reshape(descriptor, (height_block, width_block, nbCellPerBlock, nbins))
+    template_descriptor = np.reshape(template_descriptor, (height_block, width_block, nbCellPerBlock, nbins))
+
+    descriptor_pad = np.pad(descriptor, ((pad_height, pad_height), (pad_width, pad_width), (0, 0), (0, 0)), mode='constant', constant_values=0)
+    template_descriptor_pad = np.pad(template_descriptor, ((pad_height, pad_height), (pad_width, pad_width), (0, 0), (0, 0)), mode='constant', constant_values=0)
 
     for p in particles:
         x_start = int(p[0, 0])
@@ -36,28 +42,49 @@ def descriptorHOG_slicing(
         block_x_start = 0 if x_start - blockSize[0] < 0 else ((x_start - blockSize[0])//blockStride[0]) + 1
         block_y_start = 0 if y_start - blockSize[1] < 0 else ((y_start - blockSize[1])//blockStride[1]) + 1
 
-        cell_start = (x_start + y_start * winSize[0])
-        cell_end = (x_end + y_end * winSize[0])
-        step_size = (winSize[0] - (x_end - x_start))
-
-        #print(cell_start, "    ", cell_end, "    ", step_size)
+        block_x_end = ((x_end + blockSize[0])//blockStride[0]) - 2
+        block_y_end = ((y_end + blockSize[1])//blockStride[1]) - 2
 
         x_template_start = int(template_particle[0])
         y_template_start = int(template_particle[3])
         x_template_end = int(template_particle[0] + p[0, 6])
         y_template_end = int(template_particle[3] + p[0, 7])
 
-        cell_start_template = (x_template_start + y_template_start * winSize[0])
-        cell_end_template = (x_template_end + y_template_end * winSize[0])
-        step_size_template = (winSize[0] - (x_template_end - x_template_start))
+        block_x_start_template = 0 if x_template_start - blockSize[0] < 0 else ((x_template_start - blockSize[0])//blockStride[0]) + 1
+        block_y_start_template = 0 if y_template_start - blockSize[1] < 0 else ((y_template_start - blockSize[1])//blockStride[1]) + 1
+
+        block_x_end_template = ((x_template_end + blockSize[0])//blockStride[0]) - 2
+        block_y_end_template = ((y_template_end + blockSize[1])//blockStride[1]) - 2
+
+        if block_x_end - block_x_start < block_x_end_template - block_x_start_template:
+            if abs(block_x_start - block_x_start_template) > abs(block_x_end - block_x_end_template):
+                block_x_start -= 1
+            else:
+                block_x_end += 1
+        elif block_x_end - block_x_start > block_x_end_template - block_x_start_template:
+            if abs(block_x_start - block_x_start_template) > abs(block_x_end - block_x_end_template):
+                block_x_start_template -= 1
+            else:
+                block_x_end_template += 1
+            
+        if block_y_end - block_y_start < block_y_end_template - block_y_start_template:
+            if abs(block_y_start - block_y_start_template) > abs(block_y_end - block_y_end_template):
+                block_y_start -= 1
+            else:
+                block_y_end += 1
+        elif block_y_end - block_y_start > block_y_end_template - block_y_start_template:
+            if abs(block_y_start - block_y_start_template) > abs(block_y_end - block_y_end_template):
+                block_y_start_template -= 1
+            else:
+                block_y_end_template += 1
+
+        descriptor_patch = descriptor_pad[block_y_start:block_y_end+1, block_x_start:block_x_end+1]
+        template_descriptor_patch = template_descriptor_pad[block_y_start_template:block_y_end_template+1, block_x_start_template:block_x_end_template+1]
 
         sliced_descriptor.append(np.array([
-            descriptor[cell_start*nbins:(cell_end+1)*nbins:step_size*nbins],
-            template_descriptor[cell_start_template*nbins:(cell_end_template+1)*nbins:step_size_template*nbins]
+            descriptor_patch.flatten(),
+            template_descriptor_patch.flatten()
         ]))
-
-        #print(sliced_descriptor[-1][0].shape)
-        #print(sliced_descriptor[-1][1].shape)
     
     return sliced_descriptor
 
@@ -157,10 +184,9 @@ def template_image_slicing(
     return patch
 
 
-# import cv2
 # import time
 
-# image = cv2.imread("./utils/Squid_colors_2.jpg", cv2.IMREAD_COLOR)
+# image = cv2.imread("./test/Squid_colors_2.jpg", cv2.IMREAD_COLOR)
 # cv2.imshow("original", image)
 # print(image.shape)
 # gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -175,6 +201,13 @@ def template_image_slicing(
 # descriptor = hog.compute(gray)
 
 # print(gray.shape)
+# print(descriptor.shape)
+
+# from Descriptors import HOG
+# hog = HOG((760, 600))
+# descriptor = np.random.rand(74*94*4*9)
+# print(descriptor[:36])
+
 
 # p0 = np.array([350, 0, 0, 350, 0, 0, 160, 180])
 # p1 = np.array([
@@ -182,8 +215,13 @@ def template_image_slicing(
 #     [[362, 0, 0, 342, 0, 0, 165, 172]],
 #     [[380, 0, 0, 300, 0, 0, 160, 176]],
 #     [[358, 0, 0, 348, 0, 0, 158, 169]],
-#     [[345, 0, 0, 350, 0, 0, 167, 170]]
+#     [[345, 0, 0, 350, 0, 0, 80, 80]]
 # ])
+
+# descriptor = descriptorHOG_slicing(p1, descriptor, p0, descriptor, hog)
+
+# for desc in descriptor:
+#     print(desc.shape)
 
 # print(descriptor.shape)
 

@@ -2,7 +2,7 @@ import cv2
 import argparse
 import numpy as np
 from particle_filter import ParticleFilter, particle_dict, resample_dict
-from utils import slicer_dict, similarity_dict, descriptor_dict
+from utils import descriptor_dict
 from detect_init import Model
 
 def get_opts():
@@ -92,7 +92,7 @@ if __name__ == "__main__":
 
     # init functions and classes
     descriptor = descriptor_dict[args.descriptor]
-    similarity = similarity_dict[args.similarity]
+    similarity = args.similarity
     resampling = resample_dict[args.resampling]
     slicer = args.slicer
     particle_struct = particle_dict[args.particle]

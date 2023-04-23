@@ -3,9 +3,8 @@ from typing import Optional, Tuple
 from .Particle import Particle, ConstAccelParticle2DBbox
 from .ResampleMethods import systematic_resample
 from utils.Descriptors import HOG
-from utils.Similarity import Bhattacharyya_distance
 from utils.Slicer import image_resize_slicing, template_image_slicing
-from utils import slicer_dict
+from utils import slicer_dict, similarity_image_dict, similarity_descriptor_dict
 
 import cv2
 
@@ -21,7 +20,7 @@ class ParticleFilter(object):
                 R: Optional[np.ndarray] =None,
                 slicer: str ='resize',
                 descriptor=HOG,
-                similarity_fn=Bhattacharyya_distance,
+                similarity: str ='bd',
                 resample_method_fn=systematic_resample):
 
         self.N = N
@@ -67,7 +66,7 @@ class ParticleFilter(object):
         self.descriptor = descriptor((self.prev_frame.shape[1], self.prev_frame.shape[0]))
 
         # Set the similarity measurement function
-        self.similarity = similarity_fn
+        self.similarity = similarity_image_dict[similarity] if slicer in ['resize', 'crop'] else similarity_descriptor_dict[similarity]
 
         # Set the slicer object
         self.slicer = slicer_dict[slicer]
@@ -125,13 +124,13 @@ class ParticleFilter(object):
     # With descriptor slicing
     def update_descriptor_slicer(self, z: np.ndarray) -> None:
 
-        descriptor_result = self.descriptor.compute(z)
+        descriptor_result = self.descriptor.compute(np.array([z]))
 
-        descriptor_slice = self.slicer(descriptor_result)
+        descriptor_slice = self.slicer(self.particles, descriptor_result, self.mu, self.prev_descriptor, self.descriptor)
 
-        coeff_sim = self.similarity(descriptor_slice, self.prev_descriptor[0])
+        coeff_sim = self.similarity(descriptor_slice)
 
-        self.weights *= self.particle_struct().measurement_model(coeff_sim, self.R)
+        self.weights = self.particle_struct().measurement_model(coeff_sim, self.R)
 
     # Computation of the mean and standard deviation of the particles for each targets (estimate)
     def estimate(self) -> tuple[np.ndarray, np.ndarray]:
