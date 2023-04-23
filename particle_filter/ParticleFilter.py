@@ -2,7 +2,10 @@ import numpy as np
 from typing import Optional
 from .Particle import Particle, ConstAccelParticle2DBbox
 from .ResampleMethods import systematic_resample
-from utils.Slicer import slicer_dict
+from utils.Descriptors import HOG
+from utils.Similarity import Bhattacharyya_distance
+from utils.Slicer import image_resize_slicing
+from utils import slicer_dict
 
 # Class for the particle filter object
 class ParticleFilter(object):
@@ -13,9 +16,9 @@ class ParticleFilter(object):
                 init_pos: np.ndarray =None,
                 Q_motion: Optional[np.ndarray] =None,
                 R: Optional[np.ndarray] =None,
-                slicer=None,        # TODO need a default value
-                descriptor_fn=None, # TODO need a default value
-                similarity_fn=None, # TODO need a default value
+                slicer_fn=image_resize_slicing,
+                descriptor=HOG,
+                similarity_fn=Bhattacharyya_distance,
                 resample_method_fn=systematic_resample):
 
         self.N = N

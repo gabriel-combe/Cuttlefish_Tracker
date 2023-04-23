@@ -136,46 +136,46 @@ def image_crop_slicing(
 
 
 
-import cv2
-import time
+# import cv2
+# import time
 
-image = cv2.imread("./utils/Squid_colors_2.jpg", cv2.IMREAD_COLOR)
-cv2.imshow("original", image)
-print(image.shape)
-gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+# image = cv2.imread("./utils/Squid_colors_2.jpg", cv2.IMREAD_COLOR)
+# cv2.imshow("original", image)
+# print(image.shape)
+# gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-winSize = (gray.shape[1], gray.shape[0])
-blockSize = (16, 16)
-blockStride = (8, 8)
-cellSize = (8, 8)
-nbins = 9
+# winSize = (gray.shape[1], gray.shape[0])
+# blockSize = (16, 16)
+# blockStride = (8, 8)
+# cellSize = (8, 8)
+# nbins = 9
 
-hog = cv2.HOGDescriptor(winSize, blockSize, blockStride, cellSize, nbins)
-descriptor = hog.compute(gray)
+# hog = cv2.HOGDescriptor(winSize, blockSize, blockStride, cellSize, nbins)
+# descriptor = hog.compute(gray)
 
-print(gray.shape)
+# print(gray.shape)
 
-p0 = np.array([350, 0, 0, 350, 0, 0, 160, 180])
-p1 = np.array([
-    [[360, 0, 0, 345, 0, 0, 163, 170]],
-    [[362, 0, 0, 342, 0, 0, 165, 172]],
-    [[380, 0, 0, 300, 0, 0, 160, 176]],
-    [[358, 0, 0, 348, 0, 0, 158, 169]],
-    [[345, 0, 0, 350, 0, 0, 167, 170]]
-])
+# p0 = np.array([350, 0, 0, 350, 0, 0, 160, 180])
+# p1 = np.array([
+#     [[360, 0, 0, 345, 0, 0, 163, 170]],
+#     [[362, 0, 0, 342, 0, 0, 165, 172]],
+#     [[380, 0, 0, 300, 0, 0, 160, 176]],
+#     [[358, 0, 0, 348, 0, 0, 158, 169]],
+#     [[345, 0, 0, 350, 0, 0, 167, 170]]
+# ])
 
-print(descriptor.shape)
+# print(descriptor.shape)
 
-start = time.perf_counter()
-patches = image_resize_slicing(p1, image, p0)
-print(time.perf_counter() - start)
+# start = time.perf_counter()
+# patches = image_resize_slicing(p1, image, p0)
+# print(time.perf_counter() - start)
 
-start = time.perf_counter()
-sliced_descriptor = descriptorHOG_slicing(p1, descriptor, p0, descriptor, winSize)
-print(time.perf_counter() - start)
+# start = time.perf_counter()
+# sliced_descriptor = descriptorHOG_slicing(p1, descriptor, p0, descriptor, winSize)
+# print(time.perf_counter() - start)
 
-for i, patch in enumerate(patches):
-    cv2.imshow(f"{i}", patch)
+# for i, patch in enumerate(patches):
+#     cv2.imshow(f"{i}", patch)
 
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
