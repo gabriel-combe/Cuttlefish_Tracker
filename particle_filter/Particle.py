@@ -91,13 +91,15 @@ class ConstAccelParticle2DBbox(Particle):
 
         # Bbox width
         particles[:, :, 6] += np.random.randn(N, track_dim) * Q_model[:, 6]
+        particles[:, :, 6] = np.maximum(particles[:, :, 6], 25)
 
         # Bbox height
         particles[:, :, 7] += np.random.randn(N, track_dim) * Q_model[:, 7]
+        particles[:, :, 7] = np.maximum(particles[:, :, 7], 25)
 
         return particles
     
     # Measurement model using a similarity coefficient
     def measurement_model(self, coeff_sim: np.ndarray, R: np.ndarray) -> np.ndarray:
-        proba = ss.norm(1., R[:, 0]).pdf(coeff_sim)
-        return np.sum(proba, axis=1)
+        proba = ss.norm(0., R[:, 0]).pdf(coeff_sim)
+        return proba

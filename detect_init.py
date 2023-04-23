@@ -71,6 +71,7 @@ class Model(object):
         colors = [[random.randint(0, 255) for _ in range(3)] for _ in names]
 
         cuttlefish = []
+        conf_list = []
 
         # Process detections
         # Rescale boxes from img_size to im0 size
@@ -79,20 +80,21 @@ class Model(object):
         # Write results
         for *xyxy, conf, cls in reversed(pred):
             cuttlefish.append((xyxy2xywh(torch.tensor(xyxy).view(1, 4))).view(-1).tolist())  # normalized xywh
+            conf_list.append(conf.item())
 
-            label = f'{names[int(cls)]} {conf:.2f}'
-            print(label)
-            plot_one_box(xyxy, image, label=label, color=colors[int(cls)], line_thickness=1)
+        #     label = f'{names[int(cls)]} {conf:.2f}'
+        #     print(label)
+        #     plot_one_box(xyxy, image, label=label, color=colors[int(cls)], line_thickness=1)
         
-        cv2.imshow("Results", image)
-        cv2.waitKey(0)
-        return cuttlefish
+        # cv2.imshow("Results", image)
+        # cv2.waitKey(1)
+        return (np.array(conf_list), np.array(cuttlefish))
             
-model = Model(weights='weights/cuttlefish_best.pt', conf_thres=0.25)
-cap = cv2.VideoCapture("test/Cuttlefish-2.mp4")
-#image = cv2.imread("./utils/Squid_colors_2.jpg", cv2.IMREAD_COLOR)
-ret, image = cap.read()
-#image = cv2.resize(image, (640, 640))
-cuttlefish = model.detect(image)
+# model = Model(weights='weights/cuttlefish_best.pt', conf_thres=0.25)
+# cap = cv2.VideoCapture("test/Cuttlefish-2.mp4")
+# #image = cv2.imread("./utils/Squid_colors_2.jpg", cv2.IMREAD_COLOR)
+# ret, image = cap.read()
+# #image = cv2.resize(image, (640, 640))
+# cuttlefish = model.detect(image)
 
-print(cuttlefish)
+# print(cuttlefish)

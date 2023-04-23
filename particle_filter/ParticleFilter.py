@@ -1,11 +1,13 @@
 import numpy as np
-from typing import Optional
+from typing import Optional, Tuple
 from .Particle import Particle, ConstAccelParticle2DBbox
 from .ResampleMethods import systematic_resample
 from utils.Descriptors import HOG
 from utils.Similarity import Bhattacharyya_distance
-from utils.Slicer import image_resize_slicing
+from utils.Slicer import image_resize_slicing, template_image_slicing
 from utils import slicer_dict
+
+import cv2
 
 # Class for the particle filter object
 class ParticleFilter(object):
@@ -14,9 +16,10 @@ class ParticleFilter(object):
                 particle_struct: Particle =ConstAccelParticle2DBbox, 
                 track_dim: int =1,
                 init_pos: np.ndarray =None,
+                init_frame: np.ndarray =None,
                 Q_motion: Optional[np.ndarray] =None,
                 R: Optional[np.ndarray] =None,
-                slicer_fn=image_resize_slicing,
+                slicer: str ='resize',
                 descriptor=HOG,
                 similarity_fn=Bhattacharyya_distance,
                 resample_method_fn=systematic_resample):
@@ -26,13 +29,12 @@ class ParticleFilter(object):
         self.particle_struct = particle_struct
         self.state_dim = self.particle_struct().particle_dim
 
-        # If we don't give ranges, we use defaults ranges.
-        # If we only give a list we repeat it for all targets
-        self.ranges = ranges
-        if self.ranges is None:
-            self.ranges = np.repeat([np.repeat([[0., 1.]], self.state_dim, axis=0)], self.track_dim, axis=0)
-        elif np.isscalar(self.ranges[0]):
-            self.ranges = np.repeat([self.ranges], [self.track_dim], axis=0)
+        # Set the ranges for a uniform distribution of the particles
+        self.ranges = np.repeat([
+                [0., init_frame.shape[1]], [0., 1.], [0., 1.],
+                [0., init_frame.shape[0]], [0., 1.], [0., 1.],
+                [0., init_frame.shape[1]/2], [0., init_frame.shape[0]/2]
+            ], [self.track_dim], axis=0)
         
         # If we only give an array we repeat it for all targets
         self.init_pos = init_pos
@@ -55,65 +57,94 @@ class ParticleFilter(object):
         elif np.isscalar(self.R):
             self.R = np.ones((self.track_dim, self.state_dim)) * self.R
 
-        # Set the slicer object
-        self.slicer = Slicer(slicer_type)
+        # Save previous frame to compute the descriptor of the best particle
+        self.prev_frame = init_frame
         
         # Set the resampling method function
         self.resample_method = resample_method_fn
 
         # Set the descriptor function
-        self.descriptor = descriptor_fn
+        self.descriptor = descriptor((self.prev_frame.shape[1], self.prev_frame.shape[0]))
 
         # Set the similarity measurement function
         self.similarity = similarity_fn
 
+        # Set the slicer object
+        self.slicer = slicer_dict[slicer]
+
+        # Set the update function according to the choosen slicer
+        self.update_fn = self.update_image_slicer if slicer in ['resize', 'crop'] else self.update_descriptor_slicer
+
         # Array of all the trackers and particles
         self.particles: np.ndarray = np.zeros((self.N, self.track_dim, self.state_dim))
-        if init_pos is not None:
-            self.particles = self.particle_struct().create_gaussian_particles(self.N, self.track_dim, init_pos[:, 0], init_pos[:, 1])
-        else:
-            self.particles = self.particle_struct().create_uniform_particles(self.N, self.track_dim, self.ranges)
+        self.particles = self.particle_struct().create_gaussian_particles(self.N, self.track_dim, init_pos[:, 0], init_pos[:, 1])
         
         # Weights of each trackers
         self.weights: np.ndarray = np.ones(self.N)/self.N
         
         # Mean of all the particles for each targets
-        self.mu: np.ndarray = np.zeros(self.state_dim)
+        self.mu: np.ndarray = init_pos[0, 0]
 
         # Standard deviation of all the particles for each targets
-        self.sigma: np.ndarray = np.zeros(self.state_dim)
+        self.sigma: np.ndarray = init_pos[0, 1]
 
-        # Save previous frame to compute the descriptor of the best particle
-        self.prev_frame = None
+
+        # Save the descriptor of the previous frame
+        self.prev_descriptor = self.descriptor.compute(np.array([self.prev_frame]))
 
         # Save the descriptor of the best particle at the previous frame
-        self.prev_descriptor = None
+        self.descriptor.update((int(self.mu[6]), int(self.mu[7])))
+        template_patch = template_image_slicing(self.prev_frame, self.mu)
+        self.prev_patch_descriptor = self.descriptor.compute(np.array([template_patch]))
 
     # Predict next state for each trackers (prior)
     def predict(self, dt: Optional[float] =1.) -> None:
         self.particles = self.particle_struct().motion_model(self.particles, self.Q_motion, dt)
 
-    # Update each tracker belief with observations (z).
     def update(self, z: np.ndarray) -> None:
-
         self.prev_frame = z
 
-        descriptor_result = self.descriptor(z)
+        self.update_fn(z)
 
-        descriptor_slice = self.slicer(descriptor_result)
-
-        coeff_sim = self.similarity(self.prev_descriptor, descriptor_slice)
-
-        self.weights *= self.particle_struct().measurement_model(coeff_sim, self.R)
         self.weights += 1.e-12
         self.weights /= np.sum(self.weights)
 
+    # Update each tracker belief with observations (z).
+    # With image slicing
+    def update_image_slicer(self, z: np.ndarray) -> None:
+
+        image_slice = self.slicer(self.particles, z, self.mu)
+
+        descriptor_result = self.descriptor.compute(image_slice)
+
+        coeff_sim = self.similarity(descriptor_result, self.prev_patch_descriptor[0])
+
+        self.weights = self.particle_struct().measurement_model(coeff_sim, self.R)
+
+    # Update each tracker belief with observations (z).
+    # With descriptor slicing
+    def update_descriptor_slicer(self, z: np.ndarray) -> None:
+
+        descriptor_result = self.descriptor.compute(z)
+
+        descriptor_slice = self.slicer(descriptor_result)
+
+        coeff_sim = self.similarity(descriptor_slice, self.prev_descriptor[0])
+
+        self.weights *= self.particle_struct().measurement_model(coeff_sim, self.R)
+
     # Computation of the mean and standard deviation of the particles for each targets (estimate)
     def estimate(self) -> tuple[np.ndarray, np.ndarray]:
-        self.mu = np.average(self.particles, weights=self.weights, axis=0)
-        self.sigma = np.average((self.particles - self.mu)**2, weights=self.weights, axis=0)
+        self.mu = np.average(self.particles, weights=self.weights, axis=0)[0]
+        self.sigma = np.average((self.particles - self.mu)**2, weights=self.weights, axis=0)[0]
 
-        self.prev_descriptor = self.descriptor(self.prev_frame, self.mu)
+        template_patch = template_image_slicing(self.prev_frame, self.mu)
+
+        self.descriptor.update((self.prev_frame.shape[1], self.prev_frame.shape[0]))
+        self.prev_descriptor = self.descriptor.compute(np.array([self.prev_frame]))
+
+        self.descriptor.update((template_patch.shape[1], template_patch.shape[0]))
+        self.prev_patch_descriptor = self.descriptor.compute(np.array([template_patch]))
 
         return (self.mu, self.sigma)
 
