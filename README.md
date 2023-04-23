@@ -20,7 +20,7 @@ Il se decoupera donc en plusieurs sous objectifs:
 - [x] Creer une template de rapport en Latex.
 - [x] Creer un dataset de seiches pour YOLOv7.
 - [x] Fine-tuning de YOLOv7 sur notre dataset.
-- [ ] Creer un programme pour la detection initiale de seiches.
+- [x] Creer un programme pour la detection initiale de seiches.
 - [ ] Implementer plusieurs descripteurs d'image (environ 5).
 - [ ] Implementer plusieurs mesures de similarite (environ 5).
 - [x] Implementer un slicer d'image et de descripteur
