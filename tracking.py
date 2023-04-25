@@ -4,19 +4,21 @@ import numpy as np
 from particle_filter import ParticleFilter, particle_dict, resample_dict
 from utils import descriptor_dict
 from detect_init import Model
+from typing import Tuple
 
 def get_opts():
     parser = argparse.ArgumentParser()
     
     # File args
-    parser.add_argument('--filepath', type=str, required=True,
-                        help='filepath of the video')
+    parser.add_argument('--filepath', type=str, required=True, help='filepath of the video')
+    parser.add_argument('--video-size', nargs=2, type=int, default=None,
+                        help='Size used to resize the frames of the video')
     
     # Particle Filter args
     parser.add_argument('--N', type=int, default=500,
                         help='number of particles')
     parser.add_argument('--particle', type=str, default='cap2Dbb',
-                        choices=['cap2Dfbb', 'cap2Dbb'],
+                        choices=['cap2Dfbb', 'cap2Dbb', 'ppp2Dbb'],
                         help='which particle structure to use')
     parser.add_argument('--descriptor', type=str, default='hog',
                         choices=['brisk', 'sift', 'hog', 'orb', 'color'],
@@ -41,6 +43,9 @@ def get_opts():
     # Video args
     parser.add_argument('--save-video', action='store_true', help='Save a video')
     parser.add_argument('--save-path', type=str, default='results', help='Path to save the video')
+
+    # Seed for random generator
+    parser.add_argument('--seed', type=int, default=None, help='Seed for the random generator')
 
 
     return parser.parse_args()
@@ -83,6 +88,10 @@ if __name__ == "__main__":
 
     # init params
     N = abs(args.N)
+    seed = args.seed
+    video_size = None
+    if args.video_size:
+        video_size = tuple(args.video_size)
     stop = False
 
     # init Model
@@ -110,8 +119,12 @@ if __name__ == "__main__":
             print("Error : Couldn't read frame")
             quit()
 
+        # Resize if video_size is not None
+        if video_size:
+            init_frame = cv2.resize(init_frame, video_size)
+
         # Save image dimensions
-        img_size = (init_frame.shape[1], init_frame.shape[1])
+        img_size = (init_frame.shape[1], init_frame.shape[0])
 
         # Run YOLOV7 to get bounding boxes
         conf, cuttlefish = model.detect(init_frame)
@@ -127,20 +140,32 @@ if __name__ == "__main__":
 
     # Create video output
     if args.save_video:
-        outvid = cv2.VideoWriter('output.avi', cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), fps, (init_frame.shape[1], init_frame.shape[0]))
+        outvid = cv2.VideoWriter('output.avi', cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), fps, img_size)
 
     # Create initial position
     init_pos = np.array([[
         [tracked_cuttlefish[0], 0, 0, tracked_cuttlefish[1], 0, 0, tracked_cuttlefish[2], tracked_cuttlefish[3]],
-        [(1-tracked_conf), 0.1, 0.01, (1-tracked_conf), 0.1, 0.01, (1-tracked_conf), (1-tracked_conf)]
+        [(1-tracked_conf)*20, 0.1, 0.01, (1-tracked_conf)*20, 0.1, 0.01, (1-tracked_conf)*20, (1-tracked_conf)*20]
     ]])
 
     # Create covariance matrices for prediction and update model
-    Q_motion = np.array([[10, 0.25, 0.025, 10, 0.25, 0.025, 10, 8]])
-    R = np.array([[.2]])
+    Q_motion = np.array([[15, 0.1, 0.01, 10, 0.1, 0.01, 30, 30]])
+    R = np.array([[.1]])
 
     # Initialize Particle filter
-    particle_filter =  ParticleFilter(N, particle_struct, 1, init_pos, init_frame, Q_motion, R, slicer, descriptor, similarity, resampling)
+    particle_filter =  ParticleFilter(
+        N, particle_struct, 1, 
+        init_pos, init_frame, 
+        Q_motion, R, 
+        slicer, descriptor, similarity, resampling,
+        seed)
+
+    # Show Initial particles
+    output_frame = draw_output_frame(init_frame, particle_filter.mu)
+    output_frame = draw_output_particles(output_frame, particle_filter.particles)
+    output_frame = draw_output_mean_particule(output_frame, particle_filter.mu)
+    cv2.imshow('Track Cuttlefish', output_frame)
+    cv2.waitKey(0)
 
     # Processing loop
     while not stop:
@@ -150,6 +175,10 @@ if __name__ == "__main__":
         if not ret:
             print("Error : Couldn't read frame")
             quit()
+        
+        # Resize if video_size is not None
+        if video_size:
+            current_frame = cv2.resize(current_frame, video_size)
 
         # Perform a pass of the particle filter
         particle_filter.forward(current_frame, 1/fps)
@@ -163,6 +192,7 @@ if __name__ == "__main__":
         output_frame = draw_output_particles(output_frame, particle_filter.particles)
         output_frame = draw_output_mean_particule(output_frame, particle_filter.mu)
         cv2.imshow('Track Cuttlefish', output_frame)
+        cv2.waitKey(0)
 
         # Write the frame into the video file
         if args.save_video:

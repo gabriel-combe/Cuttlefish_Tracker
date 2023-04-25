@@ -21,18 +21,22 @@ class ParticleFilter(object):
                 slicer: str ='resize',
                 descriptor=HOG,
                 similarity: str ='bd',
-                resample_method_fn=systematic_resample):
+                resample_method_fn=systematic_resample,
+                seed: int =None):
 
         self.N = N
+        self.seed = seed
         self.track_dim = track_dim
-        self.particle_struct = particle_struct
-        self.state_dim = self.particle_struct().particle_dim
+        self.rng = np.random.default_rng(self.seed)
+        self.particle_struct = particle_struct(self.rng)
+        self.state_dim = self.particle_struct.particle_dim
+        self.frame_size = (init_frame.shape[1], init_frame.shape[0])
 
         # Set the ranges for a uniform distribution of the particles
         self.ranges = np.repeat([
-                [0., init_frame.shape[1]], [0., 1.], [0., 1.],
-                [0., init_frame.shape[0]], [0., 1.], [0., 1.],
-                [0., init_frame.shape[1]/2], [0., init_frame.shape[0]/2]
+                [0, init_frame.shape[1]], [0, 1], [0, 1],
+                [0, init_frame.shape[0]], [0, 1], [0, 1],
+                [0, init_frame.shape[1]//2], [0, init_frame.shape[0]//2]
             ], [self.track_dim], axis=0)
         
         # If we only give an array we repeat it for all targets
@@ -63,7 +67,7 @@ class ParticleFilter(object):
         self.resample_method = resample_method_fn
 
         # Set the descriptor function
-        self.descriptor = descriptor((self.prev_frame.shape[1], self.prev_frame.shape[0]))
+        self.descriptor = descriptor(self.frame_size)
 
         # Set the similarity measurement function
         self.similarity = similarity_image_dict[similarity] if slicer in ['resize', 'crop'] else similarity_descriptor_dict[similarity]
@@ -76,7 +80,8 @@ class ParticleFilter(object):
 
         # Array of all the trackers and particles
         self.particles: np.ndarray = np.zeros((self.N, self.track_dim, self.state_dim))
-        self.particles = self.particle_struct().create_gaussian_particles(self.N, self.track_dim, init_pos[:, 0], init_pos[:, 1])
+        self.particles = self.particle_struct.create_gaussian_particles(self.N, self.track_dim, init_pos[:, 0], init_pos[:, 1])
+        self.prev_particles = self.particles
         
         # Weights of each trackers
         self.weights: np.ndarray = np.ones(self.N)/self.N
@@ -98,7 +103,9 @@ class ParticleFilter(object):
 
     # Predict next state for each trackers (prior)
     def predict(self, dt: Optional[float] =1.) -> None:
-        self.particles = self.particle_struct().motion_model(self.particles, self.Q_motion, dt)
+        aux_particles = self.particles
+        self.particles = self.particle_struct.motion_model(self.particles, self.Q_motion, self.prev_particles, self.frame_size, dt)
+        self.prev_particles = aux_particles
 
     def update(self, z: np.ndarray) -> None:
         self.prev_frame = z
@@ -107,6 +114,7 @@ class ParticleFilter(object):
 
         self.weights += 1.e-12
         self.weights /= np.sum(self.weights)
+        print(self.weights)
 
     # Update each tracker belief with observations (z).
     # With image slicing
@@ -118,7 +126,7 @@ class ParticleFilter(object):
 
         coeff_sim = self.similarity(descriptor_result, self.prev_patch_descriptor[0])
 
-        self.weights = self.particle_struct().measurement_model(coeff_sim, self.R)
+        self.weights = self.particle_struct.measurement_model(coeff_sim, self.R)
 
     # Update each tracker belief with observations (z).
     # With descriptor slicing
@@ -130,7 +138,7 @@ class ParticleFilter(object):
 
         coeff_sim = self.similarity(descriptor_slice)
 
-        self.weights = self.particle_struct().measurement_model(coeff_sim, self.R)
+        self.weights = self.particle_struct.measurement_model(coeff_sim, self.R)
 
     # Computation of the mean and standard deviation of the particles for each targets (estimate)
     def estimate(self) -> tuple[np.ndarray, np.ndarray]:

@@ -102,7 +102,7 @@ def descriptorKP_slicing(
 def image_resize_slicing(
     particles: np.ndarray, image: np.ndarray,
     template_particle: np.ndarray) -> List[np.ndarray]:
-    
+
     sliced_image = []
 
     # Compute padding width and height
@@ -138,10 +138,8 @@ def image_crop_slicing(
     sliced_image = []
 
     # Compute padding width and height
-    pad_width = np.max(particles[:, :, 6])//2
-    pad_height = np.max(particles[:, :, 7])//2
-    template_pad_width = template_particle[7]//2
-    template_pad_height = template_particle[6]//2
+    template_pad_width = int(template_particle[7]//2)
+    template_pad_height = int(template_particle[6]//2)
 
     # Pad images to take care of Bbox that get outside of the image
     image_pad = np.pad(image, ((template_pad_height, template_pad_height), (template_pad_width, template_pad_width), (0, 0)), mode='constant', constant_values=0)

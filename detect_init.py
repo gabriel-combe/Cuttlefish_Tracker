@@ -67,8 +67,8 @@ class Model(object):
         pred = non_max_suppression(pred, self.conf_thres, self.iou_thres)[0]
 
         # Get names and colors
-        names = ['Cuttlefish']
-        colors = [[random.randint(0, 255) for _ in range(3)] for _ in names]
+        # names = ['Cuttlefish']
+        # colors = [[random.randint(0, 255) for _ in range(3)] for _ in names]
 
         cuttlefish = []
         conf_list = []
@@ -87,14 +87,5 @@ class Model(object):
         #     plot_one_box(xyxy, image, label=label, color=colors[int(cls)], line_thickness=1)
         
         # cv2.imshow("Results", image)
-        # cv2.waitKey(1)
+        # cv2.waitKey(0)
         return (np.array(conf_list), np.array(cuttlefish))
-            
-# model = Model(weights='weights/cuttlefish_best.pt', conf_thres=0.25)
-# cap = cv2.VideoCapture("test/Cuttlefish-2.mp4")
-# #image = cv2.imread("./utils/Squid_colors_2.jpg", cv2.IMREAD_COLOR)
-# ret, image = cap.read()
-# #image = cv2.resize(image, (640, 640))
-# cuttlefish = model.detect(image)
-
-# print(cuttlefish)
