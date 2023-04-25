@@ -2,7 +2,7 @@ import cv2
 import argparse
 import numpy as np
 from particle_filter import ParticleFilter, particle_dict, resample_dict
-from utils import descriptor_dict
+from utils import descriptor_dict, similarity_dict, slicer_dict
 from detect_init import Model
 from typing import Tuple
 
@@ -30,7 +30,7 @@ def get_opts():
                         choices=['systematic', 'residual', 'stratified', 'multinomial'],
                         help='which resample method to use')
     parser.add_argument('--slicer', type=str, default='resize',
-                        choices=['hog', 'kp', 'resize', 'crop'],
+                        choices=['resize', 'crop'],
                         help='which slicer to use')
     
     # Model args
@@ -90,9 +90,9 @@ if __name__ == "__main__":
     N = abs(args.N)
     seed = args.seed
     video_size = None
+    stop = False
     if args.video_size:
         video_size = tuple(args.video_size)
-    stop = False
 
     # init Model
     model = Model(
@@ -101,9 +101,9 @@ if __name__ == "__main__":
 
     # init functions and classes
     descriptor = descriptor_dict[args.descriptor]
-    similarity = args.similarity
+    similarity = similarity_dict[args.similarity]
     resampling = resample_dict[args.resampling]
-    slicer = args.slicer
+    slicer = slicer_dict[args.slicer]
     particle_struct = particle_dict[args.particle]
 
     # Load video
@@ -150,7 +150,7 @@ if __name__ == "__main__":
 
     # Create covariance matrices for prediction and update model
     Q_motion = np.array([[15, 0.1, 0.01, 10, 0.1, 0.01, 30, 30]])
-    R = np.array([[.1]])
+    R = np.array([[.01]])
 
     # Initialize Particle filter
     particle_filter =  ParticleFilter(
