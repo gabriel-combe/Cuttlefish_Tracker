@@ -11,8 +11,8 @@ def get_opts():
     
     # File args
     parser.add_argument('--filepath', type=str, required=True, help='filepath of the video')
-    parser.add_argument('--video-size', nargs=2, type=int, default=None,
-                        help='Size used to resize the frames of the video')
+    parser.add_argument('--scale-factor', type=float, default=1.,
+                        help='Scale used to resize the frames of the video')
     
     # Particle Filter args
     parser.add_argument('--N', type=int, default=500,
@@ -24,7 +24,7 @@ def get_opts():
                         choices=['brisk', 'sift', 'hog', 'orb', 'color'],
                         help='which descriptor to use')
     parser.add_argument('--similarity', type=str, default='bd',
-                        choices=['bd'],
+                        choices=['bd', 'kpm'],
                         help='which similartiy measure to use')
     parser.add_argument('--resampling', type=str, default='systematic',
                         choices=['systematic', 'residual', 'stratified', 'multinomial'],
@@ -32,6 +32,9 @@ def get_opts():
     parser.add_argument('--slicer', type=str, default='resize',
                         choices=['resize', 'crop'],
                         help='which slicer to use')
+    
+    # Descriptor args
+    parser.add_argument('--nb-features', type=int, default=4000, help='Max number of feature for keypoint descriptors')
     
     # Model args
     parser.add_argument('--weights', nargs='+', type=str, default='weights/cuttlefish_best.pt', help='model.pt path(s)')
@@ -52,14 +55,16 @@ def get_opts():
 
 # Draw Bbox
 def draw_output_frame(frame : np.array, estimate_particle : np.array, color=(0,255,0)):
-    output_image = cv2.rectangle(
-        frame, 
-        (int(estimate_particle[0] - estimate_particle[6]//2), int(estimate_particle[3] - estimate_particle[7]//2)),
-        (int(estimate_particle[0] + estimate_particle[6]//2), int(estimate_particle[3] + estimate_particle[7]//2)),
-        color,
-        thickness=2)
+    output_frame = frame
+    for p in estimate_particle:
+        output_frame = cv2.rectangle(
+            output_frame, 
+            (int(p[0] - p[6]//2), int(p[3] - p[7]//2)),
+            (int(p[0] + p[6]//2), int(p[3] + p[7]//2)),
+            color,
+            thickness=2)
                     
-    return output_image
+    return output_frame
 
 # Draw each particles
 def draw_output_particles(frame : np.array, particles : np.array,color=(0,0,255)):
@@ -69,7 +74,8 @@ def draw_output_particles(frame : np.array, particles : np.array,color=(0,0,255)
 
 # Draw the mean particle
 def draw_output_mean_particule(frame : np.array, mean_particles : np.array, color=(255,0,0)):
-    output_image = cv2.circle(frame, (int(mean_particles[0]), int(mean_particles[3])), radius=3, color=color, thickness=3)
+    for p in mean_particles:
+        output_image = cv2.circle(frame, (int(p[0]), int(p[3])), radius=3, color=color, thickness=3)
     return output_image
 
 
@@ -91,20 +97,11 @@ if __name__ == "__main__":
     seed = args.seed
     video_size = None
     stop = False
-    if args.video_size:
-        video_size = tuple(args.video_size)
 
     # init Model
     model = Model(
         weights=args.weights, device=args.device, img_size=args.img_size,
         conf_thres=args.conf_thres, iou_thres=args.iou_thres)
-
-    # init functions and classes
-    descriptor = descriptor_dict[args.descriptor]
-    similarity = similarity_dict[args.similarity]
-    resampling = resample_dict[args.resampling]
-    slicer = slicer_dict[args.slicer]
-    particle_struct = particle_dict[args.particle]
 
     # Load video
     cap = cv2.VideoCapture(args.filepath)
@@ -114,23 +111,23 @@ if __name__ == "__main__":
     conf = []
     while not len(conf):
         # Read first frame
-        ret, init_frame = cap.read()
+        ret, current_frame = cap.read()
         if not ret:
             print("Error : Couldn't read frame")
             quit()
 
         # Resize if video_size is not None
-        if video_size:
-            init_frame = cv2.resize(init_frame, video_size)
+        if args.scale_factor != 1.:
+            current_frame = cv2.resize(current_frame, (int(current_frame.shape[1]/args.scale_factor), int(current_frame.shape[0]/args.scale_factor)))
 
         # Save image dimensions
-        img_size = (init_frame.shape[1], init_frame.shape[0])
+        img_size = (current_frame.shape[1], current_frame.shape[0])
 
         # Run YOLOV7 to get bounding boxes
-        conf, cuttlefish = model.detect(init_frame)
+        conf, cuttlefish = model.detect(current_frame)
 
         if(len(conf)):
-            tracked_conf, tracked_cuttlefish = cuttlefish_picker(init_frame, conf, cuttlefish)
+            tracked_conf, tracked_cuttlefish = cuttlefish_picker(current_frame, conf, cuttlefish)
 
     # _, init_frame = cap.read()
     # tracked_conf, tracked_cuttlefish = (0.73389, np.array([824.5, 798.5, 203, 151]))
@@ -145,23 +142,34 @@ if __name__ == "__main__":
     # Create initial position
     init_pos = np.array([[
         [tracked_cuttlefish[0], 0, 0, tracked_cuttlefish[1], 0, 0, tracked_cuttlefish[2], tracked_cuttlefish[3]],
-        [(1-tracked_conf)*20, 0.1, 0.01, (1-tracked_conf)*20, 0.1, 0.01, (1-tracked_conf)*20, (1-tracked_conf)*20]
+        [(1-tracked_conf)*40, 0.1, 0.1, (1-tracked_conf)*40, 0.1, 0.1, (1-tracked_conf), (1-tracked_conf)]
     ]])
 
     # Create covariance matrices for prediction and update model
-    Q_motion = np.array([[15, 0.1, 0.01, 10, 0.1, 0.01, 30, 30]])
-    R = np.array([[.01]])
+    Q_motion = np.array([[4, 5, 8, 4, 5, 8, 2, 2]])
+    R = np.array([[.2]])
+
+    # init functions and classes
+    if args.descriptor == 'hog':
+        descriptor = descriptor_dict[args.descriptor]((int(tracked_cuttlefish[2]), int(tracked_cuttlefish[3])))
+    else:
+        descriptor = descriptor_dict[args.descriptor](args.nb_features)
+
+    similarity = similarity_dict[args.similarity]
+    resampling = resample_dict[args.resampling]
+    slicer = slicer_dict[args.slicer]
+    particle_struct = particle_dict[args.particle]
 
     # Initialize Particle filter
     particle_filter =  ParticleFilter(
         N, particle_struct, 1, 
-        init_pos, init_frame, 
+        init_pos, np.copy(current_frame), 
         Q_motion, R, 
         slicer, descriptor, similarity, resampling,
         seed)
 
     # Show Initial particles
-    output_frame = draw_output_frame(init_frame, particle_filter.mu)
+    output_frame = draw_output_frame(np.copy(current_frame), particle_filter.mu)
     output_frame = draw_output_particles(output_frame, particle_filter.particles)
     output_frame = draw_output_mean_particule(output_frame, particle_filter.mu)
     cv2.imshow('Track Cuttlefish', output_frame)
@@ -177,18 +185,19 @@ if __name__ == "__main__":
             quit()
         
         # Resize if video_size is not None
-        if video_size:
-            current_frame = cv2.resize(current_frame, video_size)
+        if args.scale_factor != 1.:
+            current_frame = cv2.resize(current_frame, (int(current_frame.shape[1]/args.scale_factor), int(current_frame.shape[0]/args.scale_factor)))
+
 
         # Perform a pass of the particle filter
-        particle_filter.forward(current_frame, 1/fps)
+        particle_filter.forward(np.copy(current_frame), 1./fps, 1./4.)
 
         # Mean particle
         print(particle_filter.mu)
         print()
 
         # Draw Bbox and particles on the frame
-        output_frame = draw_output_frame(current_frame, particle_filter.mu)
+        output_frame = draw_output_frame(np.copy(current_frame), particle_filter.mu)
         output_frame = draw_output_particles(output_frame, particle_filter.particles)
         output_frame = draw_output_mean_particule(output_frame, particle_filter.mu)
         cv2.imshow('Track Cuttlefish', output_frame)

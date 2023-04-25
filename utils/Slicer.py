@@ -11,8 +11,8 @@ def image_resize_slicing(
     sliced_image = []
 
     # Compute padding width and height
-    pad_width = int(np.max(particles[:, :, 6])//2)
-    pad_height = int(np.max(particles[:, :, 7])//2)
+    pad_width = int(np.max(particles[:, :, 6])/2)
+    pad_height = int(np.max(particles[:, :, 7])/2)
 
     # Pad images to take care of Bbox that get outside of the image
     image_pad = np.pad(image, ((pad_height, pad_height), (pad_width, pad_width), (0, 0)), mode='constant', constant_values=0)
@@ -28,7 +28,7 @@ def image_resize_slicing(
         patch = image_pad[y_start:y_end, x_start:x_end]
 
         # Resize the patch to match the size of the template patch
-        final_patch = cv2.resize(patch, (int(template_particle[6]), int(template_particle[7])))
+        final_patch = cv2.resize(patch, (int(template_particle[0, 6]), int(template_particle[0, 7])))
 
         sliced_image.append(final_patch)
 
@@ -43,8 +43,8 @@ def image_crop_slicing(
     sliced_image = []
 
     # Compute padding width and height
-    template_pad_width = int(template_particle[7]//2)
-    template_pad_height = int(template_particle[6]//2)
+    template_pad_width = int(template_particle[0, 6]/2)
+    template_pad_height = int(template_particle[0, 7]/2)
 
     # Pad images to take care of Bbox that get outside of the image
     image_pad = np.pad(image, ((template_pad_height, template_pad_height), (template_pad_width, template_pad_width), (0, 0)), mode='constant', constant_values=0)
@@ -53,8 +53,8 @@ def image_crop_slicing(
         # Compute Start and End point to determine the patch of the image to slice
         x_start = int(p[0, 0])
         y_start = int(p[0, 3])
-        x_end = int(p[0, 0] + template_particle[6])
-        y_end = int(p[0, 3] + template_particle[7])
+        x_end = int(p[0, 0] + template_particle[0, 6])
+        y_end = int(p[0, 3] + template_particle[0, 7])
 
         # Crop the patch to the size of the template patch
         final_patch = image_pad[y_start:y_end, x_start:x_end]
@@ -62,29 +62,6 @@ def image_crop_slicing(
         sliced_image.append(final_patch)
 
     return np.array(sliced_image)
-
-# Get the slice of an image based on the template particle position and Bbox
-def template_image_slicing(
-    template_image: np.ndarray,
-    template_particle: np.ndarray) -> np.ndarray:
-    
-    # Compute padding width and height
-    template_pad_width = int(template_particle[7]//2)
-    template_pad_height = int(template_particle[6]//2)
-
-    # Pad images to take care of Bbox that get outside of the image
-    template_image_pad = np.pad(template_image, ((template_pad_height, template_pad_height), (template_pad_width, template_pad_width), (0, 0)), mode='constant', constant_values=0)
-
-    # Compute Start and End point to determine the patch of the image to slice
-    x_start = int(template_particle[0])
-    y_start = int(template_particle[3])
-    x_end = int(template_particle[0] + template_particle[6])
-    y_end = int(template_particle[3] + template_particle[7])
-
-    # Slice the image based on particles position
-    patch = template_image_pad[y_start:y_end, x_start:x_end]
-
-    return patch
 
 
 #####################################################

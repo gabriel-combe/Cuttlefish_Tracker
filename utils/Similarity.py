@@ -1,10 +1,11 @@
+import cv2
 import numpy as np
 
 # Bhattacharyya distance between a list of descriptors and a template descriptor
 def Bhattacharyya_distance(descriptors: np.ndarray, template: np.ndarray):
     # Mean of the vector descriptor
     descriptors_mean = np.mean(descriptors, axis=1)
-    template_mean = np.mean(template, axis=1)
+    template_mean = np.mean(template)
 
     # Compute the Bhattacharyya coefficient of the descriptor with a template
     bc = np.sum(np.sqrt(descriptors * template), axis=1)
@@ -17,3 +18,15 @@ def Bhattacharyya_distance(descriptors: np.ndarray, template: np.ndarray):
     dist = np.sqrt(np.maximum(0., 1. - (bc * (1./(np.sqrt(descriptors_mean * template_mean * template.shape[1]**2) + np.finfo(float).tiny)))))
 
     return dist
+
+def keypoint_matcher(descriptors: np.ndarray, template: np.ndarray):
+    coeff = []
+    bf = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
+    for i, desc in enumerate(descriptors):
+        matches = bf.match(desc[1], template[0][1])
+        if desc and matches:
+            coeff.append(len(matches)/len(desc[1]))
+        else:
+            coeff.append(0)
+
+    return np.array(coeff)

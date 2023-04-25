@@ -1,5 +1,5 @@
 from .Slicer import image_resize_slicing, image_crop_slicing
-from .Similarity import Bhattacharyya_distance
+from .Similarity import Bhattacharyya_distance, keypoint_matcher
 from .Descriptors import HOG, SIFT, ORB, BRISK
 
 slicer_dict = {
@@ -8,7 +8,8 @@ slicer_dict = {
 }
 
 similarity_dict = {
-    'bd' : Bhattacharyya_distance
+    'bd' : Bhattacharyya_distance,
+    'kpm' : keypoint_matcher
 }
 
 descriptor_dict = {

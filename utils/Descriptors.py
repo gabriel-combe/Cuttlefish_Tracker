@@ -41,8 +41,8 @@ class HOG():
 
 class SIFT():
 
-    def __init__ (self):
-        self.sift = cv2.SIFT_create()
+    def __init__ (self, nfeatures: int):
+        self.sift = cv2.SIFT_create(nfeatures=nfeatures)
 
     def compute(self, images):
 
@@ -54,11 +54,11 @@ class SIFT():
 
         return keypoints_descriptors
 
-
+import matplotlib.pyplot as plt
 class ORB():
 
-    def __init__ (self):
-        self.orb = cv2.ORB_create()
+    def __init__ (self, nfeatures: int):
+        self.orb = cv2.ORB_create(nfeatures=nfeatures)
 
     def compute(self, images):
 
@@ -69,12 +69,15 @@ class ORB():
             keypoints_descriptors += [self.orb.detectAndCompute(gray, None)]
 
         return keypoints_descriptors
+    
+    def update(self, dummy):
+        pass
 
 
 class BRISK():
 
-    def __init__ (self):
-        self.brisk = cv2.BRISK_create()
+    def __init__ (self, nfeatures: int):
+        self.brisk = cv2.BRISK_create(nfeatures=nfeatures)
 
     def compute(self, images):
 
