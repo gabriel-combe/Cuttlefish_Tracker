@@ -26,7 +26,11 @@ class ConstAccelParticle2DFixBbox(Particle):
     # Constant acceleration prediction model using simple equations of motion.
     # We add random noise to acceleration to model non constant acceleration system.
     # We add random noise to width and height of the Bbox to model variation in Bbox size
-    def motion_model(self, particles: np.ndarray, Q_model: np.ndarray, prev_particles: np.ndarray, frame_size: Tuple[int, int], dt: float) -> np.ndarray:
+    def motion_model(self, 
+        particles: np.ndarray, Q_model: np.ndarray, 
+        prev_particles: np.ndarray, template_particle: np.ndarray,
+        search_area: Tuple[int, int], dt: float) -> np.ndarray:
+
         N = particles.shape[0]
         track_dim = particles.shape[1]
         
@@ -36,12 +40,12 @@ class ConstAccelParticle2DFixBbox(Particle):
         box_height = particles[:, :, 7]
 
         # X positions
-        particles[:, :, 0] += -.5 * particles[:, :, 2] * dt**2 + particles[:, :, 1] * dt
+        particles[:, :, 0] += .5 * particles[:, :, 2] * dt**2 + particles[:, :, 1] * dt
         # X velocities
         particles[:, :, 1] += particles[:, :, 2] * dt
         
         # Y positions
-        particles[:, :, 3] += -.5 * particles[:, :, 5] * dt**2 + particles[:, :, 4] * dt
+        particles[:, :, 3] += .5 * particles[:, :, 5] * dt**2 + particles[:, :, 4] * dt
         # Y velocities
         particles[:, :, 4] += particles[:, :, 5] * dt
 
@@ -49,15 +53,15 @@ class ConstAccelParticle2DFixBbox(Particle):
         particles += self.rng.normal(loc=0, scale=Q_model, size=(N, track_dim, self.particle_dim))
 
         # Check constraints
-        particles[:, :, 0] = np.maximum(0, np.minimum(frame_size[0], particles[:, :, 0])) # X positions
-        particles[:, :, 3] = np.maximum(0, np.minimum(frame_size[1], particles[:, :, 3])) # Y positions
+        particles[(particles[:, :, 0] > template[:, 0] + search_area[0]) | (particles[:, :, 0] < template[:, 0] - search_area[0])] = template[:, 0]
+        particles[(particles[:, :, 3] > template[:, 3] + search_area[1]) | (particles[:, :, 3] < template[:, 3] - search_area[1])] = template[:, 3]
         particles[:, :, 6] = box_width # Boxes width
         particles[:, :, 7] = box_height # Boxes height
 
         return particles
     
     # Measurement model using a similarity coefficient
-    def measurement_model(self, coeff_sim: np.ndarray, R: np.ndarray) -> np.ndarray:
+    def measurement_model(self, coeff_sim: np.ndarray, particles: np.ndarray, template_particle:np.ndarray, R: np.ndarray) -> np.ndarray:
         proba = ss.norm(0., R[:, 0]).pdf(coeff_sim)
         return proba
 
@@ -81,12 +85,27 @@ class ConstAccelParticle2DBbox(Particle):
     def create_gaussian_particles(self, N: int, track_dim: int, init_pos: np.ndarray, std: np.ndarray) -> np.ndarray:
         return super().create_gaussian_particles(N, track_dim,  init_pos, std)
     
+    def compute_gamma(self, N: int, track_dim: int) -> np.ndarray:
+        p = self.rng.random((N, track_dim))
+        gamma = np.zeros((N, track_dim))
+        gamma[(0 <= p) & (p <= 0.1)] = -0.1
+        gamma[(0.1 < p) & (p <= 0.2)] = -0.05
+        gamma[(0.8 < p) & (p <= 0.9)] = 0.05
+        gamma[(0.9 < p) & (p <= 1)] = 0.1
+
+        return gamma
+    
     # Constant acceleration prediction model using simple equations of motion.
     # We add random noise to acceleration to model non constant acceleration system.
     # We add random noise to width and height of the Bbox to model variation in Bbox size
-    def motion_model(self, particles: np.ndarray, Q_model: np.ndarray, prev_particles: np.ndarray, frame_size: Tuple[int, int], dt: float) -> np.ndarray:
+    def motion_model(self, 
+        particles: np.ndarray, Q_model: np.ndarray, 
+        prev_particles: np.ndarray, template_particle: np.ndarray,
+        search_area: np.ndarray, dt: float) -> np.ndarray:
+
         N = particles.shape[0]
         track_dim = particles.shape[1]
+        gamma = self.compute_gamma(N, track_dim)
 
         # X positions
         particles[:, :, 0] += -.5 * particles[:, :, 2] * dt**2 + particles[:, :, 1] * dt
@@ -98,20 +117,28 @@ class ConstAccelParticle2DBbox(Particle):
         # Y velocities
         particles[:, :, 4] += particles[:, :, 5] * dt
 
+        # Boxes width
+        particles[:, :, 6] *= 1 + gamma
+        # Boxes height
+        particles[:, :, 7] *= 1 + gamma
+
         # Add Gaussian noise to the particles
-        particles += self.rng.normal(loc=0, scale=Q_model, size=(N, track_dim, self.particle_dim))
+        noises = self.rng.normal(loc=0, scale=Q_model, size=(N, track_dim, self.particle_dim))
+        particles += noises
 
         # Check constraints
-        particles[:, :, 0] = np.maximum(0, np.minimum(frame_size[0], particles[:, :, 0])) # X positions
-        particles[:, :, 3] = np.maximum(0, np.minimum(frame_size[1], particles[:, :, 3])) # Y positions
-        particles[:, :, 6] = np.maximum(particles[:, :, 6], 25) # Boxes width
-        particles[:, :, 7] = np.maximum(particles[:, :, 7], 25) # Boxes height
+        particles[(particles[:, :, 0] > template_particle[:, 0] + 3*search_area[:, 0]/4) | (particles[:, :, 0] < template_particle[:, 0] - 3*search_area[:, 0]/4)] = template_particle + noises[(particles[:, :, 0] > template_particle[:, 0] + 3*search_area[:, 0]/4) | (particles[:, :, 0] < template_particle[:, 0] - 3*search_area[:, 0]/4)]
+        particles[(particles[:, :, 3] > template_particle[:, 3] + 3*search_area[:, 1]/4) | (particles[:, :, 3] < template_particle[:, 3] - 3*search_area[:, 1]/4)] = template_particle + noises[(particles[:, :, 3] > template_particle[:, 3] + 3*search_area[:, 1]/4) | (particles[:, :, 3] < template_particle[:, 3] - 3*search_area[:, 1]/4)]
+        particles[:, :, 6] = np.minimum(search_area[:, 0], np.maximum(particles[:, :, 6], 16)) # Boxes width
+        particles[:, :, 7] = np.minimum(search_area[:, 1], np.maximum(particles[:, :, 7], 16)) # Boxes height
 
         return particles
     
     # Measurement model using a similarity coefficient
-    def measurement_model(self, coeff_sim: np.ndarray, R: np.ndarray) -> np.ndarray:
-        proba = ss.norm(0., R[:, 0]).pdf(coeff_sim)
+    def measurement_model(self, coeff_sim: np.ndarray, particles: np.ndarray, template_particle:np.ndarray, R: np.ndarray) -> np.ndarray:
+        proba = ss.norm.pdf(coeff_sim, loc=0, scale=R[:, 0])
+        # proba = 0.8*ss.norm.pdf(coeff_sim, loc=0, scale=R[:, 0]) + (1-0.8)*ss.norm.pdf(np.mean((particles - template_particle)**2, axis=(2, 1)), loc=0, scale=R[:, 1])
+        # proba = np.exp(-R[:, 0] * coeff_sim**2)
         return proba
 
 
@@ -137,7 +164,11 @@ class PredPosParticle2DBbox(Particle):
     # Constant acceleration prediction model using simple equations of motion.
     # We add random noise to acceleration to model non constant acceleration system.
     # We add random noise to width and height of the Bbox to model variation in Bbox size
-    def motion_model(self, particles: np.ndarray, Q_model: np.ndarray, prev_particles: np.ndarray, frame_size: Tuple[int, int], dt: float) -> np.ndarray:
+    def motion_model(self, 
+        particles: np.ndarray, Q_model: np.ndarray, 
+        prev_particles: np.ndarray, template_particle: np.ndarray,
+        search_area: Tuple[int, int], dt: float) -> np.ndarray:
+
         N = particles.shape[0]
         track_dim = particles.shape[1]
 
@@ -159,14 +190,14 @@ class PredPosParticle2DBbox(Particle):
         particles += self.rng.normal(loc=0, scale=Q_model, size=(N, track_dim, self.particle_dim))
 
         # Check constraints
-        particles[:, :, 0] = np.maximum(0, np.minimum(frame_size[0], particles[:, :, 0])) # X positions
-        particles[:, :, 3] = np.maximum(0, np.minimum(frame_size[1], particles[:, :, 3])) # Y positions
-        particles[:, :, 6] = np.maximum(particles[:, :, 6], 25) # Boxes width
-        particles[:, :, 7] = np.maximum(particles[:, :, 7], 25) # Boxes height
+        particles[(particles[:, :, 0] > template[:, 0] + search_area[0]) | (particles[:, :, 0] < template[:, 0] - search_area[0])] = template[:, 0]
+        particles[(particles[:, :, 3] > template[:, 3] + search_area[1]) | (particles[:, :, 3] < template[:, 3] - search_area[1])] = template[:, 3]
+        particles[:, :, 6] = np.maximum(particles[:, :, 6], 16) # Boxes width
+        particles[:, :, 7] = np.maximum(particles[:, :, 7], 16) # Boxes height
 
         return particles
     
     # Measurement model using a similarity coefficient
-    def measurement_model(self, coeff_sim: np.ndarray, R: np.ndarray) -> np.ndarray:
+    def measurement_model(self, coeff_sim: np.ndarray, particles: np.ndarray, template_particle:np.ndarray, R: np.ndarray) -> np.ndarray:
         proba = ss.norm(0., R[:, 0]).pdf(coeff_sim)
         return proba

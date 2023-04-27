@@ -1,19 +1,21 @@
-from .Slicer import image_resize_slicing, image_crop_slicing
-from .Similarity import Bhattacharyya_distance, keypoint_matcher
-from .Descriptors import HOG, SIFT, ORB, BRISK
+from .Slicer import Resize, Crop
+from .Similarity import Bhattacharyya_distance_sqrt, Bhattacharyya_distance_log, keypoint_matcher
+from .Descriptors import HOG, HOGCOLOR, SIFT, ORB, BRISK
 
 slicer_dict = {
-    'resize' : image_resize_slicing,
-    'crop' : image_crop_slicing,
+    'resize' : Resize,
+    'crop' : Crop,
 }
 
 similarity_dict = {
-    'bd' : Bhattacharyya_distance,
+    'bds' : Bhattacharyya_distance_sqrt,
+    'bdl' : Bhattacharyya_distance_log,
     'kpm' : keypoint_matcher
 }
 
 descriptor_dict = {
     'hog' : HOG,
+    'hogcolor' : HOGCOLOR,
     'sift' : SIFT,
     'orb' : ORB,
     'brisk' : BRISK

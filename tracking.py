@@ -21,10 +21,10 @@ def get_opts():
                         choices=['cap2Dfbb', 'cap2Dbb', 'ppp2Dbb'],
                         help='which particle structure to use')
     parser.add_argument('--descriptor', type=str, default='hog',
-                        choices=['brisk', 'sift', 'hog', 'orb', 'color'],
+                        choices=['hog', 'hogcolor'],
                         help='which descriptor to use')
     parser.add_argument('--similarity', type=str, default='bd',
-                        choices=['bd', 'kpm'],
+                        choices=['bds', 'bdl'],
                         help='which similartiy measure to use')
     parser.add_argument('--resampling', type=str, default='systematic',
                         choices=['systematic', 'residual', 'stratified', 'multinomial'],
@@ -32,9 +32,11 @@ def get_opts():
     parser.add_argument('--slicer', type=str, default='resize',
                         choices=['resize', 'crop'],
                         help='which slicer to use')
+    parser.add_argument('--alpha', type=float, default=1.2, help='Scaling factor for the search area')
     
     # Descriptor args
     parser.add_argument('--nb-features', type=int, default=4000, help='Max number of feature for keypoint descriptors')
+    parser.add_argument('--desc-size', nargs=2, type=int, default=None, help='Fix size used force all patch to have the same size for each frame')
     
     # Model args
     parser.add_argument('--weights', nargs='+', type=str, default='weights/cuttlefish_best.pt', help='model.pt path(s)')
@@ -59,8 +61,8 @@ def draw_output_frame(frame : np.array, estimate_particle : np.array, color=(0,2
     for p in estimate_particle:
         output_frame = cv2.rectangle(
             output_frame, 
-            (int(p[0] - p[6]//2), int(p[3] - p[7]//2)),
-            (int(p[0] + p[6]//2), int(p[3] + p[7]//2)),
+            (int(p[0] - p[6]), int(p[3] - p[7])),
+            (int(p[0] + p[6]), int(p[3] + p[7])),
             color,
             thickness=2)
                     
@@ -68,21 +70,39 @@ def draw_output_frame(frame : np.array, estimate_particle : np.array, color=(0,2
 
 # Draw each particles
 def draw_output_particles(frame : np.array, particles : np.array,color=(0,0,255)):
+    output_frame = frame
     for particle in particles[:, 0]:
-        output_image = cv2.circle(frame, (int(particle[0]), int(particle[3])), radius=1, color=color, thickness=1)
+        output_image = cv2.circle(output_frame, (int(particle[0]), int(particle[3])), radius=1, color=color, thickness=1)
     return output_image
 
 # Draw the mean particle
 def draw_output_mean_particule(frame : np.array, mean_particles : np.array, color=(255,0,0)):
+    output_frame = frame
     for p in mean_particles:
-        output_image = cv2.circle(frame, (int(p[0]), int(p[3])), radius=3, color=color, thickness=3)
+        output_image = cv2.circle(output_frame, (int(p[0]), int(p[3])), radius=3, color=color, thickness=3)
     return output_image
 
+# Draw the search area
+def draw_search_area(frame : np.array, mean_particles : np.array, search_area : np.array, color=(0,0,255)):
+    output_frame = frame
+    for i, p in enumerate(mean_particles):
+        output_frame = cv2.rectangle(
+            output_frame, 
+            (int(p[0] - search_area[i, 0]), int(p[3] - search_area[i, 1])), 
+            (int(p[0] + search_area[i, 0]), int(p[3] + search_area[i, 1])), 
+            color, thickness=2)
+    return output_frame
 
-# Select a cuttlefish to track
-def cuttlefish_picker(init_frame, conf, cuttlefish):
+
+# Select a cuttlefish to track based on confidence and distance from the center of the image
+def cuttlefish_picker_WSE(init_frame, conf, cuttlefish):
     error = (1-conf) * np.sqrt(((init_frame.shape[1]//2)-cuttlefish[:, 0])**2 + ((init_frame.shape[0]//2)-cuttlefish[:, 1])**2)
     index = np.argmin(error)
+    return (conf[index], cuttlefish[index])
+
+# Select a random cuttlefish to track 
+def cuttlefish_picker_random(init_frame, conf, cuttlefish):
+    index = np.random.default_rng().integers(low=0, high=conf.shape[0])
     return (conf[index], cuttlefish[index])
 
 
@@ -95,7 +115,6 @@ if __name__ == "__main__":
     # init params
     N = abs(args.N)
     seed = args.seed
-    video_size = None
     stop = False
 
     # init Model
@@ -118,7 +137,7 @@ if __name__ == "__main__":
 
         # Resize if video_size is not None
         if args.scale_factor != 1.:
-            current_frame = cv2.resize(current_frame, (int(current_frame.shape[1]/args.scale_factor), int(current_frame.shape[0]/args.scale_factor)))
+            current_frame = cv2.resize(current_frame, (int(current_frame.shape[1]*args.scale_factor), int(current_frame.shape[0]*args.scale_factor)), interpolation=cv2.INTER_AREA)
 
         # Save image dimensions
         img_size = (current_frame.shape[1], current_frame.shape[0])
@@ -127,12 +146,14 @@ if __name__ == "__main__":
         conf, cuttlefish = model.detect(current_frame)
 
         if(len(conf)):
-            tracked_conf, tracked_cuttlefish = cuttlefish_picker(current_frame, conf, cuttlefish)
+            # tracked_conf, tracked_cuttlefish = cuttlefish_picker_WSE(current_frame, conf, cuttlefish)
+            tracked_conf, tracked_cuttlefish = cuttlefish_picker_random(current_frame, conf, cuttlefish)
 
     # _, init_frame = cap.read()
-    # tracked_conf, tracked_cuttlefish = (0.73389, np.array([824.5, 798.5, 203, 151]))
+    # tracked_conf, tracked_cuttlefish = (0.73389, np.array([824.5, 798.5, 203/2, 151/2]))
 
     # Selected Cuttlefish
+    tracked_cuttlefish[2:] /= 2
     print(tracked_conf, tracked_cuttlefish)
 
     # Create video output
@@ -140,31 +161,42 @@ if __name__ == "__main__":
         outvid = cv2.VideoWriter('output.avi', cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), fps, img_size)
 
     # Create initial position
+    ratio = img_size[0]/img_size[1]
     init_pos = np.array([[
         [tracked_cuttlefish[0], 0, 0, tracked_cuttlefish[1], 0, 0, tracked_cuttlefish[2], tracked_cuttlefish[3]],
-        [(1-tracked_conf)*40, 0.1, 0.1, (1-tracked_conf)*40, 0.1, 0.1, (1-tracked_conf), (1-tracked_conf)]
+        [(1-tracked_conf)*50*ratio, 0.1*ratio, 0.1*ratio, (1-tracked_conf)*50, 0.1, 0.1, (1-tracked_conf), (1-tracked_conf)]
     ]])
 
     # Create covariance matrices for prediction and update model
-    Q_motion = np.array([[4, 5, 8, 4, 5, 8, 2, 2]])
-    R = np.array([[.2]])
+    # Sequence 2
+    # Q_motion = np.array([[0*ratio, 5*fps*ratio, 10*fps*ratio, 0, 5*fps, 10*fps, 0.1*ratio, 0.1]])
+
+    # Sequence 4
+    Q_motion = np.array([[10*ratio, 10*fps*ratio, 20*fps*ratio, 10, 10*fps, 20*fps, 0.2*ratio, 0.2]])
+    
+    R = np.array([[0.1]])
+    # R = np.array([[0.15, 0.2]])
+    # R = np.array([[25]])
+
+    # Set size of the descriptor and slicer
+    desc_size = args.desc_size if args.desc_size!=None else (2*int(tracked_cuttlefish[2]), 2*int(tracked_cuttlefish[3]))
 
     # init functions and classes
-    if args.descriptor == 'hog':
-        descriptor = descriptor_dict[args.descriptor]((int(tracked_cuttlefish[2]), int(tracked_cuttlefish[3])))
+    if args.descriptor == 'hog' or args.descriptor == 'hogcolor':
+        descriptor = descriptor_dict[args.descriptor](desc_size, freezeSize=(args.desc_size!=None))
     else:
         descriptor = descriptor_dict[args.descriptor](args.nb_features)
 
     similarity = similarity_dict[args.similarity]
     resampling = resample_dict[args.resampling]
-    slicer = slicer_dict[args.slicer]
+    slicer = slicer_dict[args.slicer](desc_size, np.copy(current_frame), freezeSize=(args.desc_size!=None))
     particle_struct = particle_dict[args.particle]
 
     # Initialize Particle filter
     particle_filter =  ParticleFilter(
         N, particle_struct, 1, 
-        init_pos, np.copy(current_frame), 
-        Q_motion, R, 
+        init_pos, np.copy(current_frame),
+        args.alpha, Q_motion, R, 
         slicer, descriptor, similarity, resampling,
         seed)
 
@@ -172,6 +204,7 @@ if __name__ == "__main__":
     output_frame = draw_output_frame(np.copy(current_frame), particle_filter.mu)
     output_frame = draw_output_particles(output_frame, particle_filter.particles)
     output_frame = draw_output_mean_particule(output_frame, particle_filter.mu)
+    output_frame = draw_search_area(output_frame, particle_filter.mu, particle_filter.search_area)
     cv2.imshow('Track Cuttlefish', output_frame)
     cv2.waitKey(0)
 
@@ -186,7 +219,7 @@ if __name__ == "__main__":
         
         # Resize if video_size is not None
         if args.scale_factor != 1.:
-            current_frame = cv2.resize(current_frame, (int(current_frame.shape[1]/args.scale_factor), int(current_frame.shape[0]/args.scale_factor)))
+            current_frame = cv2.resize(current_frame, (int(current_frame.shape[1]*args.scale_factor), int(current_frame.shape[0]*args.scale_factor)), interpolation=cv2.INTER_AREA)
 
 
         # Perform a pass of the particle filter
@@ -200,6 +233,7 @@ if __name__ == "__main__":
         output_frame = draw_output_frame(np.copy(current_frame), particle_filter.mu)
         output_frame = draw_output_particles(output_frame, particle_filter.particles)
         output_frame = draw_output_mean_particule(output_frame, particle_filter.mu)
+        output_frame = draw_search_area(output_frame, particle_filter.mu, particle_filter.search_area)
         cv2.imshow('Track Cuttlefish', output_frame)
         cv2.waitKey(0)
 

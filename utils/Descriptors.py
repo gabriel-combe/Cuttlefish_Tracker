@@ -6,12 +6,13 @@ import numpy as np
 
 class HOG():
 
-    def __init__(self, winSize, blockSize = (16, 16), blockStride = (8, 8),  cellSize = (8, 8), nbins = 9):
+    def __init__(self, winSize, blockSize = (16, 16), blockStride = (8, 8),  cellSize = (8, 8), nbins = 9, freezeSize = False):
         self.winSize = (winSize[0] // cellSize[0] * cellSize[0], winSize[1] // cellSize[1] * cellSize[1])
         self.blockSize = blockSize
         self.blockStride = blockStride
         self.cellSize = cellSize
         self.nbins = nbins
+        self.freezeSize = freezeSize
         assert((self.winSize[0]-self.blockSize[0])%self.blockStride[0]==0 and (self.winSize[1]-self.blockSize[1])%self.blockStride[1]==0)
         assert(self.blockSize[0]%self.cellSize[0]==0 and self.blockSize[1]%self.cellSize[1]==0)
         self.hog = cv2.HOGDescriptor(self.winSize, self.blockSize, self.cellSize, self.cellSize, self.nbins)
@@ -29,15 +30,53 @@ class HOG():
         histogram = np.empty(shape = (nbImage, expectedSize))
     
         for image in range(nbImage):
-            gray = cv2.cvtColor(images[image], cv2.COLOR_BGR2GRAY)
-            if self.winSize != gray.shape:
-                gray = cv2.resize(gray, self.winSize)
-            histogram[image] = self.hog.compute(gray)
+            img = cv2.cvtColor(images[image], cv2.COLOR_BGR2GRAY)
+            if self.winSize != img.shape:
+                img = cv2.resize(img, self.winSize, interpolation=cv2.INTER_AREA)
+            histogram[image] = self.hog.compute(img)
 
         return np.array(histogram)
 
     def update(self, winSize):
-        self.__init__(winSize, self.blockSize, self.blockStride,  self.cellSize, self.nbins)
+        if not self.freezeSize:
+            self.__init__(winSize, self.blockSize, self.blockStride,  self.cellSize, self.nbins)
+
+class HOGCOLOR():
+
+    def __init__(self, winSize, blockSize = (16, 16), blockStride = (8, 8),  cellSize = (8, 8), nbins = 9, freezeSize = False):
+        self.winSize = (winSize[0] // cellSize[0] * cellSize[0], winSize[1] // cellSize[1] * cellSize[1])
+        self.blockSize = blockSize
+        self.blockStride = blockStride
+        self.cellSize = cellSize
+        self.nbins = nbins
+        self.freezeSize = freezeSize
+        assert((self.winSize[0]-self.blockSize[0])%self.blockStride[0]==0 and (self.winSize[1]-self.blockSize[1])%self.blockStride[1]==0)
+        assert(self.blockSize[0]%self.cellSize[0]==0 and self.blockSize[1]%self.cellSize[1]==0)
+        self.hog = cv2.HOGDescriptor(self.winSize, self.blockSize, self.cellSize, self.cellSize, self.nbins)
+
+    
+    def expectedF(self):
+        return (( (self.winSize[0] - self.blockSize[0]) // self.blockStride[0] ) + 1) * (( (self.winSize[1] - self.blockSize[1]) // self.blockStride[1] ) + 1) * (self.blockSize[0] // self.cellSize[0]) * (self.blockSize[1] // self.cellSize[1]) * self.nbins
+
+
+    def compute(self, images : np.ndarray):
+
+        nbImage = images.shape[0]
+        expectedSize = 3*self.expectedF()
+
+        histogram = np.empty(shape = (nbImage, expectedSize))
+    
+        for image in range(nbImage):
+            img = images[image]
+            if self.winSize != img.shape:
+                img = cv2.resize(img, self.winSize, interpolation=cv2.INTER_AREA)
+            histogram[image] = np.concatenate((self.hog.compute(img[:, :, 0]), self.hog.compute(img[:, :, 1]), self.hog.compute(img[:, :, 2])))
+
+        return np.array(histogram)
+
+    def update(self, winSize):
+        if not self.freezeSize:
+            self.__init__(winSize, self.blockSize, self.blockStride,  self.cellSize, self.nbins)
 
 class SIFT():
 
