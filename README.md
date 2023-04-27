@@ -22,7 +22,7 @@ Il se decoupera donc en plusieurs sous objectifs:
 - [x] Fine-tuning de YOLOv7 sur notre dataset.
 - [x] Creer un programme pour la detection initiale de seiches.
 - [x] Implementer plusieurs descripteurs d'image (environ 5).
-- [ ] Implementer plusieurs mesures de similarite (environ 5).
+- [x] Implementer plusieurs mesures de similarite (environ 5).
 - [x] Implementer un slicer d'image et de descripteur
 - [x] Definir un ou plusieurs vecteurs de representation de ce que l'on suit.
 - [x] Implementer un filtre a particule modulable.
