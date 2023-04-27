@@ -33,6 +33,7 @@ def get_opts():
                         choices=['resize', 'crop'],
                         help='which slicer to use')
     parser.add_argument('--alpha', type=float, default=1.2, help='Scaling factor for the search area')
+    parser.add_argument('--resample-factor', type=float, default=1./4., help='Factor used to compute the resampling threshold')
     
     # Descriptor args
     parser.add_argument('--nb-features', type=int, default=4000, help='Max number of feature for keypoint descriptors')
@@ -146,8 +147,8 @@ if __name__ == "__main__":
         conf, cuttlefish = model.detect(current_frame)
 
         if(len(conf)):
-            # tracked_conf, tracked_cuttlefish = cuttlefish_picker_WSE(current_frame, conf, cuttlefish)
-            tracked_conf, tracked_cuttlefish = cuttlefish_picker_random(current_frame, conf, cuttlefish)
+            tracked_conf, tracked_cuttlefish = cuttlefish_picker_WSE(current_frame, conf, cuttlefish)
+            # tracked_conf, tracked_cuttlefish = cuttlefish_picker_random(current_frame, conf, cuttlefish)
 
     # _, init_frame = cap.read()
     # tracked_conf, tracked_cuttlefish = (0.73389, np.array([824.5, 798.5, 203/2, 151/2]))
@@ -169,13 +170,13 @@ if __name__ == "__main__":
 
     # Create covariance matrices for prediction and update model
     # Sequence 2
-    # Q_motion = np.array([[0*ratio, 5*fps*ratio, 10*fps*ratio, 0, 5*fps, 10*fps, 0.1*ratio, 0.1]])
+    Q_motion = np.array([[10*ratio, 0.1*fps*ratio, 1*fps*ratio, 10, 0.1*fps, 1*fps, 0.01*ratio, 0.01]])
 
     # Sequence 4
-    Q_motion = np.array([[10*ratio, 10*fps*ratio, 20*fps*ratio, 10, 10*fps, 20*fps, 0.2*ratio, 0.2]])
+    # Q_motion = np.array([[20*ratio, 10*fps*ratio, 20*fps*ratio, 20, 10*fps, 20*fps, 0.8*ratio, 0.8]])
     
     R = np.array([[0.1]])
-    # R = np.array([[0.15, 0.2]])
+    # R = np.array([[0.15, 2.0]])
     # R = np.array([[25]])
 
     # Set size of the descriptor and slicer
@@ -223,7 +224,7 @@ if __name__ == "__main__":
 
 
         # Perform a pass of the particle filter
-        particle_filter.forward(np.copy(current_frame), 1./fps, 1./4.)
+        particle_filter.forward(np.copy(current_frame), 1./fps, args.resample_factor)
 
         # Mean particle
         print(particle_filter.mu)
@@ -235,7 +236,7 @@ if __name__ == "__main__":
         output_frame = draw_output_mean_particule(output_frame, particle_filter.mu)
         output_frame = draw_search_area(output_frame, particle_filter.mu, particle_filter.search_area)
         cv2.imshow('Track Cuttlefish', output_frame)
-        cv2.waitKey(0)
+        # cv2.waitKey(0)
 
         # Write the frame into the video file
         if args.save_video:

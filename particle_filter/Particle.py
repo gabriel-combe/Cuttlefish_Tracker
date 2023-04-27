@@ -88,10 +88,10 @@ class ConstAccelParticle2DBbox(Particle):
     def compute_gamma(self, N: int, track_dim: int) -> np.ndarray:
         p = self.rng.random((N, track_dim))
         gamma = np.zeros((N, track_dim))
-        gamma[(0 <= p) & (p <= 0.1)] = -0.1
-        gamma[(0.1 < p) & (p <= 0.2)] = -0.05
-        gamma[(0.8 < p) & (p <= 0.9)] = 0.05
-        gamma[(0.9 < p) & (p <= 1)] = 0.1
+        gamma[(0 <= p) & (p <= 0.2)] = -0.1
+        gamma[(0.2 < p) & (p <= 0.4)] = -0.05
+        gamma[(0.6 < p) & (p <= 0.8)] = 0.05
+        gamma[(0.8 < p) & (p <= 1)] = 0.1
 
         return gamma
     
