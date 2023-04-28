@@ -175,7 +175,8 @@ if __name__ == "__main__":
     # Sequence 4
     # Q_motion = np.array([[20*ratio, 10*fps*ratio, 20*fps*ratio, 20, 10*fps, 20*fps, 0.8*ratio, 0.8]]) # cap2Dbb hog bdl MAP
     # Q_motion = np.array([[5*ratio, 0.4*fps*ratio, 0.8*fps*ratio, 5, 0.4*fps, 0.8*fps, 0.2*ratio, 0.2]]) # cap2Dbb hog bds MLE
-    Q_motion = np.array([[0.1*ratio, 0*fps*ratio, 0*fps*ratio, 0.1, 0*fps, 0*fps, 0.2*ratio, 0.2]]) # ppp2Dbb hog bds MLE
+    # Q_motion = np.array([[0.1*ratio, 0*fps*ratio, 0*fps*ratio, 0.1, 0*fps, 0*fps, 0.2*ratio, 0.2]]) # ppp2Dbb hog bds MLE
+    Q_motion = np.array([[1*ratio, 0*fps*ratio, 0*fps*ratio, 1, 0*fps, 0*fps, 2*ratio, 2]]) # ppp2Dbb hog bds MLE gaussianblur
     
     # R = np.array([[0.1]])
     R = np.array([[0.05]])
