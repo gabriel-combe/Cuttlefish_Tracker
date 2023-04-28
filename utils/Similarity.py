@@ -33,7 +33,7 @@ def Bhattacharyya_distance_log(descriptors: np.ndarray, template: np.ndarray):
 
     # Use this distance if there's issue with floating point number
     # Or if a descriptor full of zeros may occur
-    dist = -np.log(np.minimum(1., bc * (1./(np.sqrt(descriptors_mean * template_mean * template.shape[1]**2) + np.finfo(float).tiny))))
+    dist = -np.log(np.minimum(1., bc * (1./(np.sqrt(descriptors_mean * template_mean * template.shape[1]**2) + np.finfo(float).tiny))) + np.finfo(float).tiny)
 
     return dist
 

@@ -71,7 +71,7 @@ class ParticleFilter(object):
         # Array of all the trackers and particles
         self.particles = np.zeros((self.N, self.track_dim, self.state_dim))
         self.particles = self.particle_struct.create_gaussian_particles(self.N, self.track_dim, init_pos[:, 0], init_pos[:, 1])
-        self.prev_particles = np.copy(self.particles)
+        self.prev_particles = np.array([np.copy(self.particles), np.copy(self.particles)])
         
         # Weights of each trackers
         self.weights = np.ones(self.N)/self.N
@@ -98,17 +98,11 @@ class ParticleFilter(object):
         self.template_patch = self.slicer.image_slice(np.array([self.mu]))
         self.prev_patch_descriptor = self.descriptor.compute(self.template_patch)
 
-        # Save previous frame to compute the descriptor of the best particle
-        self.prev_frame = None
-
-        # Save the descriptor of the best particle at the previous frame
-        self.prev_descriptor = None
-
     # Predict next state for each trackers (prior)
     def predict(self, dt: Optional[float] =1.) -> None:
         aux_particles = np.copy(self.particles)
-        self.particles = self.particle_struct.motion_model(np.copy(self.particles), self.Q_motion, self.prev_particles, self.mu, self.search_area, dt)
-        self.prev_particles = aux_particles
+        self.particles = self.particle_struct.motion_model(np.copy(self.particles), self.Q_motion, self.prev_particles, self.mu, self.search_area, self.frame_size, dt)
+        self.prev_particles = np.array([aux_particles, np.copy(self.prev_particles[0])])
 
     # Update each particle's weight using a descriptor and a similarity coefficient
     def update(self, z: np.ndarray) -> None:
@@ -128,14 +122,20 @@ class ParticleFilter(object):
         self.weights += 1.e-12
         self.weights /= np.sum(self.weights)
 
-        cv2.imshow('best particle', image_slice[np.argmax(self.weights)])
         cv2.imshow('template particle', self.template_patch[0])
+        cv2.imshow('best particle', image_slice[np.argmax(self.weights)])
         print(self.particles[np.argmax(self.weights)])
+        # for i in range(self.N):
+        #     print(self.particles[i])
+        #     print(self.weights[i])
+        #     print(coeff_sim[i])
+        #     cv2.imshow('Show particles', image_slice[i])
+        #     cv2.waitKey(0)
 
     # Computation of the mean and standard deviation of the particles for each targets (estimate)
     def estimate(self) -> None:
-        # self.mu = np.average(self.particles, weights=self.weights, axis=0)
-        self.mu = self.particles[np.argmax(self.weights)]
+        self.mu = np.average(self.particles, weights=self.weights, axis=0)
+        # self.mu = self.particles[np.argmax(self.weights)]
         self.sigma = np.average((self.particles - self.mu)**2, weights=self.weights, axis=0)
         self.search_area = self.mu[:, 6:] * self.alpha
         self.slicer.updateSize((2*int(self.mu[0, 6]), 2*int(self.mu[0, 7])))

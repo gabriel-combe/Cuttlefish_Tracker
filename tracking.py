@@ -170,12 +170,15 @@ if __name__ == "__main__":
 
     # Create covariance matrices for prediction and update model
     # Sequence 2
-    Q_motion = np.array([[10*ratio, 0.1*fps*ratio, 1*fps*ratio, 10, 0.1*fps, 1*fps, 0.01*ratio, 0.01]])
+    # Q_motion = np.array([[10*ratio, 0.1*fps*ratio, 0.2*fps*ratio, 10, 0.1*fps, 0.2*fps, 0.1*ratio, 0.1]]) # cap2Dbb hog dbl MLE
 
     # Sequence 4
-    # Q_motion = np.array([[20*ratio, 10*fps*ratio, 20*fps*ratio, 20, 10*fps, 20*fps, 0.8*ratio, 0.8]])
+    # Q_motion = np.array([[20*ratio, 10*fps*ratio, 20*fps*ratio, 20, 10*fps, 20*fps, 0.8*ratio, 0.8]]) # cap2Dbb hog bdl MAP
+    # Q_motion = np.array([[5*ratio, 0.4*fps*ratio, 0.8*fps*ratio, 5, 0.4*fps, 0.8*fps, 0.2*ratio, 0.2]]) # cap2Dbb hog bds MLE
+    Q_motion = np.array([[0.1*ratio, 0*fps*ratio, 0*fps*ratio, 0.1, 0*fps, 0*fps, 0.2*ratio, 0.2]]) # ppp2Dbb hog bds MLE
     
-    R = np.array([[0.1]])
+    # R = np.array([[0.1]])
+    R = np.array([[0.05]])
     # R = np.array([[0.15, 2.0]])
     # R = np.array([[25]])
 
@@ -236,7 +239,7 @@ if __name__ == "__main__":
         output_frame = draw_output_mean_particule(output_frame, particle_filter.mu)
         output_frame = draw_search_area(output_frame, particle_filter.mu, particle_filter.search_area)
         cv2.imshow('Track Cuttlefish', output_frame)
-        # cv2.waitKey(0)
+        cv2.waitKey(0)
 
         # Write the frame into the video file
         if args.save_video:
