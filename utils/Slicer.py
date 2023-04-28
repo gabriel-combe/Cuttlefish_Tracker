@@ -20,7 +20,8 @@ class Resize():
         pad_height = np.max(particles[:, :, 7])
 
         # Pad images to take care of Bbox that get outside of the image
-        image_pad = np.pad(self.image, ((int(pad_height), int(pad_height)), (int(pad_width), int(pad_width)), (0, 0)), mode='constant', constant_values=0)
+        # image_pad = np.pad(self.image, ((int(pad_height), int(pad_height)), (int(pad_width), int(pad_width)), (0, 0)), mode='constant', constant_values=0)
+        image_pad = np.pad(self.image, ((int(pad_height), int(pad_height)), (int(pad_width), int(pad_width)), (0, 0)), mode='edge')
 
         for p in particles:
             # Compute Start and End point to determine the patch of the image to slice

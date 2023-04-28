@@ -1,12 +1,13 @@
 import cv2
 import numpy as np
+from skimage import feature
 
 # Entree : Un ndarray correspondant a une image au format BGR
 # Sortie : Un tuple 2-Dimension contenant un tuple de keypoint et un numpy array (n, 128) (n=nombre de keypoints) contenant les descripteurs
 
 class HOG():
 
-    def __init__(self, winSize, blockSize = (16, 16), blockStride = (8, 8),  cellSize = (8, 8), nbins = 9, freezeSize = False):
+    def __init__(self, winSize, blockSize = (18, 18), blockStride = (6, 6),  cellSize = (6, 6), nbins = 9, freezeSize = False):
         self.winSize = (winSize[0] // cellSize[0] * cellSize[0], winSize[1] // cellSize[1] * cellSize[1])
         self.blockSize = blockSize
         self.blockStride = blockStride
@@ -77,6 +78,26 @@ class HOGCOLOR():
     def update(self, winSize):
         if not self.freezeSize:
             self.__init__(winSize, self.blockSize, self.blockStride,  self.cellSize, self.nbins)
+
+class LBP():
+    def __init__(self, numPoints, radius):
+        self.numPoints = numPoints
+        self.radius = radius
+    
+    def compute(self, images : np.ndarray, eps=1e-7):
+        hist = []
+        for image in images:
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+            lbp = feature.local_binary_pattern(image, self.numPoints, self.radius, method="uniform")
+            hist.append(np.histogram(lbp.ravel(), bins=np.arange(0, self.numPoints + 3), range=(0, self.numPoints + 2))[0])
+
+            hist[-1] = hist[-1].astype("float")
+            hist[-1] /= (hist[-1].sum() + eps)
+        
+        return np.array(hist)
+    
+    def update(self, winSize):
+        pass
 
 class SIFT():
 

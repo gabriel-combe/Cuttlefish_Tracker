@@ -109,15 +109,15 @@ class ParticleFilter(object):
 
         self.prev_frame = z
 
-        gaussBlur = cv2.GaussianBlur(z, (17,17), 5, borderType=cv2.BORDER_REFLECT_101)
-        gaussBlur[int(self.mu[0, 3]-self.mu[0, 7]+(0*self.search_area[:, 1]/8)):int(self.mu[0, 3]+self.mu[0, 7]-(0*self.search_area[:, 1]/8)), int(self.mu[0, 0]-self.mu[0, 6]+(0*self.search_area[:, 0]/8)):int(self.mu[0, 0]+self.mu[0, 6]-(0*self.search_area[:, 0]/8))] = z[int(self.mu[0, 3]-self.mu[0, 7]+(0*self.search_area[:, 1]/8)):int(self.mu[0, 3]+self.mu[0, 7]-(0*self.search_area[:, 1]/8)), int(self.mu[0, 0]-self.mu[0, 6]+(0*self.search_area[:, 0]/8)):int(self.mu[0, 0]+self.mu[0, 6]-(0*self.search_area[:, 0]/8))]
+        # gaussBlur = cv2.GaussianBlur(z, (17,17), 5, borderType=cv2.BORDER_REFLECT_101)
+        # gaussBlur[int(self.mu[0, 3]-self.mu[0, 7]+(1*self.search_area[:, 1]/8)):int(self.mu[0, 3]+self.mu[0, 7]-(1*self.search_area[:, 1]/8)), int(self.mu[0, 0]-self.mu[0, 6]+(1*self.search_area[:, 0]/8)):int(self.mu[0, 0]+self.mu[0, 6]-(1*self.search_area[:, 0]/8))] = z[int(self.mu[0, 3]-self.mu[0, 7]+(1*self.search_area[:, 1]/8)):int(self.mu[0, 3]+self.mu[0, 7]-(1*self.search_area[:, 1]/8)), int(self.mu[0, 0]-self.mu[0, 6]+(1*self.search_area[:, 0]/8)):int(self.mu[0, 0]+self.mu[0, 6]-(1*self.search_area[:, 0]/8))]
 
-        self.slicer.updateImage(np.copy(gaussBlur))
-        # self.slicer.updateImage(np.copy(self.prev_frame))
+        # self.slicer.updateImage(np.copy(gaussBlur))
+        self.slicer.updateImage(np.copy(self.prev_frame))
 
         image_slice = self.slicer.image_slice(self.particles)
 
-        self.slicer.updateImage(np.copy(self.prev_frame))
+        # self.slicer.updateImage(np.copy(self.prev_frame))
 
         descriptor_result = self.descriptor.compute(image_slice)
 
@@ -130,7 +130,7 @@ class ParticleFilter(object):
 
         cv2.imshow('template particle', self.template_patch[0])
         cv2.imshow('best particle', image_slice[np.argmax(self.weights)])
-        cv2.imshow('Blur img', gaussBlur)
+        # cv2.imshow('Blur img', gaussBlur)
         print(self.particles[np.argmax(self.weights)])
         # for i in range(self.N):
         #     print(self.particles[i])

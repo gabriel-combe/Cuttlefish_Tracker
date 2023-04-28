@@ -21,7 +21,7 @@ def get_opts():
                         choices=['cap2Dfbb', 'cap2Dbb', 'ppp2Dbb'],
                         help='which particle structure to use')
     parser.add_argument('--descriptor', type=str, default='hog',
-                        choices=['hog', 'hogcolor'],
+                        choices=['hog', 'hogcolor', 'lbp'],
                         help='which descriptor to use')
     parser.add_argument('--similarity', type=str, default='bd',
                         choices=['bds', 'bdl'],
@@ -169,18 +169,24 @@ if __name__ == "__main__":
     ]])
 
     # Create covariance matrices for prediction and update model
+    # Sequence 1
+    # Q_motion = np.array([[5*ratio, 0.1*fps*ratio, 0.2*fps*ratio, 5, 0.1*fps, 0.2*fps, 0.2*ratio, 0.2]]) # cap2Dbb lbp dbl MLE
+    
     # Sequence 2
-    # Q_motion = np.array([[10*ratio, 0.1*fps*ratio, 0.2*fps*ratio, 10, 0.1*fps, 0.2*fps, 0.1*ratio, 0.1]]) # cap2Dbb hog dbl MLE
+    Q_motion = np.array([[5*ratio, 0.1*fps*ratio, 0.2*fps*ratio, 5, 0.1*fps, 0.2*fps, 0.2*ratio, 0.2]]) # cap2Dbb lbp dbs MLE
+    # Q_motion = np.array([[10*ratio, 0.1*fps*ratio, 0.4*fps*ratio, 10, 0.1*fps, 0.4*fps, 0.1*ratio, 0.1]]) # cap2Dbb hog dbs MLE
 
     # Sequence 4
     # Q_motion = np.array([[20*ratio, 10*fps*ratio, 20*fps*ratio, 20, 10*fps, 20*fps, 0.8*ratio, 0.8]]) # cap2Dbb hog bdl MAP
-    # Q_motion = np.array([[5*ratio, 0.4*fps*ratio, 0.8*fps*ratio, 5, 0.4*fps, 0.8*fps, 0.2*ratio, 0.2]]) # cap2Dbb hog bds MLE
+    # Q_motion = np.array([[1*ratio, 0.25*fps*ratio, 0.5*fps*ratio, 1, 0.25*fps, 0.25*fps, 0*ratio, 0]]) # cap2Dfbb hog bds MLE
+    # Q_motion = np.array([[1*ratio, 0.5*fps*ratio, 1*fps*ratio, 1, 0.5*fps, 1*fps, 0.2*ratio, 0.2]]) # cap2Dbb hog bds MLE
+    # Q_motion = np.array([[5*ratio, 0.4*fps*ratio, 0.8*fps*ratio, 5, 0.4*fps, 0.8*fps, 0.1*ratio, 0.1]]) # cap2Dbb hog bds MLE
     # Q_motion = np.array([[0.1*ratio, 0*fps*ratio, 0*fps*ratio, 0.1, 0*fps, 0*fps, 0.2*ratio, 0.2]]) # ppp2Dbb hog bds MLE
-    Q_motion = np.array([[1*ratio, 0*fps*ratio, 0*fps*ratio, 1, 0*fps, 0*fps, 2*ratio, 2]]) # ppp2Dbb hog bds MLE gaussianblur
+    # Q_motion = np.array([[1*ratio, 0*fps*ratio, 0*fps*ratio, 1, 0*fps, 0*fps, 1*ratio, 1]]) # ppp2Dbb hog bds MLE gaussianblur
     
     # R = np.array([[0.1]])
-    R = np.array([[0.05]])
-    # R = np.array([[0.15, 2.0]])
+    # R = np.array([[0.05]])
+    R = np.array([[0.05, 0.2]])
     # R = np.array([[25]])
 
     # Set size of the descriptor and slicer
@@ -189,6 +195,8 @@ if __name__ == "__main__":
     # init functions and classes
     if args.descriptor == 'hog' or args.descriptor == 'hogcolor':
         descriptor = descriptor_dict[args.descriptor](desc_size, freezeSize=(args.desc_size!=None))
+    elif args.descriptor == 'lbp':
+        descriptor = descriptor_dict[args.descriptor](12, 2)
     else:
         descriptor = descriptor_dict[args.descriptor](args.nb_features)
 
@@ -240,7 +248,7 @@ if __name__ == "__main__":
         output_frame = draw_output_mean_particule(output_frame, particle_filter.mu)
         output_frame = draw_search_area(output_frame, particle_filter.mu, particle_filter.search_area)
         cv2.imshow('Track Cuttlefish', output_frame)
-        cv2.waitKey(0)
+        # cv2.waitKey(0)
 
         # Write the frame into the video file
         if args.save_video:

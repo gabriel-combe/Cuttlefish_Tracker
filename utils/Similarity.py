@@ -16,7 +16,11 @@ def Bhattacharyya_distance_sqrt(descriptors: np.ndarray, template: np.ndarray):
     # Use this distance if there's issue with floating point number
     # Or if a descriptor full of zeros may occur
     dist = np.sqrt(np.maximum(0., 1. - (bc * (1./(np.sqrt(descriptors_mean * template_mean * template.shape[1]**2) + np.finfo(float).tiny)))))
+    # dist = []
+    # for desc in descriptors:
+    #     dist.append(1 - np.dot(desc, template[0]) / (np.linalg.norm(desc) * np.linalg.norm(template[0])))
 
+    # return np.array(dist)
     return dist
 
 # Bhattacharyya distance between a list of descriptors and a template descriptor
