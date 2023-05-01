@@ -30,9 +30,10 @@ class ParticleFilter(object):
         self.track_dim = track_dim
         self.alpha = alpha
         self.rng = np.random.default_rng(self.seed)
-        self.particle_struct = particle_struct(self.rng)
-        self.state_dim = self.particle_struct.particle_dim
         self.frame_size = (init_frame.shape[1], init_frame.shape[0])
+        self.ratio = self.frame_size[0]/self.frame_size[1]
+        self.particle_struct = particle_struct(self.rng, self.ratio)
+        self.state_dim = self.particle_struct.particle_dim
 
         # Set the ranges for a uniform distribution of the particles
         self.ranges = np.repeat([
@@ -159,7 +160,6 @@ class ParticleFilter(object):
 
     # Perform resample 
     def resample(self, fraction: Optional[float] =1./4.) -> None:
-        print(self.neff())
         if self.neff() < self.N * fraction:
             indexes = self.resample_method(self.weights)
             self.particles[:] = self.particles[indexes]
