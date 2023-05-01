@@ -165,9 +165,10 @@ class ConstAccelParticle2DBbox(Particle):
 # 2D Particle with position, Bbox's width and height 
 class PredPosParticle2DBbox(Particle):
 
-    def __init__(self, rng):
+    def __init__(self, rng, ratio):
         self.particle_dim = 8
         self.rng = rng
+        self.ratio = ratio
     
     # Create particles which are uniformly distributed in given ranges
     def create_uniform_particles(self, N: int, track_dim: int, ranges: np.ndarray) -> np.ndarray:
@@ -181,10 +182,10 @@ class PredPosParticle2DBbox(Particle):
     def compute_gamma(self, N: int, track_dim: int) -> np.ndarray:
         p = self.rng.random((N, track_dim))
         gamma = np.zeros((N, track_dim))
-        gamma[(0 <= p) & (p <= 0.2)] = -0.05
-        gamma[(0.2 < p) & (p <= 0.4)] = -0.025
-        gamma[(0.6 < p) & (p <= 0.8)] = 0.025
-        gamma[(0.8 < p) & (p <= 1)] = 0.05
+        gamma[(0 <= p) & (p <= 0.2)] = -0.025
+        gamma[(0.2 < p) & (p <= 0.4)] = -0.0125
+        gamma[(0.6 < p) & (p <= 0.8)] = 0.0125
+        gamma[(0.8 < p) & (p <= 1)] = 0.025
 
         return gamma
     
@@ -215,9 +216,9 @@ class PredPosParticle2DBbox(Particle):
         particles[:, :, 3] += .5 * particles[:, :, 5] * dt**2 + particles[:, :, 4] * dt
 
         # Boxes width
-        particles[:, :, 6] *= 1 + gamma
+        particles[:, :, 6] *= 1 + gamma * self.ratio
         # Boxes height
-        particles[:, :, 7] *= 1 + gamma
+        particles[:, :, 7] *= 1 + gamma / self.ratio
 
         # Add Gaussian noise to the particles
         noises = self.rng.normal(loc=0, scale=Q_model, size=(N, track_dim, self.particle_dim))
@@ -242,7 +243,7 @@ class PredPosParticle2DBbox(Particle):
     
     # Measurement model using a similarity coefficient
     def measurement_model(self, coeff_sim: np.ndarray, particles: np.ndarray, template_particle:np.ndarray, R: np.ndarray) -> np.ndarray:
-        # proba = ss.norm(0., R[:, 0]).pdf(coeff_sim)
-        proba = 0.8*ss.norm.pdf(coeff_sim, loc=0, scale=R[:, 0]) + (1-0.8)*ss.norm.pdf(np.mean((particles - template_particle)**2, axis=(2, 1)), loc=0, scale=R[:, 1])
+        proba = ss.norm(0., R[:, 0]).pdf(coeff_sim)
+        # proba = 0.8*ss.norm.pdf(coeff_sim, loc=0, scale=R[:, 0]) + (1-0.8)*ss.norm.pdf(np.mean((particles - template_particle)**2, axis=(2, 1)), loc=0, scale=R[:, 1])
         # proba = np.exp(-R[:, 0] * coeff_sim**2)
         return proba
