@@ -21,10 +21,10 @@ def get_opts():
                         choices=['cap2Dfbb', 'cap2Dbb', 'ppp2Dbb'],
                         help='which particle structure to use')
     parser.add_argument('--descriptor', type=str, default='hog',
-                        choices=['hog', 'hogcolor', 'lbp'],
+                        choices=['hog', 'hogcolor', 'hogcascade', 'hogcascadelbp', 'lbp'],
                         help='which descriptor to use')
     parser.add_argument('--similarity', type=str, default='bd',
-                        choices=['bds', 'bdl'],
+                        choices=['bds', 'bdl', 'cos', 'dkl'],
                         help='which similartiy measure to use')
     parser.add_argument('--resampling', type=str, default='systematic',
                         choices=['systematic', 'residual', 'stratified', 'multinomial'],
@@ -38,6 +38,8 @@ def get_opts():
     # Descriptor args
     parser.add_argument('--nb-features', type=int, default=4000, help='Max number of feature for keypoint descriptors')
     parser.add_argument('--desc-size', nargs=2, type=int, default=None, help='Fix size used force all patch to have the same size for each frame')
+    parser.add_argument('--lbp-radius', type=int, default=1, help='Radius of the LBP')
+    parser.add_argument('--lbp-nbpoints', type=int, default=8, help='Number of point used for the LBP')
     
     # Model args
     parser.add_argument('--weights', nargs='+', type=str, default='weights/cuttlefish_best.pt', help='model.pt path(s)')
@@ -173,8 +175,17 @@ if __name__ == "__main__":
     # Q_motion = np.array([[5*ratio, 0.1*fps*ratio, 0.2*fps*ratio, 5, 0.1*fps, 0.2*fps, 0.2*ratio, 0.2]]) # cap2Dbb lbp dbl MLE
     
     # Sequence 2
-    Q_motion = np.array([[5*ratio, 0.1*fps*ratio, 0.2*fps*ratio, 5, 0.1*fps, 0.2*fps, 0.2*ratio, 0.2]]) # cap2Dbb lbp dbs MLE
+    # Q_motion = np.array([[5*ratio, 0.1*fps*ratio, 0.2*fps*ratio, 5, 0.1*fps, 0.2*fps, 0.2*ratio, 0.2]]) # ppp2Dbb lbp dbs MLE
     # Q_motion = np.array([[10*ratio, 0.1*fps*ratio, 0.4*fps*ratio, 10, 0.1*fps, 0.4*fps, 0.1*ratio, 0.1]]) # cap2Dbb hog dbs MLE
+    # Q_motion = np.array([[5*ratio, 0, 0, 5, 0, 0, 0.1*ratio, 0.1]]) # ppp2Dbb hogcascade dbs MLE R0.05 128 64
+    # Q_motion = np.array([[5*ratio, 0, 0, 5, 0, 0, 0.1*ratio, 0.1]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 128 64
+    # Q_motion = np.array([[8*ratio, 0, 0, 8, 0, 0, 0.4, 0.4]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np100 (gamma 0.0125 0.025) nbp16 r2
+    # Q_motion = np.array([[5, 0, 0, 5, 0, 0, 0.8, 0.8]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np100 (gamma 0.0125 0.025) nbp16 r2
+    # Q_motion = np.array([[2, 0, 0, 4, 0, 0, 0.4, 0.4]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np100 (gamma 0.0125 0.025) nbp16 r2
+    # Q_motion = np.array([[0.5, 0, 0, 0.5, 0, 0, 0.2, 0.2]]) # ppp2Dbb hogcascadelbp cos MLE R0.1 64 64 np100 (gamma 0.0125 0.025) nbp16 r2
+    # Q_motion = np.array([[0.1, 0, 0, 0.1, 0, 0, 0.1, 0.1]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np100 (gamma 0.0125 0.025) nbp16 r2
+    # Q_motion = np.array([[4, 0, 0, 8, 0, 0, 0.4, 0.8]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np500 (gamma 0.0125 0.025) nbp16 r2
+    # Q_motion = np.array([[8*ratio, 0, 0, 8, 0, 0, 0.8, 1.0]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np100 (gamma 0.0125 0.025) nbp12 r2
 
     # Sequence 4
     # Q_motion = np.array([[20*ratio, 10*fps*ratio, 20*fps*ratio, 20, 10*fps, 20*fps, 0.8*ratio, 0.8]]) # cap2Dbb hog bdl MAP
@@ -183,6 +194,20 @@ if __name__ == "__main__":
     # Q_motion = np.array([[5*ratio, 0.4*fps*ratio, 0.8*fps*ratio, 5, 0.4*fps, 0.8*fps, 0.1*ratio, 0.1]]) # cap2Dbb hog bds MLE
     # Q_motion = np.array([[0.1*ratio, 0*fps*ratio, 0*fps*ratio, 0.1, 0*fps, 0*fps, 0.2*ratio, 0.2]]) # ppp2Dbb hog bds MLE
     # Q_motion = np.array([[1*ratio, 0*fps*ratio, 0*fps*ratio, 1, 0*fps, 0*fps, 1*ratio, 1]]) # ppp2Dbb hog bds MLE gaussianblur
+    # Q_motion = np.array([[5*ratio, 0, 0, 5, 0, 0, 0.1*ratio, 0.1]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 128 np100 (gamma 0.0125 0.025)
+    # Q_motion = np.array([[8*ratio, 0, 0, 8, 0, 0, 0.2, 0.4]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 128 np100 (gamma 0.0125 0.025)
+    # Q_motion = np.array([[5*ratio, 0, 0, 5, 0, 0, 0.1*ratio, 0.1]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 128 np100
+    # Q_motion = np.array([[10*ratio, 0, 0, 10, 0, 0, 0.2*ratio, 0.2]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np100 (gamma 0.0125 0.025)
+    # Q_motion = np.array([[5*ratio, 0, 0, 5, 0, 0, 0.5*ratio, 0.5]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np500 (gamma 0.0125 0.025)
+    # Q_motion = np.array([[5*ratio, 0, 0, 5, 0, 0, 0.6, 0.9]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np500 (gamma 0.0125 0.025)
+    # Q_motion = np.array([[5*ratio, 0, 0, 5, 0, 0, 0.6, 0.9]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np500 (gamma 0.025 0.05)
+    # Q_motion = np.array([[5*ratio, 0, 0, 5, 0, 0, 0.7, 1.0]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np500 (gamma 0.025 0.05)
+    # Q_motion = np.array([[5, 0, 0, 5, 0, 0, 0.05, 0.05]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np100 (gamma 0.025 0.05)
+    # Q_motion = np.array([[5, 0, 0, 5, 0, 0, 1, 1]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np500 (gamma 0.025 0.05)
+    # Q_motion = np.array([[2*ratio, 0, 0, 2, 0, 0, 0.2, 0.2]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np100 (gamma 0.0125 0.025) 2*w h/2
+    # Q_motion = np.array([[4, 0, 0, 2, 0, 0, 0.4, 0.1]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np1000 (gamma 0.0125 0.025)
+    Q_motion = np.array([[2*ratio, 0, 0, 2, 0, 0, 0.2, 0.2]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np1000 (gamma 0.0125 0.025)
+    # Q_motion = np.array([[2, 0, 0, 2, 0, 0, 0.2, 0.2]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np1000 (gamma 0.025 0.05)
     
     # R = np.array([[0.1]])
     # R = np.array([[0.05]])
@@ -193,10 +218,12 @@ if __name__ == "__main__":
     desc_size = args.desc_size if args.desc_size!=None else (2*int(tracked_cuttlefish[2]), 2*int(tracked_cuttlefish[3]))
 
     # init functions and classes
-    if args.descriptor == 'hog' or args.descriptor == 'hogcolor':
+    if args.descriptor == 'hog' or args.descriptor == 'hogcolor' or args.descriptor == 'hogcascade':
         descriptor = descriptor_dict[args.descriptor](desc_size, freezeSize=(args.desc_size!=None))
     elif args.descriptor == 'lbp':
-        descriptor = descriptor_dict[args.descriptor](12, 2)
+        descriptor = descriptor_dict[args.descriptor](args.lbp_nbpoints, args.lbp_radius)
+    elif args.descriptor == 'hogcascadelbp':
+        descriptor = descriptor_dict[args.descriptor](desc_size, args.lbp_nbpoints, args.lbp_radius)
     else:
         descriptor = descriptor_dict[args.descriptor](args.nb_features)
 
@@ -217,7 +244,7 @@ if __name__ == "__main__":
     output_frame = draw_output_frame(np.copy(current_frame), particle_filter.mu)
     output_frame = draw_output_particles(output_frame, particle_filter.particles)
     output_frame = draw_output_mean_particule(output_frame, particle_filter.mu)
-    output_frame = draw_search_area(output_frame, particle_filter.mu, particle_filter.search_area)
+    # output_frame = draw_search_area(output_frame, particle_filter.mu, particle_filter.search_area)
     cv2.imshow('Track Cuttlefish', output_frame)
     cv2.waitKey(0)
 
@@ -246,13 +273,14 @@ if __name__ == "__main__":
         output_frame = draw_output_frame(np.copy(current_frame), particle_filter.mu)
         output_frame = draw_output_particles(output_frame, particle_filter.particles)
         output_frame = draw_output_mean_particule(output_frame, particle_filter.mu)
-        output_frame = draw_search_area(output_frame, particle_filter.mu, particle_filter.search_area)
+        # output_frame = draw_search_area(output_frame, particle_filter.mu, particle_filter.search_area)
         cv2.imshow('Track Cuttlefish', output_frame)
         # cv2.waitKey(0)
 
         # Write the frame into the video file
         if args.save_video:
             outvid.write(output_frame)
+            np.savetxt('bboxSave.out', particle_filter.mu)
 
         # Press Q to stop the particle filter
         if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -260,7 +288,8 @@ if __name__ == "__main__":
 
     # Release the video capture and video write objects
     cap.release()
-    outvid.release()
+    if args.save_video:
+        outvid.release()
     
     # Closes all the windows
     cv2.destroyAllWindows()
