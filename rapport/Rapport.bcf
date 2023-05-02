@@ -2344,11 +2344,13 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">Bibliographie/references.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">Helle2009</bcf:citekey>
-    <bcf:citekey order="2">wifialliance</bcf:citekey>
-    <bcf:citekey order="3">CiscoVNI2017</bcf:citekey>
-    <bcf:citekey order="4">Knuth</bcf:citekey>
-    <bcf:citekey order="5">lamport94</bcf:citekey>
+    <bcf:citekey order="1">xu_human_2010</bcf:citekey>
+    <bcf:citekey order="2">kong_particle_2019</bcf:citekey>
+    <bcf:citekey order="3">qiang_zhu_fast_2006</bcf:citekey>
+    <bcf:citekey order="4">dalal_histograms_2005</bcf:citekey>
+    <bcf:citekey order="5">bhattacharyya_measure_1960</bcf:citekey>
+    <bcf:citekey order="6">rlabbe</bcf:citekey>
+    <bcf:citekey order="7">wang_yolov7_nodate</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

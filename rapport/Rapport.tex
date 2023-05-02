@@ -1,4 +1,4 @@
-\documentclass[a4paper, draft]{scrbook}
+\documentclass[12pt, a4paper, draft]{scrbook}
 
 \usepackage[utf8]{inputenc}
 \usepackage[a4paper, total={7in, 10in}]{geometry}
@@ -6,6 +6,7 @@
 \usepackage[french]{babel}  
 %\usepackage{fullpage}
 
+\usepackage[none]{hyphenat}
 \usepackage{amsmath}
 \usepackage{algorithm2e}
 \usepackage{babel,csquotes}
@@ -17,48 +18,14 @@
 	    style=numeric,
 	    citestyle=numeric]{biblatex}
 
+\renewcommand*{\sfdefault}{\familydefault}
+
 \addbibresource{Bibliographie/references.bib}
-
-
-% Python style for highlighting
-\newcommand\pythonstyle{\lstset{
-language=Python,
-stepnumber=1, 
-tabsize=2, 
-breaklines=true,
-basicstyle=\scriptsize\ttfamily,
-otherkeywords={self},             % Add keywords here
-%keywordstyle=\scriptsize\ttfamily\color{deepblue},
-%emph={MyClass,__init__},          % Custom highlighting
-%emphstyle=\ttb\color{deepred},    % Custom highlighting style
-%stringstyle=\color{deepgreen},
-%frame=tb,                         % Any extra options here
-%showstringspaces=false            % 
-}}
-
-
-% Python environment
-\lstnewenvironment{python}[1][]
-{
-	\pythonstyle
-\lstset{#1}
-}
-{}
-
-% Python for external files
-\newcommand\pythonexternal[2][]{{
-	\pythonstyle
-\lstinputlisting[#1]{#2}}}
-
-% Python for inline
-\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
-
-%\pagestyle{headings}       
 
 
 \title{ Suivi de seiches dans des videos sous-marine}
 \subtitle{Projet de programmation 2 }         % Les paramètres du titre : titre, auteur, date
-\author{ Vaisse Ariane \and Beldjilali Maxime \and Young Brun Luis-Miguel \and Combe-Ounkham Gabriel \\
+\author{ Vaisse Ariane \and Beldjilali Maxime \and Young Brun Luis-Miguel \and Combe-Ounkham Gabriel \\ \\
 		\small{Encadre par} \\ \small{Houda Hammami}}        
 \subject{Université de Montpellier\\
 		Faculté des Sciences\\
@@ -66,7 +33,7 @@ otherkeywords={self},             % Add keywords here
 \date{2022-2023}          
 
 
-
+\KOMAoptions{open=any}
 \begin{document}
 
 \maketitle
@@ -93,11 +60,13 @@ otherkeywords={self},             % Add keywords here
 \include{Chapters/Bilan/Bilan}
 
 % Exemple de reference
-\cite{Helle2009}
-\cite{wifialliance}
-\cite{CiscoVNI2017}
-\cite{Knuth}
-\cite{lamport94}
+\cite{xu_human_2010}
+\cite{kong_particle_2019}
+\cite{qiang_zhu_fast_2006}
+\cite{dalal_histograms_2005}
+\cite{bhattacharyya_measure_1960}
+\cite{rlabbe}
+\cite{wang_yolov7_nodate}
 
 \printbibliography
 

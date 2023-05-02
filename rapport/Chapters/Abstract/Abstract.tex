@@ -1,4 +1,13 @@
-\chapter*{Abstract}
-\emph{Description très succinte du problème et des différentes étapes de réalisation}
+\chapter*{Resume}
+Le suivi de seiche dans des videos sous-marine en conditions reelles est particulierement difficile, du aux mouvements de la camera, au contraste qui peut etre faible, ou encore a la colorimetrie, qui peut varier d'une video a l'autre.\\
+Notre objectif est donc de tester plusieurs approchent afin d'explorer et de proposer les solutions les plus robustes.\\
+\\
+Nous avons commence par apprendre ce qui ce fait de mieux dans le domaine du suivi d'objet, afin d'avoir une idee des differentes techniques ainsi que de leur efficacite.\\
+\\
+Nous utilisons un filtre a particule comme base de notre algorithme de suivi, il utilisera plusieurs types de descripteurs qui seront compares entre eux afin de determiner le plus efficace. Leur efficacite est mesure en utilisant la methode de Pascal VOC, qui consiste a comparer les bounding box de references avec celles estimees par notre methode.\\
+\\
+Le modele d'intelligence artificielle YOLOv7 est utilise pour faire de la detection automatique de seiche dans les premieres frames de la video.\\
+\\
+Le suivi est ensuite ameliore grace a une etape de prediction qui permet gerer les cas d'occlusions et de deformation des seiches.
 
 \clearpage

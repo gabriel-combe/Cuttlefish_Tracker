@@ -19,150 +19,256 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
-    \entry{wifialliance}{misc}{}
+    \entry{rlabbe}{misc}{}
       \name{author}{1}{}{%
-        {{hash=baaae33af641acca3c686df8b46de873}{%
-           family={Alliance},
-           familyi={A\bibinitperiod},
-           given={WiFi},
-           giveni={W\bibinitperiod}}}%
-      }
-      \strng{namehash}{baaae33af641acca3c686df8b46de873}
-      \strng{fullhash}{baaae33af641acca3c686df8b46de873}
-      \strng{bibnamehash}{baaae33af641acca3c686df8b46de873}
-      \strng{authorbibnamehash}{baaae33af641acca3c686df8b46de873}
-      \strng{authornamehash}{baaae33af641acca3c686df8b46de873}
-      \strng{authorfullhash}{baaae33af641acca3c686df8b46de873}
-      \field{sortinit}{A}
-      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{note}{Online: accessed 26-September-2017}
-      \field{title}{WiFi Alliance News Release}
-      \field{year}{2016}
-      \verb{urlraw}
-      \verb https://www.wi-fi.org/news-events/newsroom/wi-fi-device-shipments-to-surpass-15-billion-by-end-of-2016
-      \endverb
-      \verb{url}
-      \verb https://www.wi-fi.org/news-events/newsroom/wi-fi-device-shipments-to-surpass-15-billion-by-end-of-2016
-      \endverb
-    \endentry
-    \entry{CiscoVNI2017}{article}{}
-      \name{author}{1}{}{%
-        {{hash=7c4cb33c810bedbc5c494cb5e4c33c32}{%
-           family={Cisco\bibnamedelima VNI},
-           familyi={C\bibinitperiod\bibinitdelim V\bibinitperiod},
-           given={2017},
-           giveni={2\bibinitperiod}}}%
+        {{hash=69c51f9374cce2ab10da10523b4a64db}{%
+           family={(rlabbe)},
+           familyi={(\bibinitperiod},
+           given={Roger\bibnamedelima Labbe},
+           giveni={R\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {Cisco}%
+        {GitHub}%
       }
-      \strng{namehash}{7c4cb33c810bedbc5c494cb5e4c33c32}
-      \strng{fullhash}{7c4cb33c810bedbc5c494cb5e4c33c32}
-      \strng{bibnamehash}{7c4cb33c810bedbc5c494cb5e4c33c32}
-      \strng{authorbibnamehash}{7c4cb33c810bedbc5c494cb5e4c33c32}
-      \strng{authornamehash}{7c4cb33c810bedbc5c494cb5e4c33c32}
-      \strng{authorfullhash}{7c4cb33c810bedbc5c494cb5e4c33c32}
-      \field{sortinit}{C}
-      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \strng{namehash}{69c51f9374cce2ab10da10523b4a64db}
+      \strng{fullhash}{69c51f9374cce2ab10da10523b4a64db}
+      \strng{bibnamehash}{69c51f9374cce2ab10da10523b4a64db}
+      \strng{authorbibnamehash}{69c51f9374cce2ab10da10523b4a64db}
+      \strng{authornamehash}{69c51f9374cce2ab10da10523b4a64db}
+      \strng{authorfullhash}{69c51f9374cce2ab10da10523b4a64db}
+      \field{sortinit}{r}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{White Paper}
-      \field{month}{6}
-      \field{title}{{Cisco Visual Networking Index: Forecast and Methodology, 2016--2021}}
-      \field{year}{2017}
-      \verb{urlraw}
-      \verb https://www.cisco.com/c/en/us/solutions/collateral/service-provider/visual-networking-index-vni/complete-white-paper-c11-481360.html
-      \endverb
-      \verb{url}
-      \verb https://www.cisco.com/c/en/us/solutions/collateral/service-provider/visual-networking-index-vni/complete-white-paper-c11-481360.html
-      \endverb
+      \field{howpublished}{https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python}
+      \field{journaltitle}{GitHub repository}
+      \field{title}{Kalman and Bayesian Filters in Python}
+      \field{year}{2014}
     \endentry
-    \entry{Helle2009}{article}{}
+    \entry{bhattacharyya_measure_1960}{article}{}
       \name{author}{1}{}{%
-        {{hash=78957ae766052b451e8e0a8ed46a8e5b}{%
-           family={Helle},
-           familyi={H\bibinitperiod},
-           given={Knut},
-           giveni={K\bibinitperiod}}}%
+        {{hash=5849c9038498843b9de5403c4033f171}{%
+           family={Bhattacharyya},
+           familyi={B\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
       }
-      \strng{namehash}{78957ae766052b451e8e0a8ed46a8e5b}
-      \strng{fullhash}{78957ae766052b451e8e0a8ed46a8e5b}
-      \strng{bibnamehash}{78957ae766052b451e8e0a8ed46a8e5b}
-      \strng{authorbibnamehash}{78957ae766052b451e8e0a8ed46a8e5b}
-      \strng{authornamehash}{78957ae766052b451e8e0a8ed46a8e5b}
-      \strng{authorfullhash}{78957ae766052b451e8e0a8ed46a8e5b}
-      \field{sortinit}{H}
-      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \strng{namehash}{5849c9038498843b9de5403c4033f171}
+      \strng{fullhash}{5849c9038498843b9de5403c4033f171}
+      \strng{bibnamehash}{5849c9038498843b9de5403c4033f171}
+      \strng{authorbibnamehash}{5849c9038498843b9de5403c4033f171}
+      \strng{authornamehash}{5849c9038498843b9de5403c4033f171}
+      \strng{authorfullhash}{5849c9038498843b9de5403c4033f171}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{issn}{0018-263X}
-      \field{number}{04}
-      \field{title}{Den primitivistiske vendingen i norsk historisk middelalderforskning}
-      \field{volume}{88}
-      \field{year}{2009}
-      \field{pages}{572\bibrangedash 609 E}
-      \range{pages}{-1}
-      \verb{urlraw}
-      \verb http://www.idunn.no/ht/2009/04/art09
-      \endverb
-      \verb{url}
-      \verb http://www.idunn.no/ht/2009/04/art09
-      \endverb
-      \keyw{Historiography {·} Knut Helle {·} Middle Ages {·} Norway {·} Viking Age}
+      \field{journaltitle}{Sankhyā: The Indian Journal of Statistics (1933-1960)}
+      \field{number}{4}
+      \field{title}{On a {Measure} of {Divergence} between {Two} {Multinomial} {Populations}}
+      \field{volume}{7}
+      \field{year}{1960}
+      \field{pages}{401\bibrangedash 406}
+      \range{pages}{6}
     \endentry
-    \entry{Knuth}{book}{}
-      \name{author}{1}{}{%
-        {{hash=ec08e6f01da5f3814f28a70c89c64656}{%
-           family={Knuth},
+    \entry{dalal_histograms_2005}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=521763e082baf91e4935f956c6c0f8b3}{%
+           family={Dalal},
+           familyi={D\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod}}}%
+        {{hash=d90650ec8434180101eb4aeec8e4a0c6}{%
+           family={Triggs},
+           familyi={T\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {San Diego, CA, USA}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{8316a8a4748fedae6ff9c5414cecc95a}
+      \strng{fullhash}{8316a8a4748fedae6ff9c5414cecc95a}
+      \strng{bibnamehash}{8316a8a4748fedae6ff9c5414cecc95a}
+      \strng{authorbibnamehash}{8316a8a4748fedae6ff9c5414cecc95a}
+      \strng{authornamehash}{8316a8a4748fedae6ff9c5414cecc95a}
+      \strng{authorfullhash}{8316a8a4748fedae6ff9c5414cecc95a}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We study the question of feature sets for robust visual object recognition, adopting linear SVM based human detection as a test case. After reviewing existing edge and gradient based descriptors, we show experimentally that grids of Histograms of Oriented Gradient (HOG) descriptors signiﬁcantly outperform existing feature sets for human detection. We study the inﬂuence of each stage of the computation on performance, concluding that ﬁne-scale gradients, ﬁne orientation binning, relatively coarse spatial binning, and high-quality local contrast normalization in overlapping descriptor blocks are all important for good results. The new approach gives near-perfect separation on the original MIT pedestrian database, so we introduce a more challenging dataset containing over 1800 annotated human images with a large range of pose variations and backgrounds.}
+      \field{booktitle}{2005 {IEEE} {Computer} {Society} {Conference} on {Computer} {Vision} and {Pattern} {Recognition} ({CVPR}'05)}
+      \field{title}{Histograms of {Oriented} {Gradients} for {Human} {Detection}}
+      \field{volume}{1}
+      \field{year}{2005}
+      \field{pages}{886\bibrangedash 893}
+      \range{pages}{8}
+    \endentry
+    \entry{kong_particle_2019}{article}{}
+      \name{author}{6}{}{%
+        {{hash=1c92bea464d4e5a19e0ff469c8ed7076}{%
+           family={Kong},
            familyi={K\bibinitperiod},
-           given={Donald\bibnamedelima E.},
-           giveni={D\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+           given={Xiaofang},
+           giveni={X\bibinitperiod}}}%
+        {{hash=b6fff56e4c606d8c37bb384da63c33e3}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Qian},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=27a7d8677dd7308dbc00a024300db05d}{%
+           family={Gu},
+           familyi={G\bibinitperiod},
+           given={Guohua},
+           giveni={G\bibinitperiod}}}%
+        {{hash=e60df921d205387a6a076dca1c8f329b}{%
+           family={Ren},
+           familyi={R\bibinitperiod},
+           given={Kan},
+           giveni={K\bibinitperiod}}}%
+        {{hash=c1bf42238e78c95c69147f026e73790b}{%
+           family={Qian},
+           familyi={Q\bibinitperiod},
+           given={Weixian},
+           giveni={W\bibinitperiod}}}%
+        {{hash=1d7a874b1ff656ee5f33ddd7918b2fd4}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Zewei},
+           giveni={Z\bibinitperiod}}}%
       }
-      \list{publisher}{1}{%
-        {Addison-Wesley Professional}%
-      }
-      \strng{namehash}{ec08e6f01da5f3814f28a70c89c64656}
-      \strng{fullhash}{ec08e6f01da5f3814f28a70c89c64656}
-      \strng{bibnamehash}{ec08e6f01da5f3814f28a70c89c64656}
-      \strng{authorbibnamehash}{ec08e6f01da5f3814f28a70c89c64656}
-      \strng{authornamehash}{ec08e6f01da5f3814f28a70c89c64656}
-      \strng{authorfullhash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{namehash}{dcfd1d5aba7418991c6bb5864593b743}
+      \strng{fullhash}{f8a8c948b635cbe3aa1808ef7f427f6d}
+      \strng{bibnamehash}{dcfd1d5aba7418991c6bb5864593b743}
+      \strng{authorbibnamehash}{dcfd1d5aba7418991c6bb5864593b743}
+      \strng{authornamehash}{dcfd1d5aba7418991c6bb5864593b743}
+      \strng{authorfullhash}{f8a8c948b635cbe3aa1808ef7f427f6d}
       \field{sortinit}{K}
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{The Book}
-      \field{year}{1986}
+      \field{abstract}{Tracking vehicles automatically are of great importance in the intelligent transportation systems to guarantee the traffic safety, especially for the self-driving technique. To solve the problem of the tiny jitter of the camera due to the shaking platform and the rough road, and to track the vehicle ahead, a salient feature-based video stabilisation method is introduced to remove the effect of camera motion, and an improved particle filter-based vehicle tracking algorithm via histogram of oriented gradient (HOG) features is proposed in this study. For video stabilisation, first, the features from accelerated segment test algorithm are applied to extract salient points from the two adjacent frames. Then, the fast retina keypoint algorithm is used to match the correspondences and the M-estimator sample consensus algorithm is applied to remove the outliers. Finally, the image with tiny jitter is stabilised by the affine transformation matrix calculated from the retained inliers. After the image stabilisation, an improved particle filter-based tracking method is proposed for vehicle tracking via the HOG feature extracted from an adaptive searching area determined by the expected vehicle position of the previous frame. Experimental results demonstrate that camera motion can be effectively compensated by the feature-based stabilisation method, and the forward vehicle can be tracked with stability and robustness in real time.}
+      \field{journaltitle}{IET Intelligent Transport Systems}
+      \field{month}{6}
+      \field{number}{6}
+      \field{title}{Particle filter‐based vehicle tracking via {HOG} features after image stabilisation in intelligent drive system}
+      \field{volume}{13}
+      \field{year}{2019}
+      \field{pages}{942\bibrangedash 949}
+      \range{pages}{8}
     \endentry
-    \entry{lamport94}{book}{}
-      \name{author}{1}{}{%
-        {{hash=5d77435450d10a850a5b58577b9a456b}{%
-           family={Lamport},
-           familyi={L\bibinitperiod},
-           given={Leslie},
-           giveni={L\bibinitperiod}}}%
+    \entry{qiang_zhu_fast_2006}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=095f784b151ef6e1ae92d614829f6e98}{%
+           family={{Qiang Zhu}},
+           familyi={Q\bibinitperiod}}}%
+        {{hash=1950be5a07a5acf5c3474c6fd31f977f}{%
+           family={{Mei-Chen Yeh}},
+           familyi={M\bibinitperiod}}}%
+        {{hash=4f893eccdd9d4c97ff19d5a0864862d7}{%
+           family={{Kwang-Ting Cheng}},
+           familyi={K\bibinitperiod}}}%
+        {{hash=fe2d341c406b58a815582066e8375730}{%
+           family={Avidan},
+           familyi={A\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
       }
       \list{location}{1}{%
-        {Massachusetts}%
+        {New York, NY, USA}%
       }
       \list{publisher}{1}{%
-        {Addison Wesley}%
+        {IEEE}%
       }
-      \strng{namehash}{5d77435450d10a850a5b58577b9a456b}
-      \strng{fullhash}{5d77435450d10a850a5b58577b9a456b}
-      \strng{bibnamehash}{5d77435450d10a850a5b58577b9a456b}
-      \strng{authorbibnamehash}{5d77435450d10a850a5b58577b9a456b}
-      \strng{authornamehash}{5d77435450d10a850a5b58577b9a456b}
-      \strng{authorfullhash}{5d77435450d10a850a5b58577b9a456b}
-      \field{sortinit}{L}
-      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \strng{namehash}{1f56413fa0438ed7bc3c458757a54f82}
+      \strng{fullhash}{5a5415d11d7fd7f0f34c1af0122a8919}
+      \strng{bibnamehash}{1f56413fa0438ed7bc3c458757a54f82}
+      \strng{authorbibnamehash}{1f56413fa0438ed7bc3c458757a54f82}
+      \strng{authornamehash}{1f56413fa0438ed7bc3c458757a54f82}
+      \strng{authorfullhash}{5a5415d11d7fd7f0f34c1af0122a8919}
+      \field{sortinit}{Q}
+      \field{sortinithash}{ce69a400a872ddd02ee7fdb3b38c6abd}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{edition}{2nd edition}
-      \field{title}{\LaTeX: a document preparation system}
-      \field{year}{1994}
+      \field{abstract}{We integrate the cascade-of-rejectors approach with the Histograms of Oriented Gradients (HoG) features to achieve a fast and accurate human detection system. The features used in our system are HoGs of variable-size blocks that capture salient features of humans automatically. Using AdaBoost for feature selection, we identify the appropriate set of blocks, from a large set of possible blocks. In our system, we use the integral image representation and a rejection cascade which signiﬁcantly speed up the computation. For a 320 × 280 image, the system can process 5 to 30 frames per second depending on the density in which we scan the image, while maintaining an accuracy level similar to existing methods.}
+      \field{booktitle}{2006 {IEEE} {Computer} {Society} {Conference} on {Computer} {Vision} and {Pattern} {Recognition} - {Volume} 2 ({CVPR}'06)}
+      \field{title}{Fast {Human} {Detection} {Using} a {Cascade} of {Histograms} of {Oriented} {Gradients}}
+      \field{volume}{2}
+      \field{year}{2006}
+      \field{pages}{1491\bibrangedash 1498}
+      \range{pages}{8}
+    \endentry
+    \entry{wang_yolov7_nodate}{article}{}
+      \name{author}{3}{}{%
+        {{hash=053d491932411950eccf2bb9a1025d11}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Chien-Yao},
+           giveni={C\bibinithyphendelim Y\bibinitperiod}}}%
+        {{hash=c0b2fdc20c37a4bd8d817822d374f809}{%
+           family={Bochkovskiy},
+           familyi={B\bibinitperiod},
+           given={Alexey},
+           giveni={A\bibinitperiod}}}%
+        {{hash=c81478c691c1bc1cc01404c44b5bd5bf}{%
+           family={Liao},
+           familyi={L\bibinitperiod},
+           given={Hong-Yuan\bibnamedelima Mark},
+           giveni={H\bibinithyphendelim Y\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{9278ecb881789e377b71403c2cf54d74}
+      \strng{fullhash}{9278ecb881789e377b71403c2cf54d74}
+      \strng{bibnamehash}{9278ecb881789e377b71403c2cf54d74}
+      \strng{authorbibnamehash}{9278ecb881789e377b71403c2cf54d74}
+      \strng{authornamehash}{9278ecb881789e377b71403c2cf54d74}
+      \strng{authorfullhash}{9278ecb881789e377b71403c2cf54d74}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{YOLOv7 surpasses all known object detectors in both speed and accuracy in the range from 5 FPS to 160 FPS and has the highest accuracy 56.8\% AP among all known real-time object detectors with 30 FPS or higher on GPU V100. YOLOv7-E6 object detector (56 FPS V100, 55.9\% AP) outperforms both transformer-based detector SWINL Cascade-Mask R-CNN (9.2 FPS A100, 53.9\% AP) by 509\% in speed and 2\% in accuracy, and convolutionalbased detector ConvNeXt-XL Cascade-Mask R-CNN (8.6 FPS A100, 55.2\% AP) by 551\% in speed and 0.7\% AP in accuracy, as well as YOLOv7 outperforms: YOLOR, YOLOX, Scaled-YOLOv4, YOLOv5, DETR, Deformable DETR, DINO-5scale-R50, ViT-Adapter-B and many other object detectors in speed and accuracy. Moreover, we train YOLOv7 only on MS COCO dataset from scratch without using any other datasets or pre-trained weights. Source code is released in https:// github.com/ WongKinYiu/ yolov7.}
+      \field{title}{{YOLOv7}: {Trainable} bag-of-freebies sets new state-of-the-art for real-time object detectors}
+    \endentry
+    \entry{xu_human_2010}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=0a57118bdd031bffda6d1c7fa3abda3b}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Fen},
+           giveni={F\bibinitperiod}}}%
+        {{hash=afb97708cb4244ee9a5cbc2b4a0cafae}{%
+           family={Gao},
+           familyi={G\bibinitperiod},
+           given={Ming},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Yantai, China}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{c79b6c864a7c05717bc81ab65b9ddb70}
+      \strng{fullhash}{c79b6c864a7c05717bc81ab65b9ddb70}
+      \strng{bibnamehash}{c79b6c864a7c05717bc81ab65b9ddb70}
+      \strng{authorbibnamehash}{c79b6c864a7c05717bc81ab65b9ddb70}
+      \strng{authornamehash}{c79b6c864a7c05717bc81ab65b9ddb70}
+      \strng{authorfullhash}{c79b6c864a7c05717bc81ab65b9ddb70}
+      \field{sortinit}{X}
+      \field{sortinithash}{1965c258adceecf23ce3d67b05113442}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Human detection and tracking is a task common to many applications, such as video surveillance and security, intelligent vehicles, safety driving, public security, etc. Histogram of oriented gradient (HOG) gives an accurate description of the contour of human body. Based on HOG and support vector machine (SVM) theory, a classifier for pedestrian is obtained. The classifier is then used to find the potential human candidate in the video frame. By calculating the similarity between particle candidates and the target model using Bhattacharyya Coefficient, a tracking algorithm using particle filter is designed and implemented. Experimental results show that the proposed algorithm out-performs Kalman filter based tracking in almost all situations, especially when partial occlusion of object is present.}
+      \field{booktitle}{2010 3rd {International} {Congress} on {Image} and {Signal} {Processing}}
+      \field{month}{10}
+      \field{title}{Human detection and tracking based on {HOG} and particle filter}
+      \field{year}{2010}
+      \field{pages}{1503\bibrangedash 1507}
+      \range{pages}{5}
     \endentry
   \enddatalist
 \endrefsection

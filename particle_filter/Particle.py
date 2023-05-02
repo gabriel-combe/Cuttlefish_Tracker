@@ -216,9 +216,9 @@ class PredPosParticle2DBbox(Particle):
         particles[:, :, 3] += .5 * particles[:, :, 5] * dt**2 + particles[:, :, 4] * dt
 
         # Boxes width
-        particles[:, :, 6] *= 1 + gamma * self.ratio
+        particles[:, :, 6] *= 1 + gamma# * self.ratio
         # Boxes height
-        particles[:, :, 7] *= 1 + gamma / self.ratio
+        particles[:, :, 7] *= 1 + gamma# / self.ratio
 
         # Add Gaussian noise to the particles
         noises = self.rng.normal(loc=0, scale=Q_model, size=(N, track_dim, self.particle_dim))

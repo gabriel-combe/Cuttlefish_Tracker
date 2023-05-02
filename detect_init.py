@@ -8,7 +8,7 @@ import numpy as np
 from models.experimental import attempt_load
 from utils.general import check_img_size, non_max_suppression, scale_coords, xyxy2xywh
 from utils.plots import plot_one_box
-from utils.torch_utils import select_device
+from utils.torch_utils import select_device, TracedModel
 from utils.datasets import letterbox
 
 class Model(object):
@@ -26,6 +26,8 @@ class Model(object):
         
         self.stride = int(self.model.stride.max())
         self.img_size = check_img_size(img_size, s=self.stride)  # check img_size
+
+        self.model = TracedModel(self.model, self.device, img_size)
         
         if self.half:
             self.model.half()  # to FP16

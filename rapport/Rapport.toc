@@ -1,62 +1,72 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \babel@toc {french}{}\relax 
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {1}Introduction}{9}{}%
+\contentsline {chapter}{\numberline {1}Introduction}{5}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.1}Énoncé du problème}{9}{}%
+\contentsline {section}{\numberline {1.1}Énoncé du problème}{5}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.2}Motivation}{9}{}%
+\contentsline {section}{\numberline {1.2}Motivation}{5}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.3}Méthodes}{9}{}%
+\contentsline {section}{\numberline {1.3}Méthodes}{6}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.4}Cahier des charges}{9}{}%
+\contentsline {section}{\numberline {1.4}Cahier des charges}{7}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {2}Technologies}{11}{}%
+\contentsline {subsection}{\numberline {1.4.1}Besoins fonctionnels}{7}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}Développements Logiciel : Conception, Modélisation, Implémentation}{13}{}%
+\contentsline {subsection}{\numberline {1.4.2}Besoins non-fonctionnels}{7}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}Développements logiciel}{13}{}%
+\contentsline {subsection}{\numberline {1.4.3}Contraintes}{7}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}Modules}{13}{}%
+\contentsline {chapter}{\numberline {2}Technologies}{8}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}Structures de données}{13}{}%
+\contentsline {section}{\numberline {2.1}Etat de l'art de la detection d'objet}{8}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.4}Statistiques}{13}{}%
+\contentsline {section}{\numberline {2.2}Langage de programmation}{8}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Algorithmes et Analyse}{15}{}%
+\contentsline {chapter}{\numberline {3}Développements Logiciel : Conception, Modélisation, Implémentation}{9}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Algorithmes}{15}{}%
+\contentsline {section}{\numberline {3.1}Développements logiciel}{9}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.1}SURF}{15}{}%
+\contentsline {section}{\numberline {3.2}Modules}{9}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.2}Distance de Bhattacharyya}{15}{}%
+\contentsline {section}{\numberline {3.3}Structures de données}{9}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.3}Filtre à particule}{15}{}%
+\contentsline {section}{\numberline {3.4}Statistiques}{9}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Complexité algorithmique}{15}{}%
+\contentsline {chapter}{\numberline {4}Algorithmes et Analyse}{10}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.1}SURF}{15}{}%
+\contentsline {section}{\numberline {4.1}Algorithmes}{10}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.2}Distance de Bhattacharyya}{15}{}%
+\contentsline {subsection}{\numberline {4.1.1}SURF}{10}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.3}Filtre à particule}{15}{}%
+\contentsline {subsection}{\numberline {4.1.2}Distance de Bhattacharyya}{10}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Analyse des résultats}{17}{}%
+\contentsline {subsection}{\numberline {4.1.3}Filtre à particule}{10}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Performances}{17}{}%
+\contentsline {section}{\numberline {4.2}Complexité algorithmique}{10}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Analyse et comparaison}{17}{}%
+\contentsline {subsection}{\numberline {4.2.1}SURF}{10}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Procédures de test}{17}{}%
+\contentsline {subsection}{\numberline {4.2.2}Distance de Bhattacharyya}{10}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Gestion du Projet}{19}{}%
+\contentsline {subsection}{\numberline {4.2.3}Filtre à particule}{10}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Planification}{19}{}%
+\contentsline {chapter}{\numberline {5}Analyse des résultats}{11}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.2}Changements majeurs}{19}{}%
+\contentsline {section}{\numberline {5.1}Performances}{11}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Bilan et Conclusions}{21}{}%
+\contentsline {section}{\numberline {5.2}Analyse et comparaison}{11}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Appendices}{25}{}%
+\contentsline {section}{\numberline {5.3}Procédures de test}{11}{}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}Gestion du Projet}{12}{}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.1}Planification}{12}{}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.2}Changements majeurs}{12}{}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {7}Bilan et Conclusions}{13}{}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Appendices}{16}{}%
 \defcounter {refsection}{0}\relax 
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

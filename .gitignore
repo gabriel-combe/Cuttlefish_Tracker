@@ -1,4 +1,5 @@
 test/
+traced_model.pt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

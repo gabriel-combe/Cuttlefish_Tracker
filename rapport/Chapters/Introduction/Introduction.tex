@@ -1,11 +1,85 @@
 \chapter{Introduction}
 
+
+
+
+
 \section{Énoncé du problème}
+Le suivi d'objet par vision par ordinateur a toujours etait, et est encore, un probleme suscitant beaucoup d'interet et qui fait l'objet de beaucoup de sujet de recherche.\\
+En effet, le suivi d'objet apparait dans plein de domaine, comme par exemple:
+\begin{itemize}
+	\item L'aerospaciale, avec l'arrimage de module a l'ISS, ou encore le suivi de debris spaciaux pour ensuite les faire sortir d'orbites sensibles.
+	\item Le militaire, avec le suivi de missile pour interception precise.
+	\item L'astrophysique, avec le suivi de corps celeste.
+	\item L'etude de population animal, comme l'etude de cycle migratoire ou du comportement de certaines especes.\\
+\end{itemize}
+
+Le projet se place dans le contexte de l'etude de population animal en milieu aquatique, et plus particulierement, de seiches.\\
+Il a pour objectif de fournir un outil qui permet de suivre des seiches de facon non intrusive (pas de capteurs sur la seiche suivi), afin de limiter l'interaction humaine avec les seiches.\\
+
+
+
+
 
 \section{Motivation}
+Le suivi d'objet, de maniere generale, etant un probleme que l'on rencontre dans beaucoup de domaine lie a l'informatique, les precedents exemples n'etant qu'un petit apercu, il est donc un probleme de choix a etudier lors de notre parcours d'etudes.\\
+De plus, il permet d'introduire des conceptes et algorithmes fondemmentaux, comme le concepte ded filtrage de signaux, ou d'espace de representation, ou encore, les algorithmes de filtrage, de descripteurs, ou de mesure de similarite.\\
+Ces conceptes et algorithmes sont recurrents dans le monde de l'informatique et plus precisemment quant il s'agit de faire du traitement du signal ou de la vision par ordinateur.\\
+Ce familiariser des a present avec ces differentes notions pourra grandement nous aider dans la suite de notre parcours.\\
 
+
+
+\clearpage
 \section{Méthodes}
+Il existe beaucoup d'approches possible pour resoudre le probleme de suivi d'objet, approches parmis lesquelles ont peut noter:
+\begin{itemize}
+	\item \textit{Intelligence Artificielle}\newline
+	Cette approche est de plus en plus populaire, notamment avec des modeles comme YOLO ou SSD. Ces modeles peuvent directement donner la bounding box de l'objet suivi, sans avoir a faire de traitement sur la sortie du modele.\\
+	Cependant, cette approche est peu resistante a l'occlusion de l'objet suivi.\\
+	
+	\item \textit{Capteurs}\newline
+	Cette approche utilise, par exemple, des IMUs ou marqueurs infrarouge, qui peuvent donner des informations sur l'acceleration lineaire ou angulaire. Ces informations sont ensuite filtrees grace a des algorithme de filtrage, comme le filtre de Kalman (lineaire ou non), ou encore le filtre a particule.\\
+	Cependant, cettre approche necessite de poser des capteurs sur l'objet a suivre.\\
+	
+	\item \textit{Photogrammetrie}\newline
+	Cette approche utilise des descripteurs d'image pour extraire des features importantes et ensuite, matcher ces features avec d'autres images pour pouvoir estimer le deplacement de la camera.\\
+	Cependant, cette approche est plus utilise dans le cas ou l'on cherche a savoir ou est-ce que le cameraman ce situe, plutot qu'un objet qui se trouve dans une image (comme le SLAM).\\
+	
+	\item \textit{Hybride}\newline
+	Cette approche combine differentes parties des methodes deja presentees et est celle sur laquelle ce projet est base.\\
+	On utilise l'intelligence artificielle pour detecter un objet d'interet a suivre dans une sequence d'image, la partie filtrage de l'approche avec des capteurs pour ameliorer nos estimations de l'etat de l'objet suivi, et enfin, la photogrammetrie pour recuperer les features interessantes dans une image et les comparer avec les features d'une image de reference.\\
+	Cette approche est cependant assez sensible aux parametres que nous lui donnons, ainsi qu'a certaines caracteristiques des images donnees en entree, comme le contraste, la resolution ou encore la colorimetrie.\\
+	Le detaille de cette approche sera donne en partie 3.\\
+\end{itemize}
 
+
+
+
+\clearpage
 \section{Cahier des charges}
+
+\subsection{Besoins fonctionnels}
+Les besoins peuvent etre separes en 5 categories:
+\begin{enumerate}
+	\item Le besoin d'une intelligence artificielle pour effectuer la detection initiale.
+	\item Le besoin de descripteurs pour recuperer un vecteur qui decrit une image donnee.
+	\item Le besoin de mesures de similarite pour comparer un vecteur caracteristique d'une image avec une descripteur de reference.
+	\item Le besoin d'un filtre a particule permettant d'estimer certaines proprietes de la seiche que l'on suit.
+	\item Le besoin d'un programme principal permettant d'agencer chacune des parties ensemble.\\
+\end{enumerate}
+
+Les differents descripteurs et mesures de similarite devront pouvoir etre utilise par le filtre a particule afin de mettre a jour l'etat de chacune des particules. Par extension, le filtre a particule devra etre modulable, afin de fonctionner avec ces differents descripteurs et mesures de similarite, ainsi que de repondre aux demandent du programme principale.\\
+Le programme principale ce charge de l'initialisation des differents modules ainsi que de l'affichage de donnees clefs (visualisation de resulats).\\
+
+\subsection{Besoins non-fonctionnels}
+Les formats videos acceptes sont libres.\\
+La resolution des videos est egalement libre, mais une preference sera porte pour la resolution 640x640 (resolution utilise pour entrainer l'intelligence artificielle).\\
+Le programme doit pouvoir tourner sur Windows, Linux et OSX.\\
+Le programme doit pouvoir sauvegarder le resultat obtenu en une video et egalement sauvegarder les bounding box dans un fichier texte.\\
+
+\subsection{Contraintes}
+Aucun budget n'a ete alloue pour le projet, le travail s'effectuera sur nos machines personnelles, ou sur les machines misent a disposition par l'universite.\\
+Le projet doit etre complete en 4 mois, avec une vingtaine de jour supplementaire pour la redaction du rapport.\\
+
 
 \clearpage
