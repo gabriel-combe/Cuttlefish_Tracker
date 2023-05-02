@@ -195,6 +195,7 @@ if __name__ == "__main__":
     # Q_motion = np.array([[0.1, 0, 0, 0.1, 0, 0, 0.1, 0.1]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np100 (gamma 0.0125 0.025) nbp16 r2
     # Q_motion = np.array([[4, 0, 0, 8, 0, 0, 0.4, 0.8]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np500 (gamma 0.0125 0.025) nbp16 r2
     # Q_motion = np.array([[8*ratio, 0, 0, 8, 0, 0, 0.8, 1.0]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np100 (gamma 0.0125 0.025) nbp12 r2
+    # Q_motion = np.array([[2, 0, 0, 2, 0, 0, 1, 1]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 128 128 np1000 (gamma 0.0125 0.025)
 
     # Sequence 4
     # Q_motion = np.array([[20*ratio, 10*fps*ratio, 20*fps*ratio, 20, 10*fps, 20*fps, 0.8*ratio, 0.8]]) # cap2Dbb hog bdl MAP
@@ -215,7 +216,9 @@ if __name__ == "__main__":
     # Q_motion = np.array([[5, 0, 0, 5, 0, 0, 1, 1]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np500 (gamma 0.025 0.05)
     # Q_motion = np.array([[2*ratio, 0, 0, 2, 0, 0, 0.2, 0.2]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np100 (gamma 0.0125 0.025) 2*w h/2
     # Q_motion = np.array([[4, 0, 0, 2, 0, 0, 0.4, 0.1]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np1000 (gamma 0.0125 0.025)
-    Q_motion = np.array([[2*ratio, 0, 0, 2, 0, 0, 0.2, 0.2]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np1000 (gamma 0.0125 0.025)
+    # Q_motion = np.array([[2*ratio, 0, 0, 2, 0, 0, 0.2, 0.2]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np1000 (gamma 0.0125 0.025)
+    # Q_motion = np.array([[2, 0, 0, 2, 0, 0, 1, 1]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np1000 (gamma 0.0125 0.025)
+    Q_motion = np.array([[2*ratio, 0, 0, 2, 0, 0, 0.2, 0.2]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 128 128 np1000 (gamma 0.0125 0.025)
     # Q_motion = np.array([[2, 0, 0, 2, 0, 0, 0.2, 0.2]]) # ppp2Dbb hogcascadelbp cos MLE R0.05 64 64 np1000 (gamma 0.025 0.05)
     
     # R = np.array([[0.1]])
@@ -301,9 +304,9 @@ if __name__ == "__main__":
             stop = True
 
     # Release the video capture and video write objects
-    np.savetxt('bboxSave.out', np.array(outArray))
     cap.release()
     if args.save_video:
+        np.savetxt('bboxSave.out', np.array(outArray))
         outvid.release()
     
     # Closes all the windows
