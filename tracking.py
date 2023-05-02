@@ -96,6 +96,11 @@ def draw_search_area(frame : np.array, mean_particles : np.array, search_area : 
             color, thickness=2)
     return output_frame
 
+# Display the frame's number
+def draw_frame_number(frame : np.array, nbframe: int, color=(200,200,200)):
+    output_frame = cv2.putText(frame, f'{nbframe}', (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2, cv2.LINE_AA)
+    return output_frame
+
 
 # Select a cuttlefish to track based on confidence and distance from the center of the image
 def cuttlefish_picker_WSE(init_frame, conf, cuttlefish):
@@ -118,7 +123,9 @@ if __name__ == "__main__":
     # init params
     N = abs(args.N)
     seed = args.seed
+    nbframe = 0
     stop = False
+    outArray = []
 
     # init Model
     model = Model(
@@ -134,6 +141,7 @@ if __name__ == "__main__":
     while not len(conf):
         # Read first frame
         ret, current_frame = cap.read()
+        nbframe += 1
         if not ret:
             print("Error : Couldn't read frame")
             quit()
@@ -151,6 +159,7 @@ if __name__ == "__main__":
         if(len(conf)):
             tracked_conf, tracked_cuttlefish = cuttlefish_picker_WSE(current_frame, conf, cuttlefish)
             # tracked_conf, tracked_cuttlefish = cuttlefish_picker_random(current_frame, conf, cuttlefish)
+        
 
     # _, init_frame = cap.read()
     # tracked_conf, tracked_cuttlefish = (0.73389, np.array([824.5, 798.5, 203/2, 151/2]))
@@ -244,8 +253,10 @@ if __name__ == "__main__":
     output_frame = draw_output_frame(np.copy(current_frame), particle_filter.mu)
     output_frame = draw_output_particles(output_frame, particle_filter.particles)
     output_frame = draw_output_mean_particule(output_frame, particle_filter.mu)
+    output_frame = draw_frame_number(output_frame, nbframe)
     # output_frame = draw_search_area(output_frame, particle_filter.mu, particle_filter.search_area)
     cv2.imshow('Track Cuttlefish', output_frame)
+    outArray.append(particle_filter.mu[0])
     cv2.waitKey(0)
 
     # Processing loop
@@ -253,9 +264,10 @@ if __name__ == "__main__":
 
         # Read a frame
         ret, current_frame = cap.read()
+        nbframe += 1
         if not ret:
             print("Error : Couldn't read frame")
-            quit()
+            break
         
         # Resize if video_size is not None
         if args.scale_factor != 1.:
@@ -266,6 +278,7 @@ if __name__ == "__main__":
         particle_filter.forward(np.copy(current_frame), 1./fps, args.resample_factor)
 
         # Mean particle
+        outArray.append(particle_filter.mu[0])
         print(particle_filter.mu)
         print()
 
@@ -273,6 +286,7 @@ if __name__ == "__main__":
         output_frame = draw_output_frame(np.copy(current_frame), particle_filter.mu)
         output_frame = draw_output_particles(output_frame, particle_filter.particles)
         output_frame = draw_output_mean_particule(output_frame, particle_filter.mu)
+        output_frame = draw_frame_number(output_frame, nbframe)
         # output_frame = draw_search_area(output_frame, particle_filter.mu, particle_filter.search_area)
         cv2.imshow('Track Cuttlefish', output_frame)
         # cv2.waitKey(0)
@@ -280,13 +294,14 @@ if __name__ == "__main__":
         # Write the frame into the video file
         if args.save_video:
             outvid.write(output_frame)
-            np.savetxt('bboxSave.out', particle_filter.mu)
+            
 
         # Press Q to stop the particle filter
         if cv2.waitKey(1) & 0xFF == ord('q'):
             stop = True
 
     # Release the video capture and video write objects
+    np.savetxt('bboxSave.out', np.array(outArray))
     cap.release()
     if args.save_video:
         outvid.release()
