@@ -88,7 +88,6 @@ class ParticleFilter(object):
 
         # Set the descriptor function
         self.descriptor = descriptor
-        print(descriptor.winSize)
 
         # Set the similarity measurement function
         self.similarity = similarity_fn
