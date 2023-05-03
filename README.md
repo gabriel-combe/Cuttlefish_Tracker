@@ -27,8 +27,8 @@ Il se decoupera donc en plusieurs sous objectifs:
 - [x] Definir un ou plusieurs vecteurs de representation de ce que l'on suit.
 - [x] Implementer un filtre a particule modulable.
 - [x] Creer un programme principal qui va gerer les transmissions de donnees entre modules.
-- [ ] Implementer des metriques d'evaluation pour le programme principal.
-- [ ] Test des differentes combinaisons entre les descripteurs et les mesures de similarite.
+- [x] Implementer des metriques d'evaluation pour le programme principal.
+- [x] Test des differentes combinaisons entre les descripteurs et les mesures de similarite.
 - [ ] Evaluation de notre application sur le terrain (Aquarium). 
 - [ ] (Optionnelle) Implementer des metriques d'evaluation pour chaque modules.
 
