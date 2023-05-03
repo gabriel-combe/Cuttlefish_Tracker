@@ -4,4 +4,4 @@ all:
 	pdflatex Rapport.tex
 
 clean:
-	rm Rapport.aux Rapport.bbl Rapport.bcf Rapport.blg Rapport.log Rapport.toc Rapport.run.xml Rapport.lof
+	rm Rapport.aux Rapport.bbl Rapport.bcf Rapport.blg Rapport.log Rapport.toc Rapport.run.xml Rapport.lof Rapport.loa

@@ -31,44 +31,44 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.2}Modules}{10}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}Structures de données}{10}{}%
+\contentsline {section}{\numberline {3.3}Structures de données}{11}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.4}Statistiques}{10}{}%
+\contentsline {section}{\numberline {3.4}Statistiques}{11}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Algorithmes et Analyse}{11}{}%
+\contentsline {chapter}{\numberline {4}Algorithmes et Analyse}{12}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Algorithmes}{11}{}%
+\contentsline {section}{\numberline {4.1}Algorithmes}{12}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.1}HOG}{11}{}%
+\contentsline {subsection}{\numberline {4.1.1}HOG}{12}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.2}Distance de Bhattacharyya}{11}{}%
+\contentsline {subsection}{\numberline {4.1.2}Distance de Bhattacharyya}{12}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.3}Filtre à particule}{11}{}%
+\contentsline {subsection}{\numberline {4.1.3}Filtre à particule}{12}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Complexité algorithmique}{11}{}%
+\contentsline {section}{\numberline {4.2}Complexité algorithmique}{12}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.1}HOG}{11}{}%
+\contentsline {subsection}{\numberline {4.2.1}HOG}{12}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.2}Distance de Bhattacharyya}{11}{}%
+\contentsline {subsection}{\numberline {4.2.2}Distance de Bhattacharyya}{12}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.3}Filtre à particule}{11}{}%
+\contentsline {subsection}{\numberline {4.2.3}Filtre à particule}{12}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Analyse des résultats}{13}{}%
+\contentsline {chapter}{\numberline {5}Analyse des résultats}{14}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Performances}{13}{}%
+\contentsline {section}{\numberline {5.1}Performances}{14}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Analyse et comparaison}{13}{}%
+\contentsline {section}{\numberline {5.2}Analyse et comparaison}{14}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Procédures de test}{13}{}%
+\contentsline {section}{\numberline {5.3}Procédures de test}{14}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Gestion du Projet}{14}{}%
+\contentsline {chapter}{\numberline {6}Gestion du Projet}{15}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Planification}{14}{}%
+\contentsline {section}{\numberline {6.1}Planification}{15}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.2}Changements majeurs}{14}{}%
+\contentsline {section}{\numberline {6.2}Changements majeurs}{15}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Bilan et Conclusions}{15}{}%
+\contentsline {chapter}{\numberline {7}Bilan et Conclusions}{16}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Appendices}{18}{}%
+\contentsline {chapter}{Appendices}{19}{}%
 \defcounter {refsection}{0}\relax 
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

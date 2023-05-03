@@ -19,7 +19,7 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
-    \entry{rlabbe}{misc}{}
+    \entry{rlabbe}{online}{}
       \name{author}{1}{}{%
         {{hash=69c51f9374cce2ab10da10523b4a64db}{%
            family={(rlabbe)},
@@ -40,10 +40,15 @@
       \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python}
       \field{journaltitle}{GitHub repository}
       \field{title}{Kalman and Bayesian Filters in Python}
       \field{year}{2014}
+      \verb{urlraw}
+      \verb https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python
+      \endverb
+      \verb{url}
+      \verb https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python
+      \endverb
     \endentry
     \entry{bhattacharyya_measure_1960}{article}{}
       \name{author}{1}{}{%
@@ -107,6 +112,52 @@
       \field{year}{2005}
       \field{pages}{886\bibrangedash 893}
       \range{pages}{8}
+    \endentry
+    \entry{pp2pf}{online}{}
+      \name{author}{4}{}{%
+        {{hash=f1cb584bef3901a9147d127dc802e491}{%
+           family={Gabriel},
+           familyi={G\bibinitperiod},
+           given={Combe-Ounkham},
+           giveni={C\bibinithyphendelim O\bibinitperiod}}}%
+        {{hash=7922c6155fa0676f25d56c9d15c4eed4}{%
+           family={Ariane},
+           familyi={A\bibinitperiod},
+           given={Vaisse},
+           giveni={V\bibinitperiod}}}%
+        {{hash=7cb599d7e32f385a3c1707a2c74384fd}{%
+           family={Maxime},
+           familyi={M\bibinitperiod},
+           given={Beldjilali},
+           giveni={B\bibinitperiod}}}%
+        {{hash=9303aa9a00ce98ba225fc2c0e1019c9b}{%
+           family={Luis-Miguel},
+           familyi={L\bibinithyphendelim M\bibinitperiod},
+           given={Young\bibnamedelima Brun},
+           giveni={Y\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {GitHub}%
+      }
+      \strng{namehash}{14a5ce5326c41cc2bba4f0053c0cca9a}
+      \strng{fullhash}{802e6337565b14504d1a595553a92907}
+      \strng{bibnamehash}{14a5ce5326c41cc2bba4f0053c0cca9a}
+      \strng{authorbibnamehash}{14a5ce5326c41cc2bba4f0053c0cca9a}
+      \strng{authornamehash}{14a5ce5326c41cc2bba4f0053c0cca9a}
+      \strng{authorfullhash}{802e6337565b14504d1a595553a92907}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{GitHub repository}
+      \field{title}{PP2 Particle Filter}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://github.com/gabriel-combe/PP2_Particle_Filter
+      \endverb
+      \verb{url}
+      \verb https://github.com/gabriel-combe/PP2_Particle_Filter
+      \endverb
     \endentry
     \entry{kong_particle_2019}{article}{}
       \name{author}{6}{}{%

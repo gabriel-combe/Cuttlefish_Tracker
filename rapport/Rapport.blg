@@ -1,15 +1,15 @@
 [0] Config.pm:311> INFO - This is Biber 2.16
 [0] Config.pm:314> INFO - Logfile is 'Rapport.blg'
-[114] biber-MSWIN64:340> INFO - === 
-[147] Biber.pm:415> INFO - Reading 'Rapport.bcf'
-[249] Biber.pm:952> INFO - Found 9 citekeys in bib section 0
-[265] Biber.pm:4340> INFO - Processing section 0
-[278] Biber.pm:4531> INFO - Looking for bibtex format file 'Bibliographie/references.bib' for section 0
-[335] bibtex.pm:1689> INFO - LaTeX decoding ...
-[357] bibtex.pm:1494> INFO - Found BibTeX data source 'Bibliographie/references.bib'
-[448] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[449] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'variable = shifted' with 'variable = non-ignorable'
-[449] Biber.pm:4168> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'fr-FR'
-[449] Biber.pm:4174> INFO - No sort tailoring available for locale 'fr-FR'
-[460] bbl.pm:654> INFO - Writing 'Rapport.bbl' with encoding 'UTF-8'
-[467] bbl.pm:757> INFO - Output to Rapport.bbl
+[119] biber-MSWIN64:340> INFO - === 
+[160] Biber.pm:415> INFO - Reading 'Rapport.bcf'
+[284] Biber.pm:952> INFO - Found 10 citekeys in bib section 0
+[298] Biber.pm:4340> INFO - Processing section 0
+[309] Biber.pm:4531> INFO - Looking for bibtex format file 'Bibliographie/references.bib' for section 0
+[402] bibtex.pm:1689> INFO - LaTeX decoding ...
+[424] bibtex.pm:1494> INFO - Found BibTeX data source 'Bibliographie/references.bib'
+[510] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[511] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'variable = shifted' with 'variable = non-ignorable'
+[511] Biber.pm:4168> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'fr-FR'
+[511] Biber.pm:4174> INFO - No sort tailoring available for locale 'fr-FR'
+[526] bbl.pm:654> INFO - Writing 'Rapport.bbl' with encoding 'UTF-8'
+[533] bbl.pm:757> INFO - Output to Rapport.bbl
