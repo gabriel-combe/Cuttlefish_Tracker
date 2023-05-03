@@ -2,10 +2,20 @@ import cv2
 import numpy as np
 from skimage import feature
 
+class Descriptor():
+    def __init__(self):
+        pass
+
+    def compute(self, images: np.ndarray):
+        pass
+
+    def update(self, args):
+        pass
+
 # Entree : Un ndarray correspondant a une image au format BGR
 # Sortie : Un tuple 2-Dimension contenant un tuple de keypoint et un numpy array (n, 128) (n=nombre de keypoints) contenant les descripteurs
 
-class HOG():
+class HOG(Descriptor):
 
     def __init__(self, winSize, blockSize = (18, 18), blockStride = (6, 6),  cellSize = (6, 6), nbins = 9, freezeSize = False):
         self.winSize = (winSize[0] // cellSize[0] * cellSize[0], winSize[1] // cellSize[1] * cellSize[1])
@@ -42,7 +52,7 @@ class HOG():
         if not self.freezeSize:
             self.__init__(winSize, self.blockSize, self.blockStride,  self.cellSize, self.nbins)
 
-class HOGCASCADE():
+class HOGCASCADE(Descriptor):
 
     def __init__(self, winSize, blockSize = (6, 6), blockStride = (6, 6),  cellSize = (6, 6), nbins = 9, freezeSize = False):
         self.winSize = (winSize[0] // cellSize[0] * cellSize[0], winSize[1] // cellSize[1] * cellSize[1])
@@ -79,7 +89,7 @@ class HOGCASCADE():
         if not self.freezeSize:
             self.__init__(winSize, self.blockSize, self.blockStride,  self.cellSize, self.nbins)
 
-class HOGCASCADELBP():
+class HOGCASCADELBP(Descriptor):
 
     def __init__(self, winSize, numPoints, radius, blockSize = (6, 6), blockStride = (6, 6),  cellSize = (6, 6), nbins = 9):
         self.numPoints = numPoints
@@ -113,9 +123,6 @@ class HOGCASCADELBP():
             histogram.append(np.concatenate(desc))
 
         return np.array(histogram)
-
-    def update(self, winSize):
-        pass
 
 class HOGCOLOR():
 
@@ -168,9 +175,6 @@ class LBP():
             hist.append(np.histogram(lbp, density=True, bins=nbins, range=(0, nbins))[0])
         
         return np.array(hist)
-    
-    def update(self, winSize):
-        pass
 
 class SIFT():
 

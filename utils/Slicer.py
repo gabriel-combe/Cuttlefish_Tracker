@@ -2,15 +2,27 @@ import cv2
 import numpy as np
 from typing import Tuple, List
 
+class Slicer():
+    def __init__(self, size: Tuple[int, int], image: np.ndarray, freezeSize: bool =False):
+        self.size = size
+        self.image = image
+        self.freezeSize = freezeSize
+    
+    def image_slice(self, particles: np.ndarray) -> np.ndarray:
+        pass
+
+    def updateSize(self, newSize: Tuple[int, int]) -> None:
+        if not self.freezeSize:
+            self.size = newSize
+
+    def updateImage(self, newImage: np.ndarray) -> None:
+        self.image = newImage
+
+
 # Get the slice of an image based on particles position and Bbox
 # Rescale each image patch to the size of the Bbox of the template_particle 
 # or to a fixed Bbox size
-class Resize():
-    def __init__(self, resizeSize: Tuple[int, int], image: np.ndarray, freezeSize: bool =False):
-        self.resizeSize = resizeSize
-        self.image = image
-        self.freezeSize = freezeSize
-
+class Resize(Slicer):
     def image_slice(self, particles: np.ndarray) -> np.ndarray:
 
         sliced_image = []
@@ -34,27 +46,15 @@ class Resize():
             patch = image_pad[y_start:y_end, x_start:x_end]
 
             # Resize the patch to match the size of the template patch
-            final_patch = cv2.resize(patch, self.resizeSize, interpolation=cv2.INTER_AREA)
+            final_patch = cv2.resize(patch, self.size, interpolation=cv2.INTER_AREA)
 
             sliced_image.append(final_patch)
 
         return np.array(sliced_image)
-    
-    def updateSize(self, newSize: Tuple[int, int]) -> None:
-        if not self.freezeSize:
-            self.resizeSize = newSize
-    
-    def updateImage(self, newImage: np.ndarray) -> None:
-        self.image = newImage
 
 # Get the slice of an image based on particles position and Bbox
 # Crop each image patch to the size of the Bbox of the template_particle
-class Crop():
-    def __init__(self, cropSize: Tuple[int, int], image: np.ndarray, freezeSize: bool =False):
-        self.cropSize = cropSize
-        self.image = image
-        self.freezeSize = freezeSize
-
+class Crop(Slicer):
     def image_slice(
         particles: np.ndarray, image: np.ndarray,
         template_particle: np.ndarray) -> np.ndarray:
@@ -62,11 +62,11 @@ class Crop():
         sliced_image = []
 
         # Compute padding width and height
-        template_pad_width = int(self.cropSize[0]/2)
-        template_pad_height = int(self.cropSize[1]/2)
+        template_pad_width = int(self.size[0]/2)
+        template_pad_height = int(self.size[1]/2)
 
         # Pad images to take care of Bbox that get outside of the image
-        image_pad = np.pad(image, ((template_pad_height, template_pad_height), (template_pad_width, template_pad_width), (0, 0)), mode='constant', constant_values=0)
+        image_pad = np.pad(image, ((template_pad_height, template_pad_height), (template_pad_width, template_pad_width), (0, 0)), mode='edge')
 
         for p in particles:
             # Compute Start and End point to determine the patch of the image to slice
@@ -81,13 +81,6 @@ class Crop():
             sliced_image.append(final_patch)
 
         return np.array(sliced_image)
-    
-    def updateSize(self, newSize: Tuple[int, int]) -> None:
-        if not self.freezeSize:
-            self.cropSize = newSize
-    
-    def updateImage(self, newImage: np.ndarray) -> None:
-        self.image = newImage
 
 
 #####################################################
