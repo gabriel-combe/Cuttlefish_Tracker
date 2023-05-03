@@ -72,3 +72,27 @@
 	abstract = {YOLOv7 surpasses all known object detectors in both speed and accuracy in the range from 5 FPS to 160 FPS and has the highest accuracy 56.8\% AP among all known real-time object detectors with 30 FPS or higher on GPU V100. YOLOv7-E6 object detector (56 FPS V100, 55.9\% AP) outperforms both transformer-based detector SWINL Cascade-Mask R-CNN (9.2 FPS A100, 53.9\% AP) by 509\% in speed and 2\% in accuracy, and convolutionalbased detector ConvNeXt-XL Cascade-Mask R-CNN (8.6 FPS A100, 55.2\% AP) by 551\% in speed and 0.7\% AP in accuracy, as well as YOLOv7 outperforms: YOLOR, YOLOX, Scaled-YOLOv4, YOLOv5, DETR, Deformable DETR, DINO-5scale-R50, ViT-Adapter-B and many other object detectors in speed and accuracy. Moreover, we train YOLOv7 only on MS COCO dataset from scratch without using any other datasets or pre-trained weights. Source code is released in https:// github.com/ WongKinYiu/ yolov7.},
 	author = {Wang, Chien-Yao and Bochkovskiy, Alexey and Liao, Hong-Yuan Mark}
 }
+
+@incollection{liu_ssd_2016,
+	title = {{SSD}: {Single} {Shot} {MultiBox} {Detector}},
+	volume = {9905},
+	shorttitle = {{SSD}},
+	abstract = {We present a method for detecting objects in images using a single deep neural network. Our approach, named SSD, discretizes the output space of bounding boxes into a set of default boxes over different aspect ratios and scales per feature map location. At prediction time, the network generates scores for the presence of each object category in each default box and produces adjustments to the box to better match the object shape. Additionally, the network combines predictions from multiple feature maps with different resolutions to naturally handle objects of various sizes. SSD is simple relative to methods that require object proposals because it completely eliminates proposal generation and subsequent pixel or feature resampling stages and encapsulates all computation in a single network. This makes SSD easy to train and straightforward to integrate into systems that require a detection component. Experimental results on the PASCAL VOC, COCO, and ILSVRC datasets conﬁrm that SSD has competitive accuracy to methods that utilize an additional object proposal step and is much faster, while providing a uniﬁed framework for both training and inference. For 300 × 300 input, SSD achieves 74.3\% mAP1 on VOC2007 test at 59 FPS on a Nvidia Titan X and for 512 × 512 input, SSD achieves 76.9\% mAP, outperforming a comparable state-of-the-art Faster R-CNN model. Compared to other single stage methods, SSD has much better accuracy even with a smaller input image size. Code is available at: https://github.com/weiliu89/caffe/tree/ssd .},
+	author = {Liu, Wei and Anguelov, Dragomir and Erhan, Dumitru and Szegedy, Christian and Reed, Scott and Fu, Cheng-Yang and Berg, Alexander C.},
+	year = {2016},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition},
+	pages = {21--37},
+	annote = {Comment: ECCV 2016}
+}
+
+@misc{redmon_you_2016,
+	title = {You {Only} {Look} {Once}: {Unified}, {Real}-{Time} {Object} {Detection}},
+	shorttitle = {You {Only} {Look} {Once}},
+	abstract = {We present YOLO, a new approach to object detection. Prior work on object detection repurposes classiﬁers to perform detection. Instead, we frame object detection as a regression problem to spatially separated bounding boxes and associated class probabilities. A single neural network predicts bounding boxes and class probabilities directly from full images in one evaluation. Since the whole detection pipeline is a single network, it can be optimized end-to-end directly on detection performance.},
+	publisher = {arXiv},
+	author = {Redmon, Joseph and Divvala, Santosh and Girshick, Ross and Farhadi, Ali},
+	month = may,
+	year = {2016},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition}
+}
+

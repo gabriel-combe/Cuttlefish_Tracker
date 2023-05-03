@@ -1,7 +1,26 @@
 \chapter{Technologies}
 
-\section{Etat de l'art de la detection d'objet}
+\section{LabelImg et Roboflow}
+LabelImg est un logiciel d'annotation d'image, qui permet entre autre d'annoter une bounding box que l'on dessine sur une image, avec un label que l'on définit, et d'enregistrer le tout sous différent format, comme le Pascal VOC, ou bien le format de YOLO.\\
+Ce logiciel a été utilisé pour annoter la vidéo de référence pour que l'on puisse comparer nos résultats avec.\\
+\\
+Roboflow est un cite en ligne, qui permet de faire de la gestion de base de donnée pour l'entrainement d'intelligence artificielle, ainsi que de l'annotation collaborative.\\
+Ce logiciel a été utilisé pour annoter des images de seiche afin de constituer une base de donnée suffisante, pour entrainer l'intelligence artificielle YOLOv7\cite{wang_yolov7_nodate} à détecter des seiches dans une image. L'annotation a été repartie entre les membres du groupe pour accélérer le processus.\\
+Une fois l'annotation termine, un dataset a été créé et augmenté grâce à Roboflow, en ajoutant des images déjà annotées auxquelles a été rajouté du bruit, des rotations, ou des changement de contraste et de luminosité. Augmenter ainsi le dataset permet à l'intelligence artificielle d'être plus résistante à des variations de contraste ou de rotation des seiches dans une image.\\
+
+
+
+
+\section{État de l'art de la détection d'objet}
+
+
+
 
 \section{Langage de programmation}
+Le langage de programmation choisi est python, un langage très populaire et qui permet de faire du prototypage rapidement. C'est également un des langages les plus utilisé par les chercheurs en intelligence artificielle, notamment avec le framework pytorch.\\
+Notre choix a été fait en partie pour cette aspect de prototypage rapide, mais aussi, du fait de notre utilisation du modèle YOLOv7\cite{wang_yolov7_nodate}, qui utilise pytorch.\\
+Python possède également une grande quantité de librairie, comme OpenCV, pour le traitement d'image, Numpy, pour les opérations optimisées sur des tenseurs, ou Scipy, pour les calculs scientifiques. Cela nous a permis de nous concentrer sur les algorithmes et de laisser l'affichage d'image et les opérations matricielles à des librairies qui ont été optimisées pour cela.\\
+Il a aussi été choisi par ça facilité de prise en main, et parce que tous les membres du groupe ont déjà programmé avec et le maitrise bien.
+
 
 \clearpage

@@ -1,4 +1,4 @@
-\documentclass[12pt, a4paper, draft]{scrbook}
+\documentclass[12pt, a4paper]{scrbook}
 
 \usepackage[utf8]{inputenc}
 \usepackage[a4paper, total={7in, 10in}]{geometry}
@@ -13,6 +13,7 @@
 \usepackage{listings}
 \usepackage{graphicx}  % pour inclure des images
 \usepackage{subfig}
+\usepackage[section]{placeins}
 \usepackage[toc,page]{appendix}
 \usepackage[backend=biber,
 	    style=numeric,
@@ -21,6 +22,8 @@
 \renewcommand*{\sfdefault}{\familydefault}
 
 \addbibresource{Bibliographie/references.bib}
+
+\graphicspath{ {./images/} }
 
 
 \title{ Suivi de seiches dans des videos sous-marine}
@@ -66,7 +69,7 @@
 \cite{dalal_histograms_2005}
 \cite{bhattacharyya_measure_1960}
 \cite{rlabbe}
-\cite{wang_yolov7_nodate}
+
 
 \printbibliography
 

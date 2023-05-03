@@ -1,13 +1,13 @@
-\chapter*{Resume}
-Le suivi de seiche dans des videos sous-marine en conditions reelles est particulierement difficile, du aux mouvements de la camera, au contraste qui peut etre faible, ou encore a la colorimetrie, qui peut varier d'une video a l'autre.\\
-Notre objectif est donc de tester plusieurs approchent afin d'explorer et de proposer les solutions les plus robustes.\\
+\chapter*{Résumé}
+Le suivi de seiche dans des vidéos sous-marine prisent en conditions réelles est assez difficile, notamment dû aux mouvements de la camera, au contraste, ou encore à la colorimétrie, qui peut varier d'une vidéo à l'autre.\\
+Notre objectif est donc de tester plusieurs approchent afin d'explorer et de proposer des solutions robustes pour le suivi de seiche.\\
 \\
-Nous avons commence par apprendre ce qui ce fait de mieux dans le domaine du suivi d'objet, afin d'avoir une idee des differentes techniques ainsi que de leur efficacite.\\
+Nous avons commencé par apprendre ce qui ce fait de mieux dans le domaine du suivi d'objet, afin d'avoir une idée des différentes techniques ainsi que de leur efficacité.\\
 \\
-Nous utilisons un filtre a particule comme base de notre algorithme de suivi, il utilisera plusieurs types de descripteurs qui seront compares entre eux afin de determiner le plus efficace. Leur efficacite est mesure en utilisant la methode de Pascal VOC, qui consiste a comparer les bounding box de references avec celles estimees par notre methode.\\
+Nous utilisons un filtre à particule comme base de notre algorithme de suivi, il utilisera plusieurs types de descripteurs qui seront comparés entre eux afin de déterminer les plus efficace. Leurs efficacités est mesurés en utilisant la méthode de Pascal VOC, qui consiste à comparer la bounding box de référence avec celle estimée par notre méthode.\\
 \\
-Le modele d'intelligence artificielle YOLOv7 est utilise pour faire de la detection automatique de seiche dans les premieres frames de la video.\\
+Le modèle d'intelligence artificielle YOLOv7 est utilisé pour faire la détection initiale de seiches dans les premières frames de la vidéo de manière automatique.\\
 \\
-Le suivi est ensuite ameliore grace a une etape de prediction qui permet gerer les cas d'occlusions et de deformation des seiches.
+Le suivi est amélioré grâce à une étape de prédiction qui permet gérer les cas d'occlusions et de déformation des seiches au cours de la vidéo.
 
 \clearpage
