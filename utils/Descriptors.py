@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 from skimage import feature
 
+# Descriptor class template
 class Descriptor():
     def __init__(self):
         pass
