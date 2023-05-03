@@ -17,13 +17,26 @@ charset="utf-8"
 "PP2_Particle_Filter.utils.Slicer.Slicer" [color="black", fontcolor="black", label="{Slicer|freezeSize : bool\limage : ndarray\lsize : Tuple[int, int]\l|image_slice(particles: np.ndarray): np.ndarray\lupdateImage(newImage: np.ndarray): None\lupdateSize(newSize: Tuple[int, int]): None\l}", shape="record", style="solid"];
 "PP2_Particle_Filter.utils.Slicer.Crop" [color="black", fontcolor="black", label="{Crop|\l|image_slice(image: np.ndarray, template_particle: np.ndarray): np.ndarray\l}", shape="record", style="solid"];
 "PP2_Particle_Filter.utils.Slicer.Resize" [color="black", fontcolor="black", label="{Resize|\l|image_slice(particles: np.ndarray): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Similarity.Bhattacharyya_log" [color="black", fontcolor="black", label="{Bhattacharyya_log|\l|computeSimilarity(descriptors: np.ndarray, template: np.ndarray): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Similarity.Bhattacharyya_sqrt" [color="black", fontcolor="black", label="{Bhattacharyya_sqrt|\l|computeSimilarity(descriptors: np.ndarray, template: np.ndarray): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Similarity.Cosine_Similarity" [color="black", fontcolor="black", label="{Cosine_Similarity|\l|computeSimilarity(descriptors: np.ndarray, template: np.ndarray): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Similarity.Kullback_Leibler_Divergence" [color="black", fontcolor="black", label="{Kullback_Leibler_Divergence|\l|computeSimilarity(descriptors: np.ndarray, template: np.ndarray): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.particle_filter.ResampleMethods.Resampling" [color="black", fontcolor="black", label="{Resampling|\l|resample(weights: np.ndarray): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.particle_filter.ResampleMethods.Systematic" [color="black", fontcolor="black", label="{Systematic|\l|resample(weights: np.ndarray): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.particle_filter.ResampleMethods.Residual" [color="black", fontcolor="black", label="{Residual|\l|resample(weights: np.ndarray): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.particle_filter.ResampleMethods.Stratified" [color="black", fontcolor="black", label="{Stratified|\l|resample(weights: np.ndarray): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.particle_filter.ResampleMethods.Multinomial" [color="black", fontcolor="black", label="{Multinomial|\l|resample(weights: np.ndarray): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Similarity.Similarity" [color="black", fontcolor="black", label="{Similarity|\l|computeSimilarity(descriptors: np.ndarray, template: np.ndarray): np.ndarray\l}", shape="record", style="solid"];
 "PP2_Particle_Filter.particle_filter.ParticleFilter.ParticleFilter" -> "PP2_Particle_Filter.tracking" [arrowhead="diamond", arrowtail="none"];
 "PP2_Particle_Filter.detect_init.Model" -> "PP2_Particle_Filter.tracking" [arrowhead="diamond", arrowtail="none"];
 "PP2_Particle_Filter.utils.Descriptors.Descriptor" -> "PP2_Particle_Filter.tracking" [arrowhead="diamond", arrowtail="none"];
 "PP2_Particle_Filter.utils.Slicer.Slicer" -> "PP2_Particle_Filter.tracking" [arrowhead="diamond", arrowtail="none"];
+"PP2_Particle_Filter.utils.Similarity.Similarity" -> "PP2_Particle_Filter.tracking" [arrowhead="diamond", arrowtail="none"];
+"PP2_Particle_Filter.particle_filter.ResampleMethods.Resampling" -> "PP2_Particle_Filter.particle_filter.ParticleFilter.ParticleFilter" [arrowhead="diamond", arrowtail="none", fontcolor="red", label="resample_method", style="solid"];
 "PP2_Particle_Filter.particle_filter.ParticleTemplate.Particle" -> "PP2_Particle_Filter.particle_filter.ParticleFilter.ParticleFilter" [arrowhead="diamond", arrowtail="none", fontcolor="red", label="particle_struct", style="solid"];
 "PP2_Particle_Filter.utils.Descriptors.Descriptor" -> "PP2_Particle_Filter.particle_filter.ParticleFilter.ParticleFilter" [arrowhead="odiamond", arrowtail="none", fontcolor="red", label="descriptor", style="solid"];
 "PP2_Particle_Filter.utils.Slicer.Slicer" -> "PP2_Particle_Filter.particle_filter.ParticleFilter.ParticleFilter" [arrowhead="odiamond", arrowtail="none", fontcolor="red", label="slicer", style="solid"];
+"PP2_Particle_Filter.utils.Similarity.Similarity" -> "PP2_Particle_Filter.particle_filter.ParticleFilter.ParticleFilter" [arrowhead="odiamond", arrowtail="none", fontcolor="red", label="similarity", style="solid"];
 "PP2_Particle_Filter.particle_filter.Particle.ConstAccelParticle2DBbox" -> "PP2_Particle_Filter.particle_filter.ParticleTemplate.Particle" [arrowhead="empty", arrowtail="none"];
 "PP2_Particle_Filter.particle_filter.Particle.ConstAccelParticle2DFixBbox" -> "PP2_Particle_Filter.particle_filter.ParticleTemplate.Particle" [arrowhead="empty", arrowtail="none"];
 "PP2_Particle_Filter.particle_filter.Particle.PredPosParticle2DBbox" -> "PP2_Particle_Filter.particle_filter.ParticleTemplate.Particle" [arrowhead="empty", arrowtail="none"];
@@ -34,6 +47,14 @@ charset="utf-8"
 "PP2_Particle_Filter.utils.Descriptors.LBP" -> "PP2_Particle_Filter.utils.Descriptors.Descriptor" [arrowhead="empty", arrowtail="none"];
 "PP2_Particle_Filter.utils.Slicer.Crop" -> "PP2_Particle_Filter.utils.Slicer.Slicer" [arrowhead="empty", arrowtail="none"];
 "PP2_Particle_Filter.utils.Slicer.Resize" -> "PP2_Particle_Filter.utils.Slicer.Slicer" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.particle_filter.ResampleMethods.Multinomial" -> "PP2_Particle_Filter.particle_filter.ResampleMethods.Resampling" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.particle_filter.ResampleMethods.Residual" -> "PP2_Particle_Filter.particle_filter.ResampleMethods.Resampling" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.particle_filter.ResampleMethods.Stratified" -> "PP2_Particle_Filter.particle_filter.ResampleMethods.Resampling" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.particle_filter.ResampleMethods.Systematic" -> "PP2_Particle_Filter.particle_filter.ResampleMethods.Resampling" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.utils.Similarity.Bhattacharyya_log" -> "PP2_Particle_Filter.utils.Similarity.Similarity" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.utils.Similarity.Bhattacharyya_sqrt" -> "PP2_Particle_Filter.utils.Similarity.Similarity" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.utils.Similarity.Cosine_Similarity" -> "PP2_Particle_Filter.utils.Similarity.Similarity" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.utils.Similarity.Kullback_Leibler_Divergence" -> "PP2_Particle_Filter.utils.Similarity.Similarity" [arrowhead="empty", arrowtail="none"];
 
 {
     rank = same;
@@ -45,5 +66,19 @@ charset="utf-8"
     "PP2_Particle_Filter.particle_filter.ParticleTemplate.Particle";
     "PP2_Particle_Filter.utils.Slicer.Crop";
     "PP2_Particle_Filter.utils.Slicer.Resize";
+    "PP2_Particle_Filter.utils.Similarity.Bhattacharyya_log";
+    "PP2_Particle_Filter.utils.Similarity.Bhattacharyya_sqrt";
+    "PP2_Particle_Filter.utils.Similarity.Cosine_Similarity";
+    "PP2_Particle_Filter.utils.Similarity.Kullback_Leibler_Divergence";
+}
+{
+    rank = same;
+    "PP2_Particle_Filter.particle_filter.Particle.ConstAccelParticle2DBbox";
+    "PP2_Particle_Filter.particle_filter.Particle.ConstAccelParticle2DFixBbox";
+    "PP2_Particle_Filter.particle_filter.Particle.PredPosParticle2DBbox";
+    "PP2_Particle_Filter.particle_filter.ResampleMethods.Multinomial";
+    "PP2_Particle_Filter.particle_filter.ResampleMethods.Residual";
+    "PP2_Particle_Filter.particle_filter.ResampleMethods.Stratified";
+    "PP2_Particle_Filter.particle_filter.ResampleMethods.Systematic";
 }
 }
