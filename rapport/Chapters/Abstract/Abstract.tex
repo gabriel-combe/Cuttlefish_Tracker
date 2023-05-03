@@ -1,13 +1,15 @@
 \chapter*{Résumé}
-Le suivi de seiche dans des vidéos sous-marine prisent en conditions réelles est assez difficile, notamment dû aux mouvements de la camera, au contraste, ou encore à la colorimétrie, qui peut varier d'une vidéo à l'autre.\\
-Notre objectif est donc de tester plusieurs approchent afin d'explorer et de proposer des solutions robustes pour le suivi de seiche.\\
+Le suivi de seiche dans des vidéos sous-marine prisent en conditions réelles est difficile dû aux mouvements de la camera, au contraste, ou encore à la colorimétrie, qui peut varier d'une vidéo à l'autre.\\
+Notre objectif est donc de tester plusieurs approchent afin d'explorer et de proposer des solutions robustes pour le suivi de seiche en environnement non contrôlé.\\
 \\
 Nous avons commencé par apprendre ce qui ce fait de mieux dans le domaine du suivi d'objet, afin d'avoir une idée des différentes techniques ainsi que de leur efficacité.\\
 \\
 Nous utilisons un filtre à particule comme base de notre algorithme de suivi, il utilisera plusieurs types de descripteurs qui seront comparés entre eux afin de déterminer les plus efficace. Leurs efficacités est mesurés en utilisant la méthode de Pascal VOC, qui consiste à comparer la bounding box de référence avec celle estimée par notre méthode.\\
 \\
-Le modèle d'intelligence artificielle YOLOv7 est utilisé pour faire la détection initiale de seiches dans les premières frames de la vidéo de manière automatique.\\
+Le suivi est amélioré grâce à une étape de prédiction qui permet de gérer les cas d'occlusions et de déformation des seiches au cours de la vidéo.\\
 \\
-Le suivi est amélioré grâce à une étape de prédiction qui permet gérer les cas d'occlusions et de déformation des seiches au cours de la vidéo.
+Le modèle d'intelligence artificielle YOLOv7 est utilisé pour faire la détection initiale de seiches dans les premières frames de la vidéo de manière automatique.\\
+Ce modèle sera également utilise en tant qu'algorithme de suivi à part entière, et comparé avec nos solutions faites à la main.\\
+
 
 \clearpage
