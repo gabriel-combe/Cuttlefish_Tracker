@@ -1,5 +1,5 @@
 from .Slicer import Resize, Crop
-from .Similarity import Bhattacharyya_distance_sqrt, Bhattacharyya_distance_log, Cosine_Similarity, Kullback_Leibler_Divergence, keypoint_matcher
+from .Similarity import Bhattacharyya_sqrt, Bhattacharyya_log, Cosine_Similarity, Kullback_Leibler_Divergence, keypoint_matcher
 from .Descriptors import HOG, HOGCOLOR, HOGCASCADE, HOGCASCADELBP, SIFT, ORB, BRISK, LBP
 
 slicer_dict = {
@@ -8,8 +8,8 @@ slicer_dict = {
 }
 
 similarity_dict = {
-    'bds' : Bhattacharyya_distance_sqrt,
-    'bdl' : Bhattacharyya_distance_log,
+    'bds' : Bhattacharyya_sqrt,
+    'bdl' : Bhattacharyya_log,
     'cos' : Cosine_Similarity,
     'dkl' : Kullback_Leibler_Divergence,
     'kpm' : keypoint_matcher

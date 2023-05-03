@@ -1,10 +1,10 @@
 import numpy as np
 from typing import Optional, Tuple
 from .Particle import Particle, ConstAccelParticle2DBbox
-from .ResampleMethods import systematic_resample
+from .ResampleMethods import Resampling, Systematic
 from utils.Descriptors import Descriptor, HOG
 from utils.Slicer import Slicer, Resize
-from utils.Similarity import Bhattacharyya_distance_sqrt
+from utils.Similarity import Similarity, Bhattacharyya_sqrt
 
 import cv2
 
@@ -21,8 +21,8 @@ class ParticleFilter(object):
                 R: Optional[np.ndarray] =None,
                 slicer: Slicer =Resize,
                 descriptor: Descriptor =HOG,
-                similarity_fn=Bhattacharyya_distance_sqrt,
-                resample_method_fn=systematic_resample,
+                similarity: Similarity =Bhattacharyya_sqrt,
+                resample_method: Resampling =Systematic,
                 seed: int =None):
 
         self.N = N
@@ -67,7 +67,7 @@ class ParticleFilter(object):
         self.prev_frame = init_frame
         
         # Set the resampling method function
-        self.resample_method = resample_method_fn
+        self.resample_method = resample_method()
 
         # Array of all the trackers and particles
         self.particles = np.zeros((self.N, self.track_dim, self.state_dim))
@@ -90,7 +90,7 @@ class ParticleFilter(object):
         self.descriptor = descriptor
 
         # Set the similarity measurement function
-        self.similarity = similarity_fn
+        self.similarity = similarity()
 
         # Set the slicer object
         self.slicer = slicer
@@ -122,7 +122,7 @@ class ParticleFilter(object):
 
         descriptor_result = self.descriptor.compute(image_slice)
 
-        coeff_sim = self.similarity(descriptor_result, self.prev_patch_descriptor)
+        coeff_sim = self.similarity.computeSimilarity(descriptor_result, self.prev_patch_descriptor)
         
         self.weights = self.particle_struct.measurement_model(coeff_sim, self.particles, self.mu, self.R)
 
@@ -161,7 +161,7 @@ class ParticleFilter(object):
     # Perform resample 
     def resample(self, fraction: Optional[float] =1./4.) -> None:
         if self.neff() < self.N * fraction:
-            indexes = self.resample_method(self.weights)
+            indexes = self.resample_method.resample(self.weights)
             self.particles[:] = self.particles[indexes]
             self.weights.resize(self.N)
             self.weights.fill(1/self.N)

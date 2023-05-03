@@ -2,19 +2,23 @@ import cv2
 import numpy as np
 from typing import Tuple, List
 
+# Slicer template
 class Slicer():
     def __init__(self, size: Tuple[int, int], image: np.ndarray, freezeSize: bool =False):
         self.size = size
         self.image = image
         self.freezeSize = freezeSize
     
+    # Slicing function
     def image_slice(self, particles: np.ndarray) -> np.ndarray:
         pass
 
+    # Update the size of the patch to slice
     def updateSize(self, newSize: Tuple[int, int]) -> None:
         if not self.freezeSize:
             self.size = newSize
 
+    # Update the image we want to slice
     def updateImage(self, newImage: np.ndarray) -> None:
         self.image = newImage
 
