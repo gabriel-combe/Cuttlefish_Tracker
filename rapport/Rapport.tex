@@ -8,7 +8,7 @@
 
 \usepackage[none]{hyphenat}
 \usepackage{amsmath}
-\usepackage{algorithm2e}
+\usepackage[ruled, linesnumbered, french, onelanguage]{algorithm2e}
 \usepackage{babel,csquotes}
 \usepackage{listings}
 \usepackage{graphicx}  % pour inclure des images
@@ -47,6 +47,8 @@
 
 \listoffigures \clearpage
 
+\listofalgorithms \clearpage
+
 
 \include{Chapters/Introduction/Introduction}
 
@@ -55,6 +57,19 @@
 \include{Chapters/Developpements_Logiciel/Developpements_Logiciel}
 
 \include{Chapters/Algorithmes_Analyse/Algorithmes_Analyse}
+
+\begin{algorithm}
+	\caption{Filtre à particule}\label{alg:particlefilter}
+	\KwData{Une vidéo sous-marine de seiche}
+	\KwResult{La liste des positions et bounding box de la cible dans la vidéo}
+	\ForEach{Images $t$ de la vidéo}{
+		\eIf{Première image}{
+			Détecter la seiche dans image grâce a YOLOv7
+		}{
+			else else
+		}
+	}
+\end{algorithm}
 
 \include{Chapters/Analyse_resultats/Analyse_resultats}
 
