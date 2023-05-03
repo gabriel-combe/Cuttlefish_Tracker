@@ -124,7 +124,7 @@ class HOGCASCADELBP(Descriptor):
 
         return np.array(histogram)
 
-class HOGCOLOR():
+class HOGCOLOR(Descriptor):
 
     def __init__(self, winSize, blockSize = (16, 16), blockStride = (8, 8),  cellSize = (8, 8), nbins = 9, freezeSize = False):
         self.winSize = (winSize[0] // cellSize[0] * cellSize[0], winSize[1] // cellSize[1] * cellSize[1])
@@ -161,7 +161,7 @@ class HOGCOLOR():
         if not self.freezeSize:
             self.__init__(winSize, self.blockSize, self.blockStride,  self.cellSize, self.nbins)
 
-class LBP():
+class LBP(Descriptor):
     def __init__(self, numPoints, radius):
         self.numPoints = numPoints
         self.radius = radius

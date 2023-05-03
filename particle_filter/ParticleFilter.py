@@ -2,8 +2,8 @@ import numpy as np
 from typing import Optional, Tuple
 from .Particle import Particle, ConstAccelParticle2DBbox
 from .ResampleMethods import systematic_resample
-from utils.Descriptors import HOG
-from utils.Slicer import Resize
+from utils.Descriptors import Descriptor, HOG
+from utils.Slicer import Slicer, Resize
 from utils.Similarity import Bhattacharyya_distance_sqrt
 
 import cv2
@@ -19,8 +19,8 @@ class ParticleFilter(object):
                 alpha: float =1.,
                 Q_motion: Optional[np.ndarray] =None,
                 R: Optional[np.ndarray] =None,
-                slicer=Resize,
-                descriptor=HOG,
+                slicer: Slicer =Resize,
+                descriptor: Descriptor =HOG,
                 similarity_fn=Bhattacharyya_distance_sqrt,
                 resample_method_fn=systematic_resample,
                 seed: int =None):
@@ -88,6 +88,7 @@ class ParticleFilter(object):
 
         # Set the descriptor function
         self.descriptor = descriptor
+        print(descriptor.winSize)
 
         # Set the similarity measurement function
         self.similarity = similarity_fn
