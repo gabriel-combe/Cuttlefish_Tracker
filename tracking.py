@@ -259,6 +259,9 @@ if __name__ == "__main__":
     output_frame = draw_frame_number(output_frame, nbframe)
     # output_frame = draw_search_area(output_frame, particle_filter.mu, particle_filter.search_area)
     cv2.imshow('Track Cuttlefish', output_frame)
+    # Write the frame into the video file
+    if args.save_video:
+        outvid.write(output_frame)
     outArray.append(particle_filter.mu[0])
     cv2.waitKey(0)
 

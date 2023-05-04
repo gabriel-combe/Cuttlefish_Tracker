@@ -72,6 +72,10 @@ if __name__ == "__main__":
 
     cap = cv2.VideoCapture('./test/Cuttlefish-seq1.mp4')
     fps = cap.get(cv2.CAP_PROP_FPS)
+    width  = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+    height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+
+    outvid = cv2.VideoWriter('eval.avi', cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), fps, (int(width), int(height)))
 
     for file, box2 in zip(filenames, boxes2):
 
@@ -111,12 +115,16 @@ if __name__ == "__main__":
             (box1[2], box1[3]), 
             (0, 255, 0), thickness=2)
         
+        current_frame = cv2.putText(current_frame, f'{iou[-1]}', (box1[0]-10, box1[1]-10), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
         
         cv2.imshow('Evaluation', current_frame)
+        outvid.write(current_frame)
         cv2.waitKey(int(1000*(1/fps)))
     
     print(np.mean(np.array(iou)))
+    np.savetxt('eval.out', np.array(iou))
     cap.release()
+    outvid.release()
     cv2.destroyAllWindows()
 
 
