@@ -2349,13 +2349,15 @@
     <bcf:citekey order="3">wang_yolov7_nodate</bcf:citekey>
     <bcf:citekey order="4">wang_yolov7_nodate</bcf:citekey>
     <bcf:citekey order="5">wang_yolov7_nodate</bcf:citekey>
-    <bcf:citekey order="6">pp2pf</bcf:citekey>
-    <bcf:citekey order="7">xu_human_2010</bcf:citekey>
-    <bcf:citekey order="8">kong_particle_2019</bcf:citekey>
-    <bcf:citekey order="9">qiang_zhu_fast_2006</bcf:citekey>
-    <bcf:citekey order="10">dalal_histograms_2005</bcf:citekey>
-    <bcf:citekey order="11">bhattacharyya_measure_1960</bcf:citekey>
-    <bcf:citekey order="12">rlabbe</bcf:citekey>
+    <bcf:citekey order="6">yolov7_github</bcf:citekey>
+    <bcf:citekey order="7">wang_yolov7_nodate</bcf:citekey>
+    <bcf:citekey order="8">pp2pf</bcf:citekey>
+    <bcf:citekey order="9">xu_human_2010</bcf:citekey>
+    <bcf:citekey order="10">kong_particle_2019</bcf:citekey>
+    <bcf:citekey order="11">qiang_zhu_fast_2006</bcf:citekey>
+    <bcf:citekey order="12">dalal_histograms_2005</bcf:citekey>
+    <bcf:citekey order="13">bhattacharyya_measure_1960</bcf:citekey>
+    <bcf:citekey order="14">rlabbe</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

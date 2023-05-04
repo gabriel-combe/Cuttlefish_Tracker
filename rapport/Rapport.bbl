@@ -354,6 +354,48 @@
       \field{year}{2016}
       \keyw{Computer Science - Computer Vision and Pattern Recognition}
     \endentry
+    \entry{yolov7_github}{online}{}
+      \name{author}{3}{}{%
+        {{hash=053d491932411950eccf2bb9a1025d11}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Chien-Yao},
+           giveni={C\bibinithyphendelim Y\bibinitperiod}}}%
+        {{hash=c0b2fdc20c37a4bd8d817822d374f809}{%
+           family={Bochkovskiy},
+           familyi={B\bibinitperiod},
+           given={Alexey},
+           giveni={A\bibinitperiod}}}%
+        {{hash=c81478c691c1bc1cc01404c44b5bd5bf}{%
+           family={Liao},
+           familyi={L\bibinitperiod},
+           given={Hong-Yuan\bibnamedelima Mark},
+           giveni={H\bibinithyphendelim Y\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {GitHub}%
+      }
+      \strng{namehash}{9278ecb881789e377b71403c2cf54d74}
+      \strng{fullhash}{9278ecb881789e377b71403c2cf54d74}
+      \strng{bibnamehash}{9278ecb881789e377b71403c2cf54d74}
+      \strng{authorbibnamehash}{9278ecb881789e377b71403c2cf54d74}
+      \strng{authornamehash}{9278ecb881789e377b71403c2cf54d74}
+      \strng{authorfullhash}{9278ecb881789e377b71403c2cf54d74}
+      \field{extraname}{1}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{GitHub repository}
+      \field{title}{YOLOv7}
+      \field{year}{2022}
+      \verb{urlraw}
+      \verb https://github.com/WongKinYiu/yolov7
+      \endverb
+      \verb{url}
+      \verb https://github.com/WongKinYiu/yolov7
+      \endverb
+    \endentry
     \entry{wang_yolov7_nodate}{article}{}
       \name{author}{3}{}{%
         {{hash=053d491932411950eccf2bb9a1025d11}{%
@@ -378,6 +420,7 @@
       \strng{authorbibnamehash}{9278ecb881789e377b71403c2cf54d74}
       \strng{authornamehash}{9278ecb881789e377b71403c2cf54d74}
       \strng{authorfullhash}{9278ecb881789e377b71403c2cf54d74}
+      \field{extraname}{2}
       \field{sortinit}{W}
       \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
       \field{labelnamesource}{author}

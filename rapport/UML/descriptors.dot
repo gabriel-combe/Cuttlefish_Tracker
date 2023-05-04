@@ -1,0 +1,15 @@
+digraph "descriptors" {
+rankdir=BT
+charset="utf-8"
+"PP2_Particle_Filter.utils.Descriptors.Descriptor" [color="black", fontcolor="black", label="{Descriptor|\l|compute(images: np.ndarray)\lupdate(args)\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Descriptors.HOG" [color="black", fontcolor="black", label="{HOG|blockSize : tuple\lblockStride : tuple\lcellSize : tuple\lfreezeSize : bool\lhog\lnbins : int\lwinSize : tuple\l|compute(images: np.ndarray)\lexpectedF()\lupdate(winSize)\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Descriptors.HOGCASCADE" [color="black", fontcolor="black", label="{HOGCASCADE|blockSize : tuple\lblockStride : tuple\lcellSize : tuple\lfreezeSize : bool\lhog\lnbcascade\lnbins : int\lwinSize : tuple\l|compute(images: np.ndarray)\lupdate(winSize)\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Descriptors.HOGCASCADELBP" [color="black", fontcolor="black", label="{HOGCASCADELBP|blockSize : tuple\lblockStride : tuple\lcellSize : tuple\lnbcascade\lnbins : int\lnumPoints\lradius\lwinSize : tuple\l|compute(images: np.ndarray)\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Descriptors.HOGCOLOR" [color="black", fontcolor="black", label="{HOGCOLOR|blockSize : tuple\lblockStride : tuple\lcellSize : tuple\lfreezeSize : bool\lhog\lnbins : int\lwinSize : tuple\l|compute(images: np.ndarray)\lexpectedF()\lupdate(winSize)\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Descriptors.LBP" [color="black", fontcolor="black", label="{LBP|numPoints\lradius\l|compute(images: np.ndarray, eps)\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Descriptors.HOG" -> "PP2_Particle_Filter.utils.Descriptors.Descriptor" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.utils.Descriptors.HOGCASCADE" -> "PP2_Particle_Filter.utils.Descriptors.Descriptor" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.utils.Descriptors.HOGCASCADELBP" -> "PP2_Particle_Filter.utils.Descriptors.Descriptor" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.utils.Descriptors.HOGCOLOR" -> "PP2_Particle_Filter.utils.Descriptors.Descriptor" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.utils.Descriptors.LBP" -> "PP2_Particle_Filter.utils.Descriptors.Descriptor" [arrowhead="empty", arrowtail="none"];
+}
