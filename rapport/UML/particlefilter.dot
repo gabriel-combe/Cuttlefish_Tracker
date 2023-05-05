@@ -1,0 +1,77 @@
+digraph "particlefilter" {
+rankdir=BT
+charset="utf-8"
+"PP2_Particle_Filter.particle_filter.ParticleFilter.ParticleFilter" [color="black", fontcolor="black", label="{ParticleFilter|N : int\lQ_motion : Optional[np.ndarray], ndarray\lR : ndarray, Optional[np.ndarray]\lalpha : float\ldescriptor\lframe_size : tuple\linit_pos : ndarray\lmu : tuple\lparticle_struct\lparticles : ndarray\lprev_frame : ndarray\lprev_particles : ndarray\lprev_patch_descriptor\lranges\lratio\lresample_method\lrng\lsearch_area\lseed : Optional[int]\lsigma : tuple\lsimilarity\lslicer\lstate_dim : int\ltemplate_patch\ltrack_dim : int\lweights\l|estimate(): None\lforward(z: np.ndarray, dt: float, fraction: float): None\lneff(): float\lpredict(dt: Optional[float]): None\lresample(fraction: Optional[float]): None\lupdate(z: np.ndarray): None\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.particle_filter.ParticleTemplate.Particle" [color="black", fontcolor="black", label="{Particle|particle_dim : int\lrng\l|create_gaussian_particles(N: int, track_dim: int, init_pos: np.ndarray, std: np.ndarray): np.ndarray\lcreate_uniform_particles(N: int, track_dim: int, ranges: np.ndarray): np.ndarray\lmeasurement_model(coeff_sim: np.ndarray, R: np.ndarray): np.ndarray\lmotion_model(particles: np.ndarray, Q_model: np.ndarray, prev_particles: np.ndarray, frame_size: Tuple[int, int], dt: float): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.particle_filter.Particle.PredPosParticle2DBbox" [color="black", fontcolor="black", label="{PredPosParticle2DBbox|particle_dim : int\lratio\lrng\l|compute_gamma(N: int, track_dim: int): np.ndarray\lcreate_gaussian_particles(N: int, track_dim: int, init_pos: np.ndarray, std: np.ndarray): np.ndarray\lcreate_uniform_particles(N: int, track_dim: int, ranges: np.ndarray): np.ndarray\lmeasurement_model(coeff_sim: np.ndarray, particles: np.ndarray, template_particle: np.ndarray, R: np.ndarray): np.ndarray\lmotion_model(particles: np.ndarray, Q_model: np.ndarray, prev_particles: np.ndarray, template_particle: np.ndarray, search_area: Tuple[int, int], frame_size: Tuple[int, int], dt: float): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.particle_filter.Particle.ConstAccelParticle2DBbox" [color="black", fontcolor="black", label="{ConstAccelParticle2DBbox|particle_dim : int\lrng\l|compute_gamma(N: int, track_dim: int): np.ndarray\lcreate_gaussian_particles(N: int, track_dim: int, init_pos: np.ndarray, std: np.ndarray): np.ndarray\lcreate_uniform_particles(N: int, track_dim: int, ranges: np.ndarray): np.ndarray\lmeasurement_model(coeff_sim: np.ndarray, particles: np.ndarray, template_particle: np.ndarray, R: np.ndarray): np.ndarray\lmotion_model(particles: np.ndarray, Q_model: np.ndarray, prev_particles: np.ndarray, template_particle: np.ndarray, search_area: np.ndarray, frame_size: Tuple[int, int], dt: float): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.particle_filter.Particle.ConstAccelParticle2DFixBbox" [color="black", fontcolor="black", label="{ConstAccelParticle2DFixBbox|particle_dim : int\lrng\l|create_gaussian_particles(N: int, track_dim: int, init_pos: np.ndarray, std: np.ndarray): np.ndarray\lcreate_uniform_particles(N: int, track_dim: int, ranges: np.ndarray): np.ndarray\lmeasurement_model(coeff_sim: np.ndarray, particles: np.ndarray, template_particle: np.ndarray, R: np.ndarray): np.ndarray\lmotion_model(particles: np.ndarray, Q_model: np.ndarray, prev_particles: np.ndarray, template_particle: np.ndarray, search_area: Tuple[int, int], frame_size: Tuple[int, int], dt: float): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Descriptors.Descriptor" [color="black", fontcolor="black", label="{Descriptor|\l|compute(images: np.ndarray)\lupdate(args)\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Descriptors.HOG" [color="black", fontcolor="black", label="{HOG|blockSize : tuple\lblockStride : tuple\lcellSize : tuple\lfreezeSize : bool\lhog\lnbins : int\lwinSize : tuple\l|compute(images: np.ndarray)\lexpectedF()\lupdate(winSize)\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Descriptors.HOGCASCADE" [color="black", fontcolor="black", label="{HOGCASCADE|blockSize : tuple\lblockStride : tuple\lcellSize : tuple\lfreezeSize : bool\lhog\lnbcascade\lnbins : int\lwinSize : tuple\l|compute(images: np.ndarray)\lupdate(winSize)\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Descriptors.HOGCASCADELBP" [color="black", fontcolor="black", label="{HOGCASCADELBP|blockSize : tuple\lblockStride : tuple\lcellSize : tuple\lnbcascade\lnbins : int\lnumPoints\lradius\lwinSize : tuple\l|compute(images: np.ndarray)\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Descriptors.HOGCOLOR" [color="black", fontcolor="black", label="{HOGCOLOR|blockSize : tuple\lblockStride : tuple\lcellSize : tuple\lfreezeSize : bool\lhog\lnbins : int\lwinSize : tuple\l|compute(images: np.ndarray)\lexpectedF()\lupdate(winSize)\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Descriptors.LBP" [color="black", fontcolor="black", label="{LBP|numPoints\lradius\l|compute(images: np.ndarray, eps)\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Slicer.Slicer" [color="black", fontcolor="black", label="{Slicer|freezeSize : bool\limage : ndarray\lsize : Tuple[int, int]\l|image_slice(particles: np.ndarray): np.ndarray\lupdateImage(newImage: np.ndarray): None\lupdateSize(newSize: Tuple[int, int]): None\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Slicer.Crop" [color="black", fontcolor="black", label="{Crop|\l|image_slice(image: np.ndarray, template_particle: np.ndarray): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Slicer.Resize" [color="black", fontcolor="black", label="{Resize|\l|image_slice(particles: np.ndarray): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Similarity.Bhattacharyya_log" [color="black", fontcolor="black", label="{Bhattacharyya_log|\l|computeSimilarity(descriptors: np.ndarray, template: np.ndarray): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Similarity.Bhattacharyya_sqrt" [color="black", fontcolor="black", label="{Bhattacharyya_sqrt|\l|computeSimilarity(descriptors: np.ndarray, template: np.ndarray): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Similarity.Cosine_Similarity" [color="black", fontcolor="black", label="{Cosine_Similarity|\l|computeSimilarity(descriptors: np.ndarray, template: np.ndarray): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Similarity.Kullback_Leibler_Divergence" [color="black", fontcolor="black", label="{Kullback_Leibler_Divergence|\l|computeSimilarity(descriptors: np.ndarray, template: np.ndarray): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.particle_filter.ResampleMethods.Resampling" [color="black", fontcolor="black", label="{Resampling|\l|resample(weights: np.ndarray): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.particle_filter.ResampleMethods.Systematic" [color="black", fontcolor="black", label="{Systematic|\l|resample(weights: np.ndarray): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.particle_filter.ResampleMethods.Residual" [color="black", fontcolor="black", label="{Residual|\l|resample(weights: np.ndarray): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.particle_filter.ResampleMethods.Stratified" [color="black", fontcolor="black", label="{Stratified|\l|resample(weights: np.ndarray): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.particle_filter.ResampleMethods.Multinomial" [color="black", fontcolor="black", label="{Multinomial|\l|resample(weights: np.ndarray): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.utils.Similarity.Similarity" [color="black", fontcolor="black", label="{Similarity|\l|computeSimilarity(descriptors: np.ndarray, template: np.ndarray): np.ndarray\l}", shape="record", style="solid"];
+"PP2_Particle_Filter.particle_filter.ResampleMethods.Resampling" -> "PP2_Particle_Filter.particle_filter.ParticleFilter.ParticleFilter" [arrowhead="diamond", arrowtail="none", fontcolor="red", label="resample_method", style="solid"];
+"PP2_Particle_Filter.particle_filter.ParticleTemplate.Particle" -> "PP2_Particle_Filter.particle_filter.ParticleFilter.ParticleFilter" [arrowhead="diamond", arrowtail="none", fontcolor="red", label="particle_struct", style="solid"];
+"PP2_Particle_Filter.utils.Descriptors.Descriptor" -> "PP2_Particle_Filter.particle_filter.ParticleFilter.ParticleFilter" [arrowhead="odiamond", arrowtail="none", fontcolor="red", label="descriptor", style="solid"];
+"PP2_Particle_Filter.utils.Slicer.Slicer" -> "PP2_Particle_Filter.particle_filter.ParticleFilter.ParticleFilter" [arrowhead="odiamond", arrowtail="none", fontcolor="red", label="slicer", style="solid"];
+"PP2_Particle_Filter.utils.Similarity.Similarity" -> "PP2_Particle_Filter.particle_filter.ParticleFilter.ParticleFilter" [arrowhead="odiamond", arrowtail="none", fontcolor="red", label="similarity", style="solid"];
+"PP2_Particle_Filter.particle_filter.Particle.ConstAccelParticle2DBbox" -> "PP2_Particle_Filter.particle_filter.ParticleTemplate.Particle" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.particle_filter.Particle.ConstAccelParticle2DFixBbox" -> "PP2_Particle_Filter.particle_filter.ParticleTemplate.Particle" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.particle_filter.Particle.PredPosParticle2DBbox" -> "PP2_Particle_Filter.particle_filter.ParticleTemplate.Particle" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.utils.Descriptors.HOG" -> "PP2_Particle_Filter.utils.Descriptors.Descriptor" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.utils.Descriptors.HOGCASCADE" -> "PP2_Particle_Filter.utils.Descriptors.Descriptor" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.utils.Descriptors.HOGCASCADELBP" -> "PP2_Particle_Filter.utils.Descriptors.Descriptor" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.utils.Descriptors.HOGCOLOR" -> "PP2_Particle_Filter.utils.Descriptors.Descriptor" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.utils.Descriptors.LBP" -> "PP2_Particle_Filter.utils.Descriptors.Descriptor" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.utils.Slicer.Crop" -> "PP2_Particle_Filter.utils.Slicer.Slicer" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.utils.Slicer.Resize" -> "PP2_Particle_Filter.utils.Slicer.Slicer" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.particle_filter.ResampleMethods.Multinomial" -> "PP2_Particle_Filter.particle_filter.ResampleMethods.Resampling" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.particle_filter.ResampleMethods.Residual" -> "PP2_Particle_Filter.particle_filter.ResampleMethods.Resampling" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.particle_filter.ResampleMethods.Stratified" -> "PP2_Particle_Filter.particle_filter.ResampleMethods.Resampling" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.particle_filter.ResampleMethods.Systematic" -> "PP2_Particle_Filter.particle_filter.ResampleMethods.Resampling" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.utils.Similarity.Bhattacharyya_log" -> "PP2_Particle_Filter.utils.Similarity.Similarity" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.utils.Similarity.Bhattacharyya_sqrt" -> "PP2_Particle_Filter.utils.Similarity.Similarity" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.utils.Similarity.Cosine_Similarity" -> "PP2_Particle_Filter.utils.Similarity.Similarity" [arrowhead="empty", arrowtail="none"];
+"PP2_Particle_Filter.utils.Similarity.Kullback_Leibler_Divergence" -> "PP2_Particle_Filter.utils.Similarity.Similarity" [arrowhead="empty", arrowtail="none"];
+
+{
+    rank = same;
+    "PP2_Particle_Filter.utils.Descriptors.HOG";
+    "PP2_Particle_Filter.utils.Descriptors.HOGCASCADE";
+    "PP2_Particle_Filter.utils.Descriptors.HOGCASCADELBP";
+    "PP2_Particle_Filter.utils.Descriptors.HOGCOLOR";
+    "PP2_Particle_Filter.utils.Descriptors.LBP";
+    "PP2_Particle_Filter.particle_filter.ParticleTemplate.Particle";
+    "PP2_Particle_Filter.utils.Slicer.Crop";
+    "PP2_Particle_Filter.utils.Slicer.Resize";
+    "PP2_Particle_Filter.utils.Similarity.Bhattacharyya_log";
+    "PP2_Particle_Filter.utils.Similarity.Bhattacharyya_sqrt";
+    "PP2_Particle_Filter.utils.Similarity.Cosine_Similarity";
+    "PP2_Particle_Filter.utils.Similarity.Kullback_Leibler_Divergence";
+}
+{
+    rank = same;
+    "PP2_Particle_Filter.particle_filter.Particle.ConstAccelParticle2DBbox";
+    "PP2_Particle_Filter.particle_filter.Particle.ConstAccelParticle2DFixBbox";
+    "PP2_Particle_Filter.particle_filter.Particle.PredPosParticle2DBbox";
+    "PP2_Particle_Filter.particle_filter.ResampleMethods.Multinomial";
+    "PP2_Particle_Filter.particle_filter.ResampleMethods.Residual";
+    "PP2_Particle_Filter.particle_filter.ResampleMethods.Stratified";
+    "PP2_Particle_Filter.particle_filter.ResampleMethods.Systematic";
+}
+}

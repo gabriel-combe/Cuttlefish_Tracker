@@ -1,6 +1,14 @@
 \chapter{Algorithmes et Analyse}
 
-\section{Algorithmes}
+
+
+
+\section{HOG}
+
+
+
+
+\section{Mesures de similarité}
 
 \subsection{Détection de caractéristiques}
 
@@ -81,14 +89,36 @@ Pour enrichir notre vecteur caractéristique on peut utiliser HOG en cascade qui
 
 \subsection{Distance de Bhattacharyya}
 
-\subsection{Filtre à particule}
 
-\section{Complexité algorithmique}
+\subsection{Cosine similarity}
 
-\subsection{HOG}
 
-\subsection{Distance de Bhattacharyya}
 
-\subsection{Filtre à particule}
+
+\section{Filtre à particule}
+
+\begin{algorithm}
+	\caption{Filtre à particule}\label{alg:particlefilter}
+	\KwData{Une vidéo sous-marine de seiche}
+	\KwResult{La liste des positions et bounding box de la cible dans la vidéo}
+	\ForEach{Images $t$ de la vidéo}{
+		\eIf{Première image}{
+			Détection de la seiche dans l'image grâce a YOLOv7\\
+			Calcul du descripteur de référence : $F_{ref}^{0}$
+		}{
+			\ForEach{Particules p}{
+				Prédiction de la position et de la bounding box de $p$ dans $t$ en fonction de ses états précédents.\\
+				Calcul du descripteur du patch correspondant à $p$ : $F_{p}^{t}$\\
+				Calcul du poids de $p$ dans $t$ :
+					$$w_{p}^{t} = D_{B}(F_{p}^{t},F_{ref}^{t-1})$$
+			}
+			Ré-échantillonnage des particules pondérées par leurs poids\\
+			Estimation de la position et bounding box de la seiche dans $t$ :
+				$$X^{t}=\frac{1}{NB_{particule}}*\sum_{p=0}^{NB_{particule}} x_{p}^{t}*w_{p}^{t}$$
+		}
+		Mise à jour du descripteur de référence : $F_{ref}^{t}$
+	}
+\end{algorithm}
+
 
 \clearpage
