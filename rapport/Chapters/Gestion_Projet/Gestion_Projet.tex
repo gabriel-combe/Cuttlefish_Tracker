@@ -1,3 +1,45 @@
+\newganttlinktype{br}{
+	\ganttsetstartanchor{on bottom=0.2142857}
+	\ganttsetendanchor{west}
+	\draw [/pgfgantt/link]
+	(\xLeft, \yUpper) --
+	(\xLeft, \yLower)
+	node [pos=.5, /pgfgantt/link label node] {\ganttlinklabel} --
+	(\xRight, \yLower);
+}
+
+\newganttlinktype{lt}{
+	\ganttsetstartanchor{east}
+	\ganttsetendanchor{north}
+	\draw [/pgfgantt/link]
+	(\xLeft, \yUpper) --
+	(\xRight, \yUpper) --
+	(\xRight, \yLower)
+	node [pos=.5, /pgfgantt/link label node] {\ganttlinklabel};
+}
+\setganttlinklabel{lt}{finish-to-start}
+
+\newganttlinktype{lt2}{
+	\ganttsetstartanchor{east}
+	\ganttsetendanchor{on top=0.75}
+	\draw [/pgfgantt/link]
+	(\xLeft, \yUpper) --
+	(\xRight, \yUpper) --
+	(\xRight, \yLower)
+	node [pos=.5, /pgfgantt/link label node] {\ganttlinklabel};
+}
+\setganttlinklabel{lt2}{finish-to-start}
+
+\newganttlinktype{f-f2}{
+	\ganttsetstartanchor{north east}
+	\ganttsetendanchor{south east}
+	\draw [/pgfgantt/link]
+	(\xLeft, \yUpper) --
+	(\xRight, \yLower)
+	node [pos=.5, /pgfgantt/link label node] {\ganttlinklabel};
+}
+\setganttlinklabel{f-f2}{finish-to-finish}
+
 \chapter{Gestion du Projet}
 
 \section{Planification}
@@ -17,11 +59,14 @@ La planification c'est faite grâce à un diagramme de Gantt (voir figure \ref{f
 	\ganttbar{Proposition de solutions}{2023-01-16}{2023-01-29}\\
 	\ganttbar{Planification}{2023-01-30}{2023-02-05}\\
 	\ganttbar{Rendez-vous}{2023-02-06}{2023-02-12}\\
-	\ganttbar{Implémentation}{2023-02-13}{2023-02-19}
+	\ganttbar{Implémentation}{2023-02-13}{2023-02-19}\\
+	\ganttbar{ParticleFilter}{2023-02-13}{2023-02-19}
+	
 	\ganttlink{elem0}{elem1}
 	\ganttlink{elem1}{elem2}
 	\ganttlink{elem2}{elem3}
 	\ganttlink{elem3}{elem4}
+	\ganttlink[link type=s-s]{elem4}{elem5}
 \end{ganttchart}
 \\
 \begin{ganttchart}[
@@ -32,7 +77,24 @@ La planification c'est faite grâce à un diagramme de Gantt (voir figure \ref{f
 	time slot format=isodate
 	]{2023-02-20}{2023-04-02}
 	\gantttitlecalendar{week=8}\\
-	\ganttbar{Implémentation}{2023-02-20}{2023-04-02}
+	\ganttbar{Implémentation}{2023-02-20}{2023-04-02}\\
+	\ganttbar{ParticleFilter}{2023-02-20}{2023-03-19}\\
+	\ganttbar{Particules}{2023-02-27}{2023-03-12}\\
+	\ganttbar{Resampling}{2023-02-27}{2023-03-12}\\
+	\ganttbar{Slicer}{2023-03-06}{2023-03-12}\\
+	\ganttbar{Descriptor}{2023-03-13}{2023-03-26}\\
+	\ganttbar{Similarity}{2023-03-13}{2023-03-26}\\
+	\ganttbar{Main program}{2023-03-27}{2023-04-02}\\
+	\ganttbar{Model}{2023-03-27}{2023-04-02}
+	
+	
+	\ganttlink[link type=br]{elem1}{elem2}
+	\ganttlink[link type=br]{elem1}{elem3}
+	\ganttlink[link type=br]{elem1}{elem4}
+	\ganttlink[link type=f-s]{elem4}{elem5}
+	\ganttlink[link type=s-s]{elem5}{elem6}
+	\ganttlink[link type=lt]{elem1}{elem7}
+	\ganttlink[link type=s-s]{elem7}{elem8}
 \end{ganttchart}
 \\
 \begin{ganttchart}[
@@ -43,7 +105,20 @@ La planification c'est faite grâce à un diagramme de Gantt (voir figure \ref{f
 	time slot format=isodate
 	]{2023-04-03}{2023-05-12}
 	\gantttitlecalendar{week=14}\\
-	\ganttbar{Implémentation}{2023-04-03}{2023-04-23}
+	\ganttbar{Implémentation}{2023-04-03}{2023-04-09}\\
+	\ganttbar{Main program}{2023-04-03}{2023-04-09}\\
+	\ganttbar{Model}{2023-04-03}{2023-04-09}\\
+	\ganttbar{Test}{2023-04-10}{2023-04-17}\\
+	\ganttbar{Évaluation}{2023-04-18}{2023-04-24}\\
+	\ganttbar{Écriture Rapport}{2023-04-25}{2023-05-07}\\
+	\ganttbar{Relecture}{2023-05-08}{2023-05-12}
+	
+	\ganttlink[link type=f-f2]{elem1}{elem0}
+	\ganttlink[link type=f-f2]{elem2}{elem1}
+	\ganttlink[link type=lt2]{elem0}{elem3}
+	\ganttlink{elem3}{elem4}
+	\ganttlink[link type=f-s]{elem4}{elem5}
+	\ganttlink{elem5}{elem6}
 \end{ganttchart}
 \caption{Diagramme de Gantt du projet.}
 \label{fig:diagram_gantt}
