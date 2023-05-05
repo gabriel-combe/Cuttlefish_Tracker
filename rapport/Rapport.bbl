@@ -19,62 +19,50 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
-    \entry{rlabbe}{online}{}
-      \name{author}{1}{}{%
-        {{hash=69c51f9374cce2ab10da10523b4a64db}{%
-           family={(rlabbe)},
-           familyi={(\bibinitperiod},
-           given={Roger\bibnamedelima Labbe},
-           giveni={R\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+    \entry{dai_r-fcn_2016}{misc}{}
+      \name{author}{4}{}{%
+        {{hash=c80dbb87ee6058c0b81ab8ee017f1170}{%
+           family={Dai},
+           familyi={D\bibinitperiod},
+           given={Jifeng},
+           giveni={J\bibinitperiod}}}%
+        {{hash=cf1f0547c288eff0857572dcc12516bb}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Yi},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=6b4b60e909e78633945f3f9c9dc83e01}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Kaiming},
+           giveni={K\bibinitperiod}}}%
+        {{hash=f85751488058842b5777c7b4074077b5}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Jian},
+           giveni={J\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {GitHub}%
+        {arXiv}%
       }
-      \strng{namehash}{69c51f9374cce2ab10da10523b4a64db}
-      \strng{fullhash}{69c51f9374cce2ab10da10523b4a64db}
-      \strng{bibnamehash}{69c51f9374cce2ab10da10523b4a64db}
-      \strng{authorbibnamehash}{69c51f9374cce2ab10da10523b4a64db}
-      \strng{authornamehash}{69c51f9374cce2ab10da10523b4a64db}
-      \strng{authorfullhash}{69c51f9374cce2ab10da10523b4a64db}
-      \field{sortinit}{r}
-      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \strng{namehash}{5e6d93db6ec8079f3e9ef43677e0e71c}
+      \strng{fullhash}{d8450ebca907ed083f8e519d024f34bf}
+      \strng{bibnamehash}{5e6d93db6ec8079f3e9ef43677e0e71c}
+      \strng{authorbibnamehash}{5e6d93db6ec8079f3e9ef43677e0e71c}
+      \strng{authornamehash}{5e6d93db6ec8079f3e9ef43677e0e71c}
+      \strng{authorfullhash}{d8450ebca907ed083f8e519d024f34bf}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
       \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{GitHub repository}
-      \field{title}{Kalman and Bayesian Filters in Python}
-      \field{year}{2014}
-      \verb{urlraw}
-      \verb https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python
-      \endverb
-      \verb{url}
-      \verb https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python
-      \endverb
-    \endentry
-    \entry{bhattacharyya_measure_1960}{article}{}
-      \name{author}{1}{}{%
-        {{hash=5849c9038498843b9de5403c4033f171}{%
-           family={Bhattacharyya},
-           familyi={B\bibinitperiod},
-           given={A.},
-           giveni={A\bibinitperiod}}}%
-      }
-      \strng{namehash}{5849c9038498843b9de5403c4033f171}
-      \strng{fullhash}{5849c9038498843b9de5403c4033f171}
-      \strng{bibnamehash}{5849c9038498843b9de5403c4033f171}
-      \strng{authorbibnamehash}{5849c9038498843b9de5403c4033f171}
-      \strng{authornamehash}{5849c9038498843b9de5403c4033f171}
-      \strng{authorfullhash}{5849c9038498843b9de5403c4033f171}
-      \field{sortinit}{B}
-      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Sankhyā: The Indian Journal of Statistics (1933-1960)}
-      \field{number}{4}
-      \field{title}{On a {Measure} of {Divergence} between {Two} {Multinomial} {Populations}}
-      \field{volume}{7}
-      \field{year}{1960}
-      \field{pages}{401\bibrangedash 406}
-      \range{pages}{6}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{We present region-based, fully convolutional networks for accurate and efﬁcient object detection. In contrast to previous region-based detectors such as Fast/Faster R-CNN [6, 18] that apply a costly per-region subnetwork hundreds of times, our region-based detector is fully convolutional with almost all computation shared on the entire image. To achieve this goal, we propose position-sensitive score maps to address a dilemma between translation-invariance in image classiﬁcation and translation-variance in object detection. Our method can thus naturally adopt fully convolutional image classiﬁer backbones, such as the latest Residual Networks (ResNets) [9], for object detection. We show competitive results on the PASCAL VOC datasets (e.g., 83.6\% mAP on the 2007 set) with the 101-layer ResNet. Meanwhile, our result is achieved at a test-time speed of 170ms per image, 2.5-20× faster than the Faster R-CNN counterpart. Code is made publicly available at: https://github.com/daijifeng001/r-fcn.}
+      \field{annotation}{Comment: Tech report}
+      \field{month}{6}
+      \field{note}{arXiv:1605.06409 [cs]}
+      \field{shorttitle}{R-{FCN}}
+      \field{title}{R-{FCN}: {Object} {Detection} via {Region}-based {Fully} {Convolutional} {Networks}}
+      \field{year}{2016}
+      \keyw{Computer Science - Computer Vision and Pattern Recognition}
     \endentry
     \entry{dalal_histograms_2005}{inproceedings}{}
       \name{author}{2}{}{%
@@ -120,11 +108,6 @@
            familyi={G\bibinitperiod},
            given={Combe-Ounkham},
            giveni={C\bibinithyphendelim O\bibinitperiod}}}%
-        {{hash=7922c6155fa0676f25d56c9d15c4eed4}{%
-           family={Ariane},
-           familyi={A\bibinitperiod},
-           given={Vaisse},
-           giveni={V\bibinitperiod}}}%
         {{hash=7cb599d7e32f385a3c1707a2c74384fd}{%
            family={Maxime},
            familyi={M\bibinitperiod},
@@ -135,16 +118,21 @@
            familyi={L\bibinithyphendelim M\bibinitperiod},
            given={Young\bibnamedelima Brun},
            giveni={Y\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=7922c6155fa0676f25d56c9d15c4eed4}{%
+           family={Ariane},
+           familyi={A\bibinitperiod},
+           given={Vaisse},
+           giveni={V\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
         {GitHub}%
       }
       \strng{namehash}{14a5ce5326c41cc2bba4f0053c0cca9a}
-      \strng{fullhash}{802e6337565b14504d1a595553a92907}
+      \strng{fullhash}{f49d75d069a5d60d4643fee890847850}
       \strng{bibnamehash}{14a5ce5326c41cc2bba4f0053c0cca9a}
       \strng{authorbibnamehash}{14a5ce5326c41cc2bba4f0053c0cca9a}
       \strng{authornamehash}{14a5ce5326c41cc2bba4f0053c0cca9a}
-      \strng{authorfullhash}{802e6337565b14504d1a595553a92907}
+      \strng{authorfullhash}{f49d75d069a5d60d4643fee890847850}
       \field{sortinit}{G}
       \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
       \field{labelnamesource}{author}
@@ -159,58 +147,53 @@
       \verb https://github.com/gabriel-combe/PP2_Particle_Filter
       \endverb
     \endentry
-    \entry{kong_particle_2019}{article}{}
-      \name{author}{6}{}{%
-        {{hash=1c92bea464d4e5a19e0ff469c8ed7076}{%
-           family={Kong},
-           familyi={K\bibinitperiod},
-           given={Xiaofang},
-           giveni={X\bibinitperiod}}}%
-        {{hash=b6fff56e4c606d8c37bb384da63c33e3}{%
-           family={Chen},
-           familyi={C\bibinitperiod},
-           given={Qian},
-           giveni={Q\bibinitperiod}}}%
-        {{hash=27a7d8677dd7308dbc00a024300db05d}{%
-           family={Gu},
-           familyi={G\bibinitperiod},
-           given={Guohua},
-           giveni={G\bibinitperiod}}}%
-        {{hash=e60df921d205387a6a076dca1c8f329b}{%
-           family={Ren},
-           familyi={R\bibinitperiod},
-           given={Kan},
-           giveni={K\bibinitperiod}}}%
-        {{hash=c1bf42238e78c95c69147f026e73790b}{%
-           family={Qian},
-           familyi={Q\bibinitperiod},
-           given={Weixian},
-           giveni={W\bibinitperiod}}}%
-        {{hash=1d7a874b1ff656ee5f33ddd7918b2fd4}{%
-           family={Liu},
+    \entry{lin_focal_2018}{misc}{}
+      \name{author}{5}{}{%
+        {{hash=08f925fe4692d130a1d7cb7d94483351}{%
+           family={Lin},
            familyi={L\bibinitperiod},
-           given={Zewei},
-           giveni={Z\bibinitperiod}}}%
+           given={Tsung-Yi},
+           giveni={T\bibinithyphendelim Y\bibinitperiod}}}%
+        {{hash=d87be7c19fa16049347907c9820816c6}{%
+           family={Goyal},
+           familyi={G\bibinitperiod},
+           given={Priya},
+           giveni={P\bibinitperiod}}}%
+        {{hash=bd5dadbe57bedc5957c19a3154c4d424}{%
+           family={Girshick},
+           familyi={G\bibinitperiod},
+           given={Ross},
+           giveni={R\bibinitperiod}}}%
+        {{hash=6b4b60e909e78633945f3f9c9dc83e01}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Kaiming},
+           giveni={K\bibinitperiod}}}%
+        {{hash=ecd149fdcb3e0503881d49e545744c3d}{%
+           family={Dollár},
+           familyi={D\bibinitperiod},
+           given={Piotr},
+           giveni={P\bibinitperiod}}}%
       }
-      \strng{namehash}{dcfd1d5aba7418991c6bb5864593b743}
-      \strng{fullhash}{f8a8c948b635cbe3aa1808ef7f427f6d}
-      \strng{bibnamehash}{dcfd1d5aba7418991c6bb5864593b743}
-      \strng{authorbibnamehash}{dcfd1d5aba7418991c6bb5864593b743}
-      \strng{authornamehash}{dcfd1d5aba7418991c6bb5864593b743}
-      \strng{authorfullhash}{f8a8c948b635cbe3aa1808ef7f427f6d}
-      \field{sortinit}{K}
-      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{3b7e00bc88d7aca4d4d5ddb8c252e36c}
+      \strng{fullhash}{4ccabcfdf9c34f3d9a88fdca5bb95dd5}
+      \strng{bibnamehash}{3b7e00bc88d7aca4d4d5ddb8c252e36c}
+      \strng{authorbibnamehash}{3b7e00bc88d7aca4d4d5ddb8c252e36c}
+      \strng{authornamehash}{3b7e00bc88d7aca4d4d5ddb8c252e36c}
+      \strng{authorfullhash}{4ccabcfdf9c34f3d9a88fdca5bb95dd5}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{Tracking vehicles automatically are of great importance in the intelligent transportation systems to guarantee the traffic safety, especially for the self-driving technique. To solve the problem of the tiny jitter of the camera due to the shaking platform and the rough road, and to track the vehicle ahead, a salient feature-based video stabilisation method is introduced to remove the effect of camera motion, and an improved particle filter-based vehicle tracking algorithm via histogram of oriented gradient (HOG) features is proposed in this study. For video stabilisation, first, the features from accelerated segment test algorithm are applied to extract salient points from the two adjacent frames. Then, the fast retina keypoint algorithm is used to match the correspondences and the M-estimator sample consensus algorithm is applied to remove the outliers. Finally, the image with tiny jitter is stabilised by the affine transformation matrix calculated from the retained inliers. After the image stabilisation, an improved particle filter-based tracking method is proposed for vehicle tracking via the HOG feature extracted from an adaptive searching area determined by the expected vehicle position of the previous frame. Experimental results demonstrate that camera motion can be effectively compensated by the feature-based stabilisation method, and the forward vehicle can be tracked with stability and robustness in real time.}
-      \field{journaltitle}{IET Intelligent Transport Systems}
-      \field{month}{6}
-      \field{number}{6}
-      \field{title}{Particle filter‐based vehicle tracking via {HOG} features after image stabilisation in intelligent drive system}
-      \field{volume}{13}
-      \field{year}{2019}
-      \field{pages}{942\bibrangedash 949}
-      \range{pages}{8}
+      \field{abstract}{The highest accuracy object detectors to date are based on a two-stage approach popularized by R-CNN, where a classiﬁer is applied to a sparse set of candidate object locations. In contrast, one-stage detectors that are applied over a regular, dense sampling of possible object locations have the potential to be faster and simpler, but have trailed the accuracy of two-stage detectors thus far. In this paper, we investigate why this is the case. We discover that the extreme foreground-background class imbalance encountered during training of dense detectors is the central cause. We propose to address this class imbalance by reshaping the standard cross entropy loss such that it down-weights the loss assigned to well-classiﬁed examples. Our novel Focal Loss focuses training on a sparse set of hard examples and prevents the vast number of easy negatives from overwhelming the detector during training. To evaluate the effectiveness of our loss, we design and train a simple dense detector we call RetinaNet. Our results show that when trained with the focal loss, RetinaNet is able to match the speed of previous one-stage detectors while surpassing the accuracy of all existing state-of-the-art two-stage detectors. Code is at: https://github.com/facebookresearch/Detectron.}
+      \field{month}{2}
+      \field{note}{arXiv:1708.02002 [cs]}
+      \field{title}{Focal {Loss} for {Dense} {Object} {Detection}}
+      \field{year}{2018}
+      \keyw{Computer Science - Computer Vision and Pattern Recognition}
     \endentry
     \entry{liu_ssd_2016}{incollection}{}
       \name{author}{7}{}{%
@@ -354,6 +337,89 @@
       \field{year}{2016}
       \keyw{Computer Science - Computer Vision and Pattern Recognition}
     \endentry
+    \entry{ren_faster_2016}{misc}{}
+      \name{author}{4}{}{%
+        {{hash=bb295293acacd54387339079ebbe4ead}{%
+           family={Ren},
+           familyi={R\bibinitperiod},
+           given={Shaoqing},
+           giveni={S\bibinitperiod}}}%
+        {{hash=6b4b60e909e78633945f3f9c9dc83e01}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Kaiming},
+           giveni={K\bibinitperiod}}}%
+        {{hash=bd5dadbe57bedc5957c19a3154c4d424}{%
+           family={Girshick},
+           familyi={G\bibinitperiod},
+           given={Ross},
+           giveni={R\bibinitperiod}}}%
+        {{hash=f85751488058842b5777c7b4074077b5}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Jian},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{f086ca4da3e532e8a41cb758ea461825}
+      \strng{fullhash}{008a132af3e2d4ff15eb01a8fb4b005c}
+      \strng{bibnamehash}{f086ca4da3e532e8a41cb758ea461825}
+      \strng{authorbibnamehash}{f086ca4da3e532e8a41cb758ea461825}
+      \strng{authornamehash}{f086ca4da3e532e8a41cb758ea461825}
+      \strng{authorfullhash}{008a132af3e2d4ff15eb01a8fb4b005c}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{State-of-the-art object detection networks depend on region proposal algorithms to hypothesize object locations. Advances like SPPnet [7] and Fast R-CNN [5] have reduced the running time of these detection networks, exposing region proposal computation as a bottleneck. In this work, we introduce a Region Proposal Network (RPN) that shares full-image convolutional features with the detection network, thus enabling nearly cost-free region proposals. An RPN is a fullyconvolutional network that simultaneously predicts object bounds and objectness scores at each position. RPNs are trained end-to-end to generate high-quality region proposals, which are used by Fast R-CNN for detection. With a simple alternating optimization, RPN and Fast R-CNN can be trained to share convolutional features. For the very deep VGG-16 model [18], our detection system has a frame rate of 5fps (including all steps) on a GPU, while achieving state-of-the-art object detection accuracy on PASCAL VOC 2007 (73.2\% mAP) and 2012 (70.4\% mAP) using 300 proposals per image. The code will be released.}
+      \field{annotation}{Comment: Extended tech report}
+      \field{month}{1}
+      \field{note}{arXiv:1506.01497 [cs]}
+      \field{shorttitle}{Faster {R}-{CNN}}
+      \field{title}{Faster {R}-{CNN}: {Towards} {Real}-{Time} {Object} {Detection} with {Region} {Proposal} {Networks}}
+      \field{year}{2016}
+      \keyw{Computer Science - Computer Vision and Pattern Recognition}
+    \endentry
+    \entry{sanchez_review_2020}{article}{}
+      \name{author}{3}{}{%
+        {{hash=922f8c4141d245df4ab8bf56a3521283}{%
+           family={Sanchez},
+           familyi={S\bibinitperiod},
+           given={S\bibnamedelima A},
+           giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=99d39753cddb57293d04a98e8e835ca0}{%
+           family={Romero},
+           familyi={R\bibinitperiod},
+           given={H\bibnamedelima J},
+           giveni={H\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=0389850e74e9452e38613f6acdc047d8}{%
+           family={Morales},
+           familyi={M\bibinitperiod},
+           given={A\bibnamedelima D},
+           giveni={A\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \strng{namehash}{75218acc530dc7a653514a4a6610fbf4}
+      \strng{fullhash}{75218acc530dc7a653514a4a6610fbf4}
+      \strng{bibnamehash}{75218acc530dc7a653514a4a6610fbf4}
+      \strng{authorbibnamehash}{75218acc530dc7a653514a4a6610fbf4}
+      \strng{authornamehash}{75218acc530dc7a653514a4a6610fbf4}
+      \strng{authorfullhash}{75218acc530dc7a653514a4a6610fbf4}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Advances in parallel computing, GPU technology and deep learning facilitate the tools for processing complex images. The purpose of this research was focused on a review of the state of the art, related to the performance of pre-trained models for the detection of objects in order to make a comparison of these algorithms in terms of reliability, ac- curacy, time processed and Problems detected The consulted models are based on the Python programming language, the use of libraries based on TensorFlow, OpenCv and free image databases (Microsoft COCO and PASCAL VOC 2007/2012). These systems are not only focused on the recognition and classification of the objects in the images, but also on the location of the objects within it, drawing a bounding box around the appropriate way. For this research, different pre-trained models were re- viewed for the detection of objects such as R-CNN, R-FCN, SSD (single- shot multibox) and YOLO (You Only Look Once), with different extractors of characteristics such as VGG16, ResNet, Inception, MobileNet. As a result, it is not prudent to make direct and parallel analyzes between the different architecture and models, because each case has a particular solution for each problem, the purpose of this research is to generate an approximate notion of the experiments that have been carried out and conceive a starting point in the use that they are intended to give.}
+      \field{journaltitle}{IOP Conference Series: Materials Science and Engineering}
+      \field{month}{6}
+      \field{shorttitle}{A review}
+      \field{title}{A review: {Comparison} of performance metrics of pretrained models for object detection using the {TensorFlow} framework}
+      \field{volume}{844}
+      \field{year}{2020}
+      \field{pages}{012024}
+      \range{pages}{1}
+    \endentry
     \entry{yolov7_github}{online}{}
       \name{author}{3}{}{%
         {{hash=053d491932411950eccf2bb9a1025d11}{%
@@ -427,43 +493,6 @@
       \field{labeltitlesource}{title}
       \field{abstract}{YOLOv7 surpasses all known object detectors in both speed and accuracy in the range from 5 FPS to 160 FPS and has the highest accuracy 56.8\% AP among all known real-time object detectors with 30 FPS or higher on GPU V100. YOLOv7-E6 object detector (56 FPS V100, 55.9\% AP) outperforms both transformer-based detector SWINL Cascade-Mask R-CNN (9.2 FPS A100, 53.9\% AP) by 509\% in speed and 2\% in accuracy, and convolutionalbased detector ConvNeXt-XL Cascade-Mask R-CNN (8.6 FPS A100, 55.2\% AP) by 551\% in speed and 0.7\% AP in accuracy, as well as YOLOv7 outperforms: YOLOR, YOLOX, Scaled-YOLOv4, YOLOv5, DETR, Deformable DETR, DINO-5scale-R50, ViT-Adapter-B and many other object detectors in speed and accuracy. Moreover, we train YOLOv7 only on MS COCO dataset from scratch without using any other datasets or pre-trained weights. Source code is released in https:// github.com/ WongKinYiu/ yolov7.}
       \field{title}{{YOLOv7}: {Trainable} bag-of-freebies sets new state-of-the-art for real-time object detectors}
-    \endentry
-    \entry{xu_human_2010}{inproceedings}{}
-      \name{author}{2}{}{%
-        {{hash=0a57118bdd031bffda6d1c7fa3abda3b}{%
-           family={Xu},
-           familyi={X\bibinitperiod},
-           given={Fen},
-           giveni={F\bibinitperiod}}}%
-        {{hash=afb97708cb4244ee9a5cbc2b4a0cafae}{%
-           family={Gao},
-           familyi={G\bibinitperiod},
-           given={Ming},
-           giveni={M\bibinitperiod}}}%
-      }
-      \list{location}{1}{%
-        {Yantai, China}%
-      }
-      \list{publisher}{1}{%
-        {IEEE}%
-      }
-      \strng{namehash}{c79b6c864a7c05717bc81ab65b9ddb70}
-      \strng{fullhash}{c79b6c864a7c05717bc81ab65b9ddb70}
-      \strng{bibnamehash}{c79b6c864a7c05717bc81ab65b9ddb70}
-      \strng{authorbibnamehash}{c79b6c864a7c05717bc81ab65b9ddb70}
-      \strng{authornamehash}{c79b6c864a7c05717bc81ab65b9ddb70}
-      \strng{authorfullhash}{c79b6c864a7c05717bc81ab65b9ddb70}
-      \field{sortinit}{X}
-      \field{sortinithash}{1965c258adceecf23ce3d67b05113442}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{Human detection and tracking is a task common to many applications, such as video surveillance and security, intelligent vehicles, safety driving, public security, etc. Histogram of oriented gradient (HOG) gives an accurate description of the contour of human body. Based on HOG and support vector machine (SVM) theory, a classifier for pedestrian is obtained. The classifier is then used to find the potential human candidate in the video frame. By calculating the similarity between particle candidates and the target model using Bhattacharyya Coefficient, a tracking algorithm using particle filter is designed and implemented. Experimental results show that the proposed algorithm out-performs Kalman filter based tracking in almost all situations, especially when partial occlusion of object is present.}
-      \field{booktitle}{2010 3rd {International} {Congress} on {Image} and {Signal} {Processing}}
-      \field{month}{10}
-      \field{title}{Human detection and tracking based on {HOG} and particle filter}
-      \field{year}{2010}
-      \field{pages}{1503\bibrangedash 1507}
-      \range{pages}{5}
     \endentry
   \enddatalist
 \endrefsection

@@ -2347,17 +2347,21 @@
     <bcf:citekey order="1">redmon_you_2016</bcf:citekey>
     <bcf:citekey order="2">liu_ssd_2016</bcf:citekey>
     <bcf:citekey order="3">wang_yolov7_nodate</bcf:citekey>
-    <bcf:citekey order="4">wang_yolov7_nodate</bcf:citekey>
-    <bcf:citekey order="5">wang_yolov7_nodate</bcf:citekey>
-    <bcf:citekey order="6">yolov7_github</bcf:citekey>
-    <bcf:citekey order="7">wang_yolov7_nodate</bcf:citekey>
-    <bcf:citekey order="8">pp2pf</bcf:citekey>
-    <bcf:citekey order="9">xu_human_2010</bcf:citekey>
-    <bcf:citekey order="10">kong_particle_2019</bcf:citekey>
-    <bcf:citekey order="11">qiang_zhu_fast_2006</bcf:citekey>
-    <bcf:citekey order="12">dalal_histograms_2005</bcf:citekey>
-    <bcf:citekey order="13">bhattacharyya_measure_1960</bcf:citekey>
-    <bcf:citekey order="14">rlabbe</bcf:citekey>
+    <bcf:citekey order="4">ren_faster_2016</bcf:citekey>
+    <bcf:citekey order="5">lin_focal_2018</bcf:citekey>
+    <bcf:citekey order="6">liu_ssd_2016</bcf:citekey>
+    <bcf:citekey order="7">redmon_you_2016</bcf:citekey>
+    <bcf:citekey order="8">dai_r-fcn_2016</bcf:citekey>
+    <bcf:citekey order="9">sanchez_review_2020</bcf:citekey>
+    <bcf:citekey order="10">wang_yolov7_nodate</bcf:citekey>
+    <bcf:citekey order="11">wang_yolov7_nodate</bcf:citekey>
+    <bcf:citekey order="12">wang_yolov7_nodate</bcf:citekey>
+    <bcf:citekey order="13">yolov7_github</bcf:citekey>
+    <bcf:citekey order="14">wang_yolov7_nodate</bcf:citekey>
+    <bcf:citekey order="15">pp2pf</bcf:citekey>
+    <bcf:citekey order="16">dalal_histograms_2005</bcf:citekey>
+    <bcf:citekey order="17">dalal_histograms_2005</bcf:citekey>
+    <bcf:citekey order="18">qiang_zhu_fast_2006</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

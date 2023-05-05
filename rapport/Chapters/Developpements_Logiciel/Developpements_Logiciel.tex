@@ -22,7 +22,7 @@ Les performances obtenues sont illustrées dans la figure \ref{fig:ai_results} e
 \end{figure}
 \FloatBarrier
 
-Les différentes définitions peuvent être retrouvées en annexe (\ref{appendix:mAP}).\\
+Les différentes définitions peuvent être retrouvées en annexe (\ref{app:mAP}).\\
 %Nombre de vrai positif divisé par le nombre de vrai positif plus le nombre de faux positif
 %Nombre de vrai positif divisé par le nombre de positif total
 \\
@@ -68,7 +68,7 @@ Une fois que le filtre à particule a fini de traiter une image, celle-ci est af
 \FloatBarrier
 
 Le logiciel donne également la possibilité de sauvegarder la vidéo résultante, ainsi que les valeurs de la particule estimée à chaque itération du filtre.\\
-Sauvegarder cette estimation permet, par la suite, d'effectuer une analyse des performances de nos solutions, en utilisant un script d'évaluation qui calcul l'IoU (voir annexe \ref{appendix:IoU}) entre une estimation à un instant $t$ et la véritable valeur à ce même instant, comme montré dans la figure \ref{fig:eval_result}.\\
+Sauvegarder cette estimation permet, par la suite, d'effectuer une analyse des performances de nos solutions, en utilisant un script d'évaluation qui calcul l'IoU (voir annexe \ref{app:IoU}) entre une estimation à un instant $t$ et la véritable valeur à ce même instant, comme montré dans la figure \ref{fig:eval_result}.\\
 
 \begin{figure}[!htbp]
 \center
@@ -81,7 +81,8 @@ Sauvegarder cette estimation permet, par la suite, d'effectuer une analyse des p
 
 \clearpage
 \section{Modules}
-Le diagramme UML de cas d'utilisation (figure \ref{fig:uml_diagram_usecase}) du projet est assez simple, et ce résume à une unique relation entre l'utilisateur et le logiciel, celle de lancer le programme avec une vidéo et les paramètres souhaités. Le reste des relations est effectuées en interne et aucune interaction externe n'est requise.
+Le diagramme UML de cas d'utilisation (figure \ref{fig:uml_diagram_usecase}) du projet est assez simple, et ce résume à une unique relation entre l'utilisateur et le logiciel, celle de lancer le programme avec une vidéo et les paramètres souhaités. Le reste des relations est effectuées en interne et aucune interaction externe n'est requise.\\
+Le diagramme UML global des classes peut être retrouvé en annexe \ref{app:UMLGlobal}.
 
 \begin{figure}[!htbp]
 \center

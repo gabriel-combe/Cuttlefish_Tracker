@@ -1,7 +1,52 @@
 \chapter{Gestion du Projet}
 
 \section{Planification}
+Le projet a été divisé entre les 4 membres du groupe pour la partie implémentation des solutions et écriture du rapport, le reste, à savoir, la planification du projet, la répartition des taches et les solutions à implémenter ont été décidé en groupe.\\
+La planification c'est faite grâce à un diagramme de Gantt (voir figure \ref{fig:diagram_gantt}) et a été répartie sur les 5 mois accordés, soit du 5 Janvier 2023 au 12 Mai 2023.
 
-\section{Changements majeurs}
+\begin{figure}[!htbp]
+\begin{ganttchart}[
+	hgrid,
+	vgrid,
+	inline,
+	x unit=4mm,
+	time slot format=isodate
+	]{2023-01-05}{2023-02-19}
+	\gantttitlecalendar{week}\\
+	\ganttbar{Renseignement}{2023-01-05}{2023-01-15}\\
+	\ganttbar{Proposition de solutions}{2023-01-16}{2023-01-29}\\
+	\ganttbar{Planification}{2023-01-30}{2023-02-05}\\
+	\ganttbar{Rendez-vous}{2023-02-06}{2023-02-12}\\
+	\ganttbar{Implémentation}{2023-02-13}{2023-02-19}
+	\ganttlink{elem0}{elem1}
+	\ganttlink{elem1}{elem2}
+	\ganttlink{elem2}{elem3}
+	\ganttlink{elem3}{elem4}
+\end{ganttchart}
+\\
+\begin{ganttchart}[
+	hgrid,
+	vgrid,
+	inline,
+	x unit=4mm,
+	time slot format=isodate
+	]{2023-02-20}{2023-04-02}
+	\gantttitlecalendar{week=8}\\
+	\ganttbar{Implémentation}{2023-02-20}{2023-04-02}
+\end{ganttchart}
+\\
+\begin{ganttchart}[
+	hgrid,
+	vgrid,
+	inline,
+	x unit=4mm,
+	time slot format=isodate
+	]{2023-04-03}{2023-05-12}
+	\gantttitlecalendar{week=14}\\
+	\ganttbar{Implémentation}{2023-04-03}{2023-04-23}
+\end{ganttchart}
+\caption{Diagramme de Gantt du projet.}
+\label{fig:diagram_gantt}
+\end{figure}
 
 \clearpage

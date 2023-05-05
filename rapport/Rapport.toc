@@ -25,54 +25,54 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.3}Langage de programmation}{9}{section.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}Développements Logiciel : Conception, Modélisation, Implémentation}{10}{chapter.3}%
+\contentsline {chapter}{\numberline {3}Développements Logiciel : Conception, Modélisation, Implémentation}{11}{chapter.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}Développements logiciel}{10}{section.3.1}%
+\contentsline {section}{\numberline {3.1}Développements logiciel}{11}{section.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.1}Intelligence Artificielle}{10}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.1}Intelligence Artificielle}{11}{subsection.3.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.2}Logiciel de suivi de seiche}{11}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.2}Logiciel de suivi de seiche}{12}{subsection.3.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}Modules}{13}{section.3.2}%
+\contentsline {section}{\numberline {3.2}Modules}{14}{section.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.1}Descripteurs}{13}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.1}Descripteurs}{14}{subsection.3.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.2}Mesure de similarité}{14}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.2}Mesure de similarité}{15}{subsection.3.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.3}Filtre à particule}{14}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.3}Filtre à particule}{15}{subsection.3.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}Structures de données}{15}{section.3.3}%
+\contentsline {section}{\numberline {3.3}Structures de données}{16}{section.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.4}Statistiques}{15}{section.3.4}%
+\contentsline {section}{\numberline {3.4}Statistiques}{16}{section.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Algorithmes et Analyse}{16}{chapter.4}%
+\contentsline {chapter}{\numberline {4}Algorithmes et Analyse}{17}{chapter.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}HOG}{16}{section.4.1}%
+\contentsline {section}{\numberline {4.1}Descripteurs}{17}{section.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Mesures de similarité}{16}{section.4.2}%
+\contentsline {subsection}{\numberline {4.1.1}Histogramme de gradient orienté}{17}{subsection.4.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.1}Distance de Bhattacharyya}{16}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.1.2}HOG en cascade}{18}{subsection.4.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.2}Cosine similarity}{16}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.2}Mesures de similarité}{19}{section.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Filtre à particule}{16}{section.4.3}%
+\contentsline {subsection}{\numberline {4.2.1}Distance de Bhattacharyya}{19}{subsection.4.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Analyse des résultats}{17}{chapter.5}%
+\contentsline {subsection}{\numberline {4.2.2}Cosine similarity}{19}{subsection.4.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Performances}{17}{section.5.1}%
+\contentsline {section}{\numberline {4.3}Filtre à particule}{19}{section.4.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Analyse et comparaison}{17}{section.5.2}%
+\contentsline {chapter}{\numberline {5}Analyse des résultats}{20}{chapter.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Procédures de test}{17}{section.5.3}%
+\contentsline {section}{\numberline {5.1}Méthodologie}{20}{section.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Gestion du Projet}{18}{chapter.6}%
+\contentsline {section}{\numberline {5.2}Analyse et comparaison}{20}{section.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Planification}{18}{section.6.1}%
+\contentsline {chapter}{\numberline {6}Gestion du Projet}{21}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.2}Changements majeurs}{18}{section.6.2}%
+\contentsline {section}{\numberline {6.1}Planification}{21}{section.6.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Bilan et Conclusions}{19}{chapter.7}%
+\contentsline {chapter}{\numberline {7}Bilan et Conclusions}{22}{chapter.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Appendices}{22}{section*.16}%
+\contentsline {chapter}{Appendices}{24}{section*.20}%
 \defcounter {refsection}{0}\relax 
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

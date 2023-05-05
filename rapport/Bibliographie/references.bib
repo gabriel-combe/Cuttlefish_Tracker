@@ -96,7 +96,7 @@
 }
 
 @ONLINE{pp2pf,
-	author = {Gabriel, Combe-Ounkham and Ariane, Vaisse and Maxime, Beldjilali and Luis-Miguel, Young Brun},
+	author = {Gabriel, Combe-Ounkham and Maxime, Beldjilali and Luis-Miguel, Young Brun and Ariane, Vaisse},
 	title = {PP2 Particle Filter},
 	year = {2023},
 	publisher = {GitHub},
@@ -112,3 +112,75 @@
 	journal = {GitHub repository},
 	url = {https://github.com/WongKinYiu/yolov7}
 }
+
+@article{sanchez_review_2020,
+	title = {A review: {Comparison} of performance metrics of pretrained models for object detection using the {TensorFlow} framework},
+	volume = {844},
+	shorttitle = {A review},
+	abstract = {Advances in parallel computing, GPU technology and deep learning facilitate the tools for processing complex images. The purpose of this research was focused on a review of the state of the art, related to the performance of pre-trained models for the detection of objects in order to make a comparison of these algorithms in terms of reliability, ac- curacy, time processed and Problems detected The consulted models are based on the Python programming language, the use of libraries based on TensorFlow, OpenCv and free image databases (Microsoft COCO and PASCAL VOC 2007/2012). These systems are not only focused on the recognition and classification of the objects in the images, but also on the location of the objects within it, drawing a bounding box around the appropriate way. For this research, different pre-trained models were re- viewed for the detection of objects such as R-CNN, R-FCN, SSD (single- shot multibox) and YOLO (You Only Look Once), with different extractors of characteristics such as VGG16, ResNet, Inception, MobileNet. As a result, it is not prudent to make direct and parallel analyzes between the different architecture and models, because each case has a particular solution for each problem, the purpose of this research is to generate an approximate notion of the experiments that have been carried out and conceive a starting point in the use that they are intended to give.},
+	journal = {IOP Conference Series: Materials Science and Engineering},
+	author = {Sanchez, S A and Romero, H J and Morales, A D},
+	month = jun,
+	year = {2020},
+	pages = {012024}
+}
+
+@misc{ren_faster_2016,
+	title = {Faster {R}-{CNN}: {Towards} {Real}-{Time} {Object} {Detection} with {Region} {Proposal} {Networks}},
+	shorttitle = {Faster {R}-{CNN}},
+	abstract = {State-of-the-art object detection networks depend on region proposal algorithms to hypothesize object locations. Advances like SPPnet [7] and Fast R-CNN [5] have reduced the running time of these detection networks, exposing region proposal computation as a bottleneck. In this work, we introduce a Region Proposal Network (RPN) that shares full-image convolutional features with the detection network, thus enabling nearly cost-free region proposals. An RPN is a fullyconvolutional network that simultaneously predicts object bounds and objectness scores at each position. RPNs are trained end-to-end to generate high-quality region proposals, which are used by Fast R-CNN for detection. With a simple alternating optimization, RPN and Fast R-CNN can be trained to share convolutional features. For the very deep VGG-16 model [18], our detection system has a frame rate of 5fps (including all steps) on a GPU, while achieving state-of-the-art object detection accuracy on PASCAL VOC 2007 (73.2\% mAP) and 2012 (70.4\% mAP) using 300 proposals per image. The code will be released.},
+	publisher = {arXiv},
+	author = {Ren, Shaoqing and He, Kaiming and Girshick, Ross and Sun, Jian},
+	month = jan,
+	year = {2016},
+	note = {arXiv:1506.01497 [cs]},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition},
+	annote = {Comment: Extended tech report}
+}
+
+@misc{lin_focal_2018,
+	title = {Focal {Loss} for {Dense} {Object} {Detection}},
+	abstract = {The highest accuracy object detectors to date are based on a two-stage approach popularized by R-CNN, where a classiﬁer is applied to a sparse set of candidate object locations. In contrast, one-stage detectors that are applied over a regular, dense sampling of possible object locations have the potential to be faster and simpler, but have trailed the accuracy of two-stage detectors thus far. In this paper, we investigate why this is the case. We discover that the extreme foreground-background class imbalance encountered during training of dense detectors is the central cause. We propose to address this class imbalance by reshaping the standard cross entropy loss such that it down-weights the loss assigned to well-classiﬁed examples. Our novel Focal Loss focuses training on a sparse set of hard examples and prevents the vast number of easy negatives from overwhelming the detector during training. To evaluate the effectiveness of our loss, we design and train a simple dense detector we call RetinaNet. Our results show that when trained with the focal loss, RetinaNet is able to match the speed of previous one-stage detectors while surpassing the accuracy of all existing state-of-the-art two-stage detectors. Code is at: https://github.com/facebookresearch/Detectron.},
+	publisher = {arXiv},
+	author = {Lin, Tsung-Yi and Goyal, Priya and Girshick, Ross and He, Kaiming and Dollár, Piotr},
+	month = feb,
+	year = {2018},
+	note = {arXiv:1708.02002 [cs]},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition}
+}
+
+@misc{girshick_rich_2014,
+	title = {Rich feature hierarchies for accurate object detection and semantic segmentation},
+	abstract = {Object detection performance, as measured on the canonical PASCAL VOC dataset, has plateaued in the last few years. The best-performing methods are complex ensemble systems that typically combine multiple low-level image features with high-level context. In this paper, we propose a simple and scalable detection algorithm that improves mean average precision (mAP) by more than 30\% relative to the previous best result on VOC 2012—achieving a mAP of 53.3\%. Our approach combines two key insights: (1) one can apply high-capacity convolutional neural networks (CNNs) to bottom-up region proposals in order to localize and segment objects and (2) when labeled training data is scarce, supervised pre-training for an auxiliary task, followed by domain-speciﬁc ﬁne-tuning, yields a signiﬁcant performance boost. Since we combine region proposals with CNNs, we call our method R-CNN: Regions with CNN features. We also compare R-CNN to OverFeat, a recently proposed sliding-window detector based on a similar CNN architecture. We ﬁnd that R-CNN outperforms OverFeat by a large margin on the 200-class ILSVRC2013 detection dataset. Source code for the complete system is available at http://www.cs.berkeley.edu/˜rbg/rcnn.},
+	publisher = {arXiv},
+	author = {Girshick, Ross and Donahue, Jeff and Darrell, Trevor and Malik, Jitendra},
+	month = oct,
+	year = {2014},
+	note = {arXiv:1311.2524 [cs]},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition},
+	annote = {Comment: Extended version of our CVPR 2014 paper; latest update (v5) includes results using deeper networks (see Appendix G. Changelog)}
+}
+
+@misc{dai_r-fcn_2016,
+	title = {R-{FCN}: {Object} {Detection} via {Region}-based {Fully} {Convolutional} {Networks}},
+	shorttitle = {R-{FCN}},
+	abstract = {We present region-based, fully convolutional networks for accurate and efﬁcient object detection. In contrast to previous region-based detectors such as Fast/Faster R-CNN [6, 18] that apply a costly per-region subnetwork hundreds of times, our region-based detector is fully convolutional with almost all computation shared on the entire image. To achieve this goal, we propose position-sensitive score maps to address a dilemma between translation-invariance in image classiﬁcation and translation-variance in object detection. Our method can thus naturally adopt fully convolutional image classiﬁer backbones, such as the latest Residual Networks (ResNets) [9], for object detection. We show competitive results on the PASCAL VOC datasets (e.g., 83.6\% mAP on the 2007 set) with the 101-layer ResNet. Meanwhile, our result is achieved at a test-time speed of 170ms per image, 2.5-20× faster than the Faster R-CNN counterpart. Code is made publicly available at: https://github.com/daijifeng001/r-fcn.},
+	publisher = {arXiv},
+	author = {Dai, Jifeng and Li, Yi and He, Kaiming and Sun, Jian},
+	month = jun,
+	year = {2016},
+	note = {arXiv:1605.06409 [cs]},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition},
+	annote = {Comment: Tech report}
+}
+
+@book{russell_norvig,
+	chapter=14,
+	pages={509-517},
+	year=2021,
+	title={Artificial Intelligence : A Modern Approach},
+	isbn={1-292-40113-3},
+	author={Russel, Stuart and Norvig, Peter},
+	publisher={Pearson}
+}
+

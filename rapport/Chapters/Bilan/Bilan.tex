@@ -1,3 +1,13 @@
 \chapter{Bilan et Conclusions}
+Au terme de ce projet, nous disposons d'un logiciel de suivi de seiche en milieu aquatique non contrôlé, qui peut utiliser différente combinaison de descripteur et mesure de similarité.\\
+Les résultats montrent que sur des vidéos prisent en conditions réelles, et avec une configuration du logiciel adéquate, le suivi ce fait avec une efficacité d'environ 75\% par rapport aux données de références. Ce résultat est très satisfaisant et n'a qu'une différence de 1\% avec la méthode qui utilise uniquement YOLOv7.\\
+Cependant, notre méthode reste très dépendante de la configuration donnée par l'utilisateur, ainsi qu'aux caractéristiques des vidéos, comme le mouvement de la caméra, le contraste, la luminosité, ou encore l'arrière plan qui peut prendre une trop grande proportion dans la bounding box et faire diverger le suivi. Mais, avec une configuration adéquate, nous arrivons à obtenir un suivi satisfaisant pour les cas problématiques définis dans l'\hyperlink{chapter.1}{introduction}, comme par exemple les mouvements de la caméra ou la déformation de la seiche au cours de la vidéo.\\
+\\
+Les perspectives d'amélioration tournent principalement autour des réseaux de neurones et du temps réel.\\
+En effet, le suivi actuel ce fait en post-processing et peut demander un certain temps en fonction de la configuration donnée au logiciel. On pourrait donc essayer d'accélérer et d'améliorer le suivi en combinant l'algorithme du filtre à particule avec des réseaux de neurones, ou bien utiliser exclusivement des réseaux de neurones.\\
+\\
+On pourrait par exemple entrainer un VAE (\ref{app:variational_autoencoder}) sur des images de seiches, et récupérer la partie encodeur du VAE pour l'utiliser comme un descripteur à la place de HOG. En faisant cela, on s'assure que le vecteur descripteur sortant de l'encodeur représente bien l'image que l'on a donnée en entrée.\\
+\\
+On pourrait également utiliser uniquement des réseaux de neurones, comme YOLOv7 qui a prouvé son efficacité dans la partie \hyperlink{chapter.5}{5} et qui traite chaque image en environ 2ms, ce qui est amplement suffisant pour faire du temps réel.
 
 \clearpage

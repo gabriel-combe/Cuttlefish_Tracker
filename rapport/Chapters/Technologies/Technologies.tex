@@ -13,10 +13,10 @@ Une fois l'annotation termine, un dataset a été créé et augmenté grâce à 
 
 \section{État de l'art de la détection d'objet}
 
-Dans le cadre du suivie d'objet par la méthode du filtre à particule, on constate fréquemment un phénomène de divergence. Un manière connue pour palier à ce problème consiste à un indiquer un position initiale correcte au filtre à particule. On a donc choisit de détecter l'objet suivie, la seiche, sur la première image afin de réduire cette effet de divergence.\\
+Dans le cadre du suivie d'objet par la méthode du filtre à particule, on constate fréquemment un phénomène de divergence. Une manière connue pour palier à ce problème consiste à un indiquer un position initiale correcte au filtre à particule. On a donc choisit de détecter l'objet suivie, la seiche, sur la première image afin de réduire cette effet de divergence.\\
 Pour procéder nous emploierons une méthode de détection d'objet à l'aide de réseau de neurones, en effet cette manière à montrer des bons résultats dans la littérature ces dernières années.\\
-Parmi les différents candidats se démarquent \emph{Faster \textbf{R-CNN}, RetinaNet, \textbf{SSD}, \textbf{YOLO}} ou en encore \emph{R FCN}. 
-\textbf{YOLO} a largement était utilisés dans des projets similaires. En effet chacun de ces réseaux de neurones proposent un degré de précision proche dans la détection mais \textbf{YOLO} se démarque par sa vitesse d'exécution et sa souplesse d'implémentation. De plus \textbf{YOLO} bénéficie d'un suivie régulier depuis sa mise en ligne et à connu de nombreuse mise à jour. Pour la version nous opterons pour la version \textbf{7} qui propose de meilleures performances tout en disposant de suffisamment de documentation récente. On a jugé la version \textbf{8} trop récente pour le moment.
+Parmi les différents candidats se démarquent \emph{Faster R-CNN\cite{ren_faster_2016}, RetinaNet\cite{lin_focal_2018}, SSD\cite{liu_ssd_2016}, YOLO\cite{redmon_you_2016}} ou en encore R-FCN\cite{dai_r-fcn_2016}. 
+YOLO a largement était utilisés dans des projets similaires. En effet chacun de ces réseaux de neurones proposent un degré de précision proche dans la détection mais YOLO se démarque par sa vitesse d'exécution et sa souplesse d'implémentation \cite{sanchez_review_2020}. De plus YOLO bénéficie d'un suivie régulier depuis sa mise en ligne et à connu de nombreuse mise à jour. Pour la version nous opterons pour  YOLOv7\cite{wang_yolov7_nodate} qui propose de meilleures performances tout en disposant de suffisamment de documentation récente. YOLOv8 a été jugé trop récent pour être choisi.
 
 
 \section{Langage de programmation}

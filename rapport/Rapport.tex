@@ -7,7 +7,9 @@
 %\usepackage{fullpage}
 
 \usepackage[none]{hyphenat}
-\usepackage[hidelinks]{hyperref}
+\usepackage{pgf,tikz}
+\usetikzlibrary{babel}
+\usepackage{pgfgantt}
 \usepackage{amsmath}
 \usepackage[ruled, linesnumbered, french, onelanguage]{algorithm2e}
 \usepackage{babel,csquotes}
@@ -17,6 +19,7 @@
 \usepackage{subfig}
 \usepackage[section]{placeins}
 \usepackage[toc,page]{appendix}
+\usepackage[hidelinks]{hyperref}
 \usepackage[backend=biber,
 	    style=numeric,
 	    citestyle=numeric]{biblatex}
@@ -65,14 +68,6 @@
 \include{Chapters/Gestion_Projet/Gestion_Projet}
 
 \include{Chapters/Bilan/Bilan}
-
-% Exemple de reference
-\cite{xu_human_2010}
-\cite{kong_particle_2019}
-\cite{qiang_zhu_fast_2006}
-\cite{dalal_histograms_2005}
-\cite{bhattacharyya_measure_1960}
-\cite{rlabbe}
 
 
 \printbibliography
