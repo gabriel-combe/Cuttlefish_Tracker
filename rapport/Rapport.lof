@@ -21,22 +21,28 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Exemples de résultats obtenus par notre modèle.\relax }}{11}{figure.caption.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Diagramme UML des classes du module filtre à particule.\relax }}{12}{figure.caption.8}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Exemple d'une image renvoyé par le logiciel.\relax }}{12}{figure.caption.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Diagramme UML des classes du module descripteur.\relax }}{12}{figure.caption.9}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces IoU (blanc) entre l'image de référence (vert) et notre résultat (rouge).\relax }}{12}{figure.caption.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Diagramme UML des classes du module mesure de similarité.\relax }}{12}{figure.caption.10}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Diagramme UML de cas d'utilisation.\relax }}{13}{figure.caption.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Diagramme UML des classes global.\relax }}{12}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Diagramme UML des classes du module descripteur.\relax }}{14}{figure.caption.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Diagramme UML de cas d'utilisation.\relax }}{13}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Diagramme UML des classes du module mesure de similarité.\relax }}{14}{figure.caption.12}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Diagramme UML des classes du module filtre à particule.\relax }}{15}{figure.caption.13}%
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1}{\ignorespaces IoU (blanc) entre deux bounding box.\relax }}{23}{figure.caption.19}%
 \defcounter {refsection}{0}\relax 
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2}{\ignorespaces Diagramme UML des classes global.\relax }}{24}{figure.caption.21}%
 \defcounter {refsection}{0}\relax 
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
