@@ -33,6 +33,7 @@ Donc le HOG de l'image est la concaténation de l'ensemble des HOG de chacun de 
 \caption{Bloc d'un HOG.}
 \label{fig:cuttlefish_bloccells}
 \end{figure}
+\FloatBarrier
 
 Les histogrammes sont construits grâce aux mesures des angles des gradients et à leurs intensités. De la même manière qu'avec la taille des blocs et des cellules, on doit choisir la structure de notre histogramme. Étant donné que nous travaillons sur des angles, nous choisirons un histogramme à neuf classes et nous utiliserons des angles non signés (compris entre $[0; 180°]$).
 Ainsi pour un pixel $p(x,y)$ l'angle est défini par :
@@ -62,6 +63,7 @@ Ainsi on a : $\frac{6*3}{2} = 9$, de plus, un bloc faisant plus de 9 pixels de c
 \caption{Déplacement d'un bloc.}
 \label{fig:blocOverlap}
 \end{figure}
+\FloatBarrier
 
 \subsection{HOG en cascade}
 
@@ -73,6 +75,7 @@ Pour enrichir notre vecteur caractéristique on peut utiliser HOG en cascade qui
 \caption{HOG en cascade.}
 \label{fig:cuttlefish_hog}
 \end{figure}
+\FloatBarrier
 
 
 
@@ -103,11 +106,14 @@ Le filtre à particule, aussi connu sous le nom de bootstrap, ou algorithme de c
 \\
 Cet algorithme a, par exemple, pu être utilisé avec le descripteur HOG, comme dans ces articles \cite{xu_human_2010}, \cite{kong_particle_2019}, \cite{qiang_zhu_fast_2006} et \cite{dalal_histograms_2005}, mais il peut également être utilisé avec d'autre descripteur, ou combinaison de descripteur, comme HOG cascade combiné avec LBP (Local Binary Pattern).\\
 \\
-Les particules que le filtre utilise peuvent être définies de plusieurs façon, nous avons choisi de définir une particule, comme un point en 2D, la vélocité et l'accélération de ce point, et la demi largeur et demi hauteur de la bounding box délimitant notre cible, mais il est possible de changer cette définition. A un instant $t$, une particule est donc représentée par un vecteur à 8 dimensions:
+Les particules que le filtre utilise peuvent être définies de plusieurs façon, nous avons choisi de définir une particule, comme un point en 2D, la vélocité et l'accélération de ce point, et la demi largeur et demi hauteur de la bounding box délimitant notre cible. Mais il est également possible de changer cette définition.\\
+A un instant $t$, une particule est donc représentée par un vecteur à 8 dimensions:
 $$X^{t}=\left[ x^{t}, \dot{x}^{t}, \ddot{x}^{t}, y^{t}, \dot{y}^{t}, \ddot{y}^{t}, l^{t}, h^{t} \right]^{T}$$
 Où $(x^{t}, y^{t})^{T}$, $(\dot{x}^{t}, \dot{y}^{t})^{T}$ et $(\ddot{x}^{t}, \ddot{y}^{t})^{T}$ sont les coordonnées, vélocités et accélération du centre de notre cible en pixel, respectivement, $(l^{t}, h^{t})$ décrit la bounding box de notre cible en pixel avec la demi largeur et la demi hauteur.\\
 \\
-Bien qu'il existe plusieurs variantes de cet algorithme, le principe général reste le même (voir algorithme \ref{alg:particlefilter_basic}). Il s'agit d'utiliser les particules pour déterminer l'état de notre système à un instant $t$, en faisant une prédiction de nos particules dans le temps puis en ajoutant du bruit, et en combinant cette prédiction avec une observation $z$ (résultats de capteurs, ou images d'une vidéo, par exemple) afin de mettre à jour les poids de chacune des particules. Une fois les poids mis à jour, on vérifie combien de particule participent réellement à l'estimation de l'état de notre système, et si ce nombre est en dessous d'un certain seuil, on effectue une étape de ré-échantillonnage en gardant les particules de poids fort, et en supprimant celles de poids faible. Finalement, on peut estimer l'état de notre système, en prenant la moyenne pondérée de nos particules (MLE, Maximum Likelihood Estimation) ou en prenant comme estimation la particule de poids le plus fort (MAP, Maximum A Posteriori).
+Bien qu'il existe plusieurs variantes de cet algorithme, le principe général reste le même (voir algorithme \ref{alg:particlefilter_basic}). Il s'agit d'utiliser les particules pour déterminer l'état de notre système à un instant $t$, en faisant une prédiction de nos particules dans le temps puis en ajoutant du bruit, et en combinant cette prédiction avec une observation $z$ (résultats de capteurs, ou images d'une vidéo, par exemple) afin de mettre à jour les poids de chacune des particules.\\
+Une fois les poids mis à jour, on vérifie combien de particule participent réellement à l'estimation de l'état de notre système, et si ce nombre est en dessous d'un certain seuil, on effectue une étape de ré-échantillonnage en gardant les particules de poids fort, et en supprimant celles de poids faible.\\
+Finalement, on peut estimer l'état de notre système, en prenant la moyenne pondérée de nos particules (MLE, Maximum Likelihood Estimation) ou en prenant comme estimation la particule de poids le plus fort (MAP, Maximum A Posteriori).
 
 \begin{algorithm}
 	\caption{Filtre à particule général}\label{alg:particlefilter_basic}
@@ -127,6 +133,7 @@ Bien qu'il existe plusieurs variantes de cet algorithme, le principe général r
 	ou
 	$$(MAP) \hspace{0.4cm} X^{t} = \underset{p}{\arg\max} \hspace{0.2cm} w_{p}^{t}$$
 \end{algorithm}
+\FloatBarrier
 
 Dans notre cas, le modèle de mesure sera effectué en calculant la similarité entre un descripteur de référence $F_{ref}$ et les descripteurs de chaque particule. Au préalable, chaque particule ce voit associer un patch de l'image courante qui est récupéré en utilisant la position et la bounding box de la particule, puis en dimensionnant le patch obtenu à une dimension fixée en amont par l'utilisateur.\\
 Cette liste de patch est ensuite donnée à une fonction de mesure de similarité, qui, pour chacun des patch, renvoi un coefficient de similarité ($coeff\_sim$).\\
@@ -145,8 +152,8 @@ La méthode des différences finies est basée sur les formules suivante:
 \vspace{0.4cm}
 \begin{equation} \label{eq:accel}
 \begin{split}
-\ddot{x}^{t} = \frac{\dot{x}^{t} - \frac{x^{t-1} - x^{t-2}}{dt}}{dt}\\
-\ddot{y}^{t} = \frac{\dot{y}^{t} - \frac{y^{t-1} - y^{t-2}}{dt}}{dt}
+\ddot{x}^{t} = \frac{\dot{x}^{t} - \frac{x^{t-1} - x^{t-2}}{dt}}{dt} = \frac{\dot{x}^{t} - \dot{x}^{t-1}}{dt}\\
+\ddot{y}^{t} = \frac{\dot{y}^{t} - \frac{y^{t-1} - y^{t-2}}{dt}}{dt} = \frac{\dot{y}^{t} - \dot{y}^{t-1}}{dt}
 \end{split}
 \end{equation}
 \vspace{0.4cm}
@@ -160,7 +167,7 @@ y^{t+dt} = \frac{1}{2} \cdot \ddot{y}^{t} \cdot dt^{2} + \dot{y}^{t} \cdot dt + 
 Avec $dt$ l'intervalle de temps entre chaque image de la vidéo, et $\nu$ le bruit gaussien pour la prédiction.\\
 \\
 Au cours de la vidéo, il arrive que la cible ce rapproche ou s'éloigne de la caméra, si les dimensions de la bounding box sont fixes, on peut perdre en qualité sur le suivi car la bounding box peut inclure trop d'éléments parasites, ou au contraire, n'inclure qu'une petite partie de la cible.\\
-Pour palier ce problème, nous effectuons également une prédiction sur les dimensions de la bounding box, définit par les formules suivante, comme définit dans \cite{kong_particle_2019}:
+Pour palier à ce problème, nous effectuons également une prédiction sur les dimensions de la bounding box, définit par les formules suivante, comme énoncé dans \cite{kong_particle_2019}:
 \begin{equation} \label{eq:gamma}
 \gamma=
 \begin{cases}
@@ -208,6 +215,7 @@ En assemblant chacune des parties précédentes, on obtient alors l'algorithme f
 		Mise à jour du descripteur de référence: $F_{ref}^{t}$
 	}
 \end{algorithm}
+\FloatBarrier
 
 
 \clearpage
