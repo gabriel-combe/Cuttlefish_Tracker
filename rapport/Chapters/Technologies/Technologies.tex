@@ -1,29 +1,29 @@
 \chapter{Technologies}
 
 \section{LabelImg et Roboflow}
-LabelImg est un logiciel d'annotation d'image, qui permet entre autre d'annoter une bounding box que l'on dessine sur une image, avec un label que l'on définit, et d'enregistrer le tout sous différent format, comme le Pascal VOC, ou bien le format de YOLO.\\
-Ce logiciel a été utilisé pour annoter la vidéo de référence pour que l'on puisse comparer nos résultats avec.\\
+LabelImg est un logiciel d'annotation d'image, qui permet entre autre d'annoter une bounding box que l'on dessine sur une image, avec un label que l'on définit, et d'enregistrer le tout sous différents formats, comme le Pascal VOC, ou bien le format de YOLO.\\
+Ce logiciel a été utilisé pour annoter la vidéo de référence afin que l'on puisse comparer nos résultats.\\
 \\
-Roboflow est un cite en ligne, qui permet de faire de la gestion de base de donnée pour l'entrainement d'intelligence artificielle, ainsi que de l'annotation collaborative.\\
-Ce logiciel a été utilisé pour annoter des images de seiche afin de constituer une base de donnée suffisante, pour entrainer l'intelligence artificielle YOLOv7\cite{wang_yolov7_nodate} à détecter des seiches dans une image. L'annotation a été repartie entre les membres du groupe pour accélérer le processus.\\
-Une fois l'annotation termine, un dataset a été créé et augmenté grâce à Roboflow, en ajoutant des images déjà annotées auxquelles a été rajouté du bruit, des rotations, ou des changement de contraste et de luminosité. Augmenter ainsi le dataset permet à l'intelligence artificielle d'être plus résistante à des variations de contraste ou de rotation des seiches dans une image.\\
+Roboflow est un site en ligne qui permet de faire de la gestion de base de donnée pour l'entraînement d'intelligence artificielle, ainsi que de l'annotation collaborative.\\
+Ce logiciel a été utilisé pour annoter des images de seiches afin de constituer une base de donnée suffisante, pour entrainer l'intelligence artificielle YOLOv7\cite{wang_yolov7_nodate} à détecter des seiches dans une image. L'annotation a été repartie entre les membres du groupe pour accélérer le processus.\\
+Une fois l'annotation terminée, un dataset a été créé et augmenté grâce à Roboflow, en ajoutant des images déjà annotées auxquelles a été rajouté du bruit, des rotations, ou des changements de contraste et de luminosité. Augmenter ainsi le dataset permet à l'intelligence artificielle d'être plus résistante à des variations de contraste ou de rotation des seiches dans une image.\\
 
 
 
 
 \section{État de l'art de la détection d'objet}
 
-Dans le cadre du suivie d'objet par la méthode du filtre à particule, on constate fréquemment un phénomène de divergence. Une manière connue pour palier à ce problème consiste à un indiquer un position initiale correcte au filtre à particule. On a donc choisit de détecter l'objet suivie, la seiche, sur la première image afin de réduire cette effet de divergence.\\
-Pour procéder nous emploierons une méthode de détection d'objet à l'aide de réseau de neurones, en effet cette manière à montrer des bons résultats dans la littérature ces dernières années.\\
+Dans le cadre du suivi d'objet par la méthode du filtre à particule, on constate fréquemment un phénomène de divergence. Une manière connue pour palier à ce problème consiste à un indiquer un position initiale correcte au filtre à particule. On a donc choisi de détecter l'objet suivi, la seiche, sur la première image afin de réduire cet effet de divergence.\\
+Pour procéder nous emploierons une méthode de détection d'objet à l'aide de réseaux de neurones ; en effet cette manière a montré des bons résultats dans la littérature ces dernières années.\\
 Parmi les différents candidats se démarquent \emph{Faster R-CNN\cite{ren_faster_2016}, RetinaNet\cite{lin_focal_2018}, SSD\cite{liu_ssd_2016}, YOLO\cite{redmon_you_2016}} ou en encore R-FCN\cite{dai_r-fcn_2016}. 
-YOLO a largement était utilisés dans des projets similaires. En effet chacun de ces réseaux de neurones proposent un degré de précision proche dans la détection mais YOLO se démarque par sa vitesse d'exécution et sa souplesse d'implémentation \cite{sanchez_review_2020}. De plus YOLO bénéficie d'un suivie régulier depuis sa mise en ligne et à connu de nombreuse mise à jour. Pour la version nous opterons pour  YOLOv7\cite{wang_yolov7_nodate} qui propose de meilleures performances tout en disposant de suffisamment de documentation récente. YOLOv8 a été jugé trop récent pour être choisi.
+YOLO a largement été utilisé dans des projets similaires. En effet chacun de ces réseaux de neurones propose un degré de précision proche dans la détection mais YOLO se démarque par sa vitesse d'exécution et sa souplesse d'implémentation \cite{sanchez_review_2020}. De plus YOLO bénéficie d'un suivi régulier depuis sa mise en ligne et a connu de nombreuses mises à jour. Pour la version nous opterons pour  YOLOv7\cite{wang_yolov7_nodate} qui propose de meilleures performances tout en disposant de suffisamment de documentation récente. YOLOv8 a été jugé trop récent pour être choisi.
 
 
 \section{Langage de programmation}
-Le langage de programmation choisi est python, un langage très populaire et qui permet de faire du prototypage rapidement. C'est également un des langages les plus utilisé par les chercheurs en intelligence artificielle, notamment avec le framework pytorch.\\
-Notre choix a été fait en partie pour cette aspect de prototypage rapide, mais aussi, du fait de notre utilisation du modèle YOLOv7\cite{wang_yolov7_nodate}, qui utilise pytorch.\\
-Python possède également une grande quantité de librairie, comme OpenCV, pour le traitement d'image, Numpy, pour les opérations optimisées sur des tenseurs, ou Scipy, pour les calculs scientifiques. Cela nous a permis de nous concentrer sur les algorithmes et de laisser l'affichage d'image et les opérations matricielles à des librairies qui ont été optimisées pour cela.\\
-Il a aussi été choisi par ça facilité de prise en main, et parce que tous les membres du groupe ont déjà programmé avec et le maitrise bien.
+Le langage de programmation choisi est python, un langage très populaire et qui permet de faire du prototypage rapidement. C'est également un des langages les plus utilisés par les chercheurs en intelligence artificielle, notamment avec le framework pytorch.\\
+Notre choix a été fait en partie pour cet aspect de prototypage rapide, mais aussi, du fait de notre utilisation du modèle YOLOv7\cite{wang_yolov7_nodate}, qui utilise pytorch.\\
+Python possède également une grande quantité de librairies, comme OpenCV, pour le traitement d'image, Numpy, pour les opérations optimisées sur des tenseurs, ou Scipy, pour les calculs scientifiques. Cela nous a permis de nous concentrer sur les algorithmes et de laisser l'affichage d'image et les opérations matricielles à des librairies qui ont été optimisées pour cela.\\
+Il a aussi été choisi par sa facilité de prise en main, et parce que tous les membres du groupe ont déjà programmé avec et le maitrisent bien.
 
 
 \clearpage
