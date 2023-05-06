@@ -4,7 +4,7 @@
 Dans le cadre du projet, plusieurs éléments ont été développé, à noter, une intelligence artificielle pour détecter des seiches dans une image, une base de donnée de seiches pour entraîner l'intelligence artificielle et un algorithme de filtre à particule utilisant des descripteurs et mesures de similarité pour calculer le poids de chaque particule.\\
 
 \subsection{Intelligence Artificielle}
-La base de donnée d'image de seiches est composé d'images provenants de vidéos de seiches prises par des plongeurs en mer, et par des particuliers dans des aquariums.\\
+La base de donnée d'image de seiches est composée d'images provenant de vidéos de seiches prises par des plongeurs en mer, et par des particuliers dans des aquariums.\\
 Chaque image a été annotée à la main par les membres du groupe en utilisant le logiciel en ligne Roboflow, la base de donnée est constituée d'un total de 5175 images.\\
 L'intelligence artificielle utilise le code et les poids pré entrainé de YOLOv7\cite{wang_yolov7_nodate}, qui peuvent être trouvé sur le github officiel de YOLOv7\cite{yolov7_github}.
 Cette intelligence artificielle a été entrainée pour 300 cycles de la base de donnée, soit un total de 25 heures sans interruptions.\\
