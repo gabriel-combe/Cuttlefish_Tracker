@@ -9,7 +9,7 @@
 L'IoU signifie Intersection over Union et est un calcul utilisé dans la technique de comparaison Pascal VOC.
 L'IoU est exprimé ainsi:
 $$\text{IoU} = \frac{\text{Aire de l'intersection}}{\text{Aire de l'union}}$$
-L'IoU, dans notre cas, ce calcul sur deux bounding box, comme dans la figure \ref{fig:iou_example}.
+L'IoU, dans notre cas, se calcule sur deux bounding box, comme dans la figure \ref{fig:iou_example}.
 \begin{figure}[!htbp]
 \center
 	\subfloat{{\includegraphics[scale=0.3]{eval0211.png}}}
@@ -25,7 +25,7 @@ L'IoU, dans notre cas, ce calcul sur deux bounding box, comme dans la figure \re
 \begin{figure}[!htbp]
 	\center
 		\subfloat{{\includegraphics[scale=0.092,angle=90,origin=c]{classes.png}}}
-	\caption{Diagramme UML des classes global.}
+	\caption{Diagramme UML des classes globales.}
 	\label{fig:uml_diagram_classes}
 \end{figure}
 \FloatBarrier
@@ -34,8 +34,8 @@ L'IoU, dans notre cas, ce calcul sur deux bounding box, comme dans la figure \re
 	
 	
 \section*{VAE (Variational Autoencoder)}\label{app:variational_autoencoder}
-Les VAE, ou Variational Autoencoder, sont des réseaux de neurones qui essayent d'estimer une distribution probabiliste avec seulement un nombre limité d'échantillon provenant de cette distribution.\\
-Ce genre de réseau de neurones est divisé en deux parties:\\
+Les VAE, ou Variational Autoencoder, sont des réseaux de neurones qui essayent d'estimer une distribution probabiliste avec seulement un nombre limité d'échantillons provenant de cette distribution.\\
+Ce genre de réseaux de neurones est divisé en deux parties:\\
 \begin{itemize}
 	\item \emph{Encodeur}\\
 	Pour une donnée $x$, l'encodeur va projeter/compresser $x$ dans un espace de représentation plus petit (espace latent).\\
