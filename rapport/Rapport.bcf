@@ -2362,12 +2362,14 @@
     <bcf:citekey order="16">dalal_histograms_2005</bcf:citekey>
     <bcf:citekey order="17">dalal_histograms_2005</bcf:citekey>
     <bcf:citekey order="18">qiang_zhu_fast_2006</bcf:citekey>
-    <bcf:citekey order="19">russell_norvig</bcf:citekey>
-    <bcf:citekey order="20">rlabbe</bcf:citekey>
-    <bcf:citekey order="21">xu_human_2010</bcf:citekey>
-    <bcf:citekey order="22">kong_particle_2019</bcf:citekey>
-    <bcf:citekey order="23">qiang_zhu_fast_2006</bcf:citekey>
-    <bcf:citekey order="24">dalal_histograms_2005</bcf:citekey>
+    <bcf:citekey order="19">bhattacharyya_measure_1960</bcf:citekey>
+    <bcf:citekey order="20">russell_norvig</bcf:citekey>
+    <bcf:citekey order="21">rlabbe</bcf:citekey>
+    <bcf:citekey order="22">xu_human_2010</bcf:citekey>
+    <bcf:citekey order="23">kong_particle_2019</bcf:citekey>
+    <bcf:citekey order="24">qiang_zhu_fast_2006</bcf:citekey>
+    <bcf:citekey order="25">dalal_histograms_2005</bcf:citekey>
+    <bcf:citekey order="26">kong_particle_2019</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

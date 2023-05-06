@@ -50,6 +50,32 @@
       \verb https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python
       \endverb
     \endentry
+    \entry{bhattacharyya_measure_1960}{article}{}
+      \name{author}{1}{}{%
+        {{hash=5849c9038498843b9de5403c4033f171}{%
+           family={Bhattacharyya},
+           familyi={B\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{5849c9038498843b9de5403c4033f171}
+      \strng{fullhash}{5849c9038498843b9de5403c4033f171}
+      \strng{bibnamehash}{5849c9038498843b9de5403c4033f171}
+      \strng{authorbibnamehash}{5849c9038498843b9de5403c4033f171}
+      \strng{authornamehash}{5849c9038498843b9de5403c4033f171}
+      \strng{authorfullhash}{5849c9038498843b9de5403c4033f171}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Sankhyā: The Indian Journal of Statistics (1933-1960)}
+      \field{number}{4}
+      \field{title}{On a {Measure} of {Divergence} between {Two} {Multinomial} {Populations}}
+      \field{volume}{7}
+      \field{year}{1960}
+      \field{pages}{401\bibrangedash 406}
+      \range{pages}{6}
+    \endentry
     \entry{dai_r-fcn_2016}{misc}{}
       \name{author}{4}{}{%
         {{hash=c80dbb87ee6058c0b81ab8ee017f1170}{%
