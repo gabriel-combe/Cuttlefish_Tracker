@@ -43,8 +43,10 @@
 \chapter{Gestion du Projet}
 
 \section{Planification}
-Le projet a été divisé entre les 4 membres du groupe pour la partie implémentation des solutions et écriture du rapport, le reste, à savoir, la planification du projet, la répartition des tâches et les solutions à implémenter ont été décidées en groupe.\\
-La planification s'est faite grâce à un diagramme de Gantt (voir figure \ref{fig:diagram_gantt}) et a été répartie sur les 5 mois accordés, soit du 5 Janvier 2023 au 12 Mai 2023.
+Le projet a été divisé entre les 4 membres du groupe pour la partie implémentation des solutions et écriture du rapport, le reste, à savoir, la planification du projet, la répartition des tâches et les proposition de solutions à implémenter ont été décidées par tous les membres du groupe.\\
+La planification s'est faite grâce à un diagramme de Gantt et a été répartie sur les 5 mois accordés, soit du 5 Janvier 2023 au 12 Mai 2023, comme montré sur la figure \ref{fig:diagram_gantt}.\\
+Aucun changement majeur n'a été effectué au cours du projet et toutes les parties respectent l'architecture qui a été définie au début du projet.
+
 
 \begin{figure}[!htbp]
 \begin{ganttchart}[
@@ -108,7 +110,9 @@ La planification s'est faite grâce à un diagramme de Gantt (voir figure \ref{f
 	\ganttbar{Implémentation}{2023-04-03}{2023-04-09}\\
 	\ganttbar{Main program}{2023-04-03}{2023-04-09}\\
 	\ganttbar{Model}{2023-04-03}{2023-04-09}\\
-	\ganttbar{Test}{2023-04-10}{2023-04-16}\\
+	\ganttbar{Test}{2023-04-10}{2023-04-16}
+	\ganttbar{Rendez-vous}{2023-04-22}{2023-04-28}
+	\ganttbar{Rendez-vous}{2023-05-06}{2023-05-12}\\
 	\ganttbar{Évaluation}{2023-04-17}{2023-04-23}\\
 	\ganttbar{Écriture du Rapport}{2023-04-24}{2023-05-07}\\
 	\ganttbar{Relecture}{2023-05-08}{2023-05-12}
@@ -116,9 +120,12 @@ La planification s'est faite grâce à un diagramme de Gantt (voir figure \ref{f
 	\ganttlink[link type=f-f2]{elem1}{elem0}
 	\ganttlink[link type=f-f2]{elem2}{elem1}
 	\ganttlink[link type=lt2]{elem0}{elem3}
-	\ganttlink{elem3}{elem4}
-	\ganttlink[link type=f-s]{elem4}{elem5}
-	\ganttlink{elem5}{elem6}
+	\ganttlink[link type=r]{elem3}{elem4}
+	\ganttlink[link type=r]{elem4}{elem5}
+	\ganttlink[link type=f-s]{elem3}{elem6}
+	\ganttlink{elem6}{elem7}
+	\ganttlink{elem7}{elem8}
+	\ganttlink[link type=f-f]{elem5}{elem8}
 \end{ganttchart}
 \caption{Diagramme de Gantt du projet.}
 \label{fig:diagram_gantt}

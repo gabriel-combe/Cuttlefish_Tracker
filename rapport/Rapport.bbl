@@ -19,6 +19,37 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
+    \entry{rlabbe}{online}{}
+      \name{author}{1}{}{%
+        {{hash=69c51f9374cce2ab10da10523b4a64db}{%
+           family={(rlabbe)},
+           familyi={(\bibinitperiod},
+           given={Roger\bibnamedelima Labbe},
+           giveni={R\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {GitHub}%
+      }
+      \strng{namehash}{69c51f9374cce2ab10da10523b4a64db}
+      \strng{fullhash}{69c51f9374cce2ab10da10523b4a64db}
+      \strng{bibnamehash}{69c51f9374cce2ab10da10523b4a64db}
+      \strng{authorbibnamehash}{69c51f9374cce2ab10da10523b4a64db}
+      \strng{authornamehash}{69c51f9374cce2ab10da10523b4a64db}
+      \strng{authorfullhash}{69c51f9374cce2ab10da10523b4a64db}
+      \field{sortinit}{r}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{GitHub repository}
+      \field{title}{Kalman and Bayesian Filters in Python}
+      \field{year}{2014}
+      \verb{urlraw}
+      \verb https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python
+      \endverb
+      \verb{url}
+      \verb https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python
+      \endverb
+    \endentry
     \entry{dai_r-fcn_2016}{misc}{}
       \name{author}{4}{}{%
         {{hash=c80dbb87ee6058c0b81ab8ee017f1170}{%
@@ -146,6 +177,59 @@
       \verb{url}
       \verb https://github.com/gabriel-combe/PP2_Particle_Filter
       \endverb
+    \endentry
+    \entry{kong_particle_2019}{article}{}
+      \name{author}{6}{}{%
+        {{hash=1c92bea464d4e5a19e0ff469c8ed7076}{%
+           family={Kong},
+           familyi={K\bibinitperiod},
+           given={Xiaofang},
+           giveni={X\bibinitperiod}}}%
+        {{hash=b6fff56e4c606d8c37bb384da63c33e3}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Qian},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=27a7d8677dd7308dbc00a024300db05d}{%
+           family={Gu},
+           familyi={G\bibinitperiod},
+           given={Guohua},
+           giveni={G\bibinitperiod}}}%
+        {{hash=e60df921d205387a6a076dca1c8f329b}{%
+           family={Ren},
+           familyi={R\bibinitperiod},
+           given={Kan},
+           giveni={K\bibinitperiod}}}%
+        {{hash=c1bf42238e78c95c69147f026e73790b}{%
+           family={Qian},
+           familyi={Q\bibinitperiod},
+           given={Weixian},
+           giveni={W\bibinitperiod}}}%
+        {{hash=1d7a874b1ff656ee5f33ddd7918b2fd4}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Zewei},
+           giveni={Z\bibinitperiod}}}%
+      }
+      \strng{namehash}{dcfd1d5aba7418991c6bb5864593b743}
+      \strng{fullhash}{f8a8c948b635cbe3aa1808ef7f427f6d}
+      \strng{bibnamehash}{dcfd1d5aba7418991c6bb5864593b743}
+      \strng{authorbibnamehash}{dcfd1d5aba7418991c6bb5864593b743}
+      \strng{authornamehash}{dcfd1d5aba7418991c6bb5864593b743}
+      \strng{authorfullhash}{f8a8c948b635cbe3aa1808ef7f427f6d}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Tracking vehicles automatically are of great importance in the intelligent transportation systems to guarantee the traffic safety, especially for the self-driving technique. To solve the problem of the tiny jitter of the camera due to the shaking platform and the rough road, and to track the vehicle ahead, a salient feature-based video stabilisation method is introduced to remove the effect of camera motion, and an improved particle filter-based vehicle tracking algorithm via histogram of oriented gradient (HOG) features is proposed in this study. For video stabilisation, first, the features from accelerated segment test algorithm are applied to extract salient points from the two adjacent frames. Then, the fast retina keypoint algorithm is used to match the correspondences and the M-estimator sample consensus algorithm is applied to remove the outliers. Finally, the image with tiny jitter is stabilised by the affine transformation matrix calculated from the retained inliers. After the image stabilisation, an improved particle filter-based tracking method is proposed for vehicle tracking via the HOG feature extracted from an adaptive searching area determined by the expected vehicle position of the previous frame. Experimental results demonstrate that camera motion can be effectively compensated by the feature-based stabilisation method, and the forward vehicle can be tracked with stability and robustness in real time.}
+      \field{journaltitle}{IET Intelligent Transport Systems}
+      \field{month}{6}
+      \field{number}{6}
+      \field{title}{Particle filter‐based vehicle tracking via {HOG} features after image stabilisation in intelligent drive system}
+      \field{volume}{13}
+      \field{year}{2019}
+      \field{pages}{942\bibrangedash 949}
+      \range{pages}{8}
     \endentry
     \entry{lin_focal_2018}{misc}{}
       \name{author}{5}{}{%
@@ -382,6 +466,39 @@
       \field{year}{2016}
       \keyw{Computer Science - Computer Vision and Pattern Recognition}
     \endentry
+    \entry{russell_norvig}{book}{}
+      \name{author}{2}{}{%
+        {{hash=f509695d30d2b0f8253a466b85d0f8ec}{%
+           family={Russel},
+           familyi={R\bibinitperiod},
+           given={Stuart},
+           giveni={S\bibinitperiod}}}%
+        {{hash=5de798d5fa3c0236c0478134cd23f52a}{%
+           family={Norvig},
+           familyi={N\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Pearson}%
+      }
+      \strng{namehash}{810132ce92139d505672ff8b44fdf0f1}
+      \strng{fullhash}{810132ce92139d505672ff8b44fdf0f1}
+      \strng{bibnamehash}{810132ce92139d505672ff8b44fdf0f1}
+      \strng{authorbibnamehash}{810132ce92139d505672ff8b44fdf0f1}
+      \strng{authornamehash}{810132ce92139d505672ff8b44fdf0f1}
+      \strng{authorfullhash}{810132ce92139d505672ff8b44fdf0f1}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{chapter}{14}
+      \field{isbn}{1-292-40113-3}
+      \field{title}{Artificial Intelligence : A Modern Approach}
+      \field{year}{2021}
+      \field{pages}{509\bibrangedash 517}
+      \range{pages}{9}
+    \endentry
     \entry{sanchez_review_2020}{article}{}
       \name{author}{3}{}{%
         {{hash=922f8c4141d245df4ab8bf56a3521283}{%
@@ -493,6 +610,43 @@
       \field{labeltitlesource}{title}
       \field{abstract}{YOLOv7 surpasses all known object detectors in both speed and accuracy in the range from 5 FPS to 160 FPS and has the highest accuracy 56.8\% AP among all known real-time object detectors with 30 FPS or higher on GPU V100. YOLOv7-E6 object detector (56 FPS V100, 55.9\% AP) outperforms both transformer-based detector SWINL Cascade-Mask R-CNN (9.2 FPS A100, 53.9\% AP) by 509\% in speed and 2\% in accuracy, and convolutionalbased detector ConvNeXt-XL Cascade-Mask R-CNN (8.6 FPS A100, 55.2\% AP) by 551\% in speed and 0.7\% AP in accuracy, as well as YOLOv7 outperforms: YOLOR, YOLOX, Scaled-YOLOv4, YOLOv5, DETR, Deformable DETR, DINO-5scale-R50, ViT-Adapter-B and many other object detectors in speed and accuracy. Moreover, we train YOLOv7 only on MS COCO dataset from scratch without using any other datasets or pre-trained weights. Source code is released in https:// github.com/ WongKinYiu/ yolov7.}
       \field{title}{{YOLOv7}: {Trainable} bag-of-freebies sets new state-of-the-art for real-time object detectors}
+    \endentry
+    \entry{xu_human_2010}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=0a57118bdd031bffda6d1c7fa3abda3b}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Fen},
+           giveni={F\bibinitperiod}}}%
+        {{hash=afb97708cb4244ee9a5cbc2b4a0cafae}{%
+           family={Gao},
+           familyi={G\bibinitperiod},
+           given={Ming},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Yantai, China}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{c79b6c864a7c05717bc81ab65b9ddb70}
+      \strng{fullhash}{c79b6c864a7c05717bc81ab65b9ddb70}
+      \strng{bibnamehash}{c79b6c864a7c05717bc81ab65b9ddb70}
+      \strng{authorbibnamehash}{c79b6c864a7c05717bc81ab65b9ddb70}
+      \strng{authornamehash}{c79b6c864a7c05717bc81ab65b9ddb70}
+      \strng{authorfullhash}{c79b6c864a7c05717bc81ab65b9ddb70}
+      \field{sortinit}{X}
+      \field{sortinithash}{1965c258adceecf23ce3d67b05113442}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Human detection and tracking is a task common to many applications, such as video surveillance and security, intelligent vehicles, safety driving, public security, etc. Histogram of oriented gradient (HOG) gives an accurate description of the contour of human body. Based on HOG and support vector machine (SVM) theory, a classifier for pedestrian is obtained. The classifier is then used to find the potential human candidate in the video frame. By calculating the similarity between particle candidates and the target model using Bhattacharyya Coefficient, a tracking algorithm using particle filter is designed and implemented. Experimental results show that the proposed algorithm out-performs Kalman filter based tracking in almost all situations, especially when partial occlusion of object is present.}
+      \field{booktitle}{2010 3rd {International} {Congress} on {Image} and {Signal} {Processing}}
+      \field{month}{10}
+      \field{title}{Human detection and tracking based on {HOG} and particle filter}
+      \field{year}{2010}
+      \field{pages}{1503\bibrangedash 1507}
+      \range{pages}{5}
     \endentry
   \enddatalist
 \endrefsection

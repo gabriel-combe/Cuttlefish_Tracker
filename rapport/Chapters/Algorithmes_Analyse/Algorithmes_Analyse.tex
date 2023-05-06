@@ -89,6 +89,24 @@ Pour enrichir notre vecteur caractéristique on peut utiliser HOG en cascade qui
 
 
 \section{Filtre à particule}
+Le filtre à particule, aussi connu sous le nom de bootstrap, ou algorithme de condensation, est basé sur une méthode de Monte Carlo, c'est à dire utiliser un ensemble de particule discrète pour représenter la densité de probabilité associé au système que l'on souhaite modéliser. L'idée principale du filtre à particule est d'approcher une distribution, impossible ou difficile à estimer directement, grâce à un ensemble d'échantillons pondérés $S=\{(X_{n}, w_{n})|n=1...N\}$, où $X_{n}$ indique la nième particule, $w_{n}$ indique l'importance de la particule, ou le poids de celle-ci, et $N$ est le nombre total de particule. Plus d'information peuvent être trouvé aux références suivantes \cite{russell_norvig} et \cite{rlabbe}.\\
+\\
+Cet algorithme a, par exemple, pu être utilisé avec le descripteur HOG, comme dans ces articles \cite{xu_human_2010}, \cite{kong_particle_2019}, \cite{qiang_zhu_fast_2006} et \cite{dalal_histograms_2005}, mais il peut également être utilisé avec d'autre descripteur, ou combinaison de descripteur, comme HOG cascade combiné avec LBP (Local Binary Pattern).\\
+\\
+Les particules que le filtre utilise peuvent être définies de plusieurs façon, nous avons choisi de définir une particule, comme un point en 2D, la vélocité et l'accélération de ce point, et la demi largeur et demi hauteur de la bounding box délimitant notre cible, mais il est possible de changer cette définition. A un instant $t$, une particule est donc représentée par un vecteur à 8 dimensions:
+$$X^{t}=\left[ x^{t}, \dot{x}^{t}, \ddot{x}^{t}, y^{t}, \dot{y}^{t}, \ddot{y}^{t}, l^{t}, h^{t} \right]^{T}$$
+Où $(x^{t}, y^{t})^{T}$, $(\dot{x}^{t}, \dot{y}^{t})^{T}$ et $(\ddot{x}^{t}, \ddot{y}^{t})^{T}$ sont les coordonnées, vélocités et accélération du centre de notre cible en pixel, respectivement, $(l^{t}, h^{t})$ décrit la bounding box de notre cible en pixel avec la demi largeur et la demi hauteur.\\
+\\
+Bien qu'il existe plusieurs variantes de cet algorithme, le principe général reste le même (voir figure \ref{alg:particlefilter_basic}). Il s'agit d'utiliser les particules pour déterminer l'état de notre système à un instant $t$, en faisant une prédiction de nos particules dans le temps, et en combinant cette prédiction avec une observation $z$ (résultats de capteurs, ou images d'une vidéo, par exemple) afin de mettre à jour les poids de chacune des particules. Une fois les poids mis à jour, on vérifie combien de particule participent réellement à l'estimation de l'état de notre système, et si ce nombre est en dessous d'un certain seuil, on effectue une étape de ré-échantillonnage en gardant les particules de poids fort, et en supprimant celles de poids faible. Finalement, on peut estimer l'état de notre système, en prenant la moyenne pondérée de nos particules (MLE, Maximum Likelihood Estimation) ou en prenant comme estimation la particule de poids le plus fort (MAP, Maximum A Posteriori).\\
+
+\begin{algorithm}
+	\caption{Filtre à particule général}\label{alg:particlefilter_basic}
+	\KwData{Une observation $z$}
+	\KwResult{Une estimation de l'état de notre système}
+	\ForEach{Particules p}{
+		
+	}
+\end{algorithm}
 
 \begin{algorithm}
 	\caption{Filtre à particule}\label{alg:particlefilter}
