@@ -1,13 +1,14 @@
+\pagestyle{plain}
 \chapter{Développements Logiciel : Conception, Modélisation, Implémentation} 
 
 \section{Développements logiciel}
-Dans le cadre du projet, plusieurs éléments ont été développé, à noter, une intelligence artificielle pour détecter des seiches dans une image, une base de donnée de seiches pour entraîner l'intelligence artificielle et un algorithme de filtre à particule utilisant des descripteurs et mesures de similarité pour calculer le poids de chaque particule.\\
+Dans le cadre du projet, plusieurs éléments ont été développés, à noter, une intelligence artificielle pour détecter des seiches dans une image, une base de données de seiches pour entraîner l'intelligence artificielle et un algorithme de filtre à particule utilisant des descripteurs et mesures de similarité pour calculer le poids de chaque particule.\\
 
 \subsection{Intelligence Artificielle}
-La base de donnée d'image de seiches est composée d'images provenant de vidéos de seiches prises par des plongeurs en mer, et par des particuliers dans des aquariums.\\
-Chaque image a été annotée à la main par les membres du groupe en utilisant le logiciel en ligne Roboflow, la base de donnée est constituée d'un total de 5175 images.\\
-L'intelligence artificielle utilise le code et les poids pré entrainé de YOLOv7\cite{wang_yolov7_nodate}, qui peuvent être trouvé sur le github officiel de YOLOv7\cite{yolov7_github}.
-Cette intelligence artificielle a été entrainée pour 300 cycles de la base de donnée, soit un total de 25 heures sans interruptions.\\
+La base de données d'images de seiches est composée d'images provenant de vidéos de seiches prises par des plongeurs en mer, et par des particuliers dans des aquariums.\\
+Chaque image a été annotée à la main par les membres du groupe en utilisant le logiciel en ligne Roboflow, la base de données est constituée d'un total de 5175 images.\\
+L'intelligence artificielle utilise le code et les poids pré-entrainés de YOLOv7\cite{wang_yolov7_nodate}, qui peuvent être trouvé sur le github officiel de YOLOv7\cite{yolov7_github}.
+Cette intelligence artificielle a été entrainée pour 300 cycles de la base de données, soit un total de 25 heures sans interruptions.\\
 Les performances obtenues sont illustrées dans la figure \ref{fig:ai_results} et des exemples sont donnés en figure \ref{fig:ai_examples}.\\
 
 \begin{figure}[!htbp]
@@ -62,7 +63,7 @@ Une fois que le filtre à particule a fini de traiter une image, celle-ci est af
 \begin{figure}[!htbp]
 \center
 	\subfloat{{\includegraphics[scale=0.3]{Cuttlefish_results0013.png}}}
-\caption{Exemple d'une image renvoyé par le logiciel.}
+\caption{Exemple d'une image renvoyée par le logiciel.}
 \label{fig:soft_result}
 \end{figure}
 \FloatBarrier
@@ -95,7 +96,7 @@ Le diagramme UML global des classes peut être retrouvé en annexe \ref{app:UMLG
 
 \subsection{Descripteurs}
 Le module descripteur est constitué d'une classe parent $Descriptor$ qui possède 5 classes filles, $HOG$, $HOGCASCADE$, $HOGCOLOR$, $LBP$ et $HOGCASCADELBP$. Ces classes sont les différents descripteurs que l'utilisateur peut utiliser dans le filtre à particule.\\
-Toutes ces classes possèdent 2 méthodes communes, la méthode $update$ qui permet de mettre à jour certains paramètres du descripteur, et la méthode $compute$ qui permet d'effectuer le calcul du descripteur sur une liste d'images.\\
+Toutes ces classes possèdent deux méthodes communes, la méthode $update$ qui permet de mettre à jour certains paramètres du descripteur, et la méthode $compute$ qui permet d'effectuer le calcul du descripteur sur une liste d'images.\\
 A noter, que les descripteurs $HOGCASCADE$ et $HOGCOLOR$ sont des variantes du descripteur $HOG$ (HOG et HOG cascade seront détaillés en partie \hyperlink{chapter.4}{4}), et le descripteur $HOGCASCADELBP$ est une combinaison entre un descripteur HOG cascade et LBP.\\
 \\
 Ce module permet de calculer, pour chaque particule du filtre, un vecteur descripteur qui pourra, par la suite, être comparé avec un descripteur de référence pour estimer la similarité entre la particule et une particule de référence.\\
@@ -132,7 +133,7 @@ Le diagramme UML du module est donné en figure \ref{fig:uml_diagram_similarity}
 
 
 \subsection{Filtre à particule}
-Le module filtre à particule est le plus conséquent, car il regroupe plusieurs autres modules, comme les modules descripteur et mesure de similarité. La classe $ParticleFilter$ est la classe principale de ce module et implémente l'algorithme du filtre à particule. Elle fait appel aux classes $Particle$, $Descriptor$, $Slicer$, $Resampling$ et $Similarity$, et les utilisent ensemble pour effectuer le suivi d'une seiche.\\
+Le module filtre à particule est le plus conséquent, car il regroupe plusieurs autres modules, comme les modules descripteur et mesure de similarité. La classe $ParticleFilter$ est la classe principale de ce module et implémente l'algorithme du filtre à particule. Elle fait appel aux classes $Particle$, $Descriptor$, $Slicer$, $Resampling$ et $Similarity$, et les utilise ensemble pour effectuer le suivi d'une seiche.\\
 \\
 Ce module est responsable de fournir tous les résultats nécessaires au programme principal, pour qu'il puisse les afficher et/ou les sauvegarder pour être finalement évalués. Ce module est très flexible et permet d'être configuré avec différentes structures de particules, différents descripteurs, différentes mesures de similarité, ou encore différentes méthodes de ré-échantillonnage.\\
 Le diagramme UML du module est donné en figure \ref{fig:uml_diagram_particlefilter}.
@@ -162,7 +163,7 @@ L'utilisateur peut uniquement donner des paramètres au logiciel lorsqu'il le la
 
 
 \section{Statistiques}
-Le projet compte un total de 25 classes réparties dans 10 scripts python (voir figure \ref{fig:uml_diagram_classes}).\\
+Le projet compte un total de 25 classes réparties dans 10 scripts python (voir figure \ref{fig:uml_diagram_classes} en annexe).\\
 Les scripts et classes de YOLOv7\cite{wang_yolov7_nodate} utilisés dans le projet ne sont pas comptés.\\
 Le projet compte en tout 1587 lignes de code.\\
 L'entièreté du projet est en accès libre sur github (\cite{pp2pf}).

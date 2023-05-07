@@ -3,13 +3,13 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Différentes apparences d'une même seiches dans une vidéo.\relax }}{6}{figure.caption.5}%
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Différentes apparences d'une même seiche dans une vidéo.\relax }}{6}{figure.caption.5}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Performances de notre modèle après entrainement.\relax }}{11}{figure.caption.6}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Performances de notre modèle après entrainement.\relax }}{11}{figure.caption.7}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Precision}}}{11}{subfigure.1.1}%
 \defcounter {refsection}{0}\relax 
@@ -19,40 +19,40 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subfigure}{\numberline {(d)}{\ignorespaces {mAP@.5:.95}}}{11}{subfigure.1.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Exemples de résultats obtenus par notre modèle.\relax }}{12}{figure.caption.7}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Exemples de résultats obtenus par notre modèle.\relax }}{12}{figure.caption.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Exemple d'une image renvoyé par le logiciel.\relax }}{13}{figure.caption.8}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Exemple d'une image renvoyée par le logiciel.\relax }}{13}{figure.caption.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.4}{\ignorespaces IoU (blanc) entre l'image de référence (vert) et notre résultat (rouge).\relax }}{13}{figure.caption.9}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces IoU (blanc) entre l'image de référence (vert) et notre résultat (rouge).\relax }}{13}{figure.caption.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Diagramme UML de cas d'utilisation.\relax }}{14}{figure.caption.10}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Diagramme UML de cas d'utilisation.\relax }}{14}{figure.caption.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Diagramme UML des classes du module descripteur.\relax }}{15}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Diagramme UML des classes du module descripteur.\relax }}{15}{figure.caption.12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Diagramme UML des classes du module mesure de similarité.\relax }}{15}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Diagramme UML des classes du module mesure de similarité.\relax }}{15}{figure.caption.13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Diagramme UML des classes du module filtre à particule.\relax }}{16}{figure.caption.13}%
-\defcounter {refsection}{0}\relax 
-\addvspace {10\p@ }
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Bloc d'un HOG.\relax }}{18}{figure.caption.14}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Déplacement d'un bloc.\relax }}{18}{figure.caption.15}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.3}{\ignorespaces HOG en cascade.\relax }}{19}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Diagramme UML des classes du module filtre à particule.\relax }}{16}{figure.caption.14}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Bloc d'un HOG.\relax }}{18}{figure.caption.15}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Déplacement d'un bloc.\relax }}{18}{figure.caption.16}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.3}{\ignorespaces HOG en cascade.\relax }}{19}{figure.caption.17}%
+\defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Diagramme de Gantt du projet.\relax }}{26}{figure.caption.19}%
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Diagramme de Gantt du projet.\relax }}{26}{figure.caption.20}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {1}{\ignorespaces IoU (blanc) entre deux bounding box.\relax }}{30}{figure.caption.24}%
+\contentsline {figure}{\numberline {1}{\ignorespaces IoU (blanc) entre deux bounding box.\relax }}{30}{figure.caption.25}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2}{\ignorespaces Diagramme UML des classes globales (\href {https://github.com/gabriel-combe/PP2_Particle_Filter/blob/test/rapport/UML/classes.svg}{image SVG}).\relax }}{31}{figure.caption.26}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Diagramme UML des classes globales (\href {https://github.com/gabriel-combe/PP2_Particle_Filter/blob/test/rapport/UML/classes.svg}{image SVG}).\relax }}{31}{figure.caption.27}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3}{\ignorespaces Schéma basic d'un VAE.\relax }}{32}{figure.caption.28}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Schéma basique d'un VAE.\relax }}{32}{figure.caption.29}%
 \defcounter {refsection}{0}\relax 
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

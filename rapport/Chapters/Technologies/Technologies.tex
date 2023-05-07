@@ -1,11 +1,12 @@
+\pagestyle{plain}
 \chapter{Technologies}
 
 \section{LabelImg et Roboflow}
 LabelImg est un logiciel d'annotation d'image, qui permet entre autre d'annoter une bounding box que l'on dessine sur une image, avec un label que l'on définit, et d'enregistrer le tout sous différents formats, comme le Pascal VOC, ou bien le format de YOLO.\\
 Ce logiciel a été utilisé pour annoter la vidéo de référence afin que l'on puisse comparer nos résultats.\\
 \\
-Roboflow est un site en ligne qui permet de faire de la gestion de base de donnée pour l'entraînement d'intelligence artificielle, ainsi que de l'annotation collaborative.\\
-Ce logiciel a été utilisé pour annoter des images de seiches afin de constituer une base de donnée suffisante, pour entrainer l'intelligence artificielle YOLOv7\cite{wang_yolov7_nodate} à détecter des seiches dans une image. L'annotation a été repartie entre les membres du groupe pour accélérer le processus.\\
+Roboflow est un site en ligne qui permet de faire de la gestion de base de données pour l'entraînement d'intelligence artificielle, ainsi que de l'annotation collaborative.\\
+Ce logiciel a été utilisé pour annoter des images de seiches afin de constituer une base de données suffisante, pour entrainer l'intelligence artificielle YOLOv7\cite{wang_yolov7_nodate} à détecter des seiches dans une image. L'annotation a été repartie entre les membres du groupe pour accélérer le processus.\\
 Une fois l'annotation terminée, un dataset a été créé et augmenté grâce à Roboflow, en ajoutant des images déjà annotées auxquelles a été rajouté du bruit, des rotations, ou des changements de contraste et de luminosité. Augmenter ainsi le dataset permet à l'intelligence artificielle d'être plus résistante à des variations de contraste ou de rotation des seiches dans une image.\\
 
 
@@ -13,14 +14,14 @@ Une fois l'annotation terminée, un dataset a été créé et augmenté grâce �
 
 \section{État de l'art de la détection d'objet}
 
-Dans le cadre du suivi d'objet par la méthode du filtre à particule, on constate fréquemment un phénomène de divergence. Une manière connue pour palier à ce problème consiste à un indiquer un position initiale correcte au filtre à particule. On a donc choisi de détecter l'objet suivi, la seiche, sur la première image afin de réduire cet effet de divergence.\\
+Dans le cadre du suivi d'objet par la méthode du filtre à particule, on constate fréquemment un phénomène de divergence. Une manière connue pour palier à ce problème consiste à un indiquer une position initiale correcte au filtre à particule. On a donc choisi de détecter l'objet suivi, la seiche, sur la première image afin de réduire cet effet de divergence.\\
 Pour procéder nous emploierons une méthode de détection d'objet à l'aide de réseaux de neurones ; en effet cette manière a montré des bons résultats dans la littérature ces dernières années.\\
-Parmi les différents candidats se démarquent \emph{Faster R-CNN\cite{ren_faster_2016}, RetinaNet\cite{lin_focal_2018}, SSD\cite{liu_ssd_2016}, YOLO\cite{redmon_you_2016}} ou en encore R-FCN\cite{dai_r-fcn_2016}. 
-YOLO a largement été utilisé dans des projets similaires. En effet chacun de ces réseaux de neurones propose un degré de précision proche dans la détection mais YOLO se démarque par sa vitesse d'exécution et sa souplesse d'implémentation \cite{sanchez_review_2020}. De plus YOLO bénéficie d'un suivi régulier depuis sa mise en ligne et a connu de nombreuses mises à jour. Pour la version nous opterons pour  YOLOv7\cite{wang_yolov7_nodate} qui propose de meilleures performances tout en disposant de suffisamment de documentation récente. YOLOv8 a été jugé trop récent pour être choisi.
+Parmi les différents candidats se démarquent \emph{Faster R-CNN\cite{ren_faster_2016}, RetinaNet\cite{lin_focal_2018}, SSD\cite{liu_ssd_2016}, YOLO\cite{redmon_you_2016}} ou en encore R-FCN\cite{dai_r-fcn_2016} (voir tableau \ref{tab:comparaison}). 
+YOLO a largement été utilisé dans des projets similaires. En effet chacun de ces réseaux de neurones propose un degré de précision proche dans la détection mais YOLO se démarque par sa vitesse d'exécution et sa souplesse d'implémentation (voir article \cite{sanchez_review_2020}). De plus, YOLO bénéficie d'un suivi régulier depuis sa mise en ligne et a connu de nombreuses mises à jour. Pour la version nous opterons pour  YOLOv7\cite{wang_yolov7_nodate} qui propose de meilleures performances tout en disposant de suffisamment de documentation récente. YOLOv8 a été jugé trop récent pour être choisi.
 \begin{table}[]
 \begin{tabular}{|l|c|p{25em}|}
 \hline
-\textbf{Modèles}                                                          & mAP           & Papier                                                                                     \\ \hline
+\textbf{Modèles}                                                         & mAP           & Papier                                                                                     \\ \hline
 \cellcolor[HTML]{FFFFFF}{\color[HTML]{212529} \textbf{RetinaNet}}        & 52.1          & SpineNet: Learning Scale-Permuted Backbone for Recognition and Localization                \\ \hline
 \cellcolor[HTML]{FFFFFF}{\color[HTML]{212529} \textbf{YOLOv7}}           & \textbf{51.4} & YOLOv7: Trainable bag-of-freebies sets new state-of-the-art for real-time object detectors \\ \hline
 \cellcolor[HTML]{FFFFFF}{\color[HTML]{212529} \textbf{Faster R-CNN}}     & 43.9          & \cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} LIP: Local Importance-based Pooling}         \\ \hline
@@ -28,6 +29,7 @@ YOLO a largement été utilisé dans des projets similaires. En effet chacun de 
 \cellcolor[HTML]{FFFFFF}{\color[HTML]{212529} \textbf{SSD512}}           & 28.8          & SSD: Single Shot MultiBox Detector                                                         \\ \hline
 \end{tabular}
 \caption{Comparaison de la précision de plusieurs modèles (mAP *).}
+\label{tab:comparaison}
 \end{table}
 
 

@@ -23,7 +23,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.2}État de l'art de la détection d'objet}{9}{section.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.3}Langage de programmation}{9}{section.2.3}%
+\contentsline {section}{\numberline {2.3}Langage de programmation}{10}{section.2.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}Développements Logiciel : Conception, Modélisation, Implémentation}{11}{chapter.3}%
 \defcounter {refsection}{0}\relax 
@@ -51,7 +51,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.1.1}Histogramme de gradient orienté}{17}{subsection.4.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.2}HOG en cascade}{18}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.2}HOG en cascade}{19}{subsection.4.1.2}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.2}Mesures de similarité}{19}{section.4.2}%
 \defcounter {refsection}{0}\relax 
@@ -69,10 +69,8 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {6}Gestion du Projet}{25}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Planification}{25}{section.6.1}%
-\defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {7}Bilan et Conclusions}{27}{chapter.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Appendices}{29}{section*.21}%
+\contentsline {chapter}{Appendices}{29}{section*.22}%
 \defcounter {refsection}{0}\relax 
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
