@@ -195,13 +195,13 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{GitHub repository}
-      \field{title}{PP2 Particle Filter}
+      \field{title}{Cuttlefish Tracker}
       \field{year}{2023}
       \verb{urlraw}
-      \verb https://github.com/gabriel-combe/PP2_Particle_Filter
+      \verb https://github.com/gabriel-combe/Cuttlefish_Tracker
       \endverb
       \verb{url}
-      \verb https://github.com/gabriel-combe/PP2_Particle_Filter
+      \verb https://github.com/gabriel-combe/Cuttlefish_Tracker
       \endverb
     \endentry
     \entry{kong_particle_2019}{article}{}
