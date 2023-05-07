@@ -17,6 +17,19 @@ Dans le cadre du suivi d'objet par la méthode du filtre à particule, on consta
 Pour procéder nous emploierons une méthode de détection d'objet à l'aide de réseaux de neurones ; en effet cette manière a montré des bons résultats dans la littérature ces dernières années.\\
 Parmi les différents candidats se démarquent \emph{Faster R-CNN\cite{ren_faster_2016}, RetinaNet\cite{lin_focal_2018}, SSD\cite{liu_ssd_2016}, YOLO\cite{redmon_you_2016}} ou en encore R-FCN\cite{dai_r-fcn_2016}. 
 YOLO a largement été utilisé dans des projets similaires. En effet chacun de ces réseaux de neurones propose un degré de précision proche dans la détection mais YOLO se démarque par sa vitesse d'exécution et sa souplesse d'implémentation \cite{sanchez_review_2020}. De plus YOLO bénéficie d'un suivi régulier depuis sa mise en ligne et a connu de nombreuses mises à jour. Pour la version nous opterons pour  YOLOv7\cite{wang_yolov7_nodate} qui propose de meilleures performances tout en disposant de suffisamment de documentation récente. YOLOv8 a été jugé trop récent pour être choisi.
+\begin{table}[]
+\begin{tabular}{|l|c|p{25em}|}
+\hline
+\textbf{Modèles}                                                          & mAP           & Papier                                                                                     \\ \hline
+\cellcolor[HTML]{FFFFFF}{\color[HTML]{212529} \textbf{RetinaNet}}        & 52.1          & SpineNet: Learning Scale-Permuted Backbone for Recognition and Localization                \\ \hline
+\cellcolor[HTML]{FFFFFF}{\color[HTML]{212529} \textbf{YOLOv7}}           & \textbf{51.4} & YOLOv7: Trainable bag-of-freebies sets new state-of-the-art for real-time object detectors \\ \hline
+\cellcolor[HTML]{FFFFFF}{\color[HTML]{212529} \textbf{Faster R-CNN}}     & 43.9          & \cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} LIP: Local Importance-based Pooling}         \\ \hline
+\cellcolor[HTML]{FFFFFF}{\color[HTML]{212529} \textbf{DeformConv-R-FCN}} & 37.5          & Deformable Convolutional Networks                                                          \\ \hline
+\cellcolor[HTML]{FFFFFF}{\color[HTML]{212529} \textbf{SSD512}}           & 28.8          & SSD: Single Shot MultiBox Detector                                                         \\ \hline
+\end{tabular}
+\caption{Comparaison de la précision de plusieurs modèles (mAP *).}
+\end{table}
+
 
 
 \section{Langage de programmation}
