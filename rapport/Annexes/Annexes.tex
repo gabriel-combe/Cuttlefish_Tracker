@@ -1,7 +1,29 @@
 \begin{appendices}
 	
 \section*{mAP (mean Average Precision)}\label{app:mAP}
-	
+La mAP est une mesure de précision pour les algorithmes de détection d'objet. La mAP correspond de manière générale à la moyenne de l'AP obtenu sur différents objets et à différents paramètres. Son calcul dépend du contexte et de la technique de comparaison.\\
+L'Average Precision (AP) se calcule en se basant sur la précision, le rappel et l'Intersection over Union (IoU *). 
+\begin{figure}[!htbp]
+\center
+	\subfloat{{\includegraphics[scale=0.25]{truefalsepositivesnegatives.png}}}
+\caption{Schéma vrais/faux positifs/négatifs}
+\label{fig:schema_vraifaux}
+\end{figure}
+\FloatBarrier
+La précision correspond à la proportion de vrais positifs (VP) parmi l'ensemble des vrais positifs et des faux positifs (FP). 
+\[ precision = \frac{VP}{VP+FP} \]
+Le rappel correspond à la proportion de vrais positifs parmi l'ensemble des vrais positifs et des faux négatifs (FN).
+\[ rappel = \frac{VP}{VP+FN} \]
+On trace ensuite la courbe représentant la précision en fonction du rappel : 
+\begin{figure}[!htbp]
+\center
+	\subfloat{{\includegraphics[scale=0.2]{prcurve.png}}}
+\caption{Tracé de la coubre Precision-Recall ou PR curve}
+\label{fig:trace_prcurve}
+\end{figure}
+\FloatBarrier
+L'AP correspond à l'aire sous cette courbe Precision-Rappel (PR curve). 
+\[ \int_{0}^{1} f_{PR}(rap)d(rap) \]	
 	
 \section*{IoU (Intersection over Union)}\label{app:IoU}
 L'IoU signifie Intersection over Union et est un calcul utilisé dans la technique de comparaison Pascal VOC.
