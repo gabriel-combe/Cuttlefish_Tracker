@@ -69,7 +69,7 @@ Une fois que le filtre à particule a fini de traiter une image, celle-ci est af
 \FloatBarrier
 
 Le logiciel donne également la possibilité de sauvegarder la vidéo résultante, ainsi que les valeurs de la particule estimée à chaque itération du filtre.\\
-Sauvegarder cette estimation permet, par la suite, d'effectuer une analyse des performances de nos solutions, en utilisant un script d'évaluation qui calcule l'IoU (voir annexe \ref{app:IoU}) entre une estimation à un instant $t$ et la véritable valeur à ce même instant, comme montré dans la figure \ref{fig:eval_result}.\\
+Sauvegarder cette estimation permet, par la suite, d'effectuer une analyse des performances de nos solutions, en utilisant un script d'évaluation qui calcule l'IoU (voir chapitre \hyperlink{chapter.5}{5}) entre une estimation à un instant $t$ et la véritable valeur à ce même instant, comme montré dans la figure \ref{fig:eval_result}.\\
 
 \begin{figure}[!htbp]
 \center
@@ -121,13 +121,13 @@ Les mesures de similarité $Bhattacharyya\_sqrt$ et $Cosine\_Similarity$ seront 
 Ce module permet de calculer, pour chaque descripteur de chaque particule du filtre, un coefficient de similarité qui indique quelles particules sont les plus probables de représenter la position de la seiche à un instant $t$.\\
 Le diagramme UML du module est donné en figure \ref{fig:uml_diagram_similarity}.
 
-\begin{figure}[!htbp]
-\center
-	\subfloat{{\includegraphics[scale=0.2]{similarity.png}}}
-\caption{Diagramme UML des classes du module mesure de similarité.}
-\label{fig:uml_diagram_similarity}
-\end{figure}
-\FloatBarrier
+%\begin{figure}[!htbp]
+%\center
+%	\subfloat{{\includegraphics[scale=0.2]{similarity.png}}}
+%\caption{Diagramme UML des classes du module mesure de similarité.}
+%\label{fig:uml_diagram_similarity}
+%\end{figure}
+%\FloatBarrier
 
 
 
@@ -138,13 +138,13 @@ Le module filtre à particule est le plus conséquent, car il regroupe plusieurs
 Ce module est responsable de fournir tous les résultats nécessaires au programme principal, pour qu'il puisse les afficher et/ou les sauvegarder pour être finalement évalués. Ce module est très flexible et permet d'être configuré avec différentes structures de particules, différents descripteurs, différentes mesures de similarité, ou encore différentes méthodes de ré-échantillonnage.\\
 Le diagramme UML du module est donné en figure \ref{fig:uml_diagram_particlefilter}.
 
-\begin{figure}[!htbp]
-\center
-	\subfloat{{\includegraphics[scale=0.065]{particlefilter.png}}}
-\caption{Diagramme UML des classes du module filtre à particule.}
-\label{fig:uml_diagram_particlefilter}
-\end{figure}
-\FloatBarrier
+%\begin{figure}[!htbp]
+%\center
+%	\subfloat{{\includegraphics[scale=0.065]{particlefilter.png}}}
+%\caption{Diagramme UML des classes du module filtre à particule.}
+%\label{fig:uml_diagram_particlefilter}
+%\end{figure}
+%\FloatBarrier
 
 
 

@@ -2,7 +2,7 @@
 	
 \section*{mAP (mean Average Precision)}\label{app:mAP}
 La mAP est une mesure de précision pour les algorithmes de détection d'objet. La mAP correspond de manière générale à la moyenne de l'AP obtenu sur différents objets et à différents paramètres. Son calcul dépend du contexte et de la technique de comparaison.\\
-L'Average Precision (AP) se calcule en se basant sur la précision, le rappel et l'Intersection over Union (annexe \ref{app:IoU}). 
+L'Average Precision (AP) se calcule en se basant sur la précision, le rappel et l'Intersection over Union. 
 \begin{figure}[!htbp]
 \center
 	\subfloat{{\includegraphics[scale=0.25]{truefalsepositivesnegatives.png}}}
@@ -23,39 +23,45 @@ On trace ensuite la courbe représentant la précision en fonction du rappel :
 \end{figure}
 \FloatBarrier
 L'AP correspond à l'aire sous cette courbe Precision-Rappel (PR curve). 
-$$\int_{0}^{1} f_{PR}(rappel)d(rappel)$$
+$$\int_{0}^{1} f_{PR}(rappel) \hspace{0.1cm} d(rappel)$$
+
 	
-	
-	
-	
-\section*{IoU (Intersection over Union)}\label{app:IoU}
-L'IoU signifie Intersection over Union et est un calcul utilisé dans la technique de comparaison Pascal VOC.
-L'IoU est exprimé ainsi:
-$$\text{IoU} = \frac{\text{Aire de l'intersection}}{\text{Aire de l'union}}$$
-L'IoU, dans notre cas, se calcule sur deux bounding box, comme dans la figure \ref{fig:iou_example}.
-\begin{figure}[!htbp]
-\center
-	\subfloat{{\includegraphics[scale=0.3]{eval0211.png}}}
-\caption{IoU (blanc) entre deux bounding box.}
-\label{fig:iou_example}
-\end{figure}
-\FloatBarrier
-	
-	
+
 	
 \clearpage
 \section*{Diagramme UML global}\label{app:UMLGlobal}
 \begin{figure}[!htbp]
 	\center
-		\subfloat{{\includegraphics[scale=0.092,angle=90,origin=c]{classes.png}}}
-	\caption{Diagramme UML des classes globales (\href{https://github.com/gabriel-combe/PP2_Particle_Filter/blob/test/rapport/UML/classes.svg}{image SVG}).}
+		\subfloat{{\includegraphics[scale=0.1,angle=90,origin=c]{classes.png}}}
+	\caption{Diagramme UML des classes globales (\href{https://github.com/gabriel-combe/PP2_Particle_Filter/blob/test/rapport/UML/classes.svg}{lien vers l'image SVG}, zoomer sur l'image SVG pour avoir plus de détaille).}
 	\label{fig:uml_diagram_classes}
 \end{figure}
 \FloatBarrier
 	
+
+\clearpage
+\section*{Diagramme UML mesure de similarité}\label{app:UMLSimilarity}
+\begin{figure}[!htbp]
+	\center
+		\subfloat{{\includegraphics[scale=0.26,angle=90,origin=c]{similarity.png}}}
+	\caption{Diagramme UML de la classe Similarity (\href{https://github.com/gabriel-combe/PP2_Particle_Filter/blob/test/rapport/UML/similarity.svg}{lien vers l'image SVG}, zoomer sur l'image SVG pour avoir plus de détaille).}
+	\label{fig:uml_diagram_similarity}
+\end{figure}
+\FloatBarrier
+
+
+\clearpage
+\section*{Diagramme UML filtre à particule}\label{app:UMLParticleFilter}
+\begin{figure}[!htbp]
+	\center
+		\subfloat{{\includegraphics[scale=0.081,angle=90,origin=c]{particlefilter.png}}}
+	\caption{Diagramme UML de la classe ParticleFilter (\href{https://github.com/gabriel-combe/PP2_Particle_Filter/blob/test/rapport/UML/particlefilter.svg}{lien vers l'image SVG}, zoomer sur l'image SVG pour avoir plus de détaille).}
+	\label{fig:uml_diagram_particlefilter}
+\end{figure}
+\FloatBarrier
 	
 	
-	
+\clearpage
 \section*{VAE (Variational Autoencoder)}\label{app:variational_autoencoder}
 Les VAE, ou Variational Autoencoder, sont des réseaux de neurones qui essayent d'estimer une distribution probabiliste avec seulement un nombre limité d'échantillons provenant de cette distribution.\\
 Ce genre de réseaux de neurones est divisé en deux parties:\\

@@ -17,7 +17,7 @@ En effet, le suivi d'objet apparait dans plein de domaines, comme par exemple:
 
 Le projet se place dans le contexte du suivi de seiches en milieu aquatique grâce à des vidéos.\\
 Les vidéos sous-marines sont sujettes à beaucoup de difficultés, comme la variation de couleur, de lumière et de contraste d'une image à l'autre, la dégradation de la qualité de la vidéo par des sédiments, les mouvements instables du plongeur, ou encore l'arrière plan qui change.\\
-Les solutions implémentées doivent essayer de prendre en compte toutes ces variations ainsi que la forme générale de la seiche au cours de ses mouvements (voir figure \ref{fig:cuttlefish_variation}).\\
+Les solutions implémentées doivent prendre en compte toutes ces variations ainsi que la forme générale de la seiche au cours de ses mouvements (voir figure \ref{fig:cuttlefish_variation}).\\
 Le projet a pour objectif de fournir un outil qui propose des solutions qui répondent à toutes ces contraintes, pour suivre des seiches de façon non intrusive (pas de capteurs sur la seiche suivie), afin de limiter l'interaction humaine avec les seiches.
 
 \begin{figure}[!htbp]
@@ -40,16 +40,16 @@ Le projet a pour objectif de fournir un outil qui propose des solutions qui rép
 
 
 \section{Motivation}
-Le suivi d'objet, de manière générale, étant un problème que l'on rencontre dans beaucoup de domaines liés à l'informatique, les précédents exemples n'étant qu'un petit aperçu, c'est donc un problème de choix à étudier lors de notre parcours d'études.\\
-De plus, il permet d'introduire des concepts et des algorithmes fondamentaux, comme le concept de filtrage de signaux, ou d'espace de représentation, ou encore, les algorithmes de filtrage, de descripteurs, ou de mesures de similarité.\\
+Le suivi d'objet, de manière générale, étant un problème que l'on rencontre dans beaucoup de domaines liés à l'informatique. C'est donc un problème de choix à étudier lors de notre parcours d'études.\\
+De plus, il permet d'introduire des concepts et des algorithmes fondamentaux, comme le concept de filtrage de signaux, ou d'espace de représentation, les algorithmes de filtrage, ou encore les méthodes de preprocessing, comme les descripteurs, ou les mesures de similarité.\\
 Ces concepts et algorithmes sont récurrents dans le monde de l'informatique et plus précisément quand il s'agit de faire du traitement du signal ou de la vision par ordinateur.\\
-Se familiariser dès à présent avec ces différentes notions pourra grandement nous aider dans la suite de notre parcours.\\
+Se familiariser dès à présent avec ces différentes notions pourra grandement nous aider dans la suite de notre parcours.
 
 
 
 
 \section{Méthodes}
-Il existe beaucoup d'approches possibles pour résoudre le problème de suivi d'objet, approches parmi lesquelles ont peut noter:\\
+Il existe beaucoup d'approches possibles pour résoudre le problème de suivi d'objet, parmi ces approches on peut noter:\\
 \begin{itemize}
 	\item \textit{Intelligence Artificielle}\newline
 	Cette approche est de plus en plus populaire, notamment avec des modèles comme YOLO\cite{redmon_you_2016} ou SSD\cite{liu_ssd_2016}. Ces modèles peuvent directement donner la bounding box de l'objet suivi, sans avoir à faire de traitement sur la sortie du modèle.\\
@@ -61,13 +61,13 @@ Il existe beaucoup d'approches possibles pour résoudre le problème de suivi d'
 	
 	\item \textit{Photogrammétrie}\newline
 	Cette approche utilise des descripteurs d'image pour extraire des features importantes et ensuite, matcher ces features avec d'autres images pour pouvoir estimer le déplacement de la caméra.\\
-	Cependant, cette approche est plus utilisée dans le cas ou l'on cherche à savoir où est-ce que le caméraman se situe, plutôt qu'un objet qui se trouve dans une image (comme le SLAM).\\
+	Cependant, cette approche est plus utilisée dans le cas où l'on cherche à savoir où est-ce que le caméraman se situe, plutôt qu'un objet qui se trouve dans une image (comme le SLAM).\\
 	
 	\item \textit{Hybride}\newline
 	Cette approche combine différentes parties des méthodes déjà présentées et est celle sur laquelle ce projet est basé.\\
-	On utilise l'intelligence artificielle pour détecter un objet d'intérêt à suivre dans une séquence d'images, la partie filtrage de l'approche avec des capteurs pour améliorer nos estimations de l'état de l'objet suivi, et enfin, la photogrammétrie pour récupérer les features intéressantes dans une image et les comparer avec les features d'une image de référence.\\
-	Cette approche est cependant assez sensible aux paramètres que nous lui donnons, ainsi qu'à certaines caractéristiques des images données en entrée, comme le contraste, la résolution ou encore la colorimétrie.
-	Le détail de cette approche sera donné en partie \hyperlink{chapter.3}{3}.\\
+	En premier lieu, on utilise l'intelligence artificielle pour détecter un objet d'intérêt à suivre dans une séquence d'images. Dans la suite, on utilise la partie filtrage de l'approche avec des capteurs pour améliorer nos estimations de l'état de l'objet suivi. Enfin, on utilise la photogrammétrie pour récupérer les features intéressantes dans une image et les comparer avec les features d'une image de référence.\\
+	Cette approche est cependant assez sensible aux paramètres entrés, ainsi qu'à certaines caractéristiques des images utilisées, comme le contraste, la résolution ou encore la colorimétrie.
+	Cette approche sera détaillée dans la partie \hyperlink{chapter.3}{3}.\\
 \end{itemize}
 
 

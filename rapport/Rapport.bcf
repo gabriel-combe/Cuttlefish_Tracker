@@ -2359,17 +2359,19 @@
     <bcf:citekey order="13">yolov7_github</bcf:citekey>
     <bcf:citekey order="14">wang_yolov7_nodate</bcf:citekey>
     <bcf:citekey order="15">pp2pf</bcf:citekey>
-    <bcf:citekey order="16">dalal_histograms_2005</bcf:citekey>
-    <bcf:citekey order="17">dalal_histograms_2005</bcf:citekey>
-    <bcf:citekey order="18">qiang_zhu_fast_2006</bcf:citekey>
-    <bcf:citekey order="19">bhattacharyya_measure_1960</bcf:citekey>
-    <bcf:citekey order="20">russell_norvig</bcf:citekey>
-    <bcf:citekey order="21">rlabbe</bcf:citekey>
-    <bcf:citekey order="22">xu_human_2010</bcf:citekey>
-    <bcf:citekey order="23">kong_particle_2019</bcf:citekey>
-    <bcf:citekey order="24">qiang_zhu_fast_2006</bcf:citekey>
-    <bcf:citekey order="25">dalal_histograms_2005</bcf:citekey>
-    <bcf:citekey order="26">kong_particle_2019</bcf:citekey>
+    <bcf:citekey order="16">redmon_you_2016</bcf:citekey>
+    <bcf:citekey order="17">wang_yolov7_nodate</bcf:citekey>
+    <bcf:citekey order="18">dalal_histograms_2005</bcf:citekey>
+    <bcf:citekey order="19">dalal_histograms_2005</bcf:citekey>
+    <bcf:citekey order="20">qiang_zhu_fast_2006</bcf:citekey>
+    <bcf:citekey order="21">bhattacharyya_measure_1960</bcf:citekey>
+    <bcf:citekey order="22">russell_norvig</bcf:citekey>
+    <bcf:citekey order="23">rlabbe</bcf:citekey>
+    <bcf:citekey order="24">xu_human_2010</bcf:citekey>
+    <bcf:citekey order="25">kong_particle_2019</bcf:citekey>
+    <bcf:citekey order="26">qiang_zhu_fast_2006</bcf:citekey>
+    <bcf:citekey order="27">dalal_histograms_2005</bcf:citekey>
+    <bcf:citekey order="28">kong_particle_2019</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

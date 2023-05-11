@@ -2,6 +2,15 @@
 \chapter{Algorithmes et Analyse}
 
 
+\section{YOLO: une méthode basée sur les CNN}
+YOLO est un algorithme basé sur la régression qui classifie et prédit des bounding boxes pour une image entière en un seul passage \cite{redmon_you_2016}.\\
+Dans un premier temps, un réseau de neurone traite l'image entière. Puis, l'image est divisé en cellules dans lesquelles ont prédit si il y a un objet ou non.\\
+\\
+Comme mentionné dans le chapitre \hyperlink{chapter.2}{2}, YOLO surpasse les autres algorithmes de détection, comme R-CNN et fast R-CNN, en particulier en terme de vitesse. Cette vitesse est dû au fait qu'il utilise un unique réseau de neurone et qu'il extrait des informations globales du contexte de l'image, tandis que d'autres algorithmes de détection utilisent un grand nombre de réseau de neurone (jusqu'à plusieurs milliers).\\
+\\
+Dans notre travail, nous avons utilisé la septième version de YOLO (YOLOv7) pour ses améliorations significatives en terme de precision et de vitesse \cite{wang_yolov7_nodate}.
+
+
 
 
 \section{Descripteurs}

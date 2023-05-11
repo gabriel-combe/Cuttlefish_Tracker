@@ -41,36 +41,38 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2.3}Filtre à particule}{15}{subsection.3.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}Structures de données}{16}{section.3.3}%
+\contentsline {section}{\numberline {3.3}Structures de données}{15}{section.3.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.4}Statistiques}{16}{section.3.4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {4}Algorithmes et Analyse}{17}{chapter.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Descripteurs}{17}{section.4.1}%
+\contentsline {section}{\numberline {4.1}YOLO: une méthode basée sur les CNN}{17}{section.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.1}Histogramme de gradient orienté}{17}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}Descripteurs}{17}{section.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.2}HOG en cascade}{19}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.2.1}Histogramme de gradient orienté}{17}{subsection.4.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Mesures de similarité}{19}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.2}HOG en cascade}{19}{subsection.4.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.1}Distance de Bhattacharyya}{19}{subsection.4.2.1}%
+\contentsline {section}{\numberline {4.3}Mesures de similarité}{19}{section.4.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.2}Cosine similarity}{19}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.3.1}Distance de Bhattacharyya}{19}{subsection.4.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Filtre à particule}{20}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.2}Cosine similarity}{20}{subsection.4.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Analyse des résultats}{24}{chapter.5}%
+\contentsline {section}{\numberline {4.4}Filtre à particule}{21}{section.4.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Méthodologie}{24}{section.5.1}%
+\contentsline {chapter}{\numberline {5}Analyse des résultats}{25}{chapter.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Analyse et comparaison}{24}{section.5.2}%
+\contentsline {section}{\numberline {5.1}Métrique d'évaluation IoU}{25}{section.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Gestion du Projet}{25}{chapter.6}%
+\contentsline {section}{\numberline {5.2}Analyse et comparaison}{25}{section.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Bilan et Conclusions}{27}{chapter.7}%
+\contentsline {chapter}{\numberline {6}Gestion du Projet}{26}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Appendices}{29}{section*.22}%
+\contentsline {chapter}{\numberline {7}Bilan et Conclusions}{28}{chapter.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Appendices}{30}{section*.21}%
 \defcounter {refsection}{0}\relax 
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
