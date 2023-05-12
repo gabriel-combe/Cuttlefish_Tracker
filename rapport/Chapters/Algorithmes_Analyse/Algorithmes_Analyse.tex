@@ -4,9 +4,9 @@
 
 \section{YOLO: une méthode basée sur les CNN}
 YOLO est un algorithme basé sur la régression qui classifie et prédit des bounding boxes pour une image entière en un seul passage \cite{redmon_you_2016}.\\
-Dans un premier temps, un réseau de neurone traite l'image entière. Puis, l'image est divisé en cellules dans lesquelles ont prédit si il y a un objet ou non.\\
+Dans un premier temps, un réseau de neurone traite l'image entière. Puis, l'image est divisée en cellules et dans chaque cellules on prédit s'il y a un objet ou non.\\
 \\
-Comme mentionné dans le chapitre \hyperlink{chapter.2}{2}, YOLO surpasse les autres algorithmes de détection, comme R-CNN et fast R-CNN, en particulier en terme de vitesse. Cette vitesse est dû au fait qu'il utilise un unique réseau de neurone et qu'il extrait des informations globales du contexte de l'image, tandis que d'autres algorithmes de détection utilisent un grand nombre de réseau de neurone (jusqu'à plusieurs milliers).\\
+Comme mentionné dans le chapitre \hyperlink{chapter.2}{2}, YOLO surpasse les autres algorithmes de détection, comme R-CNN et fast R-CNN, en particulier en terme de vitesse. Cette vitesse est dû au fait qu'il utilise un unique réseau de neurones et qu'il extrait des informations globales du contexte de l'image, tandis que d'autres algorithmes de détection utilisent un grand nombre de réseaux de neurones (jusqu'à plusieurs milliers).\\
 \\
 Dans notre travail, nous avons utilisé la septième version de YOLO (YOLOv7) pour ses améliorations significatives en terme de precision et de vitesse \cite{wang_yolov7_nodate}.
 
@@ -110,7 +110,6 @@ Donc, à partir d'un vecteur descripteur X et du vecteur descripteur de référe
 $$Sc(X, Y) = \frac{X \cdot Y}{\|X\|\|Y\|}$$\\
 
 
-\clearpage
 \section{Filtre à particule}
 Le filtre à particule, aussi connu sous le nom de bootstrap, ou algorithme de condensation, est basé sur une méthode de Monte Carlo, c'est à dire utiliser un ensemble de particules discrètes pour représenter la densité de probabilité associée au système que l'on souhaite modéliser. L'idée principale du filtre à particule est d'approcher une distribution, impossible ou difficile à estimer directement, grâce à un ensemble d'échantillons pondérés $S=\{(X_{n}, w_{n})|n=1...N\}$, où $X_{n}$ indique la nième particule, $w_{n}$ indique l'importance de la particule, ou le poids de celle-ci, et $N$ est le nombre total de particules. Plus d'information peuvent être trouvé aux références suivantes \cite{russell_norvig} et \cite{rlabbe}.\\
 \\
@@ -199,7 +198,8 @@ h^{t} = h^{t-1} * (1+\gamma) + \nu
 \end{split}
 \end{equation}
 
-En assemblant chacune des parties précédentes, on obtient alors l'algorithme final du filtre à particule, dont un exemple avec une configuration spécifique est donné dans l'algorithme \ref{alg:particlefilter}.
+En assemblant chacune des parties précédentes, on obtient alors l'algorithme final du filtre à particule, dont un exemple avec une configuration spécifique est donné dans l'algorithme \ref{alg:particlefilter}.\\
+\vspace{1cm}
 
 
 \begin{algorithm}
@@ -218,6 +218,7 @@ En assemblant chacune des parties précédentes, on obtient alors l'algorithme f
 				Calcul du poids de $p$ dans $t$ :
 					$$w_{p}^{t} = \frac{1}{\sqrt{2\pi\sigma^{2}}}e^{-\frac{(coeff\_sim_{p}^{t})^{2}}{2\sigma^{2}}}$$
 			}
+			Normalisation des poids des particules: $$w_{p}^{t} = \frac{w_{p}^{t}}{\sum_{i=0}^{NB_{particule}} w_{i}^{t}}$$\\
 			Ré-échantillonnage des particules pondérées par leurs poids\\
 			Estimation de la position et bounding box de la seiche dans $t$:
 				$$X^{t}=\frac{1}{NB_{particule}}*\sum_{p=0}^{NB_{particule}} X_{p}^{t}*w_{p}^{t}$$
