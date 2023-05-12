@@ -2372,6 +2372,7 @@
     <bcf:citekey order="26">qiang_zhu_fast_2006</bcf:citekey>
     <bcf:citekey order="27">dalal_histograms_2005</bcf:citekey>
     <bcf:citekey order="28">kong_particle_2019</bcf:citekey>
+<<<<<<< HEAD
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
@@ -2413,3 +2414,5 @@
                 labelalphanametemplatename="global">
   </bcf:datalist>
 </bcf:controlfile>
+=======
+>>>>>>> a979539 (Fix typos)

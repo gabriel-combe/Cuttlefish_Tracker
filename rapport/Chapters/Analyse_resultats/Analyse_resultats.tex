@@ -14,10 +14,17 @@ Comme illustré en figure \ref{fig:iou_example}:
 \end{figure}
 \FloatBarrier
 
+<<<<<<< HEAD
 Dans notre cas, les bounding boxes de prédiction correspondent à la sortie de notre logiciel, ou à celle du réseau de neurone (YOLOv7). Les bounding boxes de la vérité terrain, quand à elles, correspondent à des bounding boxes annotées manuellement et qui englobe l'objet ciblé à détecter (i.e. la seiche).\\
 Pour avoir la vérité terrain, nous avons utilisé LabelImg.\\
 \\
 Afin de classifier le résultat de la détection comme étant correcte ou non, nous comparons l'IoU à un seuil donné $T$, donc, si $IoU > T$ alors nous pouvons considérer la détection comme étant correcte, autrement, la détection est considérée comme incorrecte.\\
+=======
+Dans notre cas, les bounding boxes de prédiction correspondent à la sortie de notre logiciel, ou à celle du réseau de neurones (YOLOv7). Les bounding boxes de la vérité terrain, quant à elles, correspondent à des bounding boxes annotées manuellement et qui englobe l'objet ciblé à détecter (i.e. la seiche).\\
+Pour avoir la vérité terrain, nous avons utilisé LabelImg.\\
+\\
+Afin de classifier le résultat de la détection comme étant correcte ou non, nous comparons l'IoU à un seuil donné $T$. Donc, si $IoU > T$, alors nous pouvons considérer la détection comme étant correcte, autrement, la détection est considérée comme incorrecte.\\
+>>>>>>> a979539 (Fix typos)
 Dans nos tests, nous avons fixé le seuil $T$ à 0.5.
 
 
@@ -79,11 +86,19 @@ YOLOv7 & 292 & 292 (100\%) & 0.60 & 0.90 & 0.76\\
 \end{figure}
 \FloatBarrier
 
+<<<<<<< HEAD
 Les courbes de déplacement de la seiche dans les figure \ref{fig:trajX_pf}, \ref{fig:trajY_pf}, \ref{fig:trajX_yolo} et \ref{fig:trajY_yolo} illustre un exemple de détection continue dans une séquence.\\
 Dans la figure \ref{fig:trajX_pf}, nous comparons la trajectoire de la seiche suivi par le filtre à particule (couleur violette) aux positions définies manuellement (couleur or) dans la direction des x, tandis que dans la figure \ref{fig:trajY_pf} nous comparons les deux trajectoires dans la direction des y.\\
 De même, dans la figure \ref{fig:trajX_yolo} nous comparons la trajectoire de la seiche suivi par YOLOv7 (couleur bleu) aux positions définies manuellement (couleur or) dans la direction des x, tandis que dans la figure \ref{fig:trajY_yolo} nous comparons les deux trajectoires dans la direction des y.\\
 \\
 La distance entre la trajectoire automatique et manuelle indique la précision de l'algorithme, ce qui donne pour la séquence une erreur moyenne globale de 21 pixels pour le filtre à particule, calculé sur les 288 frames de la séquence où la seiche a été détecté, et 12 pixels pour YOLOv7, calculé sur les 292 frames de la séquence où la seiche a été détecté.\\
+=======
+Les courbes de déplacement de la seiche dans les figure \ref{fig:trajX_pf}, \ref{fig:trajY_pf}, \ref{fig:trajX_yolo} et \ref{fig:trajY_yolo} illustrent un exemple de détection continue dans une séquence.\\
+Dans la figure \ref{fig:trajX_pf}, nous comparons la trajectoire de la seiche suivi par le filtre à particule (couleur violette) aux positions définies manuellement (couleur or) dans la direction des x, tandis que dans la figure \ref{fig:trajY_pf} nous comparons les deux trajectoires dans la direction des y.\\
+De même, dans la figure \ref{fig:trajX_yolo} nous comparons la trajectoire de la seiche suivi par YOLOv7 (couleur bleu) aux positions définies manuellement (couleur or) dans la direction des x, tandis que dans la figure \ref{fig:trajY_yolo} nous comparons les deux trajectoires dans la direction des y.\\
+\\
+La distance entre la trajectoire automatique et manuelle indique la précision de l'algorithme, ce qui donne pour la séquence une erreur moyenne globale de 21 pixels pour le filtre à particule, calculé sur les 288 frames de la séquence où la seiche a été détectée, et 12 pixels pour YOLOv7, calculé sur les 292 frames de la séquence où la seiche a été détectée.\\
+>>>>>>> a979539 (Fix typos)
 La méthode de détection avec filtre à particule semble détecter la seiche dans 98\% de la séquence, et la méthode de détection avec YOLOv7 dans 100\% de la séquence.
 
 \begin{figure}[!htbp]
@@ -118,7 +133,11 @@ La méthode de détection avec filtre à particule semble détecter la seiche da
 \end{figure}
 \FloatBarrier
  
+<<<<<<< HEAD
 Cependant, la détection avec le filtre à particule peut diverger, comme illustré dans la figure \ref{fig:pf_diverg_results}. Cette divergence peut s'expliquer de plusieurs manières, elle peut provenir d'une accumulation d'erreur lors du suivi, ou bien d'une paramétrisation du logiciel non optimale, ou encore de la seiche qui n'est que sur une petite portion de la bounding box, ce qui a pour effet de beaucoup plus représenter l'arrière plan et donc mettre un poids plus élevé sur ce qui ressemble à l'arrière plan lors de l'étape de calcul des poids.
+=======
+Cependant, la détection avec le filtre à particule peut diverger, comme illustré dans la figure \ref{fig:pf_diverg_results}. Cette divergence peut s'expliquer de plusieurs manières. Elle peut provenir d'une accumulation d'erreur lors du suivi, ou bien d'une paramétrisation du logiciel non optimale, ou encore de la seiche qui n'est que sur une petite portion de la bounding box, ce qui a pour effet de beaucoup plus représenter l'arrière plan et donc mettre un poids plus élevé sur ce qui ressemble à l'arrière plan lors de l'étape de calcul des poids.
+>>>>>>> a979539 (Fix typos)
 
 \begin{figure}[!htbp]
 \center
