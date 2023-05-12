@@ -61,6 +61,10 @@ if __name__ == "__main__":
 
     GT = './results/GT'
 
+    iou_min = 1
+    iou_max = 0
+    valid = 0
+
     filenames = next(os.walk(GT), (None, None, []))[2]  # [] if no file
 
     if args.yolo:
@@ -116,12 +120,21 @@ if __name__ == "__main__":
             (0, 255, 0), thickness=2)
         
         current_frame = cv2.putText(current_frame, f'{iou[-1]}', (box1[0]-10, box1[1]-10), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+
+        iou_min = min(iou_min, iou[-1])
+        iou_max = max(iou_max, iou[-1])
+
+        if iou[-1] > 0.5:
+            valid += 1
         
         cv2.imshow('Evaluation', current_frame)
         outvid.write(current_frame)
         cv2.waitKey(int(1000*(1/fps)))
     
-    print(np.mean(np.array(iou)))
+    print(f'IoU mean = {np.mean(np.array(iou))}')
+    print(f'IoU min = {iou_min}')
+    print(f'IoU max = {iou_max}')
+    print(f'Valid frame = {valid}')
     np.savetxt('eval.out', np.array(iou))
     cap.release()
     outvid.release()

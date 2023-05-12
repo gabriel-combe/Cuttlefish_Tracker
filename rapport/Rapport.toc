@@ -67,12 +67,12 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5.1}Métrique d'évaluation IoU}{25}{section.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Analyse et comparaison}{25}{section.5.2}%
+\contentsline {section}{\numberline {5.2}Analyse et comparaison}{26}{section.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Gestion du Projet}{26}{chapter.6}%
+\contentsline {chapter}{\numberline {6}Gestion du Projet}{31}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Bilan et Conclusions}{28}{chapter.7}%
+\contentsline {chapter}{\numberline {7}Bilan et Conclusions}{33}{chapter.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Appendices}{30}{section*.21}%
+\contentsline {chapter}{Appendices}{35}{section*.29}%
 \defcounter {refsection}{0}\relax 
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
