@@ -1,6 +1,7 @@
 [0] Config.pm:311> INFO - This is Biber 2.16
 [0] Config.pm:314> INFO - Logfile is 'Rapport.blg'
 <<<<<<< HEAD
+<<<<<<< HEAD
 [129] biber-MSWIN64:340> INFO - === 
 [168] Biber.pm:415> INFO - Reading 'Rapport.bcf'
 [293] Biber.pm:952> INFO - Found 16 citekeys in bib section 0
@@ -29,3 +30,18 @@
 [601] bbl.pm:654> INFO - Writing 'Rapport.bbl' with encoding 'UTF-8'
 [614] bbl.pm:757> INFO - Output to Rapport.bbl
 >>>>>>> afae3dc (Change diagram link for SVG)
+=======
+[121] biber-MSWIN64:340> INFO - === 
+[159] Biber.pm:415> INFO - Reading 'Rapport.bcf'
+[281] Biber.pm:952> INFO - Found 16 citekeys in bib section 0
+[298] Biber.pm:4340> INFO - Processing section 0
+[313] Biber.pm:4531> INFO - Looking for bibtex format file 'Bibliographie/references.bib' for section 0
+[389] bibtex.pm:1689> INFO - LaTeX decoding ...
+[427] bibtex.pm:1494> INFO - Found BibTeX data source 'Bibliographie/references.bib'
+[583] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[584] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'variable = shifted' with 'variable = non-ignorable'
+[584] Biber.pm:4168> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'fr-FR'
+[584] Biber.pm:4174> INFO - No sort tailoring available for locale 'fr-FR'
+[609] bbl.pm:654> INFO - Writing 'Rapport.bbl' with encoding 'UTF-8'
+[624] bbl.pm:757> INFO - Output to Rapport.bbl
+>>>>>>> 7af9a00 (Finish part 5)

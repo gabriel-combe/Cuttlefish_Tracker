@@ -71,13 +71,21 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5.1}Métrique d'évaluation IoU}{24}{section.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Analyse et comparaison}{25}{section.5.2}%
+\contentsline {section}{\numberline {5.2}Analyse et comparaison}{26}{section.5.2}%
 \defcounter {refsection}{0}\relax 
+<<<<<<< HEAD
 \contentsline {chapter}{\numberline {6}Gestion du Projet}{30}{chapter.6}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {7}Bilan et Conclusions}{32}{chapter.7}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{Appendices}{34}{section*.29}%
+=======
+\contentsline {chapter}{\numberline {6}Gestion du Projet}{31}{chapter.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {7}Bilan et Conclusions}{33}{chapter.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Appendices}{35}{section*.29}%
+>>>>>>> 7af9a00 (Finish part 5)
 \defcounter {refsection}{0}\relax 
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
 <<<<<<< HEAD
