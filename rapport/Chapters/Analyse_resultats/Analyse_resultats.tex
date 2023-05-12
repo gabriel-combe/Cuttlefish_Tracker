@@ -23,8 +23,15 @@ Afin de classifier le résultat de la détection comme étant correcte ou non, n
 Dans notre cas, les bounding boxes de prédiction correspondent à la sortie de notre logiciel, ou à celle du réseau de neurones (YOLOv7). Les bounding boxes de la vérité terrain, quant à elles, correspondent à des bounding boxes annotées manuellement et qui englobe l'objet ciblé à détecter (i.e. la seiche).\\
 Pour avoir la vérité terrain, nous avons utilisé LabelImg.\\
 \\
+<<<<<<< HEAD
 Afin de classifier le résultat de la détection comme étant correcte ou non, nous comparons l'IoU à un seuil donné $T$. Donc, si $IoU > T$, alors nous pouvons considérer la détection comme étant correcte, autrement, la détection est considérée comme incorrecte.\\
+<<<<<<< HEAD
 >>>>>>> a979539 (Fix typos)
+=======
+=======
+Afin de classifier le résultat de la détection comme étant correcte ou non, nous comparons l'IoU à un seuil donné $T$, donc, si $IoU > T$ alors nous pouvons considérer la détection comme étant correcte, autrement, la détection est considérée comme incorrecte.\\
+>>>>>>> f66402e (Fix typos)
+>>>>>>> c164f46 (Rebase 6/7)
 Dans nos tests, nous avons fixé le seuil $T$ à 0.5.
 
 
@@ -32,10 +39,14 @@ Dans nos tests, nous avons fixé le seuil $T$ à 0.5.
 \clearpage
 \section{Analyse et comparaison}
 <<<<<<< HEAD
+<<<<<<< HEAD
 Les valeurs IoU sont calculées pour une séquence et deux approches (filtre à particule et YOLOv7), elles sont représentées dans la table \ref{tab:results}.\\
 =======
 Les valeurs IoU sont calculées pour une séquence et deux approches (filtre à particule et YOLOv7), elles sont représenté dans la table \ref{tab:results}.\\
 >>>>>>> 7af9a00 (Finish part 5)
+=======
+Les valeurs IoU sont calculées pour une séquence et deux approches (filtre à particule et YOLOv7), elles sont représentées dans la table \ref{tab:results}.\\
+>>>>>>> f66402e (Fix typos)
 Notre méthode avec filtre à particule a réussi à détecter la seiche dans 288 des 292 frames, équivalent à 98\% du nombre total de frames, voir figure \ref{fig:pf_results}. L'IoU varie de 0.44 à 0.87 et l'IoU moyen est de 0.74.\\
 YOLOv7 a réussi à détecter la seiche dans 292 des 292 frames, équivalent à 100\% du nombre total de frames, voir figure \ref{fig:yolo_results}. L'IoU varie de 0.60 à 0.90 et l'IoU moyen est de 0.76.
 
@@ -111,7 +122,7 @@ La distance entre la trajectoire automatique et manuelle indique la précision d
 =======
 Les courbes de déplacement de la seiche dans les figure \ref{fig:trajX_pf}, \ref{fig:trajY_pf}, \ref{fig:trajX_yolo} et \ref{fig:trajY_yolo} illustre un exemple de détection continue dans une séquence.\\
 Dans la figure \ref{fig:trajX_pf}, nous comparons la trajectoire de la seiche suivi par le filtre à particule (couleur violette) aux positions définies manuellement (couleur or) dans la direction des x, tandis que dans la figure \ref{fig:trajY_pf} nous comparons les deux trajectoires dans la direction des y.\\
-De même, dans la figure \ref{fig:trajX_yolo} nous comparons la trajectoir de la seiche suivi par YOLOv7 (couleur bleu) aux positions définies manuellement (couleur or) dans la direction des x, tandis que dans la figure \ref{fig:trajY_yolo} nous comparons les deux trajectoires dans la direction des y.\\
+De même, dans la figure \ref{fig:trajX_yolo} nous comparons la trajectoire de la seiche suivi par YOLOv7 (couleur bleu) aux positions définies manuellement (couleur or) dans la direction des x, tandis que dans la figure \ref{fig:trajY_yolo} nous comparons les deux trajectoires dans la direction des y.\\
 \\
 La distance entre la trajectoire automatique et manuelle indique la précision de l'algorithme, ce qui donne pour la séquence une erreur moyenne globale de 21 pixels pour le filtre à particule, calculé sur les 288 frames de la séquence où la seiche a été détecté, et 12 pixels pour YOLOv7, calculé sur les 292 frames de la séquence où la seiche a été détecté.\\
 >>>>>>> 7af9a00 (Finish part 5)

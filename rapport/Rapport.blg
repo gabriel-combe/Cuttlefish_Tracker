@@ -2,6 +2,9 @@
 [0] Config.pm:314> INFO - Logfile is 'Rapport.blg'
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f66402e (Fix typos)
 [129] biber-MSWIN64:340> INFO - === 
 [168] Biber.pm:415> INFO - Reading 'Rapport.bcf'
 [293] Biber.pm:952> INFO - Found 16 citekeys in bib section 0
@@ -15,6 +18,7 @@
 [623] Biber.pm:4174> INFO - No sort tailoring available for locale 'fr-FR'
 [649] bbl.pm:654> INFO - Writing 'Rapport.bbl' with encoding 'UTF-8'
 [665] bbl.pm:757> INFO - Output to Rapport.bbl
+<<<<<<< HEAD
 =======
 [135] biber-MSWIN64:340> INFO - === 
 [175] Biber.pm:415> INFO - Reading 'Rapport.bcf'
@@ -45,3 +49,5 @@
 [609] bbl.pm:654> INFO - Writing 'Rapport.bbl' with encoding 'UTF-8'
 [624] bbl.pm:757> INFO - Output to Rapport.bbl
 >>>>>>> 7af9a00 (Finish part 5)
+=======
+>>>>>>> f66402e (Fix typos)

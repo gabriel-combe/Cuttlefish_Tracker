@@ -44,6 +44,7 @@
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Intersection over Union (IoU)\relax }}{24}{figure.caption.18}%
+<<<<<<< HEAD
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Exemple de résultats obtenus par notre filtre à particule.\relax }}{25}{figure.caption.20}%
 \defcounter {refsection}{0}\relax 
@@ -82,9 +83,12 @@
 \contentsline {figure}{\numberline {5.7}{\ignorespaces Trajectoire avec YOLOv7 sur les Y\relax }}{29}{figure.caption.25}%
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {5.8}{\ignorespaces Exemple de résultats divergeant obtenus par notre filtre à particule.\relax }}{29}{figure.caption.26}%
+=======
+>>>>>>> f66402e (Fix typos)
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Exemple de résultats obtenus par notre filtre à particule.\relax }}{26}{figure.caption.20}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Exemple de résultats obtenus par notre filtre à particule.\relax }}{25}{figure.caption.20}%
 \defcounter {refsection}{0}\relax 
+<<<<<<< HEAD
 <<<<<<< HEAD
 \contentsline {figure}{\numberline {6.1}{\ignorespaces Diagramme de Gantt du projet.\relax }}{31}{figure.caption.27}%
 \defcounter {refsection}{0}\relax 
@@ -104,52 +108,60 @@
 \contentsline {figure}{\numberline {3}{\ignorespaces Diagramme UML des classes globales (\href {https://raw.githubusercontent.com/gabriel-combe/Cuttlefish_Tracker/test/rapport/UML/classes.svg}{lien vers l'image SVG}, zoomer sur l'image SVG pour avoir plus de détaille).\relax }}{32}{figure.caption.26}%
 =======
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Frame 25}}}{26}{subfigure.2.1}%
+=======
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Frame 25}}}{25}{subfigure.2.1}%
+>>>>>>> f66402e (Fix typos)
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Frame 50}}}{26}{subfigure.2.2}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Frame 50}}}{25}{subfigure.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Frame 100}}}{26}{subfigure.2.3}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Frame 100}}}{25}{subfigure.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Frame 150}}}{26}{subfigure.2.4}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Frame 150}}}{25}{subfigure.2.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {Frame 200}}}{26}{subfigure.2.5}%
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {Frame 200}}}{25}{subfigure.2.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {Frame 250}}}{26}{subfigure.2.6}%
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {Frame 250}}}{25}{subfigure.2.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Exemple de résultats obtenus par YOLOv7.\relax }}{27}{figure.caption.21}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Exemple de résultats obtenus par YOLOv7.\relax }}{26}{figure.caption.21}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Frame 25}}}{27}{subfigure.3.1}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Frame 25}}}{26}{subfigure.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Frame 50}}}{27}{subfigure.3.2}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Frame 50}}}{26}{subfigure.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Frame 100}}}{27}{subfigure.3.3}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Frame 100}}}{26}{subfigure.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Frame 150}}}{27}{subfigure.3.4}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Frame 150}}}{26}{subfigure.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {Frame 200}}}{27}{subfigure.3.5}%
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {Frame 200}}}{26}{subfigure.3.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {Frame 250}}}{27}{subfigure.3.6}%
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {Frame 250}}}{26}{subfigure.3.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Trajectoire avec le filtre à particule sur les X\relax }}{28}{figure.caption.22}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Trajectoire avec le filtre à particule sur les X\relax }}{27}{figure.caption.22}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Trajectoire avec le filtre à particule sur les Y\relax }}{29}{figure.caption.23}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Trajectoire avec le filtre à particule sur les Y\relax }}{28}{figure.caption.23}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Trajectoire avec YOLOv7 sur les X\relax }}{29}{figure.caption.24}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Trajectoire avec YOLOv7 sur les X\relax }}{28}{figure.caption.24}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Trajectoire avec YOLOv7 sur les Y\relax }}{30}{figure.caption.25}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Trajectoire avec YOLOv7 sur les Y\relax }}{29}{figure.caption.25}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Exemple de résultats divergeant obtenus par notre filtre à particule.\relax }}{30}{figure.caption.26}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Exemple de résultats divergeant obtenus par notre filtre à particule.\relax }}{29}{figure.caption.26}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Diagramme de Gantt du projet.\relax }}{32}{figure.caption.27}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Diagramme de Gantt du projet.\relax }}{31}{figure.caption.27}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
+<<<<<<< HEAD
 \contentsline {figure}{\numberline {1}{\ignorespaces Schéma vrais/faux positifs/négatifs\relax }}{36}{figure.caption.31}%
 >>>>>>> 7af9a00 (Finish part 5)
+=======
+\contentsline {figure}{\numberline {1}{\ignorespaces Schéma vrais/faux positifs/négatifs\relax }}{35}{figure.caption.31}%
+>>>>>>> f66402e (Fix typos)
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2}{\ignorespaces Tracé de la coubre Precision-Recall ou PR curve\relax }}{36}{figure.caption.32}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Tracé de la coubre Precision-Recall ou PR curve\relax }}{35}{figure.caption.32}%
 \defcounter {refsection}{0}\relax 
+<<<<<<< HEAD
 <<<<<<< HEAD
 \contentsline {figure}{\numberline {5}{\ignorespaces Diagramme UML de la classe ParticleFilter (\href {https://raw.githubusercontent.com/gabriel-combe/Cuttlefish_Tracker/test/rapport/UML/particlefilter.svg}{lien vers l'image SVG}, zoomer sur l'image SVG pour avoir plus de détaille).\relax }}{34}{figure.caption.30}%
 >>>>>>> afae3dc (Change diagram link for SVG)
@@ -157,13 +169,20 @@
 \contentsline {figure}{\numberline {6}{\ignorespaces Schéma basique d'un VAE.\relax }}{39}{figure.caption.40}%
 =======
 \contentsline {figure}{\numberline {3}{\ignorespaces Diagramme UML des classes globales (\href {https://raw.githubusercontent.com/gabriel-combe/Cuttlefish_Tracker/test/rapport/UML/classes.svg}{lien vers l'image SVG}, zoomer sur l'image SVG pour avoir plus de détaille).\relax }}{37}{figure.caption.34}%
+=======
+\contentsline {figure}{\numberline {3}{\ignorespaces Diagramme UML des classes globales (\href {https://raw.githubusercontent.com/gabriel-combe/Cuttlefish_Tracker/main/rapport/UML/classes.svg}{lien vers l'image SVG}, zoomer sur l'image SVG pour avoir plus de détaille).\relax }}{36}{figure.caption.34}%
+>>>>>>> f66402e (Fix typos)
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4}{\ignorespaces Diagramme UML de la classe Similarity (\href {https://raw.githubusercontent.com/gabriel-combe/Cuttlefish_Tracker/test/rapport/UML/similarity.svg}{lien vers l'image SVG}, zoomer sur l'image SVG pour avoir plus de détaille).\relax }}{38}{figure.caption.36}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Diagramme UML de la classe Similarity (\href {https://raw.githubusercontent.com/gabriel-combe/Cuttlefish_Tracker/main/rapport/UML/similarity.svg}{lien vers l'image SVG}, zoomer sur l'image SVG pour avoir plus de détaille).\relax }}{37}{figure.caption.36}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5}{\ignorespaces Diagramme UML de la classe ParticleFilter (\href {https://raw.githubusercontent.com/gabriel-combe/Cuttlefish_Tracker/test/rapport/UML/particlefilter.svg}{lien vers l'image SVG}, zoomer sur l'image SVG pour avoir plus de détaille).\relax }}{39}{figure.caption.38}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Diagramme UML de la classe ParticleFilter (\href {https://raw.githubusercontent.com/gabriel-combe/Cuttlefish_Tracker/main/rapport/UML/particlefilter.svg}{lien vers l'image SVG}, zoomer sur l'image SVG pour avoir plus de détaille).\relax }}{38}{figure.caption.38}%
 \defcounter {refsection}{0}\relax 
+<<<<<<< HEAD
 \contentsline {figure}{\numberline {6}{\ignorespaces Schéma basique d'un VAE.\relax }}{40}{figure.caption.40}%
 >>>>>>> 7af9a00 (Finish part 5)
+=======
+\contentsline {figure}{\numberline {6}{\ignorespaces Schéma basique d'un VAE.\relax }}{39}{figure.caption.40}%
+>>>>>>> f66402e (Fix typos)
 \defcounter {refsection}{0}\relax 
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
 <<<<<<< HEAD
