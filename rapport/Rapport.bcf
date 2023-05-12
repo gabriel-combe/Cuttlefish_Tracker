@@ -2373,6 +2373,9 @@
     <bcf:citekey order="27">dalal_histograms_2005</bcf:citekey>
     <bcf:citekey order="28">kong_particle_2019</bcf:citekey>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> db19c3b (Rebase 3/7)
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
@@ -2414,5 +2417,8 @@
                 labelalphanametemplatename="global">
   </bcf:datalist>
 </bcf:controlfile>
+<<<<<<< HEAD
 =======
 >>>>>>> a979539 (Fix typos)
+=======
+>>>>>>> db19c3b (Rebase 3/7)

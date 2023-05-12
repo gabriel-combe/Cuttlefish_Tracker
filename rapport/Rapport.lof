@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> db19c3b (Rebase 3/7)
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \babel@toc {french}{}\relax 
 \defcounter {refsection}{0}\relax 
@@ -99,5 +102,8 @@
 \contentsline {figure}{\numberline {6}{\ignorespaces Schéma basique d'un VAE.\relax }}{39}{figure.caption.40}%
 \defcounter {refsection}{0}\relax 
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
+<<<<<<< HEAD
 =======
 >>>>>>> a979539 (Fix typos)
+=======
+>>>>>>> db19c3b (Rebase 3/7)
