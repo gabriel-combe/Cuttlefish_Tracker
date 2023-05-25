@@ -107,7 +107,7 @@ $$\sum_{k \in X \hspace{0.1cm} ou \hspace{0.1cm} k \in Y} \sqrt{X(k)*Y(k)}$$
 \subsection{Cosine similarity}
 La similarité cosinus (Cosine similarity), est une distance, un score, basé sur le cosinus de l'angle entre deux vecteurs.\\
 Donc, à partir d'un vecteur descripteur X et du vecteur descripteur de référence Y, nous pouvons calculer le cosinus de l'angle formé par les deux vecteurs, qui est donné par la formule:
-$$Sc(X, Y) = \frac{X \cdot Y}{\|X\|\|Y\|}$$\\
+$$Sc(X, Y) = 1 - \frac{X \cdot Y}{\|X\|\|Y\|}$$\\
 
 
 \section{Filtre à particule}
@@ -182,10 +182,10 @@ Pour palier à ce problème, nous effectuons également une prédiction sur les 
 \begin{cases}
 \begin{aligned}
 	-0.05,& \hspace{0.4cm}		0 \leq p \leq 0.2\\
-    -0.0125,& \hspace{0.4cm}	0.2 \le p \leq 0.4\\
-    0,& \hspace{0.4cm}			0.4 \le p \leq 0.6\\
-    0.0125,& \hspace{0.4cm}		0.6 \le p \leq 0.8\\
-    0.05,& \hspace{0.4cm}		0.8 \le p \leq 1
+    -0.0125,& \hspace{0.4cm}	0.2 < p \leq 0.4\\
+    0,& \hspace{0.4cm}			0.4 < p \leq 0.6\\
+    0.0125,& \hspace{0.4cm}		0.6 < p \leq 0.8\\
+    0.05,& \hspace{0.4cm}		0.8 < p \leq 1
 \end{aligned}
 \end{cases}
 \end{equation}
