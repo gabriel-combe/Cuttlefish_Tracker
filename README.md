@@ -2,7 +2,7 @@
 
 **Sujet: Suivi d'objet avec filtre à particule.**
 
-https://github.com/gabriel-combe/Cuttlefish_Tracker/results/Cuttlefish-seq1-[2xratio, 0, 0, 2, 0, 0, 0.2, 0.2]-.05-hogcascadelbp-cos-ppp2Dbb-multinomial-128x128-1000.mp4
+https://github.com/gabriel-combe/Cuttlefish_Tracker/assets/26323828/88663656-21e0-42a6-b22b-f677d03dffd5
 
 -----
 
