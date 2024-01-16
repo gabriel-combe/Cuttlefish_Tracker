@@ -2,6 +2,10 @@
 
 **Sujet: Suivi d'objet avec filtre à particule.**
 
+https://github.com/gabriel-combe/Cuttlefish_Tracker/results/Cuttlefish-seq1-[2xratio, 0, 0, 2, 0, 0, 0.2, 0.2]-.05-hogcascadelbp-cos-ppp2Dbb-multinomial-128x128-1000.mp4
+
+-----
+
 ## Introduction
 
 Le projet se concentrer sur le suivi de seiches grace au filtre a particule sur des videos. 
@@ -32,6 +36,22 @@ Il se decoupera donc en plusieurs sous objectifs:
 - [ ] Evaluation de notre application sur le terrain (Aquarium). 
 - [ ] (Optionnelle) Implementer des metriques d'evaluation pour chaque modules.
 
+
+## Installation
+
+La version 3.10 de python est utilise.
+Les librairies requises peuvent etre installe avec la commande suivante.
+```sh
+pip install -r requirements.txt
+```
+
+## Usage example
+
+Pour lancer le proramme sur une sequence video, la commande ci-dessous peut-etre utilise.
+
+```sh
+python tracking.py --filepath YOUR_VIDEO --N 500 --descriptor hogcascadelbp --similarity cos --particle ppp2Dbb --resampling multinomial --alpha 1.3 --scale-factor 1 --resample-factor 1 --desc-size 64 64 --lbp-nbpoints 16 --lbp-radius 2
+```
 
 ## Dataset
 Le dataset est constitue de 2161 images de seiche annotees a la main, qui ont ete augmentees en 5175 images et split entre le train (70%), valid (20%) et test (10%) set.
